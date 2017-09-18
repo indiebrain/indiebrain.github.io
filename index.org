@@ -1,4 +1,6 @@
 #+TITLE: Index
+#+AUTHOR: Aaron Kuehler
+#+OPTIONS: num:nil
 
 * About Aaron
 
