@@ -1,0 +1,150 @@
+#+TITLE:       iOS Environment Variables
+#+AUTHOR:      Aaron
+#+EMAIL:       aaronk@max.local
+#+DATE:        2014-07-12 Sat
+#+URI:         /blog/%y/%m/%d/ios-environment-variables
+#+KEYWORDS:    ios, xcode
+#+TAGS:        ios, xcode, software, tools
+#+LANGUAGE:    en
+#+OPTIONS:     H:3 num:nil toc:nil \n:nil ::t |:t ^:nil -:nil f:t *:t <:t
+#+DESCRIPTION: An approach to extracting 'environment' specific configuration from iOS application code
+
+I find that there are usually at least two distinct environments in which any iOS project is built: generally one set of configuration for development and another for production. Each mode usually requires its own set of configuration: resource URLs for data fetching and manipulation, 3rd  party service authentication keys, and the like. Usually I see these types of configurations defined through conditional macros inline with application code, like so:
+
+#+BEGIN_SRC objc
+  #ifdef DEBUG
+  const NSString* myAppAPIBaseUrl = @"http://development.myapp.com"; // development services
+  #else
+  const NSString* myAppAPIBaseUrl = @"http://www.myapp.com"; // production services
+  #endif
+
+  [[MyAppAPIClient alloc] initWithBaseUrl:myAppAPIBaseUrl];
+#+END_SRC
+
+In this approach, the URL used to initialize the =MyAppAPIClient= is determined by the truth-y presence of the =DEBUG= preprocessor macro at build time, by the truth-y presence of the =DEBUG= preprocessor macro at build time, by the truth-y presence of the =DEBUG= preprocessor macro at build time, implicitly describing two separate configurations in which the application is built– presumably DEBUG (development) and otherwise (production). This ad-hoc, imperative approach is generally scattered across the code base; choosing to co-locate configuration and the using class(es). Maintaining values in this manner proves to be challenging over time; configuration requirements change, new application components share configuration values essentially making the existence of one class implementation dependent upon another solely for its constant definitions.
+
+What if the application code and configuration could live independent of each other? This would imply that configuration changes are less likely to introduce regressions into the application code. For example, imagine the above example rewritten to simply ask for the value of =myAppAPIBaseUrl=:
+
+#+BEGIN_SRC objc
+  NSString* myAppAPIBaseUrl = [[Environment sharedInstance] fetch:@"MyAppAPIBaseUrl"];
+  [MyAppAPIClient alloc] initWithBaseUrl:myAppAPIBaseUrl];
+#+END_SRC
+
+It is the responsibility of the =[[Environment sharedInstance] fetch:@"MyAppAPIBaseUrl"]= message to determine the appropriate value to return based on configuration living apart from the application code.
+
+As it turns out, implementing this behavior is not at all complicated:
+
+* Capture the build configuration used to build the Application bundle
+
+- Add a new String value to the =<application_name>-Info.plist= to capture the name of the Build Configuration (environment name) used to create the application bundle at build time:
+
+#+CAPTION: application-info.plist
+#+NAME:   application-info.plist
+[[../assets/blog/2014/07/12/ios-environment-variables/application-info.plist.png]]
+
+* Configure the Environments
+
+- Add an =Environments.plist= to the application. This serves as the centralized listing of environment specific configuration values for each environment the application supports.
+
+- Add a Dictionary type entry to the =Environments.plist= for each build configuration name the application supports; in this example the two default build configurations Apple creates for any iOS project: =Debug= and =Release=
+
+- Define the application's configuration concerns with the appropriate values for each 'environment' key in the =Environments.plist=
+
+#+CAPTION: environments.plist
+#+NAME:   environments.plist
+[[../assets/blog/2014/07/12/ios-environment-variables/environments.plist.png]]
+
+* Define the =Environment= object:
+#+BEGIN_SRC objc
+  // Environment.h
+  @interface Environment : NSObject
+  + (Environment*) sharedInstance;
+  - (id) fetch:(NSString*)key;
+  @end
+#+END_SRC
+
+#+BEGIN_SRC objc
+  // Environment.m
+  #import "Environment.h"
+
+  static Environment *sharedInstance = nil;
+
+  @interface Environment()
+  @property (strong, nonatomic) NSDictionary* environment;
+  @end
+
+
+  @implementation Environment
+
+  + (Environment*) sharedInstance {
+
+      static Environment *_sharedInstance = nil;
+      static dispatch_once_t oncePredicate;
+
+      dispatch_once(&oncePredicate, ^{
+          _sharedInstance = [[Environment alloc] init];
+      });
+
+      return _sharedInstance;
+  }
+
+
+  - (id)init
+  {
+      self = [super init];
+      if (self) {
+          NSBundle* bundle = [NSBundle mainBundle];
+
+          // Read in the 'Environment' name used to build the application (Debug or Release)
+          NSString* configuration = [bundle objectForInfoDictionaryKey:@"Configuration"];
+
+          // Load the Environment.plist
+          NSString* environmentsPListPath = [bundle pathForResource:@"Environments" ofType:@"plist"];
+          NSDictionary* environments = [[NSDictionary alloc] initWithContentsOfFile:environmentsPListPath];
+
+          // Read the values for the 'Environment' name into the 'environment property'
+          NSDictionary* environment = [environments objectForKey:configuration];
+          self.environment = environment;
+      }
+
+      return self;
+  }
+
+  - (id)fetch:(NSString*)key {
+
+      /**
+       ,* If the key is present in the environment, then return its value;
+       ,* otherwise return nil.
+       ,*/
+
+      return [self.environment objectForKey:key];
+  }
+  @end
+#+END_SRC
+
+* Example
+
+With the above code in place we can run the application to make sure everything's wired up correctly. In my example, I've added the following logger statement to the application's launch lifecycle;
+
+#+BEGIN_SRC objc
+  @implementation MAIOSAppDelegate
+  - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
+  NSLog(@"Using %@ as the API Base URL", [[Environment sharedInstance] fetch:@"MyAppAPIBaseUrl"]);
+  ...
+  @end
+#+END_SRC
+
+When the application is built in the Development mode, with the Debug build configuration, the log statement outputs:
+
+#+BEGIN_SRC objc
+  MyAppIOS[12289:60b] Using http://development.myapp.com as the API Base URL
+#+END_SRC
+
+
+And when using the Production mode, with the Release build configuration, the log statement outputs:
+
+#+BEGIN_SRC objc
+  MyAppIOS[12351:60b] Using http://www.myapp.com as the API Base URL
+#+END_SRC
+
+[[http://www.github.com/indiebrain/ios-environment-variables-example][Code Example Source]]
