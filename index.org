@@ -17,8 +17,6 @@
 
    Githug is designed to give you a practical way of learning git. It has a series of levels, each requiring you to use git commands to arrive at a correct answer.
 
-**
-
 ** Keyword Parameter Matchers
 
    https://github.com/indiebrain/keyword_parameter_matchers
