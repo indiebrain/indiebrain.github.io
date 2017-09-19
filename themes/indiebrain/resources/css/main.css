@@ -384,3 +384,10 @@ table th.right, table td.right {
   padding: 10px;
   border: 1px solid #a89984;
   overflow: overlay; }
+
+ul ul,
+ul ol,
+ol ul,
+ol ol {
+  padding-left: 1em;
+}
