@@ -1,0 +1,307 @@
+#+TITLE:       Installing Coreboot
+#+AUTHOR:      Aaron
+#+EMAIL:       aaronk@max.local
+#+DATE:        2015-09-20 Sun
+#+URI:         /blog/%y/%m/%d/installing-coreboot---lenovo-thinkpax-x220
+#+KEYWORDS:    coreboot, free hardware, intel management engine, me_cleaner, lenovo, thinkpad, x220
+#+TAGS:        coreboot, hardware, raspberry pi
+#+LANGUAGE:    en
+#+OPTIONS:     H:3 num:nil toc:nil \n:nil ::t |:t ^:nil -:nil f:t *:t <:t
+#+DESCRIPTION: Replacing the factory BIOS of a Lenovo Thinkpad x220 and neutralizing the Intel Management Engine (ME)
+
+* Motivation
+
+When not at work, I primarily use a Lenovo Thinkpax x220 with Debian GNU/Linux. Recently, the factory installed wireless card failed. I purchased a replacement wireless card from [[https://thinkpenguin.com/][Think Penguin]] and quickly found that the factory BIOS prevents the use of non-whitelisted hardware. I took this as a challenge to see if I could work around the freedom limiting factory BIOS.
+
+* Summary
+
+These project notes breakdown into two discrete tasks:
+
+- Construct the coreboot image
+- Burn the coreboot image
+
+Constructing the new BIOS image is fairly straight forward and pretty well documented by the coreboot community. I share my process to potentially save others (future versions of myself included) a bit of searching/patchwork from mailing lists, forum posts, etc.
+
+The initial "burn" of the coreboot image required the use an "external" or direct-hardware flashing mechanism to overwrite the factory BIOS. Essentially, I need another device capable of physically connecting to, and writing bytes to the [[https://en.wikipedia.org/wiki/Small_Outline_Integrated_Circuit][SOIC]] chip which houses the BIOS on the mainboard of the x220. To achieve this I used a [[https://www.raspberrypi.org/][Raspberry Pi 2 Model B]] and its GPIO board to act as the "burning" device.
+
+* Setting up the Raspberry Pi 2 Model B
+
+The Raspberry Pi is the external device I used to read/write firmware directly to/from the x220's mainboard. I used the =flashrom= utility to communicate with the x220's BIOS SOIC chip. This section details how to install =flashrom=, enable the [[https://en.wikipedia.org/wiki/Serial_Peripheral_Interface_Bus][SPI]] kernel modules to enable communication across the Raspberry Pi's GPIO, and how to wire up the SOIC hardware clip to the x220's mainboard.
+
+** Install flashrom
+
+    #+BEGIN_SRC sh
+      sudo apt-get install build-essential pciutils usbutils libpci-dev libusb-dev libftdi1 libftdi-dev zlib1g-dev subversion
+      mkdir -p ~/Documents/BIOS/tools
+      cd ~/Documents/BIOS/tools
+      git clone --branch stable https://github.com/flashrom/flashrom.git
+      cd flashrom
+      make
+    #+END_SRC
+
+** Load the SPI Kernel modules
+
+    #+BEGIN_SRC sh
+      sudo echo -e "spi_bcm22835 \nspidev" >> /etc/modules
+      sudo modprobe spi_bcm22835
+      sudo modprobe spidev
+    #+END_SRC
+
+** Connect GPIO to BIOS SOIC (Pomonoa 5250 Clip)
+
+   !!!!!!!!!!!!
+  _WARNING: Remove the X220 Battery and Power supply; failure to do so will cause damage to the BIOS SOIC_
+
+   I use the [[https://www.amazon.com/s/ref%3Dnb_sb_noss/137-3605813-2668468?url%3Dsearch-alias%253Daps&field-keywords%3DPomono%2B5250%2BClip][Pomonoa 5250]] clip to connect the Raspberry Pi's GPIO interface to the x220's BIOS SOIC chip. Here's the basic wiring information:
+
+***  BIOS SOIC / Pomonoa Pin layout
+
+  #+BEGIN_EXAMPLE
+    * Closest to Screen *
+    | 5 | 4 |
+    | 6 | 3 |
+    | 7 | 2 |
+    | 8 | 1 |
+    * Colsest to Palmrest Edge *
+  #+END_EXAMPLE
+
+*** BIOS SOIC => GPIO Wiring information
+
+  | BIOS SOIC / Pomonoa Pin # | GPIO Pin # | Role |
+  |---------------------------+------------+------|
+  |                         1 |         24 | CEO  |
+  |                         2 |         21 | MISO |
+  |                         3 | (not used) |      |
+  |                         4 |         25 | GND  |
+  |                         5 |         19 | MOSI |
+  |                         6 |         23 | SCLK |
+  |                         7 | (not used) |      |
+  |                         8 |          1 | 3.3V |
+
+* Read Factory Firmware
+
+On the Raspberry Pi, prepare a directory to which we can read the Factory BIOS in case something goes wrong with the coreboot installation.
+
+  #+BEGIN_SRC sh
+    mkdir -p ~/Documents/BIOS/firmwares/factory
+    cd ~/Documents/BIOS/firmwares/factory
+  #+END_SRC
+
+Make two backups of the Factory BIOS, we're going to validate them against one another to make pretty sure we have the correct factory BIOS bits.
+
+Make note of the capacity of the BIOS chip, we'll need this later when configuring coreboot. In my case flashrom reported that the Winbond flash chip W25q64.V chip has 8192KB of storage
+
+  #+BEGIN_SRC sh
+    sudo ~/Documents/BIOS/tools/flashrom/flashrom -p linux_spi:dev=/dev/spidev0.0 -r ~/Documents/BIOS/firmwares/factory/lenovo_x220_factory_bios.test.bin
+    sudo ~/Documents/BIOS/tools/flashrom/flashrom -p linux_spi:dev=/dev/spidev0.0 -r ~/Documents/BIOS/firmwares/factory/lenovo_x220_factory_bios.bin
+    md5sum ~/Documents/BIOS/firmwares/factory/lenovo_x220_factory_bios.test.bin
+    md5sum ~/Documents/BIOS/firmwares/factory/lenovo_x220_factory_bios.bin
+  #+END_SRC
+
+If the md5sums of both the images are the same, rock on. If not, STOP - a corrupt factory BIOS image will likely brick your laptop if you base your coreboot image on it, and you won't have a way to restore the factory BIOS. Try re-reading the factory BIOS and make sure you end up with two consecutive reads that have the same md5 checksum.
+
+Copy the =lenovo_x220_factory_bios.bin= to the x220 via sftp, USB media, etc. Verify the md5sum after copying.
+
+* Optional - Neutralize the Intel Management Engine (ME)
+
+** What is the Intel Management Engine (ME)?
+
+The gory details are best explained by the [[http://me.bios.io/images/c/ca/Rootkit_in_your_laptop.pdf][experts]], but suffice to say that it /can/ act as a way for third parties to remotely execute code on your machine - for good or ill. The ME is installed, in one form or another, on all newer Intel chipsets and /can/ be mostly neutralized by the use of a tool called [[https://github.com/corna/me_cleaner][me_cleaner]].
+
+** Clean the ME from the factory bios
+
+NOTE: me_cleaner mutates the BIOS file you supply as an argument. We'll want to do this on a copy of our factory BIOS binary so we still have an original version of the factory BIOS somewhere if we need to restore it for some reason in the future.
+
+On the x220, clone the me_cleaner tool and run it against the factory BIOS binary
+
+#+BEGIN_SRC sh
+  mkdir -p ~/Documents/BIOS/workspace
+  cp ~/Documents/BIOS/firmwares/factory/lenovo_x220_factory_bios.bin  ~/Documents/BIOS/workspace/
+  cd ~/Documents/BIOS/tools/
+  git clone https://github.com/corna/me_cleaner.git
+  python me_cleaner.py ~/Documents/BIOS/workspace/lenovo_x220_factory_bios.bin
+#+END_SRC
+
+* Prepare Coreboot
+
+** Install coreboot prerequisites on the x220
+
+  #+BEGIN_SRC sh
+    sudo apt update
+    sudo apt install gcc ncurses-dev
+  #+END_SRC
+
+** Get the coreboot source
+
+  #+BEGIN_SRC sh
+    mkdir -p ~/Documents/BIOS/tools
+    cd ~/Documents/BIOS/tools
+    git clone http://review.coreboot.org/p/coreboot
+    cd coreboot
+    git submodule update --init --checkout
+  #+END_SRC
+
+** Build the =ifdtool=.
+
+We'll use this to extract the proprietary blobs from the factory BIOS
+
+  #+BEGIN_SRC sh
+    cd ~/Document/BIOS/tools/coreboot/util/ifdtool
+    make
+  #+END_SRC
+
+** Extract the blobs from the factory BIOS binary
+
+  #+BEGIN_SRC sh
+    ~/Documents/BIOS/tools/coreboot/util/ifdtool/ifdtool -x ~/Documents/BIOS/workspace/lenovo_x220_factory_bios.bin
+  #+END_SRC
+
+  This should produce the following files:
+  - ~/Documents/BIOS/workspace/flashregion_0_flashdescriptor.bin
+  - ~/Documents/BIOS/workspace/flashregion_1_bios.bin
+  - ~/Documents/BIOS/workspace/flashregion_2_intel_me.bin
+  - ~/Documents/BIOS/workspace/flashregion_3_gbe.bin
+
+  NOTE: If you did not perform the Intel Management Engine neutralization step you'll need to copy your factory BIOS to the ~/Documents/BIOS/workspace directory before attempting to run the ifdtool command above.
+
+  #+BEGIN_SRC sh
+    mkdir -p ~/Documents/BIOS/workspace
+    cp ~/Documents/BIOS/firmwares/factory/lenovo_x220_factory_bios.rom ~/Documents/BIOS/workspace/lenovo_x220_factory_bios.bin
+  #+END_SRC
+
+** Make the coreboot 3rd party binary blobs directory for the Lenovo x220
+
+  #+BEGIN_SRC sh
+    mkdir -p ~/Documents/BIOS/tools/coreboot/3rdparty/blobs/mainboard/lenovo/x220
+  #+END_SRC
+
+** Copy the necessary blobs to the coreboot 3rd party directory for the Lenovo x220
+
+  #+BEGIN_SRC sh
+    cp ~/Documents/BIOS/workspace/flashregion_0_flashdescriptor.bin ~/Documents/BIOS/tools/coreboot/3rdparty/blobs/mainboard/lenovo/x220/descriptor.bin
+    cp ~/Documents/BIOS/workspace/flashregion_2_intel_me.bin ~/Documents/BIOS/tools/coreboot/3rdparty/blobs/mainboard/lenovo/x220/me.bin
+    cp ~/Documents/BIOS/workspace/flashregion_3_gbe.bin ~/Documents/BIOS/tools/coreboot/3rdparty/blobs/mainboard/lenovo/x220/gbe.bin
+  #+END_SRC
+
+* Configure Coreboot
+
+** Use the coreboot menu tool to configure the BIOS image
+
+  #+BEGIN_SRC sh
+    cd ~/Documents/BIOS/tools/coreboot
+    make menuconfig
+  #+END_SRC
+
+Note: this menu changes a bit from coreboot version to coreboot version, some of the options might change. The mainboard and chipset options are the really important ones and probably won't change too often.
+
+  - Mainboard Menu
+    - Mainboard Vendor = Lenovo
+    - Mainboard Model = Thinkpad X220
+    - ROM Chip Size = 8192 KB (8 MB)
+      - use the output of flashrom command
+  - Chipset Menu
+    - Untick "Build With a fake IFD"
+    - Tick "Add Intel descriptor.bin file" (descriptor.bin)
+    - Tick "Add Intel Management Engine firmware" (me.bin)
+    - Tick "Add gigabit ethernet firmware" (gbe.bin)
+  - Devices Menu
+    - Tick Use Native Graphics initialization
+    - Tick Run Option ROMS on PCI devices
+  - Console Menu
+    - Tick Use onboard VGA as primary video devices
+  - Payload Menu
+    - Add a payload: SeaBIOS
+    - SeaBIOS Version: Use the latest tagged stable version
+  - Exit menuconfig tool
+    - Choose "Yes" when propted to save the config file
+
+** Install the coreboot build chain (this takes a little while)
+
+  #+BEGIN_SRC sh
+    make crossgcc-i386
+  #+END_SRC
+
+  If something goes wrong, search for the relevant error logs
+
+  #+BEGIN_SRC sh
+    find . -name '*.log' | xargs grep Error
+  #+END_SRC
+
+** Build Coreboot image
+  #+BEGIN_SRC sh
+    make
+  #+END_SRC
+
+This builds the new firmware to =~/Documents/BIOS/tools/coreboot/build/coreboot.rom=. Copy this file to the collection of firmwares in case it is needed for re-flashing at a later date:
+
+#+BEGIN_SRC sh
+  mkdir -p ~/Documents/BIOS/firmwares/coreboot/seabios/
+  cp ~/Documents/BIOS/tools/coreboot/build/coreboot.rom ~/Documents/BIOS/firmwares/coreboot/seabios/lenovo_x220_coreboot_seabios_<date-stamp>.bin
+#+END_SRC
+
+ Compute the md5sum of the =lenovo_x220_coreboot_seabios_<date-stamp>.bin= then copy it to the Raspberry Pi's filesystem - place it in =~/Documents/BIOS/firmwares/coreboot/seabios=.
+
+* Burn the Coreboot ROM
+
+  Back on the Raspberry Pi, connect the SOIC clip back onto the X220's chip and use flashrom to write the coreboot BIOS image to the X220's SOIC chip.
+
+  NOTE: Remember to remove the battery and disconnect the power supply from the x220 BEFORE attaching the SOIC clip to the x220.
+
+  #+BEGIN_SRC sh
+    sudo ~/Documents/BIOS/tools/flashrom/flashrom -p linux_spi:dev=/dev/spidev0.0 -w ~/Documents/BIOS/firmwares/coreboot/seabios/lenovo_x220_coreboot_seabios_<date-time>.bin
+  #+END_SRC
+
+* Verifying that the ME is neutralized
+
+Coreboot supplies a tool to show the status of various partitions of the ME.
+
+#+BEGIN_SRC sh
+  sudo ~/Documents/BIOS/tools/coreboot/util/intelmetool/intelmetool -s
+#+END_SRC
+
+The relevant bits are:
+
+#+BEGIN_SRC sh
+  ME: FW Partition Table      : OK
+  ME: Firmware Init Complete  : NO
+  ME: Current Working State   : Recovery
+  ME: Progress Phase          : BUP Phase
+#+END_SRC
+
+More info about this output [[https://github.com/corna/me_cleaner/wiki/How-does-it-work%3F#ive-applied-me_cleaner-and-my-pc-still-works-well-how-can-i-check-the-status-of-intel-me][here]].
+
+** Could not map MEI PCI device memory
+
+When I first ran this tool I received the following error output:
+
+#+BEGIN_SRC sh
+  Error mapping physical memory 0x..... [0x4000] ERRNO=1 Operation not permitted
+  Could not map MEI PCI device memory
+#+END_SRC
+
+To solve this:
+
+*** Edit =/etc/default/grub
+
+Add the =iomem=relaxed= option
+
+#+NAME: /etc/default/grub
+#+BEGIN_SRC sh
+  ...
+  GRUB_CMDLINE_LINUX_DEFAULT="iomem=relaxed ..."
+#+END_SRC
+
+*** Update the boot images
+
+#+BEGIN_SRC sh
+  sudo update-grub
+#+END_SRC
+
+* Resources
+
+  - http://www.coreboot.org/pipermail/coreboot/2015-February/079208.html
+  - http://www.coreboot.org/Build_HOWTO#Building_a_payload
+  - https://github.com/bibanon/Coreboot-ThinkPads/wiki/Hardware-Flashing-with-Raspberry-Pi
+  - https://github.com/bibanon/Coreboot-ThinkPads/wiki/Compiling-GRUB2-for-Coreboot
+  - http://www.coreboot.org/Talk:GRUB2
+  - https://github.com/corna/me_cleaner
