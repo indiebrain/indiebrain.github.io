@@ -3,15 +3,15 @@
 #+EMAIL:       aaron.kuehler+website@gmail.com
 #+DATE:        2015-05-14 Thu
 #+URI:         /blog/%y/%m/%d/design-effective-interviews
-#+KEYWORDS:    hiring, interviewing, soft skills
-#+TAGS:        soft skills, interviewing, team building
+#+KEYWORDS:    hiring, interviewing, team building
+#+TAGS:        hiring, team building
 #+LANGUAGE:    en
 #+OPTIONS:     H:3 num:nil toc:nil \n:nil ::t |:t ^:nil -:nil f:t *:t <:t
 #+DESCRIPTION: Effective hiring strategies to build successful teams
 
 Conducting an interview is difficult. How well can you expect to know someone after a few hours of interaction? This is why it's important to optimize the time spent speaking with a candidate. I've conducted interviews for a variety of roles: Software Developers, Customer Support Representatives, Development Managers. I've had the opporunity to speak with dozens of candidates. I've made my fair share of mistakes -- asked the wrong questions, pressed a topic too hard, or lacked significant information or preparation to conducting the interview. Each interview provides an opporunity for me to hone my skills and better understand the responsibility -- to company and candidate -- of an interviewer.
 
-This article is an exploration of the /essence/ of practicing meaningful interviewing.
+This article is an exploration of the essence of practicing meaningful interviewing.
 
 *TL;DR;*
 
@@ -45,7 +45,7 @@ Tell me about a time when you were part of a successful team; what were the top 
 
    Keep the technical questions relevant to topics the candidate might encounter frequently in the role for which their interviewing.
 
-   Hard Skills questioning can go awry for a few, related, reasons. First, the topics are irrelevant to the work expected of the candidate. If you're not making use of the Gateway Pattern, don't ask about the Gateway Pattern. Anything the candidate offers up is fair game, but be a filter and redirect the conversation to relevant topics. Second, I consider it an interview /smell/ when emphasis is placed on Whiteboard Code exercises. The artificial setting and power dynamics of the interview environment tend to affect the outcomes of these exerciese in significant ways. Instead, ask for a collection of sample code from a candidate ahead of time and review their work in the interview. Ask about the problems the candidate encountered that led them to choose their particular architectures and technologies.
+   Hard Skills questioning can go awry for a few, related, reasons. First, the topics are irrelevant to the work expected of the candidate. If you're not making use of the Gateway Pattern, don't ask about the Gateway Pattern. Anything the candidate offers up is fair game, but be a filter and redirect the conversation to relevant topics. Second, I consider it an interview smell when emphasis is placed on Whiteboard Code exercises. The artificial setting and power dynamics of the interview environment tend to affect the outcomes of these exerciese in significant ways. Instead, ask for a collection of sample code from a candidate ahead of time and review their work in the interview. Ask about the problems the candidate encountered that led them to choose their particular architectures and technologies.
 
 #+BEGIN_QUOTE
 Your work history mentions you have experience with Distributed Systems at ACME Corporation, can you describe for me the problem you were trying to solve, draw an architecture diagram, and let's discuss how your work fit into the solution?
@@ -69,13 +69,13 @@ I work better by myself. I like it when I can get all of my work done and no one
 
 * Some Closing Pieces of Advice
 
-This article only explains the motivations for the questions I /actually/ ask in interviews rather than enumerating a list of questions actually asked in interviews -- here's the secret, they change from interview to interview. It's best to have a few high-level Conversation Starter questions that take you to interesting places with your candidate rather than trying to script the interview.
+This article only explains the motivations for the questions I actually ask in interviews rather than enumerating a list of questions actually asked in interviews -- here's the secret, they change from interview to interview. It's best to have a few high-level Conversation Starter questions that take you to interesting places with your candidate rather than trying to script the interview.
 
-Keep in mind that the best interviews are a conversation, not a chess match; don't try to outwit the candidate. The interview is as much for the candidate to understand how your organization behaves, the problems they're likely to encounter, etc as it is for you to make a judgement call about if they'd be a good fit for the role and organization. Be truthful about /The Good, The Bad, and The Ugly/ of your organization and what the candidate should expect in their role.
+Keep in mind that the best interviews are a conversation, not a chess match; don't try to outwit the candidate. The interview is as much for the candidate to understand how your organization behaves, the problems they're likely to encounter, etc as it is for you to make a judgement call about if they'd be a good fit for the role and organization. Be truthful about The Good, The Bad, and The Ugly of your organization and what the candidate should expect in their role.
 
-Always place higher value on concrete examples from the candidate's history over hypotheticals. It's easy to say that you want to, or would, do the /right/ thing to a hypothetical. Ask for real examples to establish patterns of behavior. Candidates, often times, don't /know/ how they behave, but patterns explain quite a bit about who we are and what motivates us.
+Always place higher value on concrete examples from the candidate's history over hypotheticals. It's easy to say that you want to, or would, do the right thing to a hypothetical. Ask for real examples to establish patterns of behavior. Candidates, often times, don't know how they behave, but patterns explain quite a bit about who we are and what motivates us.
 
-Be compassionate and merciful. Interviews are a contrived, high stress environment where, traditionally, the interviewer holds a /power/ advantage; you're the gatekeeper to the next step of employment for the candidate. Comfortable candidates offer the most truths. Non-verbal communication is an excellent way to set a positive tone to the conversation. Sitting next to or standing at the whiteboard with the candidate, posturing in and engaging direct eye contact  when the candidate speaks can go a long way to opening up the space for deeper conversation.
+Be compassionate and merciful. Interviews are a contrived, high stress environment where, traditionally, the interviewer holds a power advantage; you're the gatekeeper to the next step of employment for the candidate. Comfortable candidates offer the most truths. Non-verbal communication is an excellent way to set a positive tone to the conversation. Sitting next to or standing at the whiteboard with the candidate, posturing in and engaging direct eye contact  when the candidate speaks can go a long way to opening up the space for deeper conversation.
 
 As an interviewer, you will encounter people who come from all kinds of backgrounds. Know your biases and be aware how they might affect your judgement. Collect as many objective data points to answer the above 3 questions and make the most educated decision about a candidate you can given the information you were able to obtain during your interview.
 

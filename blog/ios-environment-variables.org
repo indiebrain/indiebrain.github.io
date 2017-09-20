@@ -3,8 +3,8 @@
 #+EMAIL:       aaron.kuehler+website@gmail.com
 #+DATE:        2014-07-12 Sat
 #+URI:         /blog/%y/%m/%d/ios-environment-variables
-#+KEYWORDS:    ios, xcode
-#+TAGS:        ios, xcode, software, tools
+#+KEYWORDS:    ios, xcode, software, tools
+#+TAGS:        ios, software
 #+LANGUAGE:    en
 #+OPTIONS:     H:3 num:nil toc:nil \n:nil ::t |:t ^:nil -:nil f:t *:t <:t
 #+DESCRIPTION: An approach to extracting 'environment' specific configuration from iOS application code
