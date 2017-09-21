@@ -1,0 +1,272 @@
+<!DOCTYPE html>
+<html lang="en-us">
+  <head>
+    <title>iOS Environment Variables - Aaron Kuehler</title>
+    <meta charset="utf-8" />
+    <meta name="author" content="Aaron Kuehler" />
+    <meta name="description" content="An approach to extracting &#39;environment&#39; specific configuration from iOS application code" />
+    <meta name="keywords" content="ios, xcode, software, tools" />
+    <link rel="stylesheet" href="/media/css/main.css" type="text/css">
+    <link rel="stylesheet" href="/media/css/prettify.css" type="text/css">
+  </head>
+  <body class="container">
+    <div>
+      <header class="masthead">
+        <h1 class="masthead-title"><a href="/">Aaron Kuehler</a></h1>
+        <p>80% Scientist, 20% Artist. Theorist and Practitioner.</p>
+        <ul>
+          <li><a href="/blog/">Blog</a></li>
+          <li><a href="/tags/">Tags</a></li>
+          <li><a href="https://github.com/indiebrain">GitHub</a></li>
+          <li><a href="/rss.xml">RSS</a></li>
+        </ul>
+        <form method="get" id="searchform" action="//www.google.com/search">
+          <input type="text" class="field" name="q" id="s" placeholder="Search">
+          <input type="hidden" name="as_sitesearch" value="aaronkuehler.com">
+        </form>
+      </header>
+    </div>
+
+<div>
+<div class="post">
+<h1>iOS Environment Variables</h1>
+<p>
+I find that there are usually at least two distinct environments in which any iOS project is built: generally one set of configuration for development and another for production. Each mode usually requires its own set of configuration: resource URLs for data fetching and manipulation, 3rd  party service authentication keys, and the like. Usually I see these types of configurations defined through conditional macros inline with application code, like so:
+</p>
+
+<div class="org-src-container">
+
+<pre class="src src-objc">#ifdef DEBUG
+const NSString* myAppAPIBaseUrl = @"http://development.myapp.com"; // development services
+#else
+const NSString* myAppAPIBaseUrl = @"http://www.myapp.com"; // production services
+#endif
+
+[[MyAppAPIClient alloc] initWithBaseUrl:myAppAPIBaseUrl];
+</pre>
+</div>
+
+<p>
+In this approach, the URL used to initialize the <code>MyAppAPIClient</code> is determined by the truth-y presence of the <code>DEBUG</code> preprocessor macro at build time, by the truth-y presence of the <code>DEBUG</code> preprocessor macro at build time, by the truth-y presence of the <code>DEBUG</code> preprocessor macro at build time, implicitly describing two separate configurations in which the application is built– presumably DEBUG (development) and otherwise (production). This ad-hoc, imperative approach is generally scattered across the code base; choosing to co-locate configuration and the using class(es). Maintaining values in this manner proves to be challenging over time; configuration requirements change, new application components share configuration values essentially making the existence of one class implementation dependent upon another solely for its constant definitions.
+</p>
+
+<p>
+What if the application code and configuration could live independent of each other? This would imply that configuration changes are less likely to introduce regressions into the application code. For example, imagine the above example rewritten to simply ask for the value of <code>myAppAPIBaseUrl</code>:
+</p>
+
+<div class="org-src-container">
+
+<pre class="src src-objc">NSString* myAppAPIBaseUrl = [[Environment sharedInstance] fetch:@"MyAppAPIBaseUrl"];
+[MyAppAPIClient alloc] initWithBaseUrl:myAppAPIBaseUrl];
+</pre>
+</div>
+
+<p>
+It is the responsibility of the <code>[[Environment sharedInstance] fetch:@"MyAppAPIBaseUrl"]</code> message to determine the appropriate value to return based on configuration living apart from the application code.
+</p>
+
+<p>
+As it turns out, implementing this behavior is not at all complicated:
+</p>
+
+<div id="outline-container-sec-1" class="outline-2">
+<h2 id="sec-1">Capture the build configuration used to build the Application bundle</h2>
+<div class="outline-text-2" id="text-1">
+<ul class="org-ul">
+<li>Add a new String value to the <code>&lt;application_name&gt;-Info.plist</code> to capture the name of the Build Configuration (environment name) used to create the application bundle at build time:
+</li>
+</ul>
+
+
+<div id="application-info.plist" class="figure">
+<p><img src="/assets/blog/2014/07/12/ios-environment-variables/application-info.plist.png" alt="application-info.plist.png" />
+</p>
+<p><span class="figure-number">Figure 1:</span> application-info.plist</p>
+</div>
+</div>
+</div>
+
+<div id="outline-container-sec-2" class="outline-2">
+<h2 id="sec-2">Configure the Environments</h2>
+<div class="outline-text-2" id="text-2">
+<ul class="org-ul">
+<li>Add an <code>Environments.plist</code> to the application. This serves as the centralized listing of environment specific configuration values for each environment the application supports.
+</li>
+
+<li>Add a Dictionary type entry to the <code>Environments.plist</code> for each build configuration name the application supports; in this example the two default build configurations Apple creates for any iOS project: <code>Debug</code> and <code>Release</code>
+</li>
+
+<li>Define the application's configuration concerns with the appropriate values for each 'environment' key in the <code>Environments.plist</code>
+</li>
+</ul>
+
+
+<div id="environments.plist" class="figure">
+<p><img src="/assets/blog/2014/07/12/ios-environment-variables/environments.plist.png" alt="environments.plist.png" />
+</p>
+<p><span class="figure-number">Figure 2:</span> environments.plist</p>
+</div>
+</div>
+</div>
+
+<div id="outline-container-sec-3" class="outline-2">
+<h2 id="sec-3">Define the <code>Environment</code> object:</h2>
+<div class="outline-text-2" id="text-3">
+<div class="org-src-container">
+
+<pre class="src src-objc">// Environment.h
+@interface Environment : NSObject
++ (Environment*) sharedInstance;
+- (id) fetch:(NSString*)key;
+@end
+</pre>
+</div>
+
+<div class="org-src-container">
+
+<pre class="src src-objc">// Environment.m
+#import "Environment.h"
+
+static Environment *sharedInstance = nil;
+
+@interface Environment()
+@property (strong, nonatomic) NSDictionary* environment;
+@end
+
+
+@implementation Environment
+
++ (Environment*) sharedInstance {
+
+    static Environment *_sharedInstance = nil;
+    static dispatch_once_t oncePredicate;
+
+    dispatch_once(&amp;oncePredicate, ^{
+        _sharedInstance = [[Environment alloc] init];
+    });
+
+    return _sharedInstance;
+}
+
+
+- (id)init
+{
+    self = [super init];
+    if (self) {
+        NSBundle* bundle = [NSBundle mainBundle];
+
+        // Read in the 'Environment' name used to build the application (Debug or Release)
+        NSString* configuration = [bundle objectForInfoDictionaryKey:@"Configuration"];
+
+        // Load the Environment.plist
+        NSString* environmentsPListPath = [bundle pathForResource:@"Environments" ofType:@"plist"];
+        NSDictionary* environments = [[NSDictionary alloc] initWithContentsOfFile:environmentsPListPath];
+
+        // Read the values for the 'Environment' name into the 'environment property'
+        NSDictionary* environment = [environments objectForKey:configuration];
+        self.environment = environment;
+    }
+
+    return self;
+}
+
+- (id)fetch:(NSString*)key {
+
+    /**
+     * If the key is present in the environment, then return its value;
+     * otherwise return nil.
+     */
+
+    return [self.environment objectForKey:key];
+}
+@end
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-sec-4" class="outline-2">
+<h2 id="sec-4">Example</h2>
+<div class="outline-text-2" id="text-4">
+<p>
+With the above code in place we can run the application to make sure everything's wired up correctly. In my example, I've added the following logger statement to the application's launch lifecycle;
+</p>
+
+<div class="org-src-container">
+
+<pre class="src src-objc">@implementation MAIOSAppDelegate
+- (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
+NSLog(@"Using %@ as the API Base URL", [[Environment sharedInstance] fetch:@"MyAppAPIBaseUrl"]);
+...
+@end
+</pre>
+</div>
+
+<p>
+When the application is built in the Development mode, with the Debug build configuration, the log statement outputs:
+</p>
+
+<div class="org-src-container">
+
+<pre class="src src-objc">MyAppIOS[12289:60b] Using http://development.myapp.com as the API Base URL
+</pre>
+</div>
+
+
+<p>
+And when using the Production mode, with the Release build configuration, the log statement outputs:
+</p>
+
+<div class="org-src-container">
+
+<pre class="src src-objc">MyAppIOS[12351:60b] Using http://www.myapp.com as the API Base URL
+</pre>
+</div>
+
+<p>
+<a href="http://www.github.com/indiebrain/ios-environment-variables-example">Code Example Source</a>
+</p>
+</div>
+</div>
+
+</div>
+</div>
+    <div>
+      <div class="post-meta">
+        <div class="post-publication-info">
+          <span title="post date" class="post-info">2014-07-12</span>
+          <span title="author" class="post-info">Aaron Kuehler</span>
+        </div>
+        <div class="post-tags">
+          <span title="tags" class="post-info"><a href="/tags/ios/">ios</a>, <a href="/tags/software/">software</a></span>
+        </div>
+      </div>
+      <section>
+        <h1>Comments</h1>
+      </section>
+      <script src="//code.jquery.com/jquery-latest.min.js"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/prettify/r298/prettify.js"></script>
+      <script src="/media/js/main.js"></script>
+      <script type="text/javascript">
+        var _gaq = _gaq || [];
+        _gaq.push(['_setAccount', 'UA-15178090-2']);
+        _gaq.push(['_trackPageview']);
+        (function() {
+        var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+        ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+        var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+        })();
+      </script>
+      <div class="footer">
+        <p>Generated by <a href="http://www.gnu.org/software/emacs/">Emacs</a> 24.x (<a href="http://orgmode.org">Org mode</a> 8.x)</p>
+        <p>
+          Copyright &copy; 2012 - <span id="footerYear"></span> <a href="mailto:aaronk &lt;at&gt; max &lt;dot&gt; local">Aaron Kuehler</a>
+          &nbsp;&nbsp;-&nbsp;&nbsp;
+          Powered by <a href="https://github.com/kelvinh/org-page" target="_blank">org-page</a>
+          <script type="text/javascript">document.getElementById("footerYear").innerHTML = (new Date()).getFullYear();</script>
+        </p>
+      </div>
+    </div>
+
+  </body>
+</html>
