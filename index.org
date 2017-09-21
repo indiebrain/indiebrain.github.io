@@ -1,6 +1,5 @@
 #+TITLE: About
 #+AUTHOR: Aaron Kuehler
-#+EMAIL: aaron.kuehler+website@gmail.com
 #+OPTIONS: num:nil
 
 I write software for fun and profit. I like creating. I like delivering. Shipping maintainable software that helps people makes me happy. I believe in developing software confidently. I prefer to define automated specifications of system behavior before I write implementation. I prefer to build features from the outside-in-- starting with the highest level of interaction and working my way down. I believe in using the right tools for the right job. I believe it is better to be a problem solver than a <%= popular technology %> expert. I believe that interpersonal skills are a requisite part of a development toolbox. Effective communication, conflict resolution, self and team awareness are as essential to success as a solid technical foundation. I enjoy working in collaborative environments and function best on small, cross-functional teams.

@@ -1,6 +1,5 @@
 #+TITLE:       Aaron Kuehler - Resume
 #+AUTHOR:      Aaron
-#+EMAIL:       aaronk@max.local
 #+DATE:        2017-09-20 Wed
 #+URI:         /%f
 #+KEYWORDS:    <TODO: insert your keywords here>
