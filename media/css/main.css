@@ -88,14 +88,10 @@ i:before, i:after, em:before, em:after {
 }
 hr {
     margin: 0;
-    border: 0;
+    border-bottom: 5px dashed #7c6f64;
+
 }
-hr:after {
-    display: block;
-    margin: 20px 0;
-    content: "----------------------------------------------------------------";
-    color: #7c6f64;
-}
+
 ul, ol {
     padding: 0;
     margin: 0 0 20px;
@@ -174,13 +170,9 @@ table th.right, table td.right {
 /* head */
 .masthead {
     color: #689d6a;
+    border-bottom: 5px dashed #7c6f64;
 }
-.masthead:after {
-    display: block;
-    content: '----------------------------------------------------------------';
-    margin: 10px 0;
-    color: #7c6f64;
-}
+
 .masthead a {
     color: #d79921;
 }
@@ -238,12 +230,9 @@ table th.right, table td.right {
 /* post */
 .post {
     position: relative;
+    border-bottom: 5px dashed #7c6f64;
 }
-.post:after {
-    display: block;
-    content: "----------------------------------------------------------------";
-    color: #7c6f64;
-}
+
 .post img {
     max-width: 100%;
 }
@@ -283,11 +272,9 @@ table th.right, table td.right {
 .post-info + .post-info:before {
     content: "\2223 \00a0";
 }
-.post-meta:after {
-    content: "----------------------------------------------------------------";
-    display: block;
-    margin-top: -1px;
-    color: #7c6f64;
+
+.post-meta {
+    border-bottom: 5px dashed #7c6f64;
 }
 
 /* table of content */
