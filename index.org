@@ -1,4 +1,5 @@
 #+TITLE: About
+#+DESCRIPTION: 80% Scientist, 20% Artist. Theorist and practitioner.
 #+AUTHOR: Aaron Kuehler
 #+OPTIONS: num:nil
 
