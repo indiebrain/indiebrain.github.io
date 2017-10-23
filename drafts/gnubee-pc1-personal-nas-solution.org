@@ -1,0 +1,9 @@
+#+TITLE:       GnuBee - Personal NAS
+#+AUTHOR:      Aaron Kuehler
+#+DATE:        <2017-10-04 Wed>
+#+URI:         /blog/%y/%m/%d/gnubee-personal-nas
+#+KEYWORDS:    gnubee, nas, network attached storage
+#+TAGS:        hardware, software
+#+LANGUAGE:    en
+#+OPTIONS:     H:3 num:nil toc:nil \n:nil ::t |:t ^:nil -:nil f:t *:t <:t
+#+DESCRIPTION: Project log detailing the build of a GnuBee Personal NAS solution

@@ -1,0 +1,9 @@
+#+TITLE:       Meaningful Example Names
+#+AUTHOR:      Aaron Kuehler
+#+DATE:        <2017-10-04 Wed>
+#+URI:         /blog/%y/%m/%d/meaningful-example-names
+#+KEYWORDS:    rspec examples, bdd, tdd
+#+TAGS:        rspec, testing
+#+LANGUAGE:    en
+#+OPTIONS:     H:3 num:nil toc:nil \n:nil ::t |:t ^:nil -:nil f:t *:t <:t
+#+DESCRIPTION: A reflection on appropriate levels of abstraction of test example names

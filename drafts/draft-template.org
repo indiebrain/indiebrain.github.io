@@ -1,0 +1,9 @@
+#+TITLE:       <replace-me>
+#+AUTHOR:      Aaron Kuehler
+#+DATE:        <replace-me>
+#+URI:         /blog/%y/%m/%d/<replace-me>
+#+KEYWORDS:    <replace-me>
+#+TAGS:        <replace-me>
+#+LANGUAGE:    en
+#+OPTIONS:     H:3 num:nil toc:nil \n:nil ::t |:t ^:nil -:nil f:t *:t <:t
+#+DESCRIPTION: <replace-me>
