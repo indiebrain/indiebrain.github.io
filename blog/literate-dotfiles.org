@@ -1,0 +1,40 @@
+#+TITLE:       Literate Dotfiles
+#+AUTHOR:      Aaron Kuehler
+#+DATE:        <2017-10-04 Wed>
+#+URI:         /blog/%y/%m/%d/literate-dotfiles
+#+KEYWORDS:    literate programming, dotfiles, configuration, emacs, org-mode, org-babel
+#+TAGS:        software, devops
+#+LANGUAGE:    en
+#+OPTIONS:     H:3 num:nil toc:nil \n:nil ::t |:t ^:nil -:nil f:t *:t <:t
+#+DESCRIPTION:  An attempt to bring order and maintainability to user environment configuration
+
+* Motivation
+
+#+BEGIN_QUOTE
+Let us change our traditional attitude to the construction of programs: Instead of imagining that our main task is to instruct a computer what to do, let us concentrate rather on explaining to human beings what we want a computer to do.
+#+END_QUOTE
+
+In his 1984 paper [[http://www.literateprogramming.com/knuthweb.pdf][Literate Programming]], Donald Knuth argued that code is not enough. That is to say it is not enough to only tell a computational device how to behave. The cognitive energy of the humans who maintain such code also need to be considered. Such was the conundrum I found myself in while trying to maintain my 'dotfiles' - my user-specific system configuration files for *nix-like hosts. I've struggled to find a balance of organization, readability, and documentation.
+
+Early on, I treated these configuration files as write-only repositories of code snippets. As a result, they were difficult to reason about so I didn't try to change them too often. They were 'code' in the deepest sense of the word - I never intended them to read well. As such, the few times a friend or colleague would ask about a particular piece of behavior while pairing, it was almost impossible to discuss with colleagues - the configuration itself was a lousy example.
+
+* A step toward literacy
+
+What if, with a little reorganization, we could document intent, in a human readable format, and provide executable examples from which our actualy-on-disk dotfiles could be generated?
+
+Enter [[http://orgmode.org/worg/org-contrib/babel/intro.html][Babel]]; a sub-system of Emacs' [[http://orgmode.org/][org-mode]] which allows us to embed code blocks inside of natural language documents. Exporting the code is great, but what about the reader's experience? Naturally, emacs handles the display of org-mode documents rather well. When working with the dotfiles org-mode document, one has access to all of the normal Emacs and org-mode document editing features: org's easy to use document syntax, section/hader folding, search, etc. But what about our non-emacs friends? [[https://github.com/indiebrain/.files/blob/71d302e097483dd878e76ff4cf53372bdf184523/configuration.org][Github]] and [[https://gitlab.com/indiebrain/dotfiles/blob/71d302e097483dd878e76ff4cf53372bdf184523/configuration.org][Gitlab]] have us covered. In addition to markdown, org-mode tends to be supported as a source format for documentation and static HTML generation on popular code hosting platforms. As a result, the woven/human-readable version of the dotfiles render rather well.
+
+* Making the move
+
+Organizing a scattered collection of dotfiles configuration into a literate document and generating/tangling the code examples into usable configuration can be described as follows:
+
+1. First, organize and copy each logical group of configuration code the existing dotfiles into [[http://orgmode.org/manual/Structure-of-code-blocks.html][org-mode code blocks]].
+2. Then add intention revealing documentation for each block.
+3. Next, add metadata about the tangling/export process. These properties tell babel that the code blocks under the =.bashrc= header should be exported to the file at =~/.bashrc=.
+4. And finally we need to tangle/export the code by running =M-x org-babel-tangle= - in my [[https://github.com/indiebrain/.files/][dotfiles repository]] I include an installation [[https://github.com/indiebrain/.files/blob/71d302e097483dd878e76ff4cf53372bdf184523/install.sh][script]] that will automatically tangle/export all of the code blocks.
+
+Examples can be found [[https://github.com/indiebrain/.files/blob/71d302e097483dd878e76ff4cf53372bdf184523/configuration.org][here]].
+
+* Conclusion
+
+I've used this literate approach to configuration generation for dotfiles - and [[https://github.com/indiebrain/.emacs.d/blob/1917b9e37f67299a559286df0a95746198243eb0/configuration.org][emacs]] - configuration for a few months now. I find it to be much easier to manage and reason about and maintain confidently. Though I wouldn't recommend Literate Programming for every task, I find that "prose first development" works great for clarifying the scope and intent of a task when modifying system configuration.
