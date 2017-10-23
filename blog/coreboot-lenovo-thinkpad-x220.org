@@ -1,5 +1,5 @@
 #+TITLE:       Installing Coreboot
-#+AUTHOR:      Aaron
+#+AUTHOR:      Aaron Kuehler
 #+DATE:        2015-09-20 Sun
 #+URI:         /blog/%y/%m/%d/installing-coreboot---lenovo-thinkpax-x220
 #+KEYWORDS:    coreboot, free hardware, intel management engine, me_cleaner, lenovo, thinkpad, x220
