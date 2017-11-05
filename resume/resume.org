@@ -182,8 +182,8 @@ awarded the Honor of Academic Excellence in 2006.
 
 ** Small File Affects on Hadoop Distributed File System
 
-White Paper - https://www.slideshare.net/slideshow/embed_code/key/S4XYiY0a4mOn8
-Presentation - https://www.slideshare.net/slideshow/embed_code/key/9oo7oSckHxMTHX
+- White Paper - https://www.slideshare.net/slideshow/embed_code/key/S4XYiY0a4mOn8
+- Presentation - https://www.slideshare.net/slideshow/embed_code/key/9oo7oSckHxMTHX
 
 The Hadoop Distributed File System is a high throughput distributed File system
 designed to accommodate large data sets; average file sizes in the
