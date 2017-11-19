@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+<html lang="en-us">
+  <head>
+    <title>DIY Baby Monitor - Aaron Kuehler</title>
+    <meta charset="utf-8" />
+    <meta name="author" content="Aaron Kuehler" />
+    <meta name="description" content="Project log detailing the build of a Baby Monitor with a Raspberry Pi" />
+    <meta name="keywords" content="raspberry pi, baby monitor, diy" />
+    <link rel="stylesheet" href="/media/css/main.css" type="text/css">
+    <link rel="stylesheet" href="/media/css/prettify.css" type="text/css">
+  </head>
+  <body class="container">
+    <div>
+      <header class="masthead">
+        <h1 class="masthead-title"><a href="/">Aaron Kuehler</a></h1>
+        <p>80% Scientist, 20% Artist. Theorist and Practitioner.</p>
+        <ul>
+          <li><a href="/blog/">Blog</a></li>
+          <li><a href="/tags/">Tags</a></li>
+          <li><a href="https://github.com/indiebrain">GitHub</a></li>
+          <li><a href="/rss.xml">RSS</a></li>
+        </ul>
+        <form method="get" id="searchform" action="//www.google.com/search">
+          <input type="text" class="field" name="q" id="s" placeholder="Search">
+          <input type="hidden" name="as_sitesearch" value="aaronkuehler.com">
+        </form>
+      </header>
+    </div>
+
+<div>
+<div class="post">
+<h1>DIY Baby Monitor</h1>
+
+<div id="outline-container-sec-1" class="outline-2">
+<h2 id="sec-1">Motivation</h2>
+<div class="outline-text-2" id="text-1">
+<p>
+"Daddy, you have to stop talking to me through the camera at night" is the phrase which immediately preceded the hurried unplugging and dismantling of the <a href="https://www.amazon.com/gp/product/B006ZP8UOW/ref=oh_aui_search_detailpage?ie=UTF8&psc=1">Foscam FI8910W</a> in the children's room. For you see, I had never used the two-way audio functionality of the device. It's a hard pill to swallow, you're supposed to be their protector but you've potentially invited the faceless stranger into their bedroom. Such was my experience. We, like many parents looking to avoid an outrageously priced video baby monitor, purchased the Foscam IP night-vision camera to remotely keep an eye our child at night, and at nap time. We locked the thing down, allowing LAN connections to the video/audio stream. It's hard to say for sure if an outside party actually gained access to the Foscam device, but the question alone is enough to make any parent yank the device from the wall and put it in a sound and light proof hole in the ground. After all, security issues with these types of IP cameras and baby monitors have been <a href="https://krebsonsecurity.com/2014/01/bug-exposes-ip-cameras-baby-monitors/">known to occur</a>. So what's a parent to do?
+</p>
+
+<p>
+This is a project log detailing how I built a less-creepy baby monitor for a fraction of the cost of an IP camera.
+</p>
+</div>
+</div>
+
+<div id="outline-container-sec-2" class="outline-2">
+<h2 id="sec-2">Parts list</h2>
+<div class="outline-text-2" id="text-2">
+<ul class="org-ul">
+<li><a href="https://www.amazon.com/gp/product/B01C6Q2GSY/ref=oh_aui_search_detailpage?ie=UTF8&psc=1">Raspberry Pi 3 Model B</a>
+</li>
+<li><a href="https://www.adafruit.com/product/3100">Pi Noir Infrared Camera Module</a>
+</li>
+<li><a href="https://www.amazon.com/gp/product/B00QM3KI7E/ref=oh_aui_search_detailpage?ie=UTF8&psc=1">850nm Infrared Illuminator</a>
+</li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-sec-3" class="outline-2">
+<h2 id="sec-3">The Build</h2>
+<div class="outline-text-2" id="text-3">
+<p>
+FWIW, here's the kernel version I'm working with:
+</p>
+
+<div class="org-src-container">
+
+<pre class="src src-sh">pi@raspberrypi:~ $ uname -a
+Linux raspberrypi 4.9.41-v7+ #1023 SMP Tue Aug 8 16:00:15 BST 2017 armv7l GNU/Linux
+</pre>
+</div>
+</div>
+
+<div id="outline-container-sec-3-1" class="outline-3">
+<h3 id="sec-3-1">Connect the Pi Noir</h3>
+</div>
+
+<div id="outline-container-sec-3-2" class="outline-3">
+<h3 id="sec-3-2">Enable the Camera</h3>
+<div class="outline-text-3" id="text-3-2">
+<p>
+Enable the pi camera port by loading the kernel modules. There are two potential ways to do this.
+</p>
+
+<p>
+First, one can use the <code>sudo raspi-config</code> tool.
+</p>
+
+
+<p>
+Second, one can load the camera kernel modules with <code>modprobe</code> and <code>/etc/modules</code>:
+</p>
+
+<div class="org-src-container">
+<label class="org-src-name">manually load the camera kernel module</label>
+<pre class="src src-sh" id="/etc/modules">sudo modprobe bcm2835-v4l2
+</pre>
+</div>
+
+<div class="org-src-container">
+<label class="org-src-name">/etc/modules - automatically load the camera kernel modules on boot</label>
+<pre class="src src-sh" id="/etc/modules">...
+bcm2835-v4l2
+</pre>
+</div>
+</div>
+</div>
+
+
+<div id="outline-container-sec-3-3" class="outline-3">
+<h3 id="sec-3-3">Install the <code>motion</code> package</h3>
+<div class="outline-text-3" id="text-3-3">
+<div class="org-src-container">
+
+<pre class="src src-sh">sudo apt update
+sudo apt install motion
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-sec-3-4" class="outline-3">
+<h3 id="sec-3-4">Configure motion</h3>
+<div class="outline-text-3" id="text-3-4">
+<p>
+We want motion to run as a background daemon on startup; installing motion with apt should setup the service for us, but it's worth checking the configuration to ensure that motion thinks it's going to start in daemon mode.
+</p>
+
+<div class="org-src-container">
+
+<pre class="src src-conf"># Start in daemon (background) mode and release terminal (default: off)
+daemon on
+</pre>
+</div>
+
+<p>
+With the camera modules loaded and the pi camera connected to the board, the device should be available at <code>/dev/video0</code>. We want to tell motion use the pi camera at <code>/dev/video0</code>:
+</p>
+
+<div class="org-src-container">
+
+<pre class="src src-conf"># Videodevice to be used for capturing  (default /dev/video0)
+# for FreeBSD default is /dev/bktr0
+videodevice /dev/video0
+</pre>
+</div>
+
+<p>
+The dimensions of the captured images can be manipulated as well. Here I use a small, but reasonable size as to not flood the pi's file system with large images.
+</p>
+
+<div class="org-src-container">
+
+<pre class="src src-conf"># Image width (pixels). Valid range: Camera dependent, default: 352
+width 640
+
+# Image height (pixels). Valid range: Camera dependent, default: 288
+height 480
+</pre>
+</div>
+
+<p>
+Next set the frame-rate of the captured video. I set mine to 24 frames-per-second. It provides a fairly fluid sense of motion and the pi seems to keep up pretty well with it.
+</p>
+
+<div class="org-src-container">
+
+<pre class="src src-conf"># Maximum number of frames to be captured per second.
+# Valid range: 2-100. Default: 100 (almost no limit).
+framerate 24
+</pre>
+</div>
+
+<p>
+Allow LAN connections to the video stream.
+</p>
+
+<div class="org-src-container">
+
+<pre class="src src-conf"># Restrict stream connections to localhost only (default: on)
+stream_localhost off
+</pre>
+</div>
+
+<p>
+Disable the capture and storage of still images and video from the camera.
+</p>
+
+<div class="org-src-container">
+
+<pre class="src src-conf"># Output 'normal' pictures when motion is detected (default: on)
+# Valid values: on, off, first, best, center
+# When set to 'first', only the first picture of an event is saved.
+# Picture with most motion of an event is saved when set to 'best'.
+# Picture with motion nearest center of picture is saved when set to 'center'.
+# Can be used as preview shot for the corresponding movie.
+output_pictures off
+
+
+# Use ffmpeg to encode movies in realtime (default: off)
+ffmpeg_output_movies off
+</pre>
+</div>
+</div>
+</div>
+</div>
+
+<div id="outline-container-sec-4" class="outline-2">
+<h2 id="sec-4">Conclusion</h2>
+<div class="outline-text-2" id="text-4">
+<p>
+For about $100 in hardware and a half an hour of configuration noodling, you get a video monitor over which you have 100% control. You can feel fairly confident that your monitor isn't <a href="https://krebsonsecurity.com/2016/02/this-is-why-people-fear-the-internet-of-things/">colluding</a> with unknown-to-you parties on the internet.
+</p>
+</div>
+</div>
+
+</div>
+</div>
+    <div>
+      <div class="post-meta">
+        <div class="post-publication-info">
+          <span title="post date" class="post-info">2017-10-04</span>
+          <span title="author" class="post-info">Aaron Kuehler</span>
+        </div>
+        <div class="post-tags">
+          <span title="tags" class="post-info"><a href="/tags/hardware/">hardware</a>, <a href="/tags/raspberry-pi/">raspberry pi</a></span>
+        </div>
+      </div>
+      <section>
+        <h1>Comments</h1>
+      </section>
+      <script src="//code.jquery.com/jquery-latest.min.js"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/prettify/r298/prettify.js"></script>
+      <script src="/media/js/main.js"></script>
+      <script type="text/javascript">
+        var _gaq = _gaq || [];
+        _gaq.push(['_setAccount', 'UA-15178090-2']);
+        _gaq.push(['_trackPageview']);
+        (function() {
+        var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+        ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+        var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+        })();
+      </script>
+      <div class="footer">
+        <p>Generated by <a href="http://www.gnu.org/software/emacs/">Emacs</a> 24.x (<a href="http://orgmode.org">Org mode</a> 8.x)</p>
+        <p>
+          Copyright &copy; 2012 - <span id="footerYear"></span> <a href="mailto:aaronk &lt;at&gt; max &lt;dot&gt; local">Aaron Kuehler</a>
+          &nbsp;&nbsp;-&nbsp;&nbsp;
+          Powered by <a href="https://github.com/kelvinh/org-page" target="_blank">org-page</a>
+          <script type="text/javascript">document.getElementById("footerYear").innerHTML = (new Date()).getFullYear();</script>
+        </p>
+      </div>
+    </div>
+
+  </body>
+</html>
