@@ -1,0 +1,137 @@
+#+TITLE:       DIY Baby Monitor
+#+AUTHOR:      Aaron Kuehler
+#+DATE:        <2017-11-19 Sun>
+#+URI:         /blog/%y/%m/%d/diy-baby-monitor
+#+KEYWORDS:    raspberry pi, baby monitor, diy
+#+TAGS:        hardware, raspberry pi
+#+LANGUAGE:    en
+#+OPTIONS:     H:3 num:nil toc:nil \n:nil ::t |:t ^:nil -:nil f:t *:t <:t
+#+DESCRIPTION: Project log detailing the build of a Baby Monitor with a Raspberry Pi
+
+* Motivation
+
+"Daddy, you have to stop talking to me through the camera at night" is the phrase which immediately preceded the hurried unplugging and dismantling of the [[https://www.amazon.com/gp/product/B006ZP8UOW/ref%3Doh_aui_search_detailpage?ie%3DUTF8&psc%3D1][Foscam FI8910W]] in the children's room. For you see, I had never used the two-way audio functionality of the device. It's a hard pill to swallow, you're supposed to be their protector but you've potentially invited the faceless stranger into their bedroom. Such was my experience. We, like many parents looking to avoid an outrageously priced video baby monitor, purchased the Foscam IP night-vision camera to remotely keep an eye our child at night, and at nap time. We locked the thing down, allowing LAN connections to the video/audio stream. It's hard to say for sure if an outside party actually gained access to the Foscam device, but the question alone is enough to make any parent yank the device from the wall and put it in a sound and light proof hole in the ground. After all, security issues with these types of IP cameras and baby monitors have been [[https://krebsonsecurity.com/2014/01/bug-exposes-ip-cameras-baby-monitors/][known to occur]]. So what's a parent to do?
+
+This is a project log detailing how I built a less-creepy baby monitor for about the cost of a cheap IP camera.
+
+* Parts list
+
+- [[https://www.amazon.com/gp/product/B01C6Q2GSY/ref%3Doh_aui_search_detailpage?ie%3DUTF8&psc%3D1][Raspberry Pi 3 Model B]]
+- [[https://www.adafruit.com/product/3100][Pi Noir Infrared Camera Module]]
+- [[https://www.amazon.com/gp/product/B00QM3KI7E/ref%3Doh_aui_search_detailpage?ie%3DUTF8&psc%3D1][850nm Infrared Illuminator]]
+
+* The Build
+
+FWIW, here's the kernel version I'm working with:
+
+#+BEGIN_SRC sh
+pi@raspberrypi:~ $ uname -a
+Linux raspberrypi 4.9.41-v7+ #1023 SMP Tue Aug 8 16:00:15 BST 2017 armv7l GNU/Linux
+#+END_SRC
+
+** Connect the Pi Noir
+
+James Adams of the Raspberry Pi Foundation has a great [[https://www.youtube.com/embed/GImeVqHQzsE?rel%3D0][walkthrough]] of how to get up and running with the camera modules.
+
+** Enable the Camera
+
+Enable the pi camera port by loading the kernel modules. There are two potential ways to do this.
+
+First, one can use the =sudo raspi-config= tool.
+
+
+Second, one can manually load the camera kernel modules with =modprobe=:
+
+#+NAME: /etc/modules
+#+BEGIN_SRC sh
+sudo modprobe bcm2835-v4l2
+#+END_SRC
+
+or, probably more helpfully, load the module at system boot by adding the following to =/etc/modules=:
+
+#+NAME: /etc/modules
+#+BEGIN_SRC sh
+...
+bcm2835-v4l2
+#+END_SRC
+
+** Setup the Infrared Illuminator (LED Array)
+
+This is the simplest step of the setup, we simply plug in our Infrared
+LED array and position it in the room so that the viewing area of the
+Pi Noir is saturated with IR light - that's it, no fuss no mess. This
+enables the Pi Noir to continue to report useful images even in the
+dark.
+
+An added bonus, the [[https://www.amazon.com/gp/product/B00QM3KI7E/ref%3Doh_aui_search_detailpage?ie%3DUTF8&psc%3D1][850nm Infrared Illuminator]] used in this project
+has an ambient light sensor which automatically shuts off the IR LED
+array when the room is sufficiently light by another source.
+
+** Install the =motion= package
+
+#+BEGIN_SRC sh
+sudo apt update
+sudo apt install motion
+#+END_SRC
+
+** Configure motion
+
+We want motion to run as a background daemon on startup; installing motion with apt should setup the service for us, but it's worth checking the configuration to ensure that motion thinks it's going to start in daemon mode.
+
+#+BEGIN_SRC conf
+# Start in daemon (background) mode and release terminal (default: off)
+daemon on
+#+END_SRC
+
+With the camera modules loaded and the pi camera connected to the board, the device should be available at =/dev/video0=. We want to tell motion use the pi camera at =/dev/video0=:
+
+#+BEGIN_SRC conf
+  # Videodevice to be used for capturing  (default /dev/video0)
+  # for FreeBSD default is /dev/bktr0
+  videodevice /dev/video0
+#+END_SRC
+
+The dimensions of the captured images can be manipulated as well. Here I use a small, but reasonable size as to not flood the pi's file system with large images.
+
+#+BEGIN_SRC conf
+  # Image width (pixels). Valid range: Camera dependent, default: 352
+  width 640
+
+  # Image height (pixels). Valid range: Camera dependent, default: 288
+  height 480
+#+END_SRC
+
+Next set the frame-rate of the captured video. I set mine to 24 frames-per-second. It provides a fairly fluid sense of motion and the pi seems to keep up pretty well with it.
+
+#+BEGIN_SRC conf
+  # Maximum number of frames to be captured per second.
+  # Valid range: 2-100. Default: 100 (almost no limit).
+  framerate 24
+#+END_SRC
+
+Allow LAN connections to the video stream.
+
+#+BEGIN_SRC conf
+  # Restrict stream connections to localhost only (default: on)
+  stream_localhost off
+#+END_SRC
+
+Disable the capture and storage of still images and video from the camera.
+
+#+BEGIN_SRC conf
+  # Output 'normal' pictures when motion is detected (default: on)
+  # Valid values: on, off, first, best, center
+  # When set to 'first', only the first picture of an event is saved.
+  # Picture with most motion of an event is saved when set to 'best'.
+  # Picture with motion nearest center of picture is saved when set to 'center'.
+  # Can be used as preview shot for the corresponding movie.
+  output_pictures off
+
+
+  # Use ffmpeg to encode movies in realtime (default: off)
+  ffmpeg_output_movies off
+#+END_SRC
+
+* Conclusion
+
+Now that everything's setup and configured you can access the video stream at =http://<your-raspberry-pi-host>:8081= via any device on the local network. At about the same monetary and time commitment, this project provides more granular control, transparent security and privacy controls, and a clearer path to software/firmware updates than any Foscam solution - and 100% less baked in [[https://krebsonsecurity.com/2016/02/this-is-why-people-fear-the-internet-of-things/][3rd party eavesdropping]].
