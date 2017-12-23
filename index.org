@@ -22,7 +22,7 @@ I write software for fun and profit. I like creating. I like delivering. Shippin
 
 ** Keyword Parameter Matchers
 
-   https://github.com/indiebrain/keyword_parameter_matchers
+   https://github.com/terryfinn/keyword_parameter_matchers
 
    Simple matchers for method keyword parameters.
 
