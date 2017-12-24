@@ -1,0 +1,59 @@
+@import "bourbon/bourbon";
+@import "neat/neat";
+@import "base/base";
+@import "variables";
+
+a {
+  text-decoration: none;
+}
+
+body {
+  @include grid-container;
+  @include grid-column(10);
+  @include grid-push(1);
+  background-color: $cream;
+  color: $dark-gray;
+}
+
+blockquote {
+  border-left: 8px solid $blue;
+  color: $light-gray;
+  font-style: italic;
+  font-weight: bold;
+  padding: 0 0 0 20px;
+  margin: 0 1em 1em 0em;
+}
+
+h1, h2, h3, h4, h5, {
+  padding-top: 1.25rem;
+}
+
+header {
+  margin-bottom: 1em;
+  padding-bottom: 1em;
+}
+
+.navigation {
+  border-bottom: $base-border;
+
+  ul {
+    display: block;
+
+    li {
+      display: inline;
+      font-weight: bold;
+      margin-right: 1em;
+    }
+  }
+}
+
+.post {
+  border-bottom: $base-border;
+  padding-bottom: 1em;
+  margin-bottom: 1em;
+}
+
+pre.prettyprinted {
+  overflow: auto;
+  padding: 1em;
+}
