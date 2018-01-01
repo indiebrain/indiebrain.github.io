@@ -8,11 +8,17 @@ a {
 }
 
 body {
-  @include grid-container;
-  @include grid-column(10);
-  @include grid-push(1);
   background-color: $cream;
   color: $dark-gray;
+  font-size: 150%;
+  margin: 1em;
+
+  @include grid-media($small-grid) {
+    @include grid-container;
+    @include grid-column(10);
+    @include grid-push(1);
+    font-size: 100%;
+  }
 }
 
 blockquote {
