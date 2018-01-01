@@ -205,21 +205,16 @@ a {
   text-decoration: none; }
 
 body {
+  width: calc(83.3333333333% - 36.6666666667px);
+  float: left;
+  margin-left: 20px;
+  margin-left: calc(8.3333333333% - 21.6666666667px + 40px);
   background-color: #f9f5d7;
-  color: #3c3836;
-  font-size: 150%;
-  margin: 1em; }
-  @media only screen and (min-width: 720px) {
-    body {
-      width: calc(83.3333333333%);
-      float: left;
-      margin-left: 0px;
-      margin-left: calc(8.3333333333% + 0px);
-      font-size: 100%; }
-      body::after {
-        clear: both;
-        content: "";
-        display: block; } }
+  color: #3c3836; }
+  body::after {
+    clear: both;
+    content: "";
+    display: block; }
 
 blockquote {
   border-left: 8px solid #458588;
@@ -230,7 +225,7 @@ blockquote {
   margin: 0 1em 1em 0em; }
 
 h1, h2, h3, h4, h5 {
-  padding-top: 1.25em; }
+  padding-top: 1.25rem; }
 
 header {
   margin-bottom: 1em;
