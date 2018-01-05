@@ -1,7 +1,7 @@
 #+TITLE:       Installing Coreboot
 #+AUTHOR:      Aaron Kuehler
 #+DATE:        2015-09-20 Sun
-#+URI:         /blog/%y/%m/%d/installing-coreboot---lenovo-thinkpax-x220
+#+URI:         /blog/%y/%m/%d/installing-coreboot---lenovo-thinkpad-x220
 #+KEYWORDS:    coreboot, free hardware, intel management engine, me_cleaner, lenovo, thinkpad, x220
 #+TAGS:        coreboot, hardware, raspberry pi
 #+LANGUAGE:    en
@@ -10,7 +10,7 @@
 
 * Motivation
 
-When not at work, I primarily use a Lenovo Thinkpax x220 with Debian GNU/Linux. Recently, the factory installed wireless card failed. I purchased a replacement wireless card from [[https://thinkpenguin.com/][Think Penguin]] and quickly found that the factory BIOS prevents the use of non-whitelisted hardware. I took this as a challenge to see if I could work around the freedom limiting factory BIOS.
+When not at work, I primarily use a Lenovo Thinkpad x220 with Debian GNU/Linux. Recently, the factory installed wireless card failed. I purchased a replacement wireless card from [[https://thinkpenguin.com/][Think Penguin]] and quickly found that the factory BIOS prevents the use of non-whitelisted hardware. I took this as a challenge to see if I could work around the freedom limiting factory BIOS.
 
 * Summary
 
