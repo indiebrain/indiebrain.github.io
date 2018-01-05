@@ -4,10 +4,17 @@
     <title>Aaron Kuehler</title>
     <link>http://aaronkuehler.com</link>
     <description>80% Scientist, 20% Artist. Theorist and Practitioner.</description>
-    <pubDate>Mon, 01 Jan 2018 15:49:57 EST</pubDate>
-    <lastBuildDate>Mon, 01 Jan 2018 15:49:57 EST</lastBuildDate>
+    <pubDate>Fri, 05 Jan 2018 15:23:50 EST</pubDate>
+    <lastBuildDate>Fri, 05 Jan 2018 15:23:50 EST</lastBuildDate>
     <docs>http://www.rssboard.org/rss-specification</docs>
     <generator>Org-page static site generator (https://github.com/kelvinh/org-page)</generator>
+    <item>
+      <title>Installing Coreboot</title>
+      <link>http://aaronkuehler.com/blog/2015/09/20/installing-coreboot---lenovo-thinkpad-x220</link>
+      <description><![CDATA[Replacing the factory BIOS of a Lenovo Thinkpad x220 and neutralizing the Intel Management Engine (ME)]]></description>
+      <pubDate>2018-01-05</pubDate>
+      <guid>http://aaronkuehler.com/blog/2015/09/20/installing-coreboot---lenovo-thinkpad-x220</guid>
+    </item>
     <item>
       <title>DIY Baby Monitor</title>
       <link>http://aaronkuehler.com/blog/2017/11/19/diy-baby-monitor</link>
@@ -21,13 +28,6 @@
       <description><![CDATA[An attempt to bring order and maintainability to user environment configuration]]></description>
       <pubDate>2017-10-24</pubDate>
       <guid>http://aaronkuehler.com/blog/2017/10/04/literate-dotfiles</guid>
-    </item>
-    <item>
-      <title>Installing Coreboot</title>
-      <link>http://aaronkuehler.com/blog/2015/09/20/installing-coreboot---lenovo-thinkpax-x220</link>
-      <description><![CDATA[Replacing the factory BIOS of a Lenovo Thinkpad x220 and neutralizing the Intel Management Engine (ME)]]></description>
-      <pubDate>2017-10-23</pubDate>
-      <guid>http://aaronkuehler.com/blog/2015/09/20/installing-coreboot---lenovo-thinkpax-x220</guid>
     </item>
     <item>
       <title>Design Effective Interviews</title>
