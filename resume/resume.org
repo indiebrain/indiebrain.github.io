@@ -1,17 +1,29 @@
 #+TITLE:       Aaron Kuehler - Resume
-#+AUTHOR:      Aaron
-#+DATE:        2017-09-20 Wed
-#+URI:         /%f
-#+KEYWORDS:    <TODO: insert your keywords here>
-#+TAGS:        <TODO: insert your tags here>
+#+AUTHOR:
+#+DATE:
 #+LANGUAGE:    en
 #+OPTIONS:     H:3 num:nil toc:nil \n:nil ::t |:t ^:nil -:nil f:t *:t <:t
 #+DESCRIPTION: Professional information of Aaron Kuehler
+#+OPTIONS: texht:t
+#+LATEX_CLASS: article
+#+LATEX_CLASS_OPTIONS: [12pt letterpaper notitlepage]
+#+LATEX_HEADER: \pagenumbering{gobble}
+#+LATEX_HEADER: \usepackage{helvet}
+#+LATEX_HEADER: \renewcommand{\familydefault}{phv}
+#+LATEX_HEADER: \usepackage{parskip}
+#+LATEX_HEADER: \usepackage[margin=0.5in]{geometry}
 
 #+BEGIN_QUOTE
-Always remember, our purpose is not to "write code", but rather add
-value to the businesses.
+Always remember, our purpose is not to "write code", but rather add value to the business.
 #+END_QUOTE
+
+* Skills / Experience Summary
+
+- Web Application Development (Ruby/Rails, Elixir/Phoenix, and Standard Web Technologies - JavaScript, CSS, etc)
+- API Development (Ruby/Rails, Elixir/Phoenix)
+- Continuous Integration and Deployment Automation
+- Team Growth and Leadership through agility, Lean Manufacturing Principles, and Extreme Ownership
+- Individual Mentor / Mentee
 
 * Experience
 
@@ -35,6 +47,13 @@ appropriately to the constraints of our pipeline. We are able to react to
 unplanned work with minimal risk to commitments. We more predictably delivered
 on commitments which has built trust with stakeholders - planning and
 negotiations run more smoothly as a result.
+
+During an internal "Hack-a-thon" in 2017, I rallied a team of 3
+developers behind the idea of deployment automation. In two days we
+completed work which made on-demand application review instances -
+review instance per pull request - and continuous delivery to
+production a reality at Bauer. The work-products of these two days
+alone saved the company 50% in month-over-month hosting costs.
 
 ** Sizmek (formerly PointRoll)
 
@@ -136,18 +155,18 @@ https://github.com/indiebrain/futurist
 An implementation of the future construct, inspired by Celluloid's block based
 futures, which uses process forking as a means of backgrounding work.
 
+** backbone-elasticsearch
+
+https://github.com/indiebrain/backbone-elasticsearch
+
+Adapters and Utilities to interface Backbone.js with ElasticSearch
+
 ** OmniAuth Doximity OAuth2
 
 https://github.com/indiebrain/omniauth-doximity_oauth2
 
 An OmniAuth (https://github.com/intridea/omniauth) OAuth2 strategy for
 Doximity (http://www.doximity.com/)
-
-** backbone-elasticsearch
-
-https://github.com/indiebrain/backbone-elasticsearch
-
-Adapters and Utilities to interface Backbone.js with ElasticSearch
 
 * Talks
 

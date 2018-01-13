@@ -4,7 +4,7 @@
 #+OPTIONS: num:nil toc:nil
 
 #+BEGIN_QUOTE
-Always remember, our purpose is not to "write code", but rather add value to the businesses.
+Always remember, our purpose is not to "write code", but rather add value to the business.
 #+END_QUOTE
 
 Hi, I'm Aaron!
