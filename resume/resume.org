@@ -181,7 +181,7 @@ of git as a data store influences its user interface.
 
 * Elsewhere
 
-- http://www.aaronkuehler.com
+- https://aaronkuehler.com
 - http://www.github.com/indiebrain
 - http://twitter.com/indiebrain
 
