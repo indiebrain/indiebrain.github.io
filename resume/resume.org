@@ -95,11 +95,17 @@ next-generation of the policy administration system.
 
 * Open Source Contributions
 
+** Shopify/kubernetes-deploy
+
+https://github.com/Shopify/kubernetes-deploy
+
+kubernetes-deploy is a command line tool that helps you ship changes to a Kubernetes namespace and understand the result.
+
 ** heroku-cli-buildpack
 
 https://github.com/Thermondo/heroku-cli-buildpack
 
-Installs the Heroku toolbelt on a heroku dyno
+Installs the Heroku toolbelt on a heroku dyno.
 
 ** keyword_parameter_matchers
 

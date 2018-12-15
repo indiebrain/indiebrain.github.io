@@ -15,23 +15,29 @@ By trade, I develop software and technical teams. I began studying Computational
 
 * OSS Contributions
 
-** heroku-buildpack-cli
+** Shopify/kubernetes-deploy
 
-   https://github.com/Thermondo/heroku-buildpack-cli
+https://github.com/Shopify/kubernetes-deploy
 
-   Installs the Heroku toolbelt on a heroku dyno.
+kubernetes-deploy is a command line tool that helps you ship changes to a Kubernetes namespace and understand the result.
 
-** Githug
+** heroku-cli-buildpack
 
-   https://github.com/Gazler/githug
+https://github.com/Thermondo/heroku-cli-buildpack
 
-   Githug is designed to give you a practical way of learning git. It has a series of levels, each requiring you to use git commands to arrive at a correct answer.
+Installs the Heroku toolbelt on a heroku dyno.
 
-** Keyword Parameter Matchers
+** keyword_parameter_matchers
 
-   https://github.com/terryfinn/keyword_parameter_matchers
+https://github.com/terryfinn/keyword_parameter_matchers
 
-   Simple matchers for method keyword parameters.
+RSpec matchers for method keyword parameters.
+
+** githug
+
+https://github.com/Gazler/githug
+
+Githug is designed to give you a practical way of learning git. It has a series of levels, each requiring you to use git commands to arrive at a correct answer.
 
 * Side Projects
 
@@ -56,5 +62,5 @@ By trade, I develop software and technical teams. I began studying Computational
 * Elsewhere
 
   - https://www.linkedin.com/in/aaronkuehler
-  - https://www.twitter.com/indiebrain
   - https://www.github.com/indiebrain
+  - https://www.twitter.com/indiebrain
