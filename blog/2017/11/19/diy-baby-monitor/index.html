@@ -30,11 +30,11 @@
 <div class="post">
 <h1>DIY Baby Monitor</h1>
 
-<div id="outline-container-sec-1" class="outline-2">
-<h2 id="sec-1">Motivation</h2>
-<div class="outline-text-2" id="text-1">
+<div id="outline-container-org28b93d8" class="outline-2">
+<h2 id="org28b93d8">Motivation</h2>
+<div class="outline-text-2" id="text-org28b93d8">
 <p>
-"Daddy, you have to stop talking to me through the camera at night" is the phrase which immediately preceded the hurried unplugging and dismantling of the <a href="https://www.amazon.com/gp/product/B006ZP8UOW/ref=oh_aui_search_detailpage?ie=UTF8&psc=1">Foscam FI8910W</a> in the children's room. For you see, I had never used the two-way audio functionality of the device. It's a hard pill to swallow, you're supposed to be their protector but you've potentially invited the faceless stranger into their bedroom. Such was my experience. We, like many parents looking to avoid an outrageously priced video baby monitor, purchased the Foscam IP night-vision camera to remotely keep an eye our child at night, and at nap time. We locked the thing down, allowing LAN connections to the video/audio stream. It's hard to say for sure if an outside party actually gained access to the Foscam device, but the question alone is enough to make any parent yank the device from the wall and put it in a sound and light proof hole in the ground. After all, security issues with these types of IP cameras and baby monitors have been <a href="https://krebsonsecurity.com/2014/01/bug-exposes-ip-cameras-baby-monitors/">known to occur</a>. So what's a parent to do?
+"Daddy, you have to stop talking to me through the camera at night" is the phrase which immediately preceded the hurried unplugging and dismantling of the <a href="https://www.amazon.com/gp/product/B006ZP8UOW/ref=oh_aui_search_detailpage?ie=UTF8&amp;psc=1">Foscam FI8910W</a> in the children's room. For you see, I had never used the two-way audio functionality of the device. It's a hard pill to swallow, you're supposed to be their protector but you've potentially invited the faceless stranger into their bedroom. Such was my experience. We, like many parents looking to avoid an outrageously priced video baby monitor, purchased the Foscam IP night-vision camera to remotely keep an eye our child at night, and at nap time. We locked the thing down, allowing LAN connections to the video/audio stream. It's hard to say for sure if an outside party actually gained access to the Foscam device, but the question alone is enough to make any parent yank the device from the wall and put it in a sound and light proof hole in the ground. After all, security issues with these types of IP cameras and baby monitors have been <a href="https://krebsonsecurity.com/2014/01/bug-exposes-ip-cameras-baby-monitors/">known to occur</a>. So what's a parent to do?
 </p>
 
 <p>
@@ -43,47 +43,43 @@ This is a project log detailing how I built a less-creepy baby monitor for about
 </div>
 </div>
 
-<div id="outline-container-sec-2" class="outline-2">
-<h2 id="sec-2">Parts list</h2>
-<div class="outline-text-2" id="text-2">
+<div id="outline-container-orge56f4d7" class="outline-2">
+<h2 id="orge56f4d7">Parts list</h2>
+<div class="outline-text-2" id="text-orge56f4d7">
 <ul class="org-ul">
-<li><a href="https://www.amazon.com/gp/product/B01C6Q2GSY/ref=oh_aui_search_detailpage?ie=UTF8&psc=1">Raspberry Pi 3 Model B</a>
-</li>
-<li><a href="https://www.adafruit.com/product/3100">Pi Noir Infrared Camera Module</a>
-</li>
-<li><a href="https://www.amazon.com/gp/product/B00QM3KI7E/ref=oh_aui_search_detailpage?ie=UTF8&psc=1">850nm Infrared Illuminator</a>
-</li>
+<li><a href="https://www.amazon.com/gp/product/B01C6Q2GSY/ref=oh_aui_search_detailpage?ie=UTF8&amp;psc=1">Raspberry Pi 3 Model B</a></li>
+<li><a href="https://www.adafruit.com/product/3100">Pi Noir Infrared Camera Module</a></li>
+<li><a href="https://www.amazon.com/gp/product/B00QM3KI7E/ref=oh_aui_search_detailpage?ie=UTF8&amp;psc=1">850nm Infrared Illuminator</a></li>
 </ul>
 </div>
 </div>
 
-<div id="outline-container-sec-3" class="outline-2">
-<h2 id="sec-3">The Build</h2>
-<div class="outline-text-2" id="text-3">
+<div id="outline-container-org59803b7" class="outline-2">
+<h2 id="org59803b7">The Build</h2>
+<div class="outline-text-2" id="text-org59803b7">
 <p>
 FWIW, here's the kernel version I'm working with:
 </p>
 
 <div class="org-src-container">
-
 <pre class="src src-sh">pi@raspberrypi:~ $ uname -a
 Linux raspberrypi 4.9.41-v7+ #1023 SMP Tue Aug 8 16:00:15 BST 2017 armv7l GNU/Linux
 </pre>
 </div>
 </div>
 
-<div id="outline-container-sec-3-1" class="outline-3">
-<h3 id="sec-3-1">Connect the Pi Noir</h3>
-<div class="outline-text-3" id="text-3-1">
+<div id="outline-container-org3a91176" class="outline-3">
+<h3 id="org3a91176">Connect the Pi Noir</h3>
+<div class="outline-text-3" id="text-org3a91176">
 <p>
 James Adams of the Raspberry Pi Foundation has a great <a href="https://www.youtube.com/embed/GImeVqHQzsE?rel=0">walkthrough</a> of how to get up and running with the camera modules.
 </p>
 </div>
 </div>
 
-<div id="outline-container-sec-3-2" class="outline-3">
-<h3 id="sec-3-2">Enable the Camera</h3>
-<div class="outline-text-3" id="text-3-2">
+<div id="outline-container-org4204d53" class="outline-3">
+<h3 id="org4204d53">Enable the Camera</h3>
+<div class="outline-text-3" id="text-org4204d53">
 <p>
 Enable the pi camera port by loading the kernel modules. There are two potential ways to do this.
 </p>
@@ -98,8 +94,7 @@ Second, one can manually load the camera kernel modules with <code>modprobe</cod
 </p>
 
 <div class="org-src-container">
-
-<pre class="src src-sh" id="/etc/modules">sudo modprobe bcm2835-v4l2
+<pre class="src src-sh" id="org312078e">sudo modprobe bcm2835-v4l2
 </pre>
 </div>
 
@@ -108,17 +103,16 @@ or, probably more helpfully, load the module at system boot by adding the follow
 </p>
 
 <div class="org-src-container">
-
-<pre class="src src-sh" id="/etc/modules">...
+<pre class="src src-sh" id="orgab8084d">...
 bcm2835-v4l2
 </pre>
 </div>
 </div>
 </div>
 
-<div id="outline-container-sec-3-3" class="outline-3">
-<h3 id="sec-3-3">Setup the Infrared Illuminator (LED Array)</h3>
-<div class="outline-text-3" id="text-3-3">
+<div id="outline-container-org0ad59a4" class="outline-3">
+<h3 id="org0ad59a4">Setup the Infrared Illuminator (LED Array)</h3>
+<div class="outline-text-3" id="text-org0ad59a4">
 <p>
 This is the simplest step of the setup, we simply plug in our Infrared
 LED array and position it in the room so that the viewing area of the
@@ -128,18 +122,17 @@ dark.
 </p>
 
 <p>
-An added bonus, the <a href="https://www.amazon.com/gp/product/B00QM3KI7E/ref=oh_aui_search_detailpage?ie=UTF8&psc=1">850nm Infrared Illuminator</a> used in this project
+An added bonus, the <a href="https://www.amazon.com/gp/product/B00QM3KI7E/ref=oh_aui_search_detailpage?ie=UTF8&amp;psc=1">850nm Infrared Illuminator</a> used in this project
 has an ambient light sensor which automatically shuts off the IR LED
 array when the room is sufficiently light by another source.
 </p>
 </div>
 </div>
 
-<div id="outline-container-sec-3-4" class="outline-3">
-<h3 id="sec-3-4">Install the <code>motion</code> package</h3>
-<div class="outline-text-3" id="text-3-4">
+<div id="outline-container-orgd87ce54" class="outline-3">
+<h3 id="orgd87ce54">Install the <code>motion</code> package</h3>
+<div class="outline-text-3" id="text-orgd87ce54">
 <div class="org-src-container">
-
 <pre class="src src-sh">sudo apt update
 sudo apt install motion
 </pre>
@@ -147,15 +140,14 @@ sudo apt install motion
 </div>
 </div>
 
-<div id="outline-container-sec-3-5" class="outline-3">
-<h3 id="sec-3-5">Configure motion</h3>
-<div class="outline-text-3" id="text-3-5">
+<div id="outline-container-org59f1ac1" class="outline-3">
+<h3 id="org59f1ac1">Configure motion</h3>
+<div class="outline-text-3" id="text-org59f1ac1">
 <p>
 We want motion to run as a background daemon on startup; installing motion with apt should setup the service for us, but it's worth checking the configuration to ensure that motion thinks it's going to start in daemon mode.
 </p>
 
 <div class="org-src-container">
-
 <pre class="src src-conf"># Start in daemon (background) mode and release terminal (default: off)
 daemon on
 </pre>
@@ -166,7 +158,6 @@ With the camera modules loaded and the pi camera connected to the board, the dev
 </p>
 
 <div class="org-src-container">
-
 <pre class="src src-conf"># Videodevice to be used for capturing  (default /dev/video0)
 # for FreeBSD default is /dev/bktr0
 videodevice /dev/video0
@@ -178,7 +169,6 @@ The dimensions of the captured images can be manipulated as well. Here I use a s
 </p>
 
 <div class="org-src-container">
-
 <pre class="src src-conf"># Image width (pixels). Valid range: Camera dependent, default: 352
 width 640
 
@@ -192,7 +182,6 @@ Next set the frame-rate of the captured video. I set mine to 24 frames-per-secon
 </p>
 
 <div class="org-src-container">
-
 <pre class="src src-conf"># Maximum number of frames to be captured per second.
 # Valid range: 2-100. Default: 100 (almost no limit).
 framerate 24
@@ -204,7 +193,6 @@ Allow LAN connections to the video stream.
 </p>
 
 <div class="org-src-container">
-
 <pre class="src src-conf"># Restrict stream connections to localhost only (default: on)
 stream_localhost off
 </pre>
@@ -215,7 +203,6 @@ Disable the capture and storage of still images and video from the camera.
 </p>
 
 <div class="org-src-container">
-
 <pre class="src src-conf"># Output 'normal' pictures when motion is detected (default: on)
 # Valid values: on, off, first, best, center
 # When set to 'first', only the first picture of an event is saved.
@@ -233,9 +220,9 @@ ffmpeg_output_movies off
 </div>
 </div>
 
-<div id="outline-container-sec-4" class="outline-2">
-<h2 id="sec-4">Conclusion</h2>
-<div class="outline-text-2" id="text-4">
+<div id="outline-container-org47b681a" class="outline-2">
+<h2 id="org47b681a">Conclusion</h2>
+<div class="outline-text-2" id="text-org47b681a">
 <p>
 Now that everything's setup and configured you can access the video stream at <code>http://&lt;your-raspberry-pi-host&gt;:8081</code> via any device on the local network. At about the same monetary and time commitment, this project provides more granular control, transparent security and privacy controls, and a clearer path to software/firmware updates than any Foscam solution - and 100% less baked in <a href="https://krebsonsecurity.com/2016/02/this-is-why-people-fear-the-internet-of-things/">3rd party eavesdropping</a>.
 </p>

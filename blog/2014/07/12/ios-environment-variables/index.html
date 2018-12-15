@@ -34,7 +34,6 @@ I find that there are usually at least two distinct environments in which any iO
 </p>
 
 <div class="org-src-container">
-
 <pre class="src src-objc">#ifdef DEBUG
 const NSString* myAppAPIBaseUrl = @"http://development.myapp.com"; // development services
 #else
@@ -54,7 +53,6 @@ What if the application code and configuration could live independent of each ot
 </p>
 
 <div class="org-src-container">
-
 <pre class="src src-objc">NSString* myAppAPIBaseUrl = [[Environment sharedInstance] fetch:@"MyAppAPIBaseUrl"];
 [MyAppAPIClient alloc] initWithBaseUrl:myAppAPIBaseUrl];
 </pre>
@@ -68,51 +66,46 @@ It is the responsibility of the <code>[[Environment sharedInstance] fetch:@"MyAp
 As it turns out, implementing this behavior is not at all complicated:
 </p>
 
-<div id="outline-container-sec-1" class="outline-2">
-<h2 id="sec-1">Capture the build configuration used to build the Application bundle</h2>
-<div class="outline-text-2" id="text-1">
+<div id="outline-container-org19eff76" class="outline-2">
+<h2 id="org19eff76">Capture the build configuration used to build the Application bundle</h2>
+<div class="outline-text-2" id="text-org19eff76">
 <ul class="org-ul">
-<li>Add a new String value to the <code>&lt;application_name&gt;-Info.plist</code> to capture the name of the Build Configuration (environment name) used to create the application bundle at build time:
-</li>
+<li>Add a new String value to the <code>&lt;application_name&gt;-Info.plist</code> to capture the name of the Build Configuration (environment name) used to create the application bundle at build time:</li>
 </ul>
 
 
-<div id="application-info.plist" class="figure">
+<div id="org310b92e" class="figure">
 <p><img src="/assets/blog/2014/07/12/ios-environment-variables/application-info.plist.png" alt="application-info.plist.png" />
 </p>
-<p><span class="figure-number">Figure 1:</span> application-info.plist</p>
+<p><span class="figure-number">Figure 1: </span>application-info.plist</p>
 </div>
 </div>
 </div>
 
-<div id="outline-container-sec-2" class="outline-2">
-<h2 id="sec-2">Configure the Environments</h2>
-<div class="outline-text-2" id="text-2">
+<div id="outline-container-org0e03ab0" class="outline-2">
+<h2 id="org0e03ab0">Configure the Environments</h2>
+<div class="outline-text-2" id="text-org0e03ab0">
 <ul class="org-ul">
-<li>Add an <code>Environments.plist</code> to the application. This serves as the centralized listing of environment specific configuration values for each environment the application supports.
-</li>
+<li>Add an <code>Environments.plist</code> to the application. This serves as the centralized listing of environment specific configuration values for each environment the application supports.</li>
 
-<li>Add a Dictionary type entry to the <code>Environments.plist</code> for each build configuration name the application supports; in this example the two default build configurations Apple creates for any iOS project: <code>Debug</code> and <code>Release</code>
-</li>
+<li>Add a Dictionary type entry to the <code>Environments.plist</code> for each build configuration name the application supports; in this example the two default build configurations Apple creates for any iOS project: <code>Debug</code> and <code>Release</code></li>
 
-<li>Define the application's configuration concerns with the appropriate values for each 'environment' key in the <code>Environments.plist</code>
-</li>
+<li>Define the application's configuration concerns with the appropriate values for each 'environment' key in the <code>Environments.plist</code></li>
 </ul>
 
 
-<div id="environments.plist" class="figure">
+<div id="orgf6d2b25" class="figure">
 <p><img src="/assets/blog/2014/07/12/ios-environment-variables/environments.plist.png" alt="environments.plist.png" />
 </p>
-<p><span class="figure-number">Figure 2:</span> environments.plist</p>
+<p><span class="figure-number">Figure 2: </span>environments.plist</p>
 </div>
 </div>
 </div>
 
-<div id="outline-container-sec-3" class="outline-2">
-<h2 id="sec-3">Define the <code>Environment</code> object:</h2>
-<div class="outline-text-2" id="text-3">
+<div id="outline-container-org821d1ae" class="outline-2">
+<h2 id="org821d1ae">Define the <code>Environment</code> object:</h2>
+<div class="outline-text-2" id="text-org821d1ae">
 <div class="org-src-container">
-
 <pre class="src src-objc">// Environment.h
 @interface Environment : NSObject
 + (Environment*) sharedInstance;
@@ -122,7 +115,6 @@ As it turns out, implementing this behavior is not at all complicated:
 </div>
 
 <div class="org-src-container">
-
 <pre class="src src-objc">// Environment.m
 #import "Environment.h"
 
@@ -184,15 +176,14 @@ static Environment *sharedInstance = nil;
 </div>
 </div>
 
-<div id="outline-container-sec-4" class="outline-2">
-<h2 id="sec-4">Example</h2>
-<div class="outline-text-2" id="text-4">
+<div id="outline-container-org9659035" class="outline-2">
+<h2 id="org9659035">Example</h2>
+<div class="outline-text-2" id="text-org9659035">
 <p>
 With the above code in place we can run the application to make sure everything's wired up correctly. In my example, I've added the following logger statement to the application's launch lifecycle;
 </p>
 
 <div class="org-src-container">
-
 <pre class="src src-objc">@implementation MAIOSAppDelegate
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 NSLog(@"Using %@ as the API Base URL", [[Environment sharedInstance] fetch:@"MyAppAPIBaseUrl"]);
@@ -206,7 +197,6 @@ When the application is built in the Development mode, with the Debug build conf
 </p>
 
 <div class="org-src-container">
-
 <pre class="src src-objc">MyAppIOS[12289:60b] Using http://development.myapp.com as the API Base URL
 </pre>
 </div>
@@ -217,7 +207,6 @@ And when using the Production mode, with the Release build configuration, the lo
 </p>
 
 <div class="org-src-container">
-
 <pre class="src src-objc">MyAppIOS[12351:60b] Using http://www.myapp.com as the API Base URL
 </pre>
 </div>

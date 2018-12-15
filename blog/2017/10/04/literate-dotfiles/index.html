@@ -30,9 +30,9 @@
 <div class="post">
 <h1>Literate Dotfiles</h1>
 
-<div id="outline-container-sec-1" class="outline-2">
-<h2 id="sec-1">Motivation</h2>
-<div class="outline-text-2" id="text-1">
+<div id="outline-container-orgc822e9e" class="outline-2">
+<h2 id="orgc822e9e">Motivation</h2>
+<div class="outline-text-2" id="text-orgc822e9e">
 <blockquote>
 <p>
 Let us change our traditional attitude to the construction of programs: Instead of imagining that our main task is to instruct a computer what to do, let us concentrate rather on explaining to human beings what we want a computer to do.
@@ -49,9 +49,9 @@ Early on, I treated these configuration files as write-only repositories of code
 </div>
 </div>
 
-<div id="outline-container-sec-2" class="outline-2">
-<h2 id="sec-2">A step toward literacy</h2>
-<div class="outline-text-2" id="text-2">
+<div id="outline-container-orgca5cac5" class="outline-2">
+<h2 id="orgca5cac5">A step toward literacy</h2>
+<div class="outline-text-2" id="text-orgca5cac5">
 <p>
 What if, with a little reorganization, we could document intent, in a human readable format, and provide executable examples from which our actualy-on-disk dotfiles could be generated?
 </p>
@@ -62,22 +62,18 @@ Enter <a href="http://orgmode.org/worg/org-contrib/babel/intro.html">Babel</a>; 
 </div>
 </div>
 
-<div id="outline-container-sec-3" class="outline-2">
-<h2 id="sec-3">Making the move</h2>
-<div class="outline-text-2" id="text-3">
+<div id="outline-container-orgdd4ea48" class="outline-2">
+<h2 id="orgdd4ea48">Making the move</h2>
+<div class="outline-text-2" id="text-orgdd4ea48">
 <p>
 Organizing a scattered collection of dotfiles configuration into a literate document and generating/tangling the code examples into usable configuration can be described as follows:
 </p>
 
 <ol class="org-ol">
-<li>First, organize and copy each logical group of configuration code the existing dotfiles into <a href="http://orgmode.org/manual/Structure-of-code-blocks.html">org-mode code blocks</a>.
-</li>
-<li>Then add intention revealing documentation for each block.
-</li>
-<li>Next, add metadata about the tangling/export process. These properties tell babel that the code blocks under the <code>.bashrc</code> header should be exported to the file at <code>~/.bashrc</code>.
-</li>
-<li>And finally we need to tangle/export the code by running <code>M-x org-babel-tangle</code> - in my <a href="https://github.com/indiebrain/.files/">dotfiles repository</a> I include an installation <a href="https://github.com/indiebrain/.files/blob/71d302e097483dd878e76ff4cf53372bdf184523/install.sh">script</a> that will automatically tangle/export all of the code blocks.
-</li>
+<li>First, organize and copy each logical group of configuration code the existing dotfiles into <a href="http://orgmode.org/manual/Structure-of-code-blocks.html">org-mode code blocks</a>.</li>
+<li>Then add intention revealing documentation for each block.</li>
+<li>Next, add metadata about the tangling/export process. These properties tell babel that the code blocks under the <code>.bashrc</code> header should be exported to the file at <code>~/.bashrc</code>.</li>
+<li>And finally we need to tangle/export the code by running <code>M-x org-babel-tangle</code> - in my <a href="https://github.com/indiebrain/.files/">dotfiles repository</a> I include an installation <a href="https://github.com/indiebrain/.files/blob/71d302e097483dd878e76ff4cf53372bdf184523/install.sh">script</a> that will automatically tangle/export all of the code blocks.</li>
 </ol>
 
 <p>
@@ -86,9 +82,9 @@ Examples can be found <a href="https://github.com/indiebrain/.files/blob/71d302e
 </div>
 </div>
 
-<div id="outline-container-sec-4" class="outline-2">
-<h2 id="sec-4">Conclusion</h2>
-<div class="outline-text-2" id="text-4">
+<div id="outline-container-org19854d2" class="outline-2">
+<h2 id="org19854d2">Conclusion</h2>
+<div class="outline-text-2" id="text-org19854d2">
 <p>
 I've used this literate approach to configuration generation for dotfiles - and <a href="https://github.com/indiebrain/.emacs.d/blob/1917b9e37f67299a559286df0a95746198243eb0/configuration.org">emacs</a> - configuration for a few months now. I find it to be much easier to manage and reason about and maintain confidently. Though I wouldn't recommend Literate Programming for every task, I find that "prose first development" works great for clarifying the scope and intent of a task when modifying system configuration.
 </p>

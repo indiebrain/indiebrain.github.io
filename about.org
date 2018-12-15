@@ -1,0 +1,135 @@
+#+TITLE: About
+#+DESCRIPTION: 80% Scientist, 20% Artist. Theorist and practitioner.
+#+AUTHOR: Aaron Kuehler
+#+OPTIONS: num:nil toc:nil
+
+#+BEGIN_QUOTE
+Always remember, our purpose is not to "write code", but rather add value to the business.
+#+END_QUOTE
+
+Hi, I'm Aaron!
+
+I'm a human being - I have varying interests. I'm a father, musician, brewer, soap maker, photographer, electronics tinkerer... a general lover of understanding and making.
+
+By trade, I develop software and technical teams. I began studying Computational Science and Computer Programming in 1999. I passionately continue to advance my understanding of both fields in order to improve my professional practice. I am an ardent user of automated testing. I use tests to guide and define the interfaces and interactions of my software from the outside-in. Shortly after I beginning my career as a software developer, I realized that developing software is more about interacting and effectively communicating with humans than with machines. I value the enhancement of understanding of human behavior, communication and relationships, and leadership skills - in my experience, these 'soft' skills tend to hold more value in the calculus of the success of individuals and teams more than sheer technical ability. I enjoy helping teams grow to understand and value these skills.
+
+* OSS Contributions
+
+** Shopify/kubernetes-deploy
+
+https://github.com/Shopify/kubernetes-deploy
+
+kubernetes-deploy is a command line tool that helps you ship changes to a Kubernetes namespace and understand the result.
+
+** heroku-cli-buildpack
+
+https://github.com/Thermondo/heroku-cli-buildpack
+
+Installs the Heroku toolbelt on a heroku dyno.
+
+** keyword_parameter_matchers
+
+https://github.com/terryfinn/keyword_parameter_matchers
+
+RSpec matchers for method keyword parameters.
+
+** githug
+
+https://github.com/Gazler/githug
+
+Githug is designed to give you a practical way of learning git. It has a series of levels, each requiring you to use git commands to arrive at a correct answer.
+
+* Side Projects
+
+** Futurist
+
+   https://github.com/indiebrain/futurist
+
+   An implementation of the future construct, inspired by Celluloid's block based futures, which uses process forking as a means of backgrounding work.
+
+** Backbone-Elasticsearch
+
+   https://github.com/indiebrain/backbone-elasticsearch
+
+   Adapters and Utilities to interface Backbone.js with ElasticSearch
+
+** OmniAuth Doximity OAuth2
+
+   https://github.com/indiebrain/omniauth-doximity_oauth2
+
+   A Doximity OAuth2 Strategy for OmniAuth.
+
+* Elsewhere
+
+  - https://www.linkedin.com/in/aaronkuehler
+  - https://www.github.com/indiebrain
+  - https://www.twitter.com/indiebrain
+#+TITLE:       About
+#+AUTHOR:      Aaron Kuehler
+#+DATE:        <2014-12-01 Mon>
+#+URI:         /index
+#+LANGUAGE:    en
+#+OPTIONS:     H:3 num:nil toc:nil \n:nil ::t |:t ^:nil -:nil f:t *:t <:t
+#+DESCRIPTION: 80% Scientist, 20% Artist. Theorist and Practitioner.
+
+#+BEGIN_QUOTE
+Always remember, our purpose is not to "write code", but rather add value to the business.
+#+END_QUOTE
+
+Hi, I'm Aaron!
+
+I'm a human being - I have varying interests. I'm a father, musician, brewer, soap maker, photographer, electronics tinkerer... a general lover of understanding and making.
+
+By trade, I develop software and technical teams. I began studying Computational Science and Computer Programming in 1999. I passionately continue to advance my understanding of both fields in order to improve my professional practice. I am an ardent user of automated testing. I use tests to guide and define the interfaces and interactions of my software from the outside-in. Shortly after I beginning my career as a software developer, I realized that developing software is more about interacting and effectively communicating with humans than with machines. I value the enhancement of understanding of human behavior, communication and relationships, and leadership skills - in my experience, these 'soft' skills tend to hold more value in the calculus of the success of individuals and teams more than sheer technical ability. I enjoy helping teams grow to understand and value these skills.
+
+* OSS Contributions
+
+** Shopify/kubernetes-deploy
+
+https://github.com/Shopify/kubernetes-deploy
+
+kubernetes-deploy is a command line tool that helps you ship changes to a Kubernetes namespace and understand the result.
+
+** heroku-cli-buildpack
+
+https://github.com/Thermondo/heroku-cli-buildpack
+
+Installs the Heroku toolbelt on a heroku dyno.
+
+** keyword_parameter_matchers
+
+https://github.com/terryfinn/keyword_parameter_matchers
+
+RSpec matchers for method keyword parameters.
+
+** githug
+
+https://github.com/Gazler/githug
+
+Githug is designed to give you a practical way of learning git. It has a series of levels, each requiring you to use git commands to arrive at a correct answer.
+
+* Side Projects
+
+** Futurist
+
+   https://github.com/indiebrain/futurist
+
+   An implementation of the future construct, inspired by Celluloid's block based futures, which uses process forking as a means of backgrounding work.
+
+** Backbone-Elasticsearch
+
+   https://github.com/indiebrain/backbone-elasticsearch
+
+   Adapters and Utilities to interface Backbone.js with ElasticSearch
+
+** OmniAuth Doximity OAuth2
+
+   https://github.com/indiebrain/omniauth-doximity_oauth2
+
+   A Doximity OAuth2 Strategy for OmniAuth.
+
+* Elsewhere
+
+  - https://www.linkedin.com/in/aaronkuehler
+  - https://www.github.com/indiebrain
+  - https://www.twitter.com/indiebrain
