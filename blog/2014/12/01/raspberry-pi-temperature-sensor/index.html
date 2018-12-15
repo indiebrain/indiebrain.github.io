@@ -34,7 +34,7 @@ A few weeks ago, I purchased a <a href="http://www.raspberrypi.org">Raspberry Pi
 </p>
 
 
-<div id="org4dd9181" class="figure">
+<div id="org88240dc" class="figure">
 <p><img src="/assets/blog/2014/12/01/raspberry-pi-temperature-sensor/raspberrypi_mcp9808.png" alt="raspberrypi_mcp9808.png" />
 </p>
 <p><span class="figure-number">Figure 1: </span>Raspberry Pi Temperature Sensor</p>
@@ -42,16 +42,16 @@ A few weeks ago, I purchased a <a href="http://www.raspberrypi.org">Raspberry Pi
 
 
 
-<div id="org0e910f3" class="figure">
+<div id="org83b82aa" class="figure">
 <p><img src="/assets/blog/2014/12/01/raspberry-pi-temperature-sensor/grafana_dashboard_preview.png" alt="grafana_dashboard_preview.png" />
 </p>
 <p><span class="figure-number">Figure 2: </span>Grafana Dashboard</p>
 </div>
 
 
-<div id="outline-container-org108adf9" class="outline-2">
-<h2 id="org108adf9">The Sensor Hardware</h2>
-<div class="outline-text-2" id="text-org108adf9">
+<div id="outline-container-orge0adb58" class="outline-2">
+<h2 id="orge0adb58">The Sensor Hardware</h2>
+<div class="outline-text-2" id="text-orge0adb58">
 <p>
 For this project I chose to use the MCP9808 Breakout Board from <a href="http://www.adafruit.com">Adafruit</a> -- an excellent source for components, circuits, and ideas. I chose this unit for a few reasons:
 </p>
@@ -63,15 +63,15 @@ For this project I chose to use the MCP9808 Breakout Board from <a href="http://
 </ol>
 </div>
 
-<div id="outline-container-orgdca3c01" class="outline-3">
-<h3 id="orgdca3c01">Circuit Assembly</h3>
-<div class="outline-text-3" id="text-orgdca3c01">
+<div id="outline-container-org940aeae" class="outline-3">
+<h3 id="org940aeae">Circuit Assembly</h3>
+<div class="outline-text-3" id="text-org940aeae">
 <p>
 The MCP9808 Breakout Board ships from Adafruit mostly assembled. This particular kit requires only that you solder the included 8 pin header strip to the breakout board.
 </p>
 
 
-<div id="org6d2970b" class="figure">
+<div id="org143a204" class="figure">
 <p><img src="/assets/blog/2014/12/01/raspberry-pi-temperature-sensor/mcp9808.png" alt="mcp9808.png" />
 </p>
 <p><span class="figure-number">Figure 3: </span>MCP9808 Sensor</p>
@@ -82,7 +82,7 @@ I used a <a href="http://www.canakit.com/raspberry-pi-cobbler-gpio-breakout.html
 </p>
 
 
-<div id="orgb9ee7f4" class="figure">
+<div id="orga474eee" class="figure">
 <p><img src="/assets/blog/2014/12/01/raspberry-pi-temperature-sensor/mcp9808_wiring_diagram.png" alt="mcp9808_wiring_diagram.png" />
 </p>
 <p><span class="figure-number">Figure 4: </span>MCP9808 Wiring Diagram</p>
@@ -139,9 +139,9 @@ The remaining, optional, pins are not used in this project. They provide workaro
 </div>
 </div>
 
-<div id="outline-container-orga51896d" class="outline-2">
-<h2 id="orga51896d">The Datastore</h2>
-<div class="outline-text-2" id="text-orga51896d">
+<div id="outline-container-orgd3ef57c" class="outline-2">
+<h2 id="orgd3ef57c">The Datastore</h2>
+<div class="outline-text-2" id="text-orgd3ef57c">
 <p>
 I knew that I wanted to back the project with a persistent datastore. This would allow me to capture data points and later analyze them for general trends, cross-reference heating/cooling patterns with weather events, etc.
 </p>
@@ -151,9 +151,9 @@ I chose InfluxDB because of its time centric query language and storage model. I
 </p>
 </div>
 
-<div id="outline-container-org4dd5fff" class="outline-3">
-<h3 id="org4dd5fff">Configure the InfluxDB database</h3>
-<div class="outline-text-3" id="text-org4dd5fff">
+<div id="outline-container-org37a31e1" class="outline-3">
+<h3 id="org37a31e1">Configure the InfluxDB database</h3>
+<div class="outline-text-3" id="text-org37a31e1">
 <p>
 With InfluxDB installed, I setup a database for storing my temperature readings and a database user to manage it. I used my InfluxDB instance's web console to do this; by default it runs on port <code>8083</code> of the InfluxDB host.
 </p>
@@ -163,7 +163,7 @@ With InfluxDB installed, I setup a database for storing my temperature readings 
 Create the new database; I named mine <code>mcp9808_test</code>
 </p>
 
-<div id="orgc713b64" class="figure">
+<div id="org4ff0bd7" class="figure">
 <p><img src="/assets/blog/2014/12/01/raspberry-pi-temperature-sensor/influxdb_create_database.png" alt="influxdb_create_database.png" />
 </p>
 </div></li>
@@ -174,7 +174,7 @@ Create the new database; I named mine <code>mcp9808_test</code>
 Create a New Database User
 </p>
 
-<div id="orgc480cde" class="figure">
+<div id="orge1b21c0" class="figure">
 <p><img src="/assets/blog/2014/12/01/raspberry-pi-temperature-sensor/influxdb_database_users.png" alt="influxdb_database_users.png" />
 </p>
 </div></li>
@@ -184,23 +184,23 @@ Create a New Database User
 </div>
 </div>
 
-<div id="outline-container-orgace4859" class="outline-2">
-<h2 id="orgace4859">Raspberry Pi Configuration</h2>
-<div class="outline-text-2" id="text-orgace4859">
+<div id="outline-container-org3220843" class="outline-2">
+<h2 id="org3220843">Raspberry Pi Configuration</h2>
+<div class="outline-text-2" id="text-org3220843">
 <p>
 Now that the hardware and datastore are setup, there's a bit of OS configuraiton needed to an out-of-the-box Raspberry Pi in order communicate with the MCP9808 over the I²C bus.
 </p>
 </div>
 
-<div id="outline-container-orgf6a1b9c" class="outline-3">
-<h3 id="orgf6a1b9c">Enable I²C</h3>
-<div class="outline-text-3" id="text-orgf6a1b9c">
+<div id="outline-container-org9bfcb56" class="outline-3">
+<h3 id="org9bfcb56">Enable I²C</h3>
+<div class="outline-text-3" id="text-org9bfcb56">
 <p>
 By default, the Raspberry Pi does not load the required kernel modules to use the I²C bus. To enable I²C communication over the GPIO, I added the following two lines to <code>/etc/modules</code>
 </p>
 
 <div class="org-src-container">
-<label class="org-src-name"><span class="listing-number">Listing 1: </span>/etc/modules</label><pre class="src src-sh" id="org5d91921">i2c-bcm2708
+<label class="org-src-name"><span class="listing-number">Listing 1: </span>/etc/modules</label><pre class="src src-sh" id="orge04f029">i2c-bcm2708
 i2c-dev
 </pre>
 </div>
@@ -225,17 +225,17 @@ After the system initalizses the system should be able to recognize the MCP9808 
 </div>
 </div>
 
-<div id="outline-container-org6be919f" class="outline-3">
-<h3 id="org6be919f">The Sensor Software</h3>
-<div class="outline-text-3" id="text-org6be919f">
+<div id="outline-container-orgdf19303" class="outline-3">
+<h3 id="orgdf19303">The Sensor Software</h3>
+<div class="outline-text-3" id="text-orgdf19303">
 <p>
 Adafruit provides a <a href="https://github.com/adafruit/Adafruit_Python_MCP9808">MCP9808 wrapper</a> and a <a href="https://github.com/adafruit/Adafruit_Python_GPIO/blob/master/Adafruit_GPIO/I2C.py">I²C abstraction</a>. I made use of both of these in the main driver script for this project.
 </p>
 </div>
 
-<div id="outline-container-org35d9e31" class="outline-4">
-<h4 id="org35d9e31">Install build dependencies</h4>
-<div class="outline-text-4" id="text-org35d9e31">
+<div id="outline-container-org345c8d3" class="outline-4">
+<h4 id="org345c8d3">Install build dependencies</h4>
+<div class="outline-text-4" id="text-org345c8d3">
 <div class="org-src-container">
 <pre class="src src-sh">sudo apt-get update
 sudo apt-get install build-essential python-dev python-smbus
@@ -244,9 +244,9 @@ sudo apt-get install build-essential python-dev python-smbus
 </div>
 </div>
 
-<div id="outline-container-org7f064f4" class="outline-4">
-<h4 id="org7f064f4">Install the Adafruit_Python_MCP9808 wrapper</h4>
-<div class="outline-text-4" id="text-org7f064f4">
+<div id="outline-container-org5c15101" class="outline-4">
+<h4 id="org5c15101">Install the Adafruit_Python_MCP9808 wrapper</h4>
+<div class="outline-text-4" id="text-org5c15101">
 <div class="org-src-container">
 <pre class="src src-sh">cd ~/Downloads
 git clone https://github.com/adafruit/Adafruit_Python_MCP9808/blob/master/Adafruit_MCP9808
@@ -261,9 +261,9 @@ This will also install the I²C abstraction as the MCP9808 wrapper depends on it
 </div>
 </div>
 
-<div id="outline-container-org9c1a2f3" class="outline-4">
-<h4 id="org9c1a2f3">Read, Report, Repeat</h4>
-<div class="outline-text-4" id="text-org9c1a2f3">
+<div id="outline-container-org8261b64" class="outline-4">
+<h4 id="org8261b64">Read, Report, Repeat</h4>
+<div class="outline-text-4" id="text-org8261b64">
 <p>
 Next I wrote a little python script, <code>poll.py</code>, to read from the MCP9808 on an interval and report its findings to the mcp9808_test InfluxDB database instance.
 </p>
@@ -321,9 +321,9 @@ Now it can be run using the following command; note that the script needs to be 
 </div>
 </div>
 
-<div id="outline-container-org0c6ca59" class="outline-4">
-<h4 id="org0c6ca59">For-ev-er</h4>
-<div class="outline-text-4" id="text-org0c6ca59">
+<div id="outline-container-org617a41a" class="outline-4">
+<h4 id="org617a41a">For-ev-er</h4>
+<div class="outline-text-4" id="text-org617a41a">
 <p>
 Horray! Everything was up and running... until I kicked the on/off switch of the powerstip under my desk. At this point I realized that I wanted to ensure that the <code>poll.py</code> script ran so long as the Raspberry Pi had power.  To achieve this, I used the <code>runit</code> process supervisor.
 </p>
@@ -380,17 +380,17 @@ Now the polling process can be started and managed by runit by executing the fol
 </div>
 </div>
 
-<div id="outline-container-org6a61800" class="outline-2">
-<h2 id="org6a61800">ANALYZE ALL THE THINGS!</h2>
-<div class="outline-text-2" id="text-org6a61800">
+<div id="outline-container-org15b9684" class="outline-2">
+<h2 id="org15b9684">ANALYZE ALL THE THINGS!</h2>
+<div class="outline-text-2" id="text-org15b9684">
 <p>
 Sensor hardware, check! Datastore, check! Gluecode, check! Ok, cool; but now what?
 </p>
 </div>
 
-<div id="outline-container-org916137f" class="outline-3">
-<h3 id="org916137f">InfluxDB Graphing</h3>
-<div class="outline-text-3" id="text-org916137f">
+<div id="outline-container-org1cbf67c" class="outline-3">
+<h3 id="org1cbf67c">InfluxDB Graphing</h3>
+<div class="outline-text-3" id="text-org1cbf67c">
 <p>
 Well, now that the Raspberry Pi is reporting temperature readings every minute, it's time to start analyzing the data. As I mentioned before, I chose InfluxDB because of its ability to collate and aggregate time series data. For this project it makes sense to aggregate values of the <code>degrees_f</code> datapoints posted by the <code>poll.py</code> script for some given time interval.
 </p>
@@ -409,7 +409,7 @@ When a query is issued from the InfluxDB web console, the results are rendered i
 </p>
 
 
-<div id="org483db94" class="figure">
+<div id="orgba91255" class="figure">
 <p><img src="/assets/blog/2014/12/01/raspberry-pi-temperature-sensor/influxdb_query.png" alt="influxdb_query.png" />
 </p>
 <p><span class="figure-number">Figure 7: </span>Influx Query</p>
@@ -421,9 +421,9 @@ This is really good for point analysis of things like high, low, and average tem
 </div>
 </div>
 
-<div id="outline-container-org048c0e5" class="outline-3">
-<h3 id="org048c0e5">Grafana</h3>
-<div class="outline-text-3" id="text-org048c0e5">
+<div id="outline-container-org0fac1de" class="outline-3">
+<h3 id="org0fac1de">Grafana</h3>
+<div class="outline-text-3" id="text-org0fac1de">
 <p>
 <a href="http://grafana.org">Grafana</a> is a web applicaiton which provides metrics dashboards and graph editing. It can be configured, rather easily, to use InfluxDB as a metric source. It provides the ability to define queries against InfluxDB time series and plot the results, much like the InfluxDB web ui, but it also provides the ability to attach these graphs to dashboards and auto-refresh their content on a time interval.
 </p>
@@ -506,7 +506,7 @@ The last thing to do is define the grafana dashboard and use the datapoints from
 Define the metric query and graph attributes
 </p>
 
-<div id="orgb01a29b" class="figure">
+<div id="orgbf63a19" class="figure">
 <p><img src="/assets/blog/2014/12/01/raspberry-pi-temperature-sensor/grafana_metric_query.png" alt="grafana_metric_query.png" />
 </p>
 <p><span class="figure-number">Figure 8: </span>Grafana Metric Query</p>
@@ -515,7 +515,7 @@ Define the metric query and graph attributes
 Return to the dashboard and select a time period against which the query should be run and an auto refresh interval
 </p>
 
-<div id="orgcf8f955" class="figure">
+<div id="orga90fd55" class="figure">
 <p><img src="/assets/blog/2014/12/01/raspberry-pi-temperature-sensor/grafana_dashboard.png" alt="grafana_dashboard.png" />
 </p>
 <p><span class="figure-number">Figure 9: </span>Grafana Dashboard</p>
@@ -529,9 +529,9 @@ And voila! An view of the Temperature readings for the last day that updates eve
 </div>
 </div>
 
-<div id="outline-container-orga0bba75" class="outline-2">
-<h2 id="orga0bba75">Conclusion</h2>
-<div class="outline-text-2" id="text-orga0bba75">
+<div id="outline-container-org4bc4749" class="outline-2">
+<h2 id="org4bc4749">Conclusion</h2>
+<div class="outline-text-2" id="text-org4bc4749">
 <p>
 It's kind of hacky, but for about $50 USD and an afternoon of research, installation, configuration, and coding I have a very crude implementation of a digital thermometer and a way to collate historical temperature data about one particular area of my house. Future iterations of this project will most likely include cleanup and organization of the <code>poll.py</code> script, infrastructure and security enhancements (I'd really like to build a web application inbetween the <code>poll.py</code> script and the datastore to add notifications of temperature events, etc), and the addition of a few more sensors throughout the house.
 </p>
