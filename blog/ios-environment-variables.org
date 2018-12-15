@@ -1,6 +1,6 @@
 #+TITLE:       iOS Environment Variables
 #+AUTHOR:      Aaron Kuehler
-#+DATE:        2014-07-12 Sat
+#+DATE:        <2014-07-12 Sat>
 #+URI:         /blog/%y/%m/%d/ios-environment-variables
 #+KEYWORDS:    ios, xcode, software, tools
 #+TAGS:        ios, software

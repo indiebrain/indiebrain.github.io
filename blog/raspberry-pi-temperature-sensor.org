@@ -1,6 +1,6 @@
 #+TITLE:       Raspberry Pi Temperature Sensor
 #+AUTHOR:      Aaron Kuehler
-#+DATE:        2014-12-01 Mon
+#+DATE:        <2014-12-01 Mon>
 #+URI:         /blog/%y/%m/%d/raspberry-pi-temperature-sensor
 #+KEYWORDS:    raspberry pi, thermometer, temperature sensor, hardware, diy, MCP9808
 #+TAGS:        hardware, raspberry pi

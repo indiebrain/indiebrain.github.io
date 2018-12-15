@@ -1,6 +1,6 @@
 #+TITLE:       Design Effective Interviews
 #+AUTHOR:      Aaron Kuehler
-#+DATE:        2015-05-14 Thu
+#+DATE:        <2015-05-14 Thu>
 #+URI:         /blog/%y/%m/%d/design-effective-interviews
 #+KEYWORDS:    hiring, interviewing, team building
 #+TAGS:        hiring, team building
