@@ -27,7 +27,7 @@ https://github.com/Thermondo/heroku-cli-buildpack
 
 Installs the Heroku toolbelt on a heroku dyno.
 
-** keyword_parameter_matchers
+** Keyword Parameter Matchers
 
 https://github.com/terryfinn/keyword_parameter_matchers
 
