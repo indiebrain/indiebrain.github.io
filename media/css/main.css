@@ -205,11 +205,11 @@ a {
   text-decoration: none; }
 
 body {
-  width: calc(83.3333333333% - 36.6666666667px);
+  width: calc(83.33333% - 36.66667px);
   float: left;
   margin-left: 20px;
-  margin-left: calc(8.3333333333% - 21.6666666667px + 40px);
-  background-color: #f9f5d7;
+  margin-left: calc(8.33333% - 21.66667px + 40px);
+  background-color: #f0f0f0;
   color: #3c3836; }
   body::after {
     clear: both;
@@ -248,5 +248,3 @@ header {
 pre.prettyprinted {
   overflow: auto;
   padding: 1em; }
-
-/*# sourceMappingURL=main.css.map */

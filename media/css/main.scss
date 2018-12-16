@@ -11,7 +11,7 @@ body {
   @include grid-container;
   @include grid-column(10);
   @include grid-push(1);
-  background-color: $cream;
+  background-color: $base-background-color;
   color: $dark-gray;
 }
 
