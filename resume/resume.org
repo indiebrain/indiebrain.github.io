@@ -19,11 +19,11 @@ Always remember, our purpose is not to "write code", but rather add value to the
 
 * Skills / Experience Summary
 
-- Web Application Development (Ruby/Rails, Elixir/Phoenix, and Standard Web Technologies - JavaScript, CSS, etc)
-- API Development (Ruby/Rails, Elixir/Phoenix)
+- Web Application Development (Ruby/Rails and Standard Web Technologies - JavaScript, CSS, etc)
+- API Development (Ruby/Rails)
 - Continuous Integration and Deployment Automation
 - Team Growth and Leadership through agility, Lean Manufacturing Principles, and Extreme Ownership
-- Individual Mentor / Mentee
+- Mentor and Educator
 
 * Experience
 
@@ -71,7 +71,7 @@ In July 2012 I became the 3rd full-time developer hire at Hoopla. I was brought 
 
 /July 2011 - July 2012/
 
-As the 3rd employee of, then, AppRenaissance I helped grow a small mobile-developers-for-hire into a small mobile products/platform company. I spent most of my time helping clients with product and business development. Later we would start to change focus to providing services and products for mobile developers.
+As the 3rd employee of, then, AppRenaissance I helped grow a small mobile-developers-for-hire team into a mobile products/platform company. Initially, I spent most of my time helping clients with software, product, and business development. Later we would start to change focus to providing services and products for mobile developers.
 
 ** Infor
 
@@ -87,11 +87,7 @@ In May 2009, Infor was in the midst of re-architecture of its ERP and logistics 
 
 /February 2006 - June 2009/
 
-Initially worked on the flagship Life & Annuity insurance policy administration
-system. Eventually I was asked to join the technology skunk-works and
-performance teams to lay the foundation for the next-generation of this
-product. Later on I would be asked to lead the "backend" development of the
-next-generation of the policy administration system.
+Initially worked on the flagship Life & Annuity insurance policy administration system. Eventually I was asked to join the technology skunk-works and performance teams to lay the foundation for the next-generation of this product. Later on I would be asked to lead the "backend" development of the next-generation of the policy administration system.
 
 * Open Source Contributions
 
