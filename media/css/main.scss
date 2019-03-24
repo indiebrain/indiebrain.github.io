@@ -72,10 +72,10 @@ p {
 
 a {
   text-decoration: none;
-  text-shadow: 0.05em 0 0 #fff, -0.05em 0 0 #fff,
-               0 0.05em 0 #fff, 0 -0.05em 0 #fff,
-               0.1em 0 0 #fff, -0.1em 0 0 #fff,
-               0 0.1em 0 #fff, 0 -0.1em 0 #fff;
+  text-shadow: 0.05em 0 0 $base-background-color, -0.05em 0 0 $base-background-color,
+               0 0.05em 0 $base-background-color, 0 -0.05em 0 $base-background-color,
+               0.1em 0 0 $base-background-color, -0.1em 0 0 $base-background-color,
+               0 0.1em 0 $base-background-color, 0 -0.1em 0 $base-background-color;
   background-image: linear-gradient(to right, currentColor 0%, currentColor 100%);
   background-repeat: repeat-x;
   background-position: bottom 0.05em center;
