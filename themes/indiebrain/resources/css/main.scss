@@ -1,27 +1,33 @@
 @import "bourbon/bourbon";
-@import "neat/neat";
 @import "base/base";
 @import "variables";
+
+[href="#main"] {
+  position: absolute;
+  top: 0;
+  right: 100%;
+}
+
+[href="#main"]:focus {
+  right: auto;
+}
 
 a {
   text-decoration: none;
 }
 
 body {
-  @include grid-container;
-  @include grid-column(10);
-  @include grid-push(1);
   background-color: $base-background-color;
   color: $dark-gray;
 }
 
 blockquote {
-  border-left: 8px solid $blue;
+  border-left: .5rem solid $blue;
   color: $light-gray;
   font-style: italic;
   font-weight: bold;
-  padding: 0 0 0 20px;
-  margin: 0 1em 1em 0em;
+  padding: 0 0 0 1rem;
+  margin: 0 1rem 1rem 0rem;
 }
 
 h1, h2, h3, h4, h5, {
@@ -29,8 +35,29 @@ h1, h2, h3, h4, h5, {
 }
 
 header {
-  margin-bottom: 1em;
-  padding-bottom: 1em;
+  margin-bottom: 1rem;
+  padding-bottom: 1rem;
+}
+
+html {
+  font-size: 100%;
+}
+
+@media (min-width: 120em) {
+  html {
+    font-size: 150%
+  }
+}
+
+main {
+  max-width: 60rem;
+  margin: auto;
+}
+
+p {
+  margin: 1.5rem 0;
+  font-size: 1rem;
+  line-height: 1.5;
 }
 
 .navigation {

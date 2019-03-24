@@ -201,38 +201,53 @@ hr {
   border-top: 0;
   margin: 1.5em 0; }
 
+[href="#main"] {
+  position: absolute;
+  top: 0;
+  right: 100%; }
+
+[href="#main"]:focus {
+  right: auto; }
+
 a {
   text-decoration: none; }
 
 body {
-  width: calc(83.33333% - 36.66667px);
-  float: left;
-  margin-left: 20px;
-  margin-left: calc(8.33333% - 21.66667px + 40px);
   background-color: #f0f0f0;
-  color: #3c3836; }
-  body::after {
-    clear: both;
-    content: "";
-    display: block; }
+  color: #2a2a2a; }
 
 blockquote {
-  border-left: 8px solid #458588;
-  color: #928374;
+  border-left: 0.5rem solid #406098;
+  color: #696969;
   font-style: italic;
   font-weight: bold;
-  padding: 0 0 0 20px;
-  margin: 0 1em 1em 0em; }
+  padding: 0 0 0 1rem;
+  margin: 0 1rem 1rem 0rem; }
 
 h1, h2, h3, h4, h5 {
   padding-top: 1.25rem; }
 
 header {
-  margin-bottom: 1em;
-  padding-bottom: 1em; }
+  margin-bottom: 1rem;
+  padding-bottom: 1rem; }
+
+html {
+  font-size: 100%; }
+
+@media (min-width: 120em) {
+  html {
+    font-size: 150%; } }
+main {
+  max-width: 60rem;
+  margin: auto; }
+
+p {
+  margin: 1.5rem 0;
+  font-size: 1rem;
+  line-height: 1.5; }
 
 .navigation {
-  border-bottom: 3px dashed #7c6f64; }
+  border-bottom: 3px dashed #545454; }
   .navigation ul {
     display: block; }
     .navigation ul li {
@@ -241,10 +256,12 @@ header {
       margin-right: 1em; }
 
 .post {
-  border-bottom: 3px dashed #7c6f64;
+  border-bottom: 3px dashed #545454;
   padding-bottom: 1em;
   margin-bottom: 1em; }
 
 pre.prettyprinted {
   overflow: auto;
   padding: 1em; }
+
+/*# sourceMappingURL=main.css.map */
