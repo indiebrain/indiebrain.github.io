@@ -1,15 +1,14 @@
-// Colors (Gruvbox Light Theme)
-$aqua: 689d6a;
-$blue: #458588;
-$cream: #f0f0f0; // #f9f5d7;
-$dark-gray: #3c3836;
-$medium-gray: #7c6f64;
-$light-gray: #928374;
-$green: #98971a;
-$orange: #d65d0e;
-$purple: #b16286;
-$red: #cc241d;
-$yellow: #d79921;
+$blue: #406098;
+$light-blue: lighten($blue, 50%);
+$cream: #f0f0f0;
+$dark-gray: #2a2a2a;
+$medium-gray: #545454;
+$light-gray: #696969;
+$green: #005500;
+$orange: #aa2e00;
+$purple: #b500b5;
+$red: #aa0000;
+$yellow: #726012;
 
 // Font Colors
 $action-color: $green;
