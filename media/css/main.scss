@@ -40,14 +40,9 @@ blockquote {
   margin: 0 1rem 1rem 0rem;
 }
 
-h1, h2, h3, h4, h5, {
-  padding-top: 1.25rem;
-}
-
-header {
-  margin-bottom: 1rem;
-  padding-bottom: 1rem;
-}
+h1 { font-size: 3em; }
+h2 { font-size: 2.25em; }
+h3 { font-size: 1.5em; }
 
 html {
   font-size: 100%;
@@ -60,8 +55,24 @@ html {
 }
 
 main {
+  * + * {
+    margin-top: 1.5rem;
+  }
+
+  * + *:not(p) {
+    margin: 3rem 0;
+  }
   max-width: 60rem;
   margin: auto;
+}
+
+li, dt, dd, br, th, td {
+  margin-top: 0;
+}
+
+* + h2,
+* + h3 {
+  margin-top: 1.5em;
 }
 
 p {
