@@ -21,11 +21,11 @@ These project notes breakdown into two discrete tasks:
 
 Constructing the new BIOS image is fairly straight forward and pretty well documented by the coreboot community. I share my process to potentially save others (future versions of myself included) a bit of searching/patchwork from mailing lists, forum posts, etc.
 
-The initial "burn" of the coreboot image required the use an "external" or direct-hardware flashing mechanism to overwrite the factory BIOS. Essentially, I need another device capable of physically connecting to, and writing bytes to the [[https://en.wikipedia.org/wiki/Small_Outline_Integrated_Circuit][SOIC]] chip which houses the BIOS on the mainboard of the x220. To achieve this I used a [[https://www.raspberrypi.org/][Raspberry Pi 2 Model B]] and its GPIO board to act as the "burning" device.
+The initial "burn" of the coreboot image required the use an "external" or direct-hardware flashing mechanism to overwrite the factory BIOS. Essentially, I need another device capable of physically connecting to, and writing bytes to the SOIC - Small Outline Integrated Circuit - chip which houses the BIOS on the mainboard of the x220. To achieve this I used a Raspberry Pi 2 Model B and its GPIO board to act as the "burning" device.
 
 * Setting up the Raspberry Pi 2 Model B
 
-The Raspberry Pi is the external device I used to read/write firmware directly to/from the x220's mainboard. I used the =flashrom= utility to communicate with the x220's BIOS SOIC chip. This section details how to install =flashrom=, enable the [[https://en.wikipedia.org/wiki/Serial_Peripheral_Interface_Bus][SPI]] kernel modules to enable communication across the Raspberry Pi's GPIO, and how to wire up the SOIC hardware clip to the x220's mainboard.
+The Raspberry Pi is the external device I used to read/write firmware directly to/from the x220's mainboard. I used the =flashrom= utility to communicate with the x220's BIOS SOIC chip. This section details how to install =flashrom=, enable the SPI - Serial Peripheral Interface - kernel modules to enable communication across the Raspberry Pi's GPIO, and how to wire up the SOIC hardware clip to the x220's mainboard.
 
 ** Install flashrom
 
@@ -105,7 +105,7 @@ Copy the =lenovo_x220_factory_bios.bin= to the x220 via sftp, USB media, etc. Ve
 
 ** What is the Intel Management Engine (ME)?
 
-The gory details are best explained by the [[http://me.bios.io/images/c/ca/Rootkit_in_your_laptop.pdf][experts]], but suffice to say that it /can/ act as a way for third parties to remotely execute code on your machine - for good or ill. The ME is installed, in one form or another, on all newer Intel chipsets and /can/ be mostly neutralized by the use of a tool called [[https://github.com/corna/me_cleaner][me_cleaner]].
+[[http://me.bios.io/images/c/ca/Rootkit_in_your_laptop.pdf][The gory details are best explained by the experts here]], but suffice to say that it /can/ act as a way for third parties to remotely execute code on your machine - for good or ill. The ME is installed, in one form or another, on all newer Intel chipsets and /can/ be mostly neutralized by [[https://github.com/corna/me_cleaner][the me_cleaner tool]].
 
 ** Clean the ME from the factory bios
 
@@ -267,7 +267,7 @@ The relevant bits are:
   ME: Progress Phase          : BUP Phase
 #+END_SRC
 
-More info about this output [[https://github.com/corna/me_cleaner/wiki/How-does-it-work%3F#ive-applied-me_cleaner-and-my-pc-still-works-well-how-can-i-check-the-status-of-intel-me][here]].
+[[https://github.com/corna/me_cleaner/wiki/How-does-it-work?#ive-applied-me_cleaner-and-my-pc-still-works-well-how-can-i-check-the-status-of-intel-me][A description of the me_cleaner output is available here.]].
 
 ** Could not map MEI PCI device memory
 

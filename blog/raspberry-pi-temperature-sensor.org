@@ -8,23 +8,23 @@
 #+OPTIONS:     H:3 num:nil toc:nil \n:nil ::t |:t ^:nil -:nil f:t *:t <:t
 #+DESCRIPTION: Use a Raspberry Pi 2 Model B to build a not-creepy, networked home temperature sensor
 
-A few weeks ago, I purchased a [[http://www.raspberrypi.org][Raspberry Pi]]. After reading [[http://en.wikipedia.org/wiki/Eben_Upton][Eben Upton]]'s [[http://www.amazon.com/Raspberry-User-Guide-Eben-Upton/dp/1118921666/ref%3Dsr_1_1?ie%3DUTF8&qid%3D1417487615&sr%3D8-1&keywords%3Draspberry%2Bpi%2Bbeginners%2Bguide][Raspberry Pi User Guide]], particularly the two chapters on which he focuses attention on the [[http://en.wikipedia.org/wiki/General-purpose_input/output][GPIO]], I had an idea for my first project. The post covers the first iteration of a home temperature monitoring project I put together using a Raspberry Pi, a [[https://www.adafruit.com/products/1782][MCP9808]], an old Mac Mini (early 2008), [[http://influxdb.com][InfluxDB]], [[http://grafana.org][Grafana]], a bit of [[https://www.python.org][Python]], and [[http://smarden.org/runit/][runit]].
+A few weeks ago, I purchased a Raspberry Pi. After reading [[http://www.amazon.com/Raspberry-User-Guide-Eben-Upton/dp/1118921666/ref=sr_1_1?ie=UTF8&qid=1417487615&sr=8-1&keywords=raspberry+pi+beginners+guide][Eben Upton's Book - Raspberry Pi User Guide]], particularly the two chapters on which he focuses attention on the GPIO, I had an idea for my first project. The post covers the first iteration of a home temperature monitoring project I put together using a Raspberry Pi, a [[https://www.adafruit.com/products/1782][MCP9808 Temperature sensor]], an old Mac Mini (early 2008), [[http://influxdb.com][the InfluxDB time series database]], [[http://grafana.org][Grafana time series visualization applcation]], a bit of [[https://www.python.org][the Python programming language]], and [[http://smarden.org/runit/][the runit init system]].
 
-#+CAPTION: Raspberry Pi Temperature Sensor
+#+CAPTION: Raspberry Pi with MCP9808 temperature sensor
 #+NAME: Raspberry Pi Temperature Sensor
 [[../assets/blog/2014/12/01/raspberry-pi-temperature-sensor/raspberrypi_mcp9808.png]]
 
 
-#+CAPTION: Grafana Dashboard
+#+CAPTION: Grafana Dashboard with temperature data
 #+NAME: Grafana Dashboard
 [[../assets/blog/2014/12/01/raspberry-pi-temperature-sensor/grafana_dashboard_preview.png]]
 
 
 * The Sensor Hardware
 
-For this project I chose to use the MCP9808 Breakout Board from [[http://www.adafruit.com][Adafruit]] -- an excellent source for components, circuits, and ideas. I chose this unit for a few reasons:
+For this project I chose to use the MCP9808 Breakout Board from [[http://www.adafruit.com][Adafruit - an excellent online resource for electronics components, circuits, and ideas]]. I chose this unit for a few reasons:
 
-  1. It's controlled over [[https://en.wikipedia.org/wiki/I%C2%B2C][I²C]] -- Raspberry Pi's GPIO supports the require I²C bus over pins 3 (Serial Data Line, SDA) and 5 (Serial Clock Line, SCL)
+  1. It's controlled over I²C -- Raspberry Pi's GPIO supports the require I²C bus over pins 3 (Serial Data Line, SDA) and 5 (Serial Clock Line, SCL)
   2. It runs in the 2.7V to 5.5V power and logic range -- the Raspberry Pi provides power lines at 3.3V and 5V
   3. It was pretty cheap (< $5 USD) -- My soldering skills are not the best.
 
@@ -36,7 +36,7 @@ The MCP9808 Breakout Board ships from Adafruit mostly assembled. This particular
 #+NAME: MCP9808 Sensor
 [[../assets/blog/2014/12/01/raspberry-pi-temperature-sensor/mcp9808.png]]
 
-I used a [[http://www.canakit.com/raspberry-pi-cobbler-gpio-breakout.html][GPIO Breakout]] and a breadboard to connect the Raspberry Pi to the MCP9808; this approach is a bit easier to manage, correct wiring mistakes, and less permanent than soldering the sensor to the Raspberry Pi. To read temperatures from the MCP9808, only the power pin, ground, and the I²C SDA and SCL pins are required:
+I used a [[http://www.canakit.com/raspberry-pi-cobbler-gpio-breakout.html][Raspberry PI "Cobbler" GPIO Breakout from CanaKit]] and a breadboard to connect the Raspberry Pi to the MCP9808; this approach is a bit easier to manage, correct wiring mistakes, and less permanent than soldering the sensor to the Raspberry Pi. To read temperatures from the MCP9808, only the power pin, ground, and the I²C SDA and SCL pins are required:
 
 #+CAPTION: MCP9808 Wiring Diagram
 #+NAME: MCP9808  Wiring Diagram
@@ -55,7 +55,7 @@ The remaining, optional, pins are not used in this project. They provide workaro
 
 I knew that I wanted to back the project with a persistent datastore. This would allow me to capture data points and later analyze them for general trends, cross-reference heating/cooling patterns with weather events, etc.
 
-I chose InfluxDB because of its time centric query language and storage model. I installed Influx on an old Mac Mini (Early 2009 with OSX 10.10) I had sitting under my desk. Getting a basic installation of InfluxDB up and running is well [[http://influxdb.com/docs/v0.8/introduction/installation.html][documented]]; since I already use the [[http://brew.sh][Homebrew]] to manage most of my 3rd party dependencies and a formula for InfluxDB exists, installation was completed by issuing =brew install influxdb=.
+I chose InfluxDB because of its time centric query language and storage model. I installed Influx on an old Mac Mini (Early 2009 with OSX 10.10) I had sitting under my desk. Getting a basic installation of InfluxDB up and running is well documented; since I already use Homebrew to manage most of my 3rd party dependencies and a formula for InfluxDB exists, installation was completed by issuing =brew install influxdb=.
 
 ** Configure the InfluxDB database
 
@@ -99,7 +99,7 @@ sudo i2cdetect 1 # channel 1 is the default on the Raspberry Pi B+ model
 
 ** The Sensor Software
 
-Adafruit provides a [[https://github.com/adafruit/Adafruit_Python_MCP9808][MCP9808 wrapper]] and a [[https://github.com/adafruit/Adafruit_Python_GPIO/blob/master/Adafruit_GPIO/I2C.py][I²C abstraction]]. I made use of both of these in the main driver script for this project.
+Adafruit provides a [[https://github.com/adafruit/Adafruit_Python_MCP9808][Python driver for interacting with the MCP9808]] and a [[https://github.com/adafruit/Adafruit_Python_GPIO/blob/master/Adafruit_GPIO/I2C.py][Python source code for interacting with the I²C interface of the Raspberry Pi]]. I made use of both of these in the main driver script for this project.
 
 *** Install build dependencies
 
@@ -221,7 +221,7 @@ Adafruit provides a [[https://github.com/adafruit/Adafruit_Python_MCP9808][MCP98
 
    When a query is issued from the InfluxDB web console, the results are rendered in two formats. First, a graph of the data returned by the query is rendered; the X axis always represents time and Y axis the selected columns of the query. Second, InfluxDB renders a table of the datapoints matching the query and their timestamps.
 
-  #+CAPTION: Influx Query
+  #+CAPTION: Influx Query - Select temperature readings for the 24 hours
   #+NAME: Influx Query
   [[../assets/blog/2014/12/01/raspberry-pi-temperature-sensor/influxdb_query.png]]
 
@@ -229,9 +229,9 @@ Adafruit provides a [[https://github.com/adafruit/Adafruit_Python_MCP9808][MCP98
 
 ** Grafana
 
-   [[http://grafana.org][Grafana]] is a web applicaiton which provides metrics dashboards and graph editing. It can be configured, rather easily, to use InfluxDB as a metric source. It provides the ability to define queries against InfluxDB time series and plot the results, much like the InfluxDB web ui, but it also provides the ability to attach these graphs to dashboards and auto-refresh their content on a time interval.
+   Grafana is a web applicaiton which provides metrics dashboards and graph editing. It can be configured, rather easily, to use InfluxDB as a metric source. It provides the ability to define queries against InfluxDB time series and plot the results, much like the InfluxDB web ui, but it also provides the ability to attach these graphs to dashboards and auto-refresh their content on a time interval.
 
-   Grafana is written, mostly, in javascript. As such, it only needs a webserver to host it. I chose to run  [[http://nginx.org][Nginx]] on the Mac Mini as well. Nginx is fairly easy to install an configure on Mac OSX with homebrew:
+   Grafana is written, mostly, in javascript. As such, it only needs a webserver to host it. I chose to run the Nginx Webserver on the Mac Mini as well. Nginx is fairly easy to install an configure on Mac OSX with homebrew:
 
   1. Create a new InfluxDB called grafana to store dashboard configuration made through the UI
      - Create a grafana user in this database
@@ -242,7 +242,7 @@ Adafruit provides a [[https://github.com/adafruit/Adafruit_Python_MCP9808][MCP98
       ln -sfv /usr/local/opt/nginx/*.plist ~/Library/LaunchAgents
       launchctl load ~/Library/LaunchAgents/homebrew.mxcl.nginx.plist
     #+END_SRC
-  3. Download [[http://grafana.org/download/][grafana]] and untar/unzip the application source into Nginx's public directory
+  3. [[http://grafana.org/download/][Download the Grafana archive]] and uncompress the application source into Nginx's public directory
   4. Copy the default grafana configuration
     #+BEGIN_SRC sh
       cp config.sample.js config.js

@@ -10,7 +10,7 @@
 
 * Motivation
 
-"Daddy, you have to stop talking to me through the camera at night" is the phrase which immediately preceded the hurried unplugging and dismantling of the [[https://www.amazon.com/gp/product/B006ZP8UOW/ref%3Doh_aui_search_detailpage?ie%3DUTF8&psc%3D1][Foscam FI8910W]] in the children's room. For you see, I had never used the two-way audio functionality of the device. It's a hard pill to swallow, you're supposed to be their protector but you've potentially invited the faceless stranger into their bedroom. Such was my experience. We, like many parents looking to avoid an outrageously priced video baby monitor, purchased the Foscam IP night-vision camera to remotely keep an eye our child at night, and at nap time. We locked the thing down, allowing LAN connections to the video/audio stream. It's hard to say for sure if an outside party actually gained access to the Foscam device, but the question alone is enough to make any parent yank the device from the wall and put it in a sound and light proof hole in the ground. After all, security issues with these types of IP cameras and baby monitors have been [[https://krebsonsecurity.com/2014/01/bug-exposes-ip-cameras-baby-monitors/][known to occur]]. So what's a parent to do?
+"Daddy, you have to stop talking to me through the camera at night" is the phrase which immediately preceded the hurried unplugging and dismantling of the Foscam FI8910W in the children's room. For you see, I had never used the two-way audio functionality of the device. It's a hard pill to swallow, you're supposed to be their protector but you've potentially invited the faceless stranger into their bedroom. Such was my experience. We, like many parents looking to avoid an outrageously priced video baby monitor, purchased the Foscam IP night-vision camera to remotely keep an eye our child at night, and at nap time. We locked the thing down, allowing LAN connections to the video/audio stream. It's hard to say for sure if an outside party actually gained access to the Foscam device, but the question alone is enough to make any parent yank the device from the wall and put it in a sound and light proof hole in the ground. After all, [[https://krebsonsecurity.com/2014/01/bug-exposes-ip-cameras-baby-monitors/][security issues with IP cameras and WI-FI baby monitors]] are documented. So what's a parent to do?
 
 This is a project log detailing how I built a less-creepy baby monitor for about the cost of a cheap IP camera.
 
@@ -31,7 +31,7 @@ Linux raspberrypi 4.9.41-v7+ #1023 SMP Tue Aug 8 16:00:15 BST 2017 armv7l GNU/Li
 
 ** Connect the Pi Noir
 
-James Adams of the Raspberry Pi Foundation has a great [[https://www.youtube.com/embed/GImeVqHQzsE?rel%3D0][walkthrough]] of how to get up and running with the camera modules.
+[[https://www.youtube.com/embed/GImeVqHQzsE?rel=0][James Adams of the Raspberry Pi Foundation has a great walkthrough of how to get up and running with the camera modules]].
 
 ** Enable the Camera
 
@@ -134,4 +134,4 @@ Disable the capture and storage of still images and video from the camera.
 
 * Conclusion
 
-Now that everything's setup and configured you can access the video stream at =http://<your-raspberry-pi-host>:8081= via any device on the local network. At about the same monetary and time commitment, this project provides more granular control, transparent security and privacy controls, and a clearer path to software/firmware updates than any Foscam solution - and 100% less baked in [[https://krebsonsecurity.com/2016/02/this-is-why-people-fear-the-internet-of-things/][3rd party eavesdropping]].
+Now that everything's setup and configured you can access the video stream at =http://<your-raspberry-pi-host>:8081= via any device on the local network. At about the same monetary and time commitment, this project provides more granular control, transparent security and privacy controls, and a clearer path to software/firmware updates than any Foscam solution - and 100% less baked in 3rd party eavesdropping.

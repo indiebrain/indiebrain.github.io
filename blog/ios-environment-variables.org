@@ -146,4 +146,4 @@ And when using the Production mode, with the Release build configuration, the lo
   MyAppIOS[12351:60b] Using http://www.myapp.com as the API Base URL
 #+END_SRC
 
-[[http://www.github.com/indiebrain/ios-environment-variables-example][Code Example Source]]
+[[http://www.github.com/indiebrain/ios-environment-variables-example][Example Application Source Code]]
