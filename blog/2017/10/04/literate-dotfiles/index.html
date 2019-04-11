@@ -15,7 +15,6 @@
 
   <body>
     <a href="#main">skip to main content</a>
-    <main id="main">
 <header class="masthead navigation">
   <div class="navigation-wrapper">
     <h1 class="masthead-title"><a href="/">Aaron Kuehler</a></h1>
@@ -31,13 +30,14 @@
   </div>
 </header>
 
+    <main id="main">
 <div>
 <div class="post">
 <h1>Literate Dotfiles</h1>
 
-<div id="outline-container-org81b1fef" class="outline-2">
-<h2 id="org81b1fef">Motivation</h2>
-<div class="outline-text-2" id="text-org81b1fef">
+<div id="outline-container-org54b11b9" class="outline-2">
+<h2 id="org54b11b9">Motivation</h2>
+<div class="outline-text-2" id="text-org54b11b9">
 <blockquote>
 <p>
 Let us change our traditional attitude to the construction of programs: Instead of imagining that our main task is to instruct a computer what to do, let us concentrate rather on explaining to human beings what we want a computer to do.
@@ -54,9 +54,9 @@ Early on, I treated these configuration files as write-only repositories of code
 </div>
 </div>
 
-<div id="outline-container-org6dfcf5a" class="outline-2">
-<h2 id="org6dfcf5a">A step toward literacy</h2>
-<div class="outline-text-2" id="text-org6dfcf5a">
+<div id="outline-container-org2863b6b" class="outline-2">
+<h2 id="org2863b6b">A step toward literacy</h2>
+<div class="outline-text-2" id="text-org2863b6b">
 <p>
 What if, with a little reorganization, we could document intent, in a human readable format, and provide executable examples from which our actualy-on-disk dotfiles could be generated?
 </p>
@@ -67,9 +67,9 @@ Enter Emacs' Babel package; a sub-system of <a href="http://orgmode.org/">Emacs 
 </div>
 </div>
 
-<div id="outline-container-org9543e8b" class="outline-2">
-<h2 id="org9543e8b">Making the move</h2>
-<div class="outline-text-2" id="text-org9543e8b">
+<div id="outline-container-org580614f" class="outline-2">
+<h2 id="org580614f">Making the move</h2>
+<div class="outline-text-2" id="text-org580614f">
 <p>
 Organizing a scattered collection of dotfiles configuration into a literate document and generating/tangling the code examples into usable configuration can be described as follows:
 </p>
@@ -83,9 +83,9 @@ Organizing a scattered collection of dotfiles configuration into a literate docu
 </div>
 </div>
 
-<div id="outline-container-org0d6feac" class="outline-2">
-<h2 id="org0d6feac">Conclusion</h2>
-<div class="outline-text-2" id="text-org0d6feac">
+<div id="outline-container-orgfbc93b5" class="outline-2">
+<h2 id="orgfbc93b5">Conclusion</h2>
+<div class="outline-text-2" id="text-orgfbc93b5">
 <p>
 I've used this literate approach to generate my <a href="https://github.com/indiebrain/.files/blob/master/configuration.org">personal dot-files</a> and <a href="https://github.com/indiebrain/.emacs.d/blob/1917b9e37f67299a559286df0a95746198243eb0/configuration.org">Emacs configuration</a> for a few months. I find it to be much easier to manage and reason about and maintain confidently. Though I wouldn't recommend Literate Programming for every task, I find that "prose first development" works great for clarifying the scope and intent of a task when modifying system configuration.
 </p>

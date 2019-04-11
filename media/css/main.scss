@@ -29,6 +29,17 @@
 body {
   background-color: $base-background-color;
   color: $dark-gray;
+  width: 100%;
+  max-width: 60rem;
+  margin: auto;
+
+  * + * {
+    margin-top: 1.5rem;
+  }
+
+  * + *:not(p) {
+    margin: 3rem 0;
+  }
 }
 
 blockquote {
@@ -52,18 +63,6 @@ html {
   html {
     font-size: 150%
   }
-}
-
-main {
-  * + * {
-    margin-top: 1.5rem;
-  }
-
-  * + *:not(p) {
-    margin: 3rem 0;
-  }
-  max-width: 60rem;
-  margin: auto;
 }
 
 li, dt, dd, br, th, td {
