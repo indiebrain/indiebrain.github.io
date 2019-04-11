@@ -224,7 +224,14 @@ hr {
 
 body {
   background-color: #f0f0f0;
-  color: #2a2a2a; }
+  color: #2a2a2a;
+  width: 100%;
+  max-width: 60rem;
+  margin: auto; }
+  body * + * {
+    margin-top: 1.5rem; }
+  body * + *:not(p) {
+    margin: 3rem 0; }
 
 blockquote {
   border-left: 0.5rem solid #406098;
@@ -249,14 +256,6 @@ html {
 @media (min-width: 120em) {
   html {
     font-size: 150%; } }
-main {
-  max-width: 60rem;
-  margin: auto; }
-  main * + * {
-    margin-top: 1.5rem; }
-  main * + *:not(p) {
-    margin: 3rem 0; }
-
 li, dt, dd, br, th, td {
   margin-top: 0; }
 
