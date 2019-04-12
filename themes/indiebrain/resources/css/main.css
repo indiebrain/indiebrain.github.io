@@ -225,9 +225,9 @@ hr {
 body {
   background-color: #f0f0f0;
   color: #2a2a2a;
-  width: 100%;
   max-width: 60rem;
-  margin: auto; }
+  margin: auto;
+  padding: 0 0.25rem; }
   body * + * {
     margin-top: 1.5rem; }
   body * + *:not(p) {
@@ -293,6 +293,14 @@ a:focus {
   border-bottom: 3px dashed #545454;
   padding-bottom: 1em;
   margin-bottom: 1em; }
+
+.visually-hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip: rect(1px, 1px, 1px, 1px);
+  white-space: nowrap; }
 
 pre.prettyprinted {
   overflow: auto;
