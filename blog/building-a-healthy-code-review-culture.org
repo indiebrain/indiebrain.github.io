@@ -1,0 +1,134 @@
+#+TITLE:       Building a Healthy Code Review Culture
+#+AUTHOR:      Aaron Kuehler
+#+DATE:        <2019-05-09 Thu>
+#+URI:         /blog/%y/%m/%d/building-a-healthy-code-review-culture
+#+KEYWORDS:    software development, team building
+#+TAGS:        software, team building
+#+LANGUAGE:    en
+#+OPTIONS:     H:3 num:nil toc:nil \n:nil ::t |:t ^:nil -:nil f:t *:t <:t
+#+DESCRIPTION: An approach to building a healthy Code Review Culture on software teams
+
+* Motivation
+
+I thrive on critical feedback. Be it from automated tests as I drive the interfaces and interactions of code I'm writing or perspective, advice, and coaching from coworkers. Code Review is an opportunity for members of development teams to exercise their "meat-machine compute cycles" to provide critical feedback during the evolution of projects. In a few instances I've come to work on teams which incorporate conversation about code into their practice, but struggle to extract what I see as the "real value" (outlined below) of Code Review. The following is a set of musings I use to help frame how teams might better understand the "why" of, and more effectively use the practice of Code Review. This is not a prescription, but rather a set of guardrails and considerations teams /might/ employ to encourage a constructive, elevating atmosphere of honest discussion about the work we do.
+
+These are by no means original ideas, but rather an amalgam and distillation of many cited sources I've found useful in evolving my understanding and employment of the practice.
+
+* Why do we do Code Reviews?
+
+   Code Review is the discipline of discussing code with peers. It is a popular belief that the focus of Code Reviews should be to uncover defects. It is true that certain classes of defects can be uncovered during the Code Review process, but [[https://www.microsoft.com/en-us/research/wp-content/uploads/2016/02/ICSE202013-codereview.pdf][Microsoft's "Expectations, Outcomes, and Challenges Of Modern Code Review" research]] shows that we overestimate our ability to discover these errors in Code Review. The research concludes that Code Reviews are more likely to improve a team's ability to find alternate solutions, increase collective ownership of code, promote team awareness and cohesion, and facilitate knowledge and experience sharing.
+
+   In short, the practice of Code Review makes us better members of our team through increased engagement, collaboration, and communication.
+
+* How do we do Code Reviews?
+
+   We practice asynchronous, informal Code Reviews; we prefer to conduct Code Reviews as soon, or as close to as soon, as a changeset is ready to be reviewed. We /do not/ conduct regularly scheduled, hours-long, all-developers meetings to review a queue of changesets. Code Reviews are generally conducted by a small group of active participants; usually the author and a single reviewer.
+
+   Why do we do this? In a word, efficiency. In practice, we find, the author and reviewer are well able to identify and discuss issues in a changeset. Smaller review groups tend to remain focused on maintaining the quality of the discussion while driving a changeset to production-readiness. However, there are times when additional points-of-view might add to the conversation and we should be free to seek the input of our peers. This is a useful mechanism to resolve a long-running discussion if the author and reviewer are not able to reach agreement -- we find this to be the exception, not the rule.
+
+* General tips for discussing code
+
+  - Assume that everyone has the best intentions. Use the most charitable reading of any received message.
+  - When faced with a conflicting set of ideas [[https://lifehacker.com/utilize-the-steel-man-tactic-to-argue-more-effectivel-1632402742][Steel Man/Person]] the other's arguments: understand the strongest possible version of the argument and see if there's still room between your arguments for a more in depth discussion.
+  - Accept that many programming decisions are opinions. Discuss tradeoffs, which you prefer and why, and reach a resolution quickly.
+  - Ask questions; don't make demands. ("What do you think about naming this `:user_id`?")
+  - Ask for clarification. ("I didn't understand. Can you clarify?")
+  - Avoid selective ownership of code. ("mine", "not mine", "yours")
+  - Avoid using terms that could be seen as referring to personal traits. ("dumb", "stupid"). Assume everyone is attractive, intelligent, and well-meaning.
+  - Be explicit. Remember people don't always understand your intentions online.
+  - Be humble. ("I'm not sure. Let's look it up.")
+  - Don't use hyperbole. ("always", "never", "endlessly", "nothing")
+  - Don't use sarcasm.
+  - Keep it real. If emoji, animated GIFs, or humor aren't you, don't force them. If they are, deploy them with aplomb.
+  - Talk synchronously (e.g. chat, screen sharing, in person) if there are too many "I didn't understand" or "Alternative solution:" comments. Post a follow-up comment summarizing the discussion.
+  - Most importantly, don't forget to give praise and thanks.
+
+*** Commit and Pull request messages
+
+   #+BEGIN_QUOTE
+   Pull Requests are temporally relevant, but commits are forever
+   #+END_QUOTE
+
+   We use the following form when creating commits and/or pull request to record our motivation and intent for creating a changeset; heavily influenced by [[https://chris.beams.io/posts/git-commit/][Chris Beams' article "How to Write a Git Commit Message"]]. We do this to raise awareness to our teammates about what in the system is changing and why. Additionally, we create these artifacts to capture as much of this context as we can for archaeological purposes; we want to be kind and helpful to our teammates and future-selves. Below is a template we use to capture and convey relevant information.
+
+   #+BEGIN_SRC markdown
+     Summary
+     ---------------
+
+     This should clearly and concisely convey the changeset's reason for
+     being. Use a paragraph or two to explain the business need, technical
+     issue, etc. that the changeset intends to fix. This gives the reviewer
+     a quick way to gain the requisite context needed to understand the
+     change.
+
+     This section could be used to provide any additional context the
+     author feels might be relevant to the reviewer to better understand
+     the changes. Examples might include links to articles which inspired
+     design decisions, notes on alternate solutions, or approaches that
+     didn't work out and why. This allows the author to bridge context gaps
+     and anticipate the obvious questions a reviewer might ask.
+
+     In addition, this provides a section for the author to call attention
+     to a particular section of the changeset they'd like to be thoroughly
+     criticized.
+
+     References
+     ----------
+
+     Lead with a hypertext link to the discussion from where this changeset
+     originated; could be a JIRA ticket, Pivotal Story, Github Issues
+     ticket, etc. The goal is to provide a connection to the originating
+     idea for the changeset, discussion, and any relevant context
+     therein. This is important for archaeological reasons as we aim to
+     provide insight into the state-of-mind of the organization, business
+     considerations, alternate approaches which were considered, etc when
+     the problem or feature was first identified.
+
+     Include hypertext links to topical articles, influencing white-papers
+     and academic discussions, contributing computational concepts, etc. to
+     help the reviewer understand the frame of reference from which the
+     changeset is wrought.
+   #+END_SRC
+
+* Receiving critical feedback
+
+  - Be grateful for the reviewer's suggestions. ("Good call. I'll make that change.")
+  - Don't take it personally. The review is of the code, not you.
+  - Explain why the code exists. ("It's like that because of these reasons. Would it be more clear if I rename this class/file/method/variable?")
+  - Extract some changes and refactorings into future tickets/stories.
+  - Link to the Code Review from the ticket/story, or use a bot which does this for you.
+  - Push commits based on earlier rounds of feedback as isolated commits to the branch. Do not alter history until the branch is ready to merge. Reviewers should be able to read individual updates based on their earlier feedback.
+  - Seek to understand the reviewer's perspective.
+  - Try to respond to every piece of feedback.
+  - Wait to merge the branch until Continuous Integration (TDDium, TravisCI, Jenkins, etc.) tells you the test suite is green in the branch.
+  - Merge once you feel confident in the code and its impact on the project.
+
+* Providing critical feedback
+
+  Code Review is complete when parties agree that the changeset is "good enough to ship". Perfect solutions never ship; all decisions are tradeoffs. We are professionals. We use our best judgment to determine if a changeset is publishable as swiftly as possible.
+
+  The following is an in-exhaustive list of topics a reviewer could consider during a review. These will probably require much of their reviewing effort:
+
+  - *Readability*: Do you believe that any team member could understand how the changeset accomplishes the goal in a reasonable amount of time? Is there perhaps a more clear way of expressing all or parts of the solution? Are example, object, and method names intention revealing and expressive?
+  - *Maintainability*: Are the appropriate concepts and abstractions present? Are the appropriate uses of method and object composition being applied to increase flexibility?
+  - *Testability*: Are the components of the changeset sufficiently covered by automated tests? Are the tests exercising the pieces which are likely to break? Do the tests document the behavior of the system? Are the tests immediately understandable to a reader with limited understanding of the changeset?
+  - *Supportability*: Is the solution robust in the face of likely failure? When the change-set breaks in production, how does it break? How does do we know when it's broken or under-performing? How do we measure the impact of the change to the business?
+
+
+  Some notes on code style and style guide violations. Call out style guide violations as you see them, but don't spend too much time seeking them out. Rely on the automated style checkers to catch these types of issues; your human brain is more apt to deal with nuanced aspects of review. In the event conflict over style is raised which is not addressed by the style guide create an issue in the guide repository to deal with the issue, follow the style guide as closely as possible or defer judgment to the author of the changeset, and move on with the Code Review.
+
+  A few additional things to keep in mind. Understand why the change is necessary (fixes a bug, improves the user experience, refactors the existing code). Then:
+
+  - Communicate which ideas you feel strongly about and those you don't.
+  - Identify ways to simplify the code while still solving the problem.
+  - If discussions turn too philosophical or academic, move the discussion out-of-band. In the meantime, let the author make the final decision on alternative implementations.
+  - Offer alternative implementations, but assume the author already considered them. ("What do you think about using a custom validation here?")
+  - Seek to understand the author's perspective.
+
+* Additional Resources
+
+  - [[https://www.microsoft.com/en-us/research/wp-content/uploads/2016/02/ICSE202013-codereview.pdf][Expectations, outcomes, and challenges of modern code review]]
+  - [[https://www.youtube.com/watch?v=PJjmw9TRB7s][Implementing a strong code-review culture by Derek Prior Rails Conf 2015]]
+  - [[https://github.com/thoughtbot/guides/tree/master/code-review][Thoughtbot code review guide]]
+  - [[https://devchat.tv/ruby-rogues/216-rr-code-review-culture-with-derek-prior][Ruby Rogues Podcast 216 - Code Review Culture]]
+  - [[https://chris.beams.io/posts/git-commit/][How to Write a Git Commit Message]]
