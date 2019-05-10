@@ -1,0 +1,317 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Building a Healthy Code Review Culture - Aaron Kuehler</title>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="author" content="Aaron Kuehler" />
+    <meta name="description" content="An approach to building a healthy Code Review Culture on software teams" />
+    <meta name="keywords" content="software development, team building" />
+    <link rel="stylesheet" href="/media/css/main.css" type="text/css" media="none" onload="if(media!='all')media='all'">
+    <noscript><link rel="stylesheet" href="/media/css/main.css" type="text/css"></noscript>
+    <link rel="stylesheet" href="/media/css/prettify.css" type="text/css" media="none" onload="if(media!='all')media='all'">
+    <noscript><link rel="stylesheet" href="/media/css/prettify.css" type="text/css"></noscript>
+  </head>
+
+  <body>
+    <a href="#main">skip to main content</a>
+<header role="banner" class="masthead navigation">
+  <div class="navigation-wrapper">
+    <h1>Aaron Kuehler</h1>
+    <p><span class="visually-hidden">Subtitle: </span>80% Scientist, 20% Artist. Theorist and Practitioner.</p>
+    <nav role="navigation" aria-label="contents">
+      <ul class="navigation-menu show">
+        <li><a href="/">Home</a></li>
+          <li class="nav-link"><a href="/blog/">Blog</a></li>
+        <li><a href="/tags/">Tags</a></li>
+        <li><a href="https://github.com/indiebrain">GitHub</a></li>
+        <li><a href="/rss.xml">RSS</a></li>
+      </ul>
+    </nav>
+  </div>
+</header>
+
+    <main id="main">
+<div>
+<div class="post">
+<h1>Building a Healthy Code Review Culture</h1>
+
+<div id="outline-container-orgd25dc6d" class="outline-2">
+<h2 id="orgd25dc6d">Motivation</h2>
+<div class="outline-text-2" id="text-orgd25dc6d">
+<p>
+I thrive on critical feedback. Be it from automated tests as I drive the interfaces and interactions of code I'm writing or perspective, advice, and coaching from coworkers. Code Review is an opportunity for members of development teams to exercise their "meat-machine compute cycles" to provide critical feedback during the evolution of projects. In recent years, I've come to work on teams which incorporate conversation about code into their practice, but struggle to extract - to my eye - the real value of code review. The below section is a document I use to help frame how my teams might better understand the "why" of, and  more effectively use the practice of Code Review. The document also touches on the importance of History Hygiene in an effort to elevate VCS history and Code Review as oft-missed avenues of communication on teams - distributed or otherwise.
+</p>
+
+<p>
+These are by no means original ideas, but rather an amalgam and condensation of many cited sources I've found useful in evolving my understanding of the practice throughout the years.
+</p>
+</div>
+</div>
+
+<div id="outline-container-org69c26a1" class="outline-2">
+<h2 id="org69c26a1">An Approach to Building a Healthy Code Review Culture</h2>
+<div class="outline-text-2" id="text-org69c26a1">
+</div>
+<div id="outline-container-org397c331" class="outline-3">
+<h3 id="org397c331">Why do we do code reviews?</h3>
+<div class="outline-text-3" id="text-org397c331">
+<p>
+Code Review is the discipline of discussing code with peers. It is a popular belief that the focus of code reviews should be to uncover defects. While it is true that a subset of classes of defects can be uncovered during the code review process, <a href="https://www.microsoft.com/en-us/research/wp-content/uploads/2016/02/ICSE202013-codereview.pdf">Microsoft's "Expectations, Outcomes, and Challenges Of Modern Code Review" research</a> shows that we overestimate the ability of code review to uncover defects. However, the research concludes that code reviews are more likely to improve a team's ability to find alternate solutions, increase collective ownership of code, promote team awareness and cohesion, and facilitate knowledge and experience sharing.
+</p>
+
+<p>
+In short, the practice of code review makes us better members of our team through increased engagement, collaboration, and communication.
+</p>
+</div>
+</div>
+
+<div id="outline-container-orge38d194" class="outline-3">
+<h3 id="orge38d194">How do we do code reviews?</h3>
+<div class="outline-text-3" id="text-orge38d194">
+<p>
+We practice asynchronous, informal code reviews; we prefer to conduct code reviews as soon, or as close to as soon, as a changeset is ready to be reviewed. We <i>do not</i> conduct regularly scheduled, hours-long, all-developers meetings to review a queue of changesets. Code reviews are generally conducted by a small group of active participants; usually the author and a single reviewer.
+</p>
+
+<p>
+Why do we do this? In a word, efficiency. In practice, we find, the author and reviewer are well able to identify and discuss issues in a changeset. Smaller review groups tend to remain focused on maintaining the quality of the discussion while driving a changeset to production-readiness. However, there are times when additional points-of-view might add to the conversation and we should be free to seek the input of our peers. This is a useful mechanism to resolve a long-running discussion if the author and reviewer are not able to reach agreement -- we find this to be the exception, not the rule.
+</p>
+</div>
+</div>
+
+<div id="outline-container-orge3f5dd3" class="outline-3">
+<h3 id="orge3f5dd3">General tips for discussing code</h3>
+<div class="outline-text-3" id="text-orge3f5dd3">
+<ul class="org-ul">
+<li>Accept that many programming decisions are opinions. Discuss tradeoffs, which you prefer and why, and reach a resolution quickly.</li>
+<li>Ask questions; don't make demands. ("What do you think about naming this `:user_id`?")</li>
+<li>Ask for clarification. ("I didn't understand. Can you clarify?")</li>
+<li>Avoid selective ownership of code. ("mine", "not mine", "yours")</li>
+<li>Avoid using terms that could be seen as referring to personal traits. ("dumb", "stupid"). Assume everyone is attractive, intelligent, and well-meaning.</li>
+<li>Be explicit. Remember people don't always understand your intentions online.</li>
+<li>Be humble. ("I'm not sure - let's look it up.")</li>
+<li>Don't use hyperbole. ("always", "never", "endlessly", "nothing")</li>
+<li>Don't use sarcasm.</li>
+<li>Keep it real. If emoji, animated gifs, or humor aren't you, don't force them. If they are, use them with aplomb.</li>
+<li>Talk synchronously (e.g. chat, screensharing, in person) if there are too many "I didn't understand" or "Alternative solution:" comments. Post a follow-up comment summarizing the discussion.</li>
+</ul>
+</div>
+
+<div id="outline-container-org04681dd" class="outline-4">
+<h4 id="org04681dd">Commit and Pull request messages</h4>
+<div class="outline-text-4" id="text-org04681dd">
+<blockquote>
+<p>
+Pull Requests are temporally relevant, but commits are forever
+</p>
+</blockquote>
+
+<p>
+We use the following form when creating commits and/or pull request to record our motivation and intent for creating a changeset - heavily influenced by <a href="https://chris.beams.io/posts/git-commit/">Chris Beams' article "How to Write a Git Commit Message"</a>. We do this to raise awareness to our teammates about what in the system is changing and why. Additionally, we create these artifacts to capture as much of this context as we can for archaeological purposes; we want to be kind and helpful to our teammates and future-selves. Below is a template we use to capture and convey relevant information.
+</p>
+
+<div class="org-src-container">
+<pre class="src src-markdown">Summary
+---------------
+
+This should clearly and concisely convey the changeset's reason for
+being. Use a paragraph or two to explain the business need, technical
+issue, etc. that the changeset intends to fix. This gives the reviewer
+a quick way to gain the requisite context needed to understand the
+change.
+
+This section could be used to provide any additional context the
+author feels might be relevant to the reviewer to better understand
+the changes. Examples might include links to articles which inspired
+design decisions, notes on alternate solutions, or approaches that
+didn't work out and why. This allows the author to bridge context gaps
+and anticipate the obvious questions a reviewer might ask.
+
+In addition, this provides a section for the author to call attention
+to a particular section of the changeset they'd like to be thoroughly
+criticized.
+
+References
+----------
+
+Lead with a hypertext link to the discussion from where this changeset
+originated; could be a JIRA ticket, Pivotal Story, Github Issues
+ticket, etc. The goal is to provide a connection to the originating
+idea for the changeset, discussion, and any relevant context
+therein. This is important for archaeological reasons as we aim to
+provide insight into the state-of-mind of the organization, business
+considerations, alternate approaches which were considered, etc when
+the problem or feature was first identified.
+
+Include hypertext links to topical articles, influencing white-papers
+and academic discussions, contributing computational concepts, etc. to
+help the reviewer understand the frame of reference from which the
+changeset is wrought.
+
+Verification Instance
+---------------------
+
+A hypertext link to the review instance of the application where this
+changeset is deploy and ready for others to interact with before it is
+pulled into master. Local instances are also sometimes acceptable.
+
+Verification Steps
+------------------
+
+An enumerated list of instructions a functional reviewer could use to
+verify that the changeset does indeed address the intent described in
+the Problem Summary section.
+
+Reviewers might find it helpful if the author provide detailed steps
+to verify the changeset. For example:
+
+1. Visit &lt;url&gt;
+2. Click on &lt;link name&gt;
+3. Fill in &lt;field name&gt; with &lt;an explanation of the expected values&gt;
+4. Verify that the page &lt;expected outcome&gt;
+</pre>
+</div>
+</div>
+</div>
+</div>
+
+<div id="outline-container-orga3e952c" class="outline-3">
+<h3 id="orga3e952c">Receiving critical feedback</h3>
+<div class="outline-text-3" id="text-orga3e952c">
+<ul class="org-ul">
+<li>Be grateful for the reviewer's suggestions. ("Good call. I'll make that change.")</li>
+<li>Don't take it personally. The review is of the code, not you.</li>
+<li>Explain why the code exists. ("It's like that because of these reasons. Would it be more clear if I rename this class/file/method/variable?")</li>
+<li>Extract some changes and refactorings into future tickets/stories.</li>
+<li>Link to the code review from the ticket/story (or use a bot which does this for you!). ("Ready for review: <code>https://github.com/organization/project/pull/1</code>")</li>
+<li>Push commits based on earlier rounds of feedback as isolated commits to the branch. Do not alter history until the branch is ready to merge. Reviewers should be able to read individual updates based on their earlier feedback.</li>
+<li>Seek to understand the reviewer's perspective.</li>
+<li>Try to respond to every comment.</li>
+<li>Wait to merge the branch until Continuous Integration (TDDium, TravisCI, Jenkins, etc.) tells you the test suite is green in the branch.</li>
+<li>Merge once you feel confident in the code and its impact on the project.</li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-org79e86bf" class="outline-3">
+<h3 id="org79e86bf">Providing critical feedback</h3>
+<div class="outline-text-3" id="text-org79e86bf">
+<p>
+Code review is complete when parties agree that the changeset is "good enough to ship". Perfect solutions never ship; all decisions are tradeoffs. We are professionals. We use our best judgment to determine if a changeset is publishable as swiftly as possible.
+</p>
+
+<p>
+Call out style guide violations as you see them, but don't spend too much time seeking them out. Rely on the automated style checkers to catch these types of issues; your human brain is more apt to deal with nuanced aspects of review. In the event conflict over style is raised which is not addressed by the style guide create an issue in the guide repository to deal with the issue, follow the style guide a closely as possible or defer judgment to the author of the changeset, and move on with the code review.
+</p>
+
+<p>
+The following is an in-exhaustive list of topics a reviewer could consider during a review. These will probably require much of their reviewing effort:
+</p>
+
+<ul class="org-ul">
+<li><b>Readability</b>: Do you believe that any team member could understand how the changeset accomplishes the goal in a reasonable amount of time? Is there perhaps a more clear way of expressing all or parts of the solution? Are example, object, and method names intention revealing and expressive?</li>
+<li><b>Maintainability</b>: Are the appropriate concepts and abstractions present? Are the appropriate uses of method and object composition being applied to increase flexibility?</li>
+<li><b>Testability</b>: Are the components of the changeset sufficiently covered by automated tests? Are the tests exercising the pieces which are likely to break? Do the tests document the behavior of the system? Are the tests immediately understandable to a reader with limited understanding of the changeset?</li>
+<li><b>Supportability</b>: Is the solution robust in the face of likely failure? When the change-set breaks in production, how does it break? How does do we know when it's broken or under-performing? How do we measure the impact of the change to the business?</li>
+</ul>
+</div>
+
+<div id="outline-container-org74a0cad" class="outline-4">
+<h4 id="org74a0cad">Tips</h4>
+<div class="outline-text-4" id="text-org74a0cad">
+<p>
+Understand why the change is necessary (fixes a bug, improves the user experience, refactors the existing code). Then:
+</p>
+
+<ul class="org-ul">
+<li>Communicate which ideas you feel strongly about and those you don't.</li>
+<li>Identify ways to simplify the code while still solving the problem.</li>
+<li>If discussions turn too philosophical or academic, move the discussion offline to a regular Friday afternoon technique discussion. In the meantime, let the author make the final decision on alternative implementations.</li>
+<li>Offer alternative implementations, but assume the author already considered them. ("What do you think about using a custom validator here?")</li>
+<li>Seek to understand the author's perspective.</li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-org27adcf2" class="outline-4">
+<h4 id="org27adcf2">Style Comments</h4>
+<div class="outline-text-4" id="text-org27adcf2">
+<p>
+Reviewers should comment on missed guidelines and provide a link to the style guideline in question.
+</p>
+
+<p>
+If you disagree with a guideline, open an issue on the guides repository rather than debating it within the code review. In the meantime, apply the guideline.
+</p>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org4fb185e" class="outline-3">
+<h3 id="org4fb185e">Additional Resources</h3>
+<div class="outline-text-3" id="text-org4fb185e">
+<ul class="org-ul">
+<li><a href="https://www.microsoft.com/en-us/research/wp-content/uploads/2016/02/ICSE202013-codereview.pdf">Expectations, outcomes, and challenges of modern code review</a></li>
+<li><a href="https://www.youtube.com/watch?v=PJjmw9TRB7s">Implementing a strong code-review culture by Derek Prior Rails Conf 2015</a></li>
+<li><a href="https://github.com/thoughtbot/guides/tree/master/code-review">Thoughtbot code review guide</a></li>
+<li><a href="https://devchat.tv/ruby-rogues/216-rr-code-review-culture-with-derek-prior">Ruby Rogues Podcast 216 - Code Review Culture</a></li>
+<li><a href="https://chris.beams.io/posts/git-commit/">How to Write a Git Commit Message</a></li>
+</ul>
+</div>
+</div>
+</div>
+
+</div>
+</div>
+    <div>
+      <div class="post-meta">
+        <div class="post-publication-info">
+          <span title="post date" class="post-info">2015-05-14</span>
+          <span title="author" class="post-info">Aaron Kuehler</span>
+        </div>
+        <div class="post-tags">
+          <span title="tags" class="post-info"><a href="/tags/software/">software</a>, <a href="/tags/team-building/">team building</a></span>
+        </div>
+      </div>
+      <section>
+        <h1>Comments</h1>
+        <div id="disqus_thread"></div>
+        <script type="text/javascript">
+          //var disqus_developer = 1;
+          var disqus_identifier = "/blog/2015/05/14/building-a-healthy-code-review-culture";
+          var disqus_url = "https://aaronkuehler.com/blog/2015/05/14/building-a-healthy-code-review-culture";
+          var disqus_shortname = 'aaronkuehler-com';
+          /* * * DON'T EDIT BELOW THIS LINE * * */
+          (function() {
+          var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+          dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+          (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+          })();
+        </script>
+        <noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+        <a href="//disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+      </section>
+      <script src="//code.jquery.com/jquery-latest.min.js"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/prettify/r298/prettify.js"></script>
+      <script src="/media/js/main.js"></script>
+      <script type="text/javascript">
+        var _gaq = _gaq || [];
+        _gaq.push(['_setAccount', 'UA-113071078-1']);
+        _gaq.push(['_trackPageview']);
+        (function() {
+        var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+        ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+        var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+        })();
+      </script>
+      <div class="footer">
+        <p>
+          Copyright &copy; 2012 - <span id="footerYear"></span> Aaron Kuehler
+          <script type="text/javascript">document.getElementById("footerYear").innerHTML = (new Date()).getFullYear();</script>
+        </p>
+      </div>
+    </div>
+
+    </main>
+  </body>
+</html>
