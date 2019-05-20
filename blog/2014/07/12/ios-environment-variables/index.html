@@ -72,15 +72,15 @@ It is the responsibility of the <code>[[Environment sharedInstance] fetch:@"MyAp
 As it turns out, implementing this behavior is not at all complicated:
 </p>
 
-<div id="outline-container-org33dbc69" class="outline-2">
-<h2 id="org33dbc69">Capture the build configuration used to build the Application bundle</h2>
-<div class="outline-text-2" id="text-org33dbc69">
+<div id="outline-container-orga153150" class="outline-2">
+<h2 id="orga153150">Capture the build configuration used to build the Application bundle</h2>
+<div class="outline-text-2" id="text-orga153150">
 <ul class="org-ul">
 <li>Add a new String value to the <code>&lt;application_name&gt;-Info.plist</code> to capture the name of the Build Configuration (environment name) used to create the application bundle at build time:</li>
 </ul>
 
 
-<div id="org185481c" class="figure">
+<div id="orgafa5780" class="figure">
 <p><img src="/assets/blog/2014/07/12/ios-environment-variables/application-info.plist.png" alt="application-info.plist.png" />
 </p>
 <p><span class="figure-number">Figure 1: </span>application-info.plist</p>
@@ -88,9 +88,9 @@ As it turns out, implementing this behavior is not at all complicated:
 </div>
 </div>
 
-<div id="outline-container-org2c5ad95" class="outline-2">
-<h2 id="org2c5ad95">Configure the Environments</h2>
-<div class="outline-text-2" id="text-org2c5ad95">
+<div id="outline-container-orgd9f8876" class="outline-2">
+<h2 id="orgd9f8876">Configure the Environments</h2>
+<div class="outline-text-2" id="text-orgd9f8876">
 <ul class="org-ul">
 <li>Add an <code>Environments.plist</code> to the application. This serves as the centralized listing of environment specific configuration values for each environment the application supports.</li>
 
@@ -100,7 +100,7 @@ As it turns out, implementing this behavior is not at all complicated:
 </ul>
 
 
-<div id="org3a277b5" class="figure">
+<div id="org4de39f2" class="figure">
 <p><img src="/assets/blog/2014/07/12/ios-environment-variables/environments.plist.png" alt="environments.plist.png" />
 </p>
 <p><span class="figure-number">Figure 2: </span>environments.plist</p>
@@ -108,9 +108,9 @@ As it turns out, implementing this behavior is not at all complicated:
 </div>
 </div>
 
-<div id="outline-container-org468de5e" class="outline-2">
-<h2 id="org468de5e">Define the <code>Environment</code> object:</h2>
-<div class="outline-text-2" id="text-org468de5e">
+<div id="outline-container-org71b5065" class="outline-2">
+<h2 id="org71b5065">Define the <code>Environment</code> object:</h2>
+<div class="outline-text-2" id="text-org71b5065">
 <div class="org-src-container">
 <pre class="src src-objc">// Environment.h
 @interface Environment : NSObject
@@ -182,9 +182,9 @@ static Environment *sharedInstance = nil;
 </div>
 </div>
 
-<div id="outline-container-org2497cc5" class="outline-2">
-<h2 id="org2497cc5">Example</h2>
-<div class="outline-text-2" id="text-org2497cc5">
+<div id="outline-container-org9fd2451" class="outline-2">
+<h2 id="org9fd2451">Example</h2>
+<div class="outline-text-2" id="text-org9fd2451">
 <p>
 With the above code in place we can run the application to make sure everything's wired up correctly. In my example, I've added the following logger statement to the application's launch lifecycle;
 </p>
@@ -235,37 +235,9 @@ And when using the Production mode, with the Release build configuration, the lo
           <span title="tags" class="post-info"><a href="/tags/ios/">ios</a>, <a href="/tags/software/">software</a></span>
         </div>
       </div>
-      <section>
-        <h1>Comments</h1>
-        <div id="disqus_thread"></div>
-        <script type="text/javascript">
-          //var disqus_developer = 1;
-          var disqus_identifier = "/blog/2014/07/12/ios-environment-variables";
-          var disqus_url = "https://aaronkuehler.com/blog/2014/07/12/ios-environment-variables";
-          var disqus_shortname = 'aaronkuehler-com';
-          /* * * DON'T EDIT BELOW THIS LINE * * */
-          (function() {
-          var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
-          dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
-          (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
-          })();
-        </script>
-        <noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
-        <a href="//disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
-      </section>
       <script src="//code.jquery.com/jquery-latest.min.js"></script>
       <script src="https://cdnjs.cloudflare.com/ajax/libs/prettify/r298/prettify.js"></script>
       <script src="/media/js/main.js"></script>
-      <script type="text/javascript">
-        var _gaq = _gaq || [];
-        _gaq.push(['_setAccount', 'UA-113071078-1']);
-        _gaq.push(['_trackPageview']);
-        (function() {
-        var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
-        ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
-        var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
-        })();
-      </script>
       <div class="footer">
         <p>
           Copyright &copy; 2012 - <span id="footerYear"></span> Aaron Kuehler
