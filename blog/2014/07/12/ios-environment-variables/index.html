@@ -7,6 +7,8 @@
     <meta name="author" content="Aaron Kuehler" />
     <meta name="description" content="An approach to extracting &#39;environment&#39; specific configuration from iOS application code" />
     <meta name="keywords" content="ios, xcode, software, tools" />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Zilla+Slab&display=swap" media="none" onload="if(media!='all')media='all'">
+    <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Zilla+Slab&display=swap"></noscript>
     <link rel="stylesheet" href="/media/css/main.css" type="text/css" media="none" onload="if(media!='all')media='all'">
     <noscript><link rel="stylesheet" href="/media/css/main.css" type="text/css"></noscript>
     <link rel="stylesheet" href="/media/css/prettify.css" type="text/css" media="none" onload="if(media!='all')media='all'">
@@ -72,15 +74,15 @@ It is the responsibility of the <code>[[Environment sharedInstance] fetch:@"MyAp
 As it turns out, implementing this behavior is not at all complicated:
 </p>
 
-<div id="outline-container-orga153150" class="outline-2">
-<h2 id="orga153150">Capture the build configuration used to build the Application bundle</h2>
-<div class="outline-text-2" id="text-orga153150">
+<div id="outline-container-org49d554c" class="outline-2">
+<h2 id="org49d554c">Capture the build configuration used to build the Application bundle</h2>
+<div class="outline-text-2" id="text-org49d554c">
 <ul class="org-ul">
 <li>Add a new String value to the <code>&lt;application_name&gt;-Info.plist</code> to capture the name of the Build Configuration (environment name) used to create the application bundle at build time:</li>
 </ul>
 
 
-<div id="orgafa5780" class="figure">
+<div id="orgf2ced8e" class="figure">
 <p><img src="/assets/blog/2014/07/12/ios-environment-variables/application-info.plist.png" alt="application-info.plist.png" />
 </p>
 <p><span class="figure-number">Figure 1: </span>application-info.plist</p>
@@ -88,9 +90,9 @@ As it turns out, implementing this behavior is not at all complicated:
 </div>
 </div>
 
-<div id="outline-container-orgd9f8876" class="outline-2">
-<h2 id="orgd9f8876">Configure the Environments</h2>
-<div class="outline-text-2" id="text-orgd9f8876">
+<div id="outline-container-org471c703" class="outline-2">
+<h2 id="org471c703">Configure the Environments</h2>
+<div class="outline-text-2" id="text-org471c703">
 <ul class="org-ul">
 <li>Add an <code>Environments.plist</code> to the application. This serves as the centralized listing of environment specific configuration values for each environment the application supports.</li>
 
@@ -100,7 +102,7 @@ As it turns out, implementing this behavior is not at all complicated:
 </ul>
 
 
-<div id="org4de39f2" class="figure">
+<div id="orgf7cdc18" class="figure">
 <p><img src="/assets/blog/2014/07/12/ios-environment-variables/environments.plist.png" alt="environments.plist.png" />
 </p>
 <p><span class="figure-number">Figure 2: </span>environments.plist</p>
@@ -108,9 +110,9 @@ As it turns out, implementing this behavior is not at all complicated:
 </div>
 </div>
 
-<div id="outline-container-org71b5065" class="outline-2">
-<h2 id="org71b5065">Define the <code>Environment</code> object:</h2>
-<div class="outline-text-2" id="text-org71b5065">
+<div id="outline-container-orgbe356f1" class="outline-2">
+<h2 id="orgbe356f1">Define the <code>Environment</code> object:</h2>
+<div class="outline-text-2" id="text-orgbe356f1">
 <div class="org-src-container">
 <pre class="src src-objc">// Environment.h
 @interface Environment : NSObject
@@ -182,9 +184,9 @@ static Environment *sharedInstance = nil;
 </div>
 </div>
 
-<div id="outline-container-org9fd2451" class="outline-2">
-<h2 id="org9fd2451">Example</h2>
-<div class="outline-text-2" id="text-org9fd2451">
+<div id="outline-container-org15b7e17" class="outline-2">
+<h2 id="org15b7e17">Example</h2>
+<div class="outline-text-2" id="text-org15b7e17">
 <p>
 With the above code in place we can run the application to make sure everything's wired up correctly. In my example, I've added the following logger statement to the application's launch lifecycle;
 </p>

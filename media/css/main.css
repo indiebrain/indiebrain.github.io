@@ -176,7 +176,7 @@ h3,
 h4,
 h5,
 h6 {
-  font-family: -apple-system, BlinkMacSystemFont, "Avenir Next", "Avenir", "Segoe UI", "Lucida Grande", "Helvetica Neue", "Helvetica", "Fira Sans", "Roboto", "Noto", "Droid Sans", "Cantarell", "Oxygen", "Ubuntu", "Franklin Gothic Medium", "Century Gothic", "Liberation Sans", sans-serif;
+  font-family: x-locale-heading-primary, Zilla Slab, Palatino, "Palatino Linotype", x-locale-heading-secondary, serif;
   font-size: 1.25em;
   line-height: 1.2;
   margin: 0 0 0.75em; }

@@ -7,6 +7,8 @@
     <meta name="author" content="Aaron Kuehler" />
     <meta name="description" content="An approach to building a healthy Code Review Culture on software teams" />
     <meta name="keywords" content="software development, team building" />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Zilla+Slab&display=swap" media="none" onload="if(media!='all')media='all'">
+    <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Zilla+Slab&display=swap"></noscript>
     <link rel="stylesheet" href="/media/css/main.css" type="text/css" media="none" onload="if(media!='all')media='all'">
     <noscript><link rel="stylesheet" href="/media/css/main.css" type="text/css"></noscript>
     <link rel="stylesheet" href="/media/css/prettify.css" type="text/css" media="none" onload="if(media!='all')media='all'">
@@ -36,9 +38,9 @@
 <div class="post">
 <h1>Building a Healthy Code Review Culture</h1>
 
-<div id="outline-container-org4b137b5" class="outline-2">
-<h2 id="org4b137b5">Motivation</h2>
-<div class="outline-text-2" id="text-org4b137b5">
+<div id="outline-container-org7f5e812" class="outline-2">
+<h2 id="org7f5e812">Motivation</h2>
+<div class="outline-text-2" id="text-org7f5e812">
 <p>
 I thrive on critical feedback. Be it from automated tests as I drive the interfaces and interactions of code I'm writing or perspective, advice, and coaching from coworkers. Code Review is an opportunity for members of development teams to exercise their "meat-machine compute cycles" to provide critical feedback during the evolution of projects. In a few instances I've come to work on teams which incorporate conversation about code into their practice, but struggle to extract what I see as the "real value" (outlined below) of Code Review. The following is a set of musings I use to help frame how teams might better understand the "why" of, and more effectively use the practice of Code Review. This is not a prescription, but rather a set of guardrails and considerations teams <i>might</i> employ to encourage a constructive, elevating atmosphere of honest discussion about the work we do.
 </p>
@@ -49,9 +51,9 @@ These are by no means original ideas, but rather an amalgam and distillation of 
 </div>
 </div>
 
-<div id="outline-container-orgbcebb93" class="outline-2">
-<h2 id="orgbcebb93">Why do we do Code Reviews?</h2>
-<div class="outline-text-2" id="text-orgbcebb93">
+<div id="outline-container-org164a720" class="outline-2">
+<h2 id="org164a720">Why do we do Code Reviews?</h2>
+<div class="outline-text-2" id="text-org164a720">
 <p>
 Code Review is the discipline of discussing code with peers. It is a popular belief that the focus of Code Reviews should be to uncover defects. It is true that certain classes of defects can be uncovered during the Code Review process, but <a href="https://www.microsoft.com/en-us/research/wp-content/uploads/2016/02/ICSE202013-codereview.pdf">Microsoft's "Expectations, Outcomes, and Challenges Of Modern Code Review" research</a> shows that we overestimate our ability to discover these errors in Code Review. The research concludes that Code Reviews are more likely to improve a team's ability to find alternate solutions, increase collective ownership of code, promote team awareness and cohesion, and facilitate knowledge and experience sharing.
 </p>
@@ -62,9 +64,9 @@ In short, the practice of Code Review makes us better members of our team throug
 </div>
 </div>
 
-<div id="outline-container-org64e4236" class="outline-2">
-<h2 id="org64e4236">How do we do Code Reviews?</h2>
-<div class="outline-text-2" id="text-org64e4236">
+<div id="outline-container-orgccd73b8" class="outline-2">
+<h2 id="orgccd73b8">How do we do Code Reviews?</h2>
+<div class="outline-text-2" id="text-orgccd73b8">
 <p>
 We practice asynchronous, informal Code Reviews; we prefer to conduct Code Reviews as soon, or as close to as soon, as a changeset is ready to be reviewed. We <i>do not</i> conduct regularly scheduled, hours-long, all-developers meetings to review a queue of changesets. Code Reviews are generally conducted by a small group of active participants; usually the author and a single reviewer.
 </p>
@@ -75,9 +77,9 @@ Why do we do this? In a word, efficiency. In practice, we find, the author and r
 </div>
 </div>
 
-<div id="outline-container-orge7085dc" class="outline-2">
-<h2 id="orge7085dc">General tips for discussing code</h2>
-<div class="outline-text-2" id="text-orge7085dc">
+<div id="outline-container-orgdfcfcfc" class="outline-2">
+<h2 id="orgdfcfcfc">General tips for discussing code</h2>
+<div class="outline-text-2" id="text-orgdfcfcfc">
 <ul class="org-ul">
 <li>Assume that everyone has the best intentions. Use the most charitable reading of any received message.</li>
 <li>When faced with a conflicting set of ideas <a href="https://lifehacker.com/utilize-the-steel-man-tactic-to-argue-more-effectivel-1632402742">Steel Man/Person</a> the other's arguments: understand the strongest possible version of the argument and see if there's still room between your arguments for a more in depth discussion.</li>
@@ -96,9 +98,9 @@ Why do we do this? In a word, efficiency. In practice, we find, the author and r
 </ul>
 </div>
 
-<div id="outline-container-orge2fa978" class="outline-4">
-<h4 id="orge2fa978">Commit and Pull request messages</h4>
-<div class="outline-text-4" id="text-orge2fa978">
+<div id="outline-container-org08c5d00" class="outline-4">
+<h4 id="org08c5d00">Commit and Pull request messages</h4>
+<div class="outline-text-4" id="text-org08c5d00">
 <blockquote>
 <p>
 Pull Requests are temporally relevant, but commits are forever
@@ -152,9 +154,9 @@ changeset is wrought.
 </div>
 </div>
 
-<div id="outline-container-orge4b8fbe" class="outline-2">
-<h2 id="orge4b8fbe">Receiving critical feedback</h2>
-<div class="outline-text-2" id="text-orge4b8fbe">
+<div id="outline-container-orgad87dd5" class="outline-2">
+<h2 id="orgad87dd5">Receiving critical feedback</h2>
+<div class="outline-text-2" id="text-orgad87dd5">
 <ul class="org-ul">
 <li>Be grateful for the reviewer's suggestions. ("Good call. I'll make that change.")</li>
 <li>Don't take it personally. The review is of the code, not you.</li>
@@ -170,9 +172,9 @@ changeset is wrought.
 </div>
 </div>
 
-<div id="outline-container-org3d3c2f6" class="outline-2">
-<h2 id="org3d3c2f6">Providing critical feedback</h2>
-<div class="outline-text-2" id="text-org3d3c2f6">
+<div id="outline-container-orgb34cf22" class="outline-2">
+<h2 id="orgb34cf22">Providing critical feedback</h2>
+<div class="outline-text-2" id="text-orgb34cf22">
 <p>
 Code Review is complete when parties agree that the changeset is "good enough to ship". Perfect solutions never ship; all decisions are tradeoffs. We are professionals. We use our best judgment to determine if a changeset is publishable as swiftly as possible.
 </p>
@@ -207,9 +209,9 @@ A few additional things to keep in mind. Understand why the change is necessary 
 </div>
 </div>
 
-<div id="outline-container-org5c83efe" class="outline-2">
-<h2 id="org5c83efe">Additional Resources</h2>
-<div class="outline-text-2" id="text-org5c83efe">
+<div id="outline-container-orgf7b25b3" class="outline-2">
+<h2 id="orgf7b25b3">Additional Resources</h2>
+<div class="outline-text-2" id="text-orgf7b25b3">
 <ul class="org-ul">
 <li><a href="https://www.microsoft.com/en-us/research/wp-content/uploads/2016/02/ICSE202013-codereview.pdf">Expectations, outcomes, and challenges of modern code review</a></li>
 <li><a href="https://www.youtube.com/watch?v=PJjmw9TRB7s">Implementing a strong code-review culture by Derek Prior Rails Conf 2015</a></li>
