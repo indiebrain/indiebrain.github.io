@@ -43,7 +43,7 @@ These are by no means original ideas, but rather an amalgam and distillation of 
   - Talk synchronously (e.g. chat, screen sharing, in person) if there are too many "I didn't understand" or "Alternative solution:" comments. Post a follow-up comment summarizing the discussion.
   - Most importantly, don't forget to give praise and thanks.
 
-*** Commit and Pull request messages
+* Commit and Pull request messages
 
    #+BEGIN_QUOTE
    Pull Requests are temporally relevant, but commits are forever
