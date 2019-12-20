@@ -27,6 +27,14 @@ Always remember, our purpose is not to "write code", but rather add value to the
 
 * Experience
 
+** exercism.io
+
+*Volunteer Mentor*
+
+/August 2019 - Present/
+
+Exercism.io is a virtual community which provides users the opportunity to gain fluency and mastery of over 100 programming languages by completing and reviewing code exercises with human mentors and reviewers. I serve as a volunteer mentor and provide guidance to students along the Ruby and Emacs-Lisp tracks.
+
 ** Power Home Remodeling Group
 
 *Senior Software Developer / Substitute Instructor / Mentor*
@@ -36,6 +44,8 @@ Always remember, our purpose is not to "write code", but rather add value to the
 Nitro, a 10 year old, monolithic Ruby on Rails application, drives every aspect of Power's business - from data collection of the marketing teams, to the telephony system used by the scheduling and dispatching teams, to ordering and warehouse management, and beyond. Initially my attention was focused on tooling and support for the Continuous Integration and Deployment pipeline. I worked on a 2 person team and aided in implementing home-grown tools to deploy Nitro to our on-premises Kubernetes cluster. Given the shortage of dedicated product and process representation, I organically expanded my involvement on the team to fill the roles of "Scrum Master" and "Producteer." The Kubernetes effort was halted due to lack of infrastructure readiness. As a result, my team shifted focus to supporting our internal contact center. During this time we supported the telephony system, and business workflows of Nitro geared toward Appointment Scheduling, Dispatching, and Telemarketing.
 
 In the spring of 2018, as an effort to ease the pain of hiring qualified technical staff, Power inaugurated the "Power Code Academy" - a 6 month Code School for existing Power employees. I volunteered as a substitute instructor and mentor for students of this program. After the first cohort of students graduated the "Power Code Academy" I was asked to become the Technical Team Lead and mentor of a team which would absorb half of the graduates and support them as they started their careers as software developers.
+
+In May 2019, I was tasked with product-izing the metrics captured by our Business Intelligence team. I created a small, yet robust and flexible JavaScript (ECMAScript 6) application to consume data produced by the Business Intelligence team and present interactive visualizations - with Role Based Access Controls - illustrating our "Order To Cash" (Lead Time) metrics to internal users.
 
 ** Bauer Xcel Media
 
@@ -91,11 +101,17 @@ Initially worked on the flagship Life & Annuity insurance policy administration 
 
 * Open Source Contributions
 
-** Shopify/kubernetes-deploy
+** Shopify/shipit-engine
 
-https://github.com/Shopify/kubernetes-deploy
+https://github.com/Shopify/shipit-engine
 
-kubernetes-deploy is a command line tool that helps you ship changes to a Kubernetes namespace and understand the result.
+Shipit is a deployment tool that makes shipping code better for everyone. It's especially great for large teams of developers and designers who work together to build and deploy GitHub repos.
+
+** Shopify/krane
+
+https://github.com/Shopify/krane
+
+krane is a command line tool that helps you ship changes to a Kubernetes namespace and understand the result.
 
 ** heroku-cli-buildpack
 
@@ -165,7 +181,6 @@ Graduating Magna Cum Laude, I achieved the Dean's list in 2005 and 2006, was awa
 
 ** Small File Affects on Hadoop Distributed File System
 
-- White Paper - https://www.slideshare.net/slideshow/embed_code/key/S4XYiY0a4mOn8
-- Presentation - https://www.slideshare.net/slideshow/embed_code/key/9oo7oSckHxMTHX
+- [[..//assets/papers/small-file-affects-on-hadoop-distributed-file-sytem.pdf][Whitepaper PDF]]
 
 The Hadoop Distributed File System is a high throughput distributed File system designed to accommodate large data sets; average file sizes in the gigabyte-terabyte range. However when a data set is composed of large amounts of small files, say in the kilobyte range, the storage system's semantics introduce hight amounts of overhead in terms of file system block storage and read latency. This paper explains the architectural attributes which cause these problems and examines techniques to mitigate their impact when working with data sets comprised of large numbers of small files.
