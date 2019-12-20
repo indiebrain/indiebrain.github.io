@@ -15,11 +15,17 @@ Professionally, I develop software and technical teams. I began studying Computa
 
 * OSS Contributions
 
-** Shopify/kubernetes-deploy
+** Shopify/shipit-engine
 
-https://github.com/Shopify/kubernetes-deploy
+https://github.com/Shopify/shipit-engine
 
-kubernetes-deploy is a command line tool that helps you ship changes to a Kubernetes namespace and understand the result.
+Shipit is a deployment tool that makes shipping code better for everyone. It's especially great for large teams of developers and designers who work together to build and deploy GitHub repos.
+
+** Shopify/krane
+
+https://github.com/Shopify/krane
+
+krane is a command line tool that helps you ship changes to a Kubernetes namespace and understand the result.
 
 ** heroku-cli-buildpack
 
