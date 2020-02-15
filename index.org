@@ -47,13 +47,19 @@ Githug is designed to give you a practical way of learning git. It has a series 
 
 * Side Projects
 
-** Futurist
+** asdf-guile
+
+https://www.gnu.org/software/guile/
+
+An [[https://github.com/asdf-vm/asdf][asdf]] version manager plugin to manage [[https://www.gnu.org/software/guile/][GNU Guile]] installations
+
+** futurist
 
 https://github.com/indiebrain/futurist
 
 An implementation of the future construct, inspired by Celluloid's block based futures, which uses process forking as a means of backgrounding work.
 
-** Backbone-Elasticsearch
+** backbone-elasticsearch
 
 https://github.com/indiebrain/backbone-elasticsearch
 
