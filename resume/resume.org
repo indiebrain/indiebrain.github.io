@@ -131,11 +131,11 @@ https://github.com/Gazler/githug
 
 Githug is designed to give you a practical way of learning git. It has a series of levels, each requiring you to use git commands to arrive at a correct answer.
 
-* Projects
+* Side Projects
 
 ** asdf-guile
 
-https://www.gnu.org/software/guile/
+https://github.com/indiebrain/asdf-guile
 
 An [[https://github.com/asdf-vm/asdf][asdf]] version manager plugin to manage [[https://www.gnu.org/software/guile/][GNU Guile]] installations
 
