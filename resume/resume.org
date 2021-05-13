@@ -14,15 +14,19 @@
 #+LATEX_HEADER: \usepackage[margin=0.5in]{geometry}
 
 #+BEGIN_QUOTE
-Always remember, our purpose is not to "write code", but rather add value to the business.
+Always remember, our purpose is not to "write code", but rather add
+value to the business.
 #+END_QUOTE
 
 * Skills / Experience Summary
 
-- Web Application Development (Ruby/Rails and Standard Web Technologies - JavaScript, CSS, etc)
+- Web Application Development (Ruby/Rails and Standard Web
+  Technologies - JavaScript, CSS, etc)
 - API Development (Ruby/Rails)
-- Continuous Integration and Deployment Automation
-- Team Growth and Leadership through agility, Lean Manufacturing Principles, and Extreme Ownership
+- Containerization (Docker, Kubernetes)
+- Development tooling, Continuous Integration, and Deployment Automation
+- Team Growth and Leadership through agility, Lean Manufacturing
+  Principles, and Extreme Ownership
 - Mentor and Educator
 
 * Experience
@@ -33,7 +37,11 @@ Always remember, our purpose is not to "write code", but rather add value to the
 
 /August 2019 - Present/
 
-Exercism.io is a virtual community which provides users the opportunity to gain fluency and mastery of over 100 programming languages by completing and reviewing code exercises with human mentors and reviewers. I serve as a volunteer mentor and provide guidance to students along the Ruby and Emacs-Lisp tracks.
+Exercism.io is a virtual community which provides users the opportunity
+to gain fluency and mastery of over 100 programming languages by
+completing and reviewing code exercises with human mentors and
+reviewers. I serve as a volunteer mentor and provide guidance to
+students along the Ruby and Emacs-Lisp tracks.
 
 ** Power Home Remodeling Group
 
@@ -41,11 +49,54 @@ Exercism.io is a virtual community which provides users the opportunity to gain 
 
 /May 2018 - Present/
 
-Nitro, a 10 year old, monolithic Ruby on Rails application, drives every aspect of Power's business - from data collection of the marketing teams, to the telephony system used by the scheduling and dispatching teams, to ordering and warehouse management, and beyond. Initially my attention was focused on tooling and support for the Continuous Integration and Deployment pipeline. I worked on a 2 person team and aided in implementing home-grown tools to deploy Nitro to our on-premises Kubernetes cluster. Given the shortage of dedicated product and process representation, I organically expanded my involvement on the team to fill the roles of "Scrum Master" and "Producteer." The Kubernetes effort was halted due to lack of infrastructure readiness. As a result, my team shifted focus to supporting our internal contact center. During this time we supported the telephony system, and business workflows of Nitro geared toward Appointment Scheduling, Dispatching, and Telemarketing.
+Nitro, a 10 year old, monolithic Ruby on Rails application, drives every
+aspect of Power's business - from data collection of the marketing
+teams, to the telephony system used by the scheduling and dispatching
+teams, to ordering and warehouse management, and beyond. Nitro follows
+the "Component Based Rails Applications" (https://cbra.info) approach to
+tackling the organization of and dependencies between its large domains.
+Initially my attention focused on tooling and support for the Continuous
+Integration and Deployment pipeline. I worked on a 2 person team and
+aided in implementing home-grown tools to deploy Nitro to our
+on-premises Kubernetes clusters. Given the shortage of dedicated product
+and process representation, I organically expanded my involvement on the
+team to fill the roles of "Scrum Master" and "Producteer." The
+Kubernetes effort halted due to lack of infrastructure readiness. As a
+result, my team shifted to supporting our internal contact center.
+During this time we supported the telephony system, and business
+workflows of Nitro geared toward Appointment Scheduling, Dispatching,
+and Telemarketing.
 
-In the spring of 2018, as an effort to ease the pain of hiring qualified technical staff, Power inaugurated the "Power Code Academy" - a 6 month Code School for existing Power employees. I volunteered as a substitute instructor and mentor for students of this program. After the first cohort of students graduated the "Power Code Academy" I was asked to become the Technical Team Lead and mentor of a team which would absorb half of the graduates and support them as they started their careers as software developers.
+In the spring of 2018, as an effort to ease the pain of hiring qualified
+technical staff, Power inaugurated the "Power Code Academy" - a 6 month
+Code School for existing Power employees. I volunteer as a substitute
+instructor and mentor for students of this program. After the first
+cohort of students graduated the "Power Code Academy" I served as
+Technical Lead and "designated mentor" of a team which would absorb half
+of the graduates and support them as they started their careers as
+software developers.
 
-In May 2019, I was tasked with product-izing the metrics captured by our Business Intelligence team. I created a small, yet robust and flexible JavaScript (ECMAScript 6) application to consume data produced by the Business Intelligence team and present interactive visualizations - with Role Based Access Controls - illustrating our "Order To Cash" (Lead Time) metrics to internal users.
+In May 2019, the C-level executive team asked me to again shift focus
+and product-ize the metrics captured by our Business Intelligence team.
+I created a small, yet robust and flexible JavaScript (ECMAScript 6)
+application to consume data produced by the Business Intelligence team
+and present interactive visualizations - with Role Based Access
+Controls - illustrating our "Order To Cash" (Lead Time) metrics to
+internal users.
+
+With the Nitro Business Intelligence product and toolkit successfully
+launched, in Fall of 2019 the Infrastructure team was ready to again
+attempt a graduated roll-out of Kubernetes. The newly re-formed
+developer and platform tooling team requested my re-assignment to
+re-join them. In December 2019 we launched a Continuous Deployment
+coordination tool built on top of Shopify's open source "shipit-engine"
+project. I had the honor of showcasing this tool at Power's internal
+developer conference the same month. Working with Shopify's
+shipit-engine maintainers, I added the ability to coordinate with a
+Repository's GitHub Pull Requests to dynamically create and deploy
+instances of an application for customer review to shipit-engine. This
+feature is akin to Heroku's Review Apps, but is highly configurable by
+host applications of shipit-engine.
 
 ** Bauer Xcel Media
 
@@ -53,11 +104,29 @@ In May 2019, I was tasked with product-izing the metrics captured by our Busines
 
 /February 2016 - May 2018/
 
-At Bauer, Technical Team Lead is a role which augments a member of the development staff's role slightly. In addition to contributing to the development process, they are required to act as force multipliers. They are responsible for the augmentation of team effectiveness and efficiency. They inspire change in individual and team behavior to achieve this goal.
+At Bauer, Technical Team Lead is a role which augments a member of the
+development staff's role slightly. In addition to contributing to the
+development process, they are required to act as force multipliers. They
+are responsible for the augmentation of team effectiveness and
+efficiency. They inspire change in individual and team behavior to
+achieve this goal.
 
-During my time as team lead we've reduced average Story cycle time by 34.37%. We've used pair programming as a means to build trust and rapport between teammates - removing waste in unnecessary review processes and improving morale. We've trimmed waste and refocused the team to reduce WIP and plan more appropriately to the constraints of our pipeline. We are able to react to unplanned work with minimal risk to commitments. We more predictably delivered on commitments which has built trust with stakeholders - planning and negotiations run more smoothly as a result.
+During my time as team lead we've reduced average Story cycle time by
+34.37%. We've used pair programming as a means to build trust and
+rapport between teammates - removing waste in unnecessary review
+processes and improving morale. We've trimmed waste and refocused the
+team to reduce WIP and plan more appropriately to the constraints of our
+pipeline. We are able to react to unplanned work with minimal risk to
+commitments. We more predictably delivered on commitments which has
+built trust with stakeholders - planning and negotiations run more
+smoothly as a result.
 
-During an internal "Hack-a-thon" in 2017, I rallied a team of 3 developers behind the idea of deployment automation. In two days we completed work which made on-demand application review instances - review instance per pull request - and continuous delivery to production a reality at Bauer. The work-products of these two days alone saved the company 50% in month-over-month hosting costs.
+During an internal "Hack-a-thon" in 2017, I rallied a team of 3
+developers behind the idea of deployment automation. In two days we
+completed work which made on-demand application review instances -
+review instance per pull request - and continuous delivery to production
+a reality at Bauer. The work-products of these two days alone saved the
+company 50% in month-over-month hosting costs.
 
 ** Sizmek (formerly PointRoll)
 
@@ -65,7 +134,19 @@ During an internal "Hack-a-thon" in 2017, I rallied a team of 3 developers behin
 
 /January 2015 - June 2016/
 
-In January of 2015, Pointroll was in the midst of a turbulent reorganization. I was brought on to share my experience and ideas on becoming a more agile team - changing the mind-set away from delivering code to delivering value to the business. I helped shape development workflows and deployment pipeline to help facilitate the concurrent development of multiple code bases by an even greater number of teams. I helped create, contributed to, and ran the PointRoll Community or Practice. A bi-weekly lunch-and-learn type talk series designed to distribute knowledge and increase cross-team interpersonal relationships. Pointroll was acquired for its customer base by Sizmek in November of 2015 for $20 million. I was part of a skeleton crew who "kept the lights on" until June 2016 when the PointRoll systems were retired.
+In January of 2015, Pointroll was in the midst of a turbulent
+reorganization. I was brought on to share my experience and ideas on
+becoming a more agile team - changing the mind-set away from delivering
+code to delivering value to the business. I helped shape development
+workflows and deployment pipeline to help facilitate the concurrent
+development of multiple code bases by an even greater number of teams. I
+helped create, contributed to, and ran the PointRoll Community or
+Practice. A bi-weekly lunch-and-learn type talk series designed to
+distribute knowledge and increase cross-team interpersonal
+relationships. Pointroll was acquired for its customer base by Sizmek in
+November of 2015 for $20 million. I was part of a skeleton crew who
+"kept the lights on" until June 2016 when the PointRoll systems were
+retired.
 
 ** Hoopla
 
@@ -73,7 +154,13 @@ In January of 2015, Pointroll was in the midst of a turbulent reorganization. I 
 
 /July 2012 - January 2015/
 
-In July 2012 I became the 3rd full-time developer hire at Hoopla. I was brought on to augment the development capacity of the team as the product grew into larger markets and acquired bigger clients like: LinkedIn, Zillow, Angie's List, and Ring Central. I would spend most of my first 2 years working on the core web application and external event processing integration with Salesforce. Later I would lead the development effort of the Native mobile version of the Hoopla platform.
+In July 2012 I became the 3rd full-time developer hire at Hoopla. I was
+brought on to augment the development capacity of the team as the
+product grew into larger markets and acquired bigger clients like:
+LinkedIn, Zillow, Angie's List, and Ring Central. I would spend most of
+my first 2 years working on the core web application and external event
+processing integration with Salesforce. Later I would lead the
+development effort of the Native mobile version of the Hoopla platform.
 
 ** Artisan (formerly AppRenaissance)
 
@@ -81,7 +168,11 @@ In July 2012 I became the 3rd full-time developer hire at Hoopla. I was brought 
 
 /July 2011 - July 2012/
 
-As the 3rd employee of, then, AppRenaissance I helped grow a small mobile-developers-for-hire team into a mobile products/platform company. Initially, I spent most of my time helping clients with software, product, and business development. Later we would start to change focus to providing services and products for mobile developers.
+As the 3rd employee of, then, AppRenaissance I helped grow a small
+mobile-developers-for-hire team into a mobile products/platform company.
+Initially, I spent most of my time helping clients with software,
+product, and business development. Later we would start to change focus
+to providing services and products for mobile developers.
 
 ** Infor
 
@@ -89,7 +180,14 @@ As the 3rd employee of, then, AppRenaissance I helped grow a small mobile-develo
 
 /May 2009 - July 2011/
 
-In May 2009, Infor was in the midst of re-architecture of its ERP and logistics management software. This re-architecture saw an old monolithic, database driven application transformed into nearly two dozen independent, distributed services. As the member of many teams within the team, I adied in the definition and implementation of several of these components - from Requisition and Orders to Accounts Payable modules. Early on I would establish the "Brown Bag Club"; an opt-in lunchtime discussion forum and knowledge sharing opportunity.
+In May 2009, Infor was in the midst of re-architecture of its ERP and
+logistics management software. This re-architecture saw an old
+monolithic, database driven application transformed into nearly two
+dozen independent, distributed services. As the member of many teams
+within the team, I adied in the definition and implementation of several
+of these components - from Requisition and Orders to Accounts Payable
+modules. Early on I would establish the "Brown Bag Club"; an opt-in
+lunchtime discussion forum and knowledge sharing opportunity.
 
 ** Oracle (formerly AdminServer)
 
@@ -97,7 +195,12 @@ In May 2009, Infor was in the midst of re-architecture of its ERP and logistics 
 
 /February 2006 - June 2009/
 
-Initially worked on the flagship Life & Annuity insurance policy administration system. Eventually I was asked to join the technology skunk-works and performance teams to lay the foundation for the next-generation of this product. Later on I would be asked to lead the "backend" development of the next-generation of the policy administration system.
+Initially worked on the flagship Life & Annuity insurance policy
+administration system. Eventually I was asked to join the technology
+skunk-works and performance teams to lay the foundation for the
+next-generation of this product. Later on I would be asked to lead the
+"backend" development of the next-generation of the policy
+administration system.
 
 * Open Source Contributions
 
@@ -105,13 +208,32 @@ Initially worked on the flagship Life & Annuity insurance policy administration 
 
 https://github.com/Shopify/shipit-engine
 
-Shipit is a deployment tool that makes shipping code better for everyone. It's especially great for large teams of developers and designers who work together to build and deploy GitHub repos.
+Shipit is a deployment tool that makes shipping code better for
+everyone. It's especially great for large teams of developers and
+designers who work together to build and deploy GitHub repos.
+
+** percona-xtradb-cluster-operator
+
+https://github.com/indiebrain/percona-xtradb-cluster-operator
+
+A Kubernetes operator for Percona XtraDB Cluster based on the Operator
+SDK.
+
+** rubyforgood/mutual-aid
+
+https://github.com/rubyforgood/mutual-aid
+
+Mutual Aid is when people get together to build community by volunarily
+sharing resources with each other. Mutual Aid groups are more concerned
+about local resiliency than global campaigns, and prefer solidarity
+before charity.
 
 ** Shopify/krane
 
 https://github.com/Shopify/krane
 
-krane is a command line tool that helps you ship changes to a Kubernetes namespace and understand the result.
+krane is a command line tool that helps you ship changes to a Kubernetes
+namespace and understand the result.
 
 ** heroku-cli-buildpack
 
@@ -129,7 +251,9 @@ RSpec matchers for method keyword parameters.
 
 https://github.com/Gazler/githug
 
-Githug is designed to give you a practical way of learning git. It has a series of levels, each requiring you to use git commands to arrive at a correct answer.
+Githug is designed to give you a practical way of learning git. It has a
+series of levels, each requiring you to use git commands to arrive at a
+correct answer.
 
 * Side Projects
 
@@ -143,7 +267,9 @@ An [[https://github.com/asdf-vm/asdf][asdf]] version manager plugin to manage [[
 
 https://github.com/indiebrain/futurist
 
-An implementation of the future construct, inspired by Celluloid's block based futures, which uses process forking as a means of backgrounding work.
+An implementation of the future construct, inspired by Celluloid's block
+based futures, which uses process forking as a means of backgrounding
+work.
 
 ** backbone-elasticsearch
 
@@ -164,7 +290,11 @@ Doximity (http://www.doximity.com/)
 
 https://github.com/indiebrain/talks/blob/master/git_internals/git_internals.org
 
-Does git's user interface seem cryptic? Are you often confused about when you should use 'checkout' vs 'reset'? Does 'rebase' feel scary? This talk explains the inner workings of git and sheds a bit of light on how the internal structure of git as a data store influences its user interface.
+Does git's user interface seem cryptic? Are you often confused about
+when you should use 'checkout' vs 'reset'? Does 'rebase' feel scary?
+This talk explains the inner workings of git and sheds a bit of light on
+how the internal structure of git as a data store influences its user
+interface.
 
 * Elsewhere
 
@@ -176,17 +306,25 @@ Does git's user interface seem cryptic? Are you often confused about when you sh
 
 ** West Chester University of Pennsylvania
 
-*Bachelor of Science, Computer Science*
-*Informantion Assurance Minor*
+*Bachelor of Science, Computer Science* Informantion Assurance Minor*
 
 /January 2006/
 
-Graduating Magna Cum Laude, I achieved the Dean's list in 2005 and 2006, was awarded the Honor of Academic Excellence in 2006.
+Graduating Magna Cum Laude, I achieved the Dean's list in 2005 and 2006,
+was awarded the Honor of Academic Excellence in 2006.
 
 * Research
 
 ** Small File Affects on Hadoop Distributed File System
 
-- [[..//assets/papers/small-file-affects-on-hadoop-distributed-file-sytem.pdf][Whitepaper PDF]]
+- [[https://raw.githubusercontent.com/indiebrain/indiebrain.github.io/source/resume/small-file-affects-on-hadoop-distributed-file-sytem.pdf][Whitepaper PDF]]
 
-The Hadoop Distributed File System is a high throughput distributed File system designed to accommodate large data sets; average file sizes in the gigabyte-terabyte range. However when a data set is composed of large amounts of small files, say in the kilobyte range, the storage system's semantics introduce hight amounts of overhead in terms of file system block storage and read latency. This paper explains the architectural attributes which cause these problems and examines techniques to mitigate their impact when working with data sets comprised of large numbers of small files.
+The Hadoop Distributed File System is a high throughput distributed File
+system designed to accommodate large data sets; average file sizes in
+the gigabyte-terabyte range. However when a data set is composed of
+large amounts of small files, say in the kilobyte range, the storage
+system's semantics introduce hight amounts of overhead in terms of file
+system block storage and read latency. This paper explains the
+architectural attributes which cause these problems and examines
+techniques to mitigate their impact when working with data sets
+comprised of large numbers of small files.
