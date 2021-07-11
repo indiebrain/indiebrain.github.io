@@ -1,4 +1,4 @@
-#+TITLE:       Aaron Kuehler - Resume
+#+TITLE:       Aaron Kuehler
 #+AUTHOR:
 #+DATE:
 #+LANGUAGE:    en
@@ -11,22 +11,22 @@
 #+LATEX_HEADER: \usepackage{helvet}
 #+LATEX_HEADER: \renewcommand{\familydefault}{phv}
 #+LATEX_HEADER: \usepackage{parskip}
-#+LATEX_HEADER: \usepackage[margin=0.5in]{geometry}
+#+LATEX_HEADER: \usepackage[margin=0.75in]{geometry}
 
 #+BEGIN_QUOTE
 Always remember, our purpose is not to "write code", but rather add
-value to the business.
+value.
 #+END_QUOTE
 
-* Skills / Experience Summary
+* Skills Summary
 
 - Web Application Development (Ruby/Rails and Standard Web
-  Technologies - JavaScript, CSS, etc)
+  Technologies - HTTP, JavaScript, CSS)
 - API Development (Ruby/Rails)
-- Containerization (Docker, Kubernetes)
-- Development tooling, Continuous Integration, and Deployment Automation
-- Team Growth and Leadership through agility, Lean Manufacturing
-  Principles, and Extreme Ownership
+- Development tooling, Continuous Integration, Deployment Automation,
+  and Workload Orchestration (Bash, Jenkins, Docker, Kubernetes)
+- Team Growth and Leadership (agility, Lean Manufacturing
+  Principles, and Extreme Ownership)
 - Mentor and Educator
 
 * Experience
@@ -37,11 +37,8 @@ value to the business.
 
 /August 2019 - Present/
 
-Exercism.io is a virtual community which provides users the opportunity
-to gain fluency and mastery of over 100 programming languages by
-completing and reviewing code exercises with human mentors and
-reviewers. I serve as a volunteer mentor and provide guidance to
-students along the Ruby and Emacs-Lisp tracks.
+- Provide exercise evaluations and guidance to students along the Ruby
+  and Emacs-Lisp tracks
 
 ** Power Home Remodeling Group
 
@@ -49,54 +46,20 @@ students along the Ruby and Emacs-Lisp tracks.
 
 /May 2018 - Present/
 
-Nitro, a 10 year old, monolithic Ruby on Rails application, drives every
-aspect of Power's business - from data collection of the marketing
-teams, to the telephony system used by the scheduling and dispatching
-teams, to ordering and warehouse management, and beyond. Nitro follows
-the "Component Based Rails Applications" (https://cbra.info) approach to
-tackling the organization of and dependencies between its large domains.
-Initially my attention focused on tooling and support for the Continuous
-Integration and Deployment pipeline. I worked on a 2 person team and
-aided in implementing home-grown tools to deploy Nitro to our
-on-premises Kubernetes clusters. Given the shortage of dedicated product
-and process representation, I organically expanded my involvement on the
-team to fill the roles of "Scrum Master" and "Producteer." The
-Kubernetes effort halted due to lack of infrastructure readiness. As a
-result, my team shifted to supporting our internal contact center.
-During this time we supported the telephony system, and business
-workflows of Nitro geared toward Appointment Scheduling, Dispatching,
-and Telemarketing.
-
-In the spring of 2018, as an effort to ease the pain of hiring qualified
-technical staff, Power inaugurated the "Power Code Academy" - a 6 month
-Code School for existing Power employees. I volunteer as a substitute
-instructor and mentor for students of this program. After the first
-cohort of students graduated the "Power Code Academy" I served as
-Technical Lead and "designated mentor" of a team which would absorb half
-of the graduates and support them as they started their careers as
-software developers.
-
-In May 2019, the C-level executive team asked me to again shift focus
-and product-ize the metrics captured by our Business Intelligence team.
-I created a small, yet robust and flexible JavaScript (ECMAScript 6)
-application to consume data produced by the Business Intelligence team
-and present interactive visualizations - with Role Based Access
-Controls - illustrating our "Order To Cash" (Lead Time) metrics to
-internal users.
-
-With the Nitro Business Intelligence product and toolkit successfully
-launched, in Fall of 2019 the Infrastructure team was ready to again
-attempt a graduated roll-out of Kubernetes. The newly re-formed
-developer and platform tooling team requested my re-assignment to
-re-join them. In December 2019 we launched a Continuous Deployment
-coordination tool built on top of Shopify's open source "shipit-engine"
-project. I had the honor of showcasing this tool at Power's internal
-developer conference the same month. Working with Shopify's
-shipit-engine maintainers, I added the ability to coordinate with a
-Repository's GitHub Pull Requests to dynamically create and deploy
-instances of an application for customer review to shipit-engine. This
-feature is akin to Heroku's Review Apps, but is highly configurable by
-host applications of shipit-engine.
+- Run planning and commitment ceremonies for the "Release Engineering"
+  team
+- Develop software delivery pipeline tooling using Jenkins CI, Docker,
+  Shopify/shipit-engine, Shopify/krane, and Kubernetes
+- Coordinate and contribute enhancements to Shopify/shipit-engine - some
+  of note: "Review Stacks ([[https://github.com/Shopify/shipit-engine/pull/1102][#1102]])", "Custom task execution strategies
+  ([[https://github.com/Shopify/shipit-engine/pull/1107][#1107]])", and "Fix: corrupt git caches cause tasks to 'exit status
+  128'" ([[https://github.com/Shopify/shipit-engine/pull/1169][#1169]])
+- Develop tooling to ease on-boarding, and improve Quality of Life for
+  development teams
+- Maintain and evolve 10+ year old "Component based Rails Application"
+  (https://cbra.info)
+- Integrate "Business Intelligence" visualization using JavaScript (ES6)
+- Support telephony applications using Asterisk / SIP
 
 ** Bauer Xcel Media
 
@@ -104,29 +67,13 @@ host applications of shipit-engine.
 
 /February 2016 - May 2018/
 
-At Bauer, Technical Team Lead is a role which augments a member of the
-development staff's role slightly. In addition to contributing to the
-development process, they are required to act as force multipliers. They
-are responsible for the augmentation of team effectiveness and
-efficiency. They inspire change in individual and team behavior to
-achieve this goal.
-
-During my time as team lead we've reduced average Story cycle time by
-34.37%. We've used pair programming as a means to build trust and
-rapport between teammates - removing waste in unnecessary review
-processes and improving morale. We've trimmed waste and refocused the
-team to reduce WIP and plan more appropriately to the constraints of our
-pipeline. We are able to react to unplanned work with minimal risk to
-commitments. We more predictably delivered on commitments which has
-built trust with stakeholders - planning and negotiations run more
-smoothly as a result.
-
-During an internal "Hack-a-thon" in 2017, I rallied a team of 3
-developers behind the idea of deployment automation. In two days we
-completed work which made on-demand application review instances -
-review instance per pull request - and continuous delivery to production
-a reality at Bauer. The work-products of these two days alone saved the
-company 50% in month-over-month hosting costs.
+- Developed home-grown, multi-tenant, publishing and sweepstakes Rails
+  applications
+- Developed team's operational support competence and distribute knowledge
+  by creating the "On-call / incident response playbook"
+- Introduced process monitoring metrics and reduced Cycle time by 34.4%
+- Developed automated "Review Application" workflow, cutting monthly
+  development team hosting costs by 50%
 
 ** Sizmek (formerly PointRoll)
 
@@ -134,19 +81,12 @@ company 50% in month-over-month hosting costs.
 
 /January 2015 - June 2016/
 
-In January of 2015, Pointroll was in the midst of a turbulent
-reorganization. I was brought on to share my experience and ideas on
-becoming a more agile team - changing the mind-set away from delivering
-code to delivering value to the business. I helped shape development
-workflows and deployment pipeline to help facilitate the concurrent
-development of multiple code bases by an even greater number of teams. I
-helped create, contributed to, and ran the PointRoll Community or
-Practice. A bi-weekly lunch-and-learn type talk series designed to
-distribute knowledge and increase cross-team interpersonal
-relationships. Pointroll was acquired for its customer base by Sizmek in
-November of 2015 for $20 million. I was part of a skeleton crew who
-"kept the lights on" until June 2016 when the PointRoll systems were
-retired.
+- Developed targeted video advertising platform using VAST XML delivery
+  standards.
+- Mentored team through transition to an agility based software process
+- Supported business through acquisition to eventual shuttering of
+  projects while "keeping the lights on" for clients such as Apple,
+  Jaguar, and BMW.
 
 ** Hoopla
 
@@ -154,13 +94,14 @@ retired.
 
 /July 2012 - January 2015/
 
-In July 2012 I became the 3rd full-time developer hire at Hoopla. I was
-brought on to augment the development capacity of the team as the
-product grew into larger markets and acquired bigger clients like:
-LinkedIn, Zillow, Angie's List, and Ring Central. I would spend most of
-my first 2 years working on the core web application and external event
-processing integration with Salesforce. Later I would lead the
-development effort of the Native mobile version of the Hoopla platform.
+- Developed Hoopla platform - Rails application for sales team
+  motivation
+- Maintained Salesforce integration - Apex based communication bridge
+  between Salesforce Orgs and Hoopla metrics and events APIs.
+- Developed "Hoopla TV" - a web based sales SportsCenter-esque UI over
+  the Hoopla platform to display sales metrics and events
+- Lead Mobile API development team and later absorbed the responsibility
+  of native mobile application development
 
 ** Artisan (formerly AppRenaissance)
 
@@ -168,11 +109,10 @@ development effort of the Native mobile version of the Hoopla platform.
 
 /July 2011 - July 2012/
 
-As the 3rd employee of, then, AppRenaissance I helped grow a small
-mobile-developers-for-hire team into a mobile products/platform company.
-Initially, I spent most of my time helping clients with software,
-product, and business development. Later we would start to change focus
-to providing services and products for mobile developers.
+- Develop and deploy native iOS applications to the App store for
+  clients; projects included Chinoki, Trustlines, and Interact
+- Built consulting business from 2 developers to product team of 10 in
+  less than a year
 
 ** Infor
 
@@ -180,14 +120,10 @@ to providing services and products for mobile developers.
 
 /May 2009 - July 2011/
 
-In May 2009, Infor was in the midst of re-architecture of its ERP and
-logistics management software. This re-architecture saw an old
-monolithic, database driven application transformed into nearly two
-dozen independent, distributed services. As the member of many teams
-within the team, I adied in the definition and implementation of several
-of these components - from Requisition and Orders to Accounts Payable
-modules. Early on I would establish the "Brown Bag Club"; an opt-in
-lunchtime discussion forum and knowledge sharing opportunity.
+- Developed "Orders and Requisitions" and "Accounts Payable" components
+  of the Enterprise Resource Planning system
+- Founded the "Brown-Bag" club to promote cross-team relationship
+  building, and knowledge sharing
 
 ** Oracle (formerly AdminServer)
 
@@ -195,12 +131,12 @@ lunchtime discussion forum and knowledge sharing opportunity.
 
 /February 2006 - June 2009/
 
-Initially worked on the flagship Life & Annuity insurance policy
-administration system. Eventually I was asked to join the technology
-skunk-works and performance teams to lay the foundation for the
-next-generation of this product. Later on I would be asked to lead the
-"backend" development of the next-generation of the policy
-administration system.
+- Developed data-driven Life and Annuity insurance policy administration
+  system
+- Participate in research and development, and technology evaluation for
+  future platform enhancements
+- Lead development team to incorporate R&D findings into product
+  evolution
 
 * Open Source Contributions
 
@@ -227,33 +163,6 @@ Mutual Aid is when people get together to build community by volunarily
 sharing resources with each other. Mutual Aid groups are more concerned
 about local resiliency than global campaigns, and prefer solidarity
 before charity.
-
-** Shopify/krane
-
-https://github.com/Shopify/krane
-
-krane is a command line tool that helps you ship changes to a Kubernetes
-namespace and understand the result.
-
-** heroku-cli-buildpack
-
-https://github.com/Thermondo/heroku-cli-buildpack
-
-Installs the Heroku toolbelt on a heroku dyno.
-
-** keyword_parameter_matchers
-
-https://github.com/terryfinn/keyword_parameter_matchers
-
-RSpec matchers for method keyword parameters.
-
-** githug
-
-https://github.com/Gazler/githug
-
-Githug is designed to give you a practical way of learning git. It has a
-series of levels, each requiring you to use git commands to arrive at a
-correct answer.
 
 * Side Projects
 
@@ -299,19 +208,21 @@ interface.
 * Elsewhere
 
 - https://aaronkuehler.com
-- http://www.github.com/indiebrain
-- http://twitter.com/indiebrain
+- https://www.github.com/indiebrain
+- https://twitter.com/indiebrain
+- https://www.linkedin.com/in/aaronkuehler/
 
 * Education
 
 ** West Chester University of Pennsylvania
 
-*Bachelor of Science, Computer Science* Informantion Assurance Minor*
+*Bachelor of Science, Computer Science with Information Assurance Minor*
 
 /January 2006/
 
-Graduating Magna Cum Laude, I achieved the Dean's list in 2005 and 2006,
-was awarded the Honor of Academic Excellence in 2006.
+- Magna Cum Laude
+- Award for Academic Excellence (2006)
+- Dean's list (2005 and 2006)
 
 * Research
 
