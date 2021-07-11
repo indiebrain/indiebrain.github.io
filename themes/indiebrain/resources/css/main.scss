@@ -36,10 +36,6 @@ body {
   * + * {
     margin-top: 1.5rem;
   }
-
-  * + *:not(p) {
-    margin: 3rem 0;
-  }
 }
 
 blockquote {
@@ -98,6 +94,9 @@ a:focus {
 }
 
 .navigation {
+  .navigation-menu {
+    margin-bottom: 3rem;
+  }
   border-bottom: $base-border;
 
   ul {

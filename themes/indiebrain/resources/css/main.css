@@ -230,8 +230,6 @@ body {
   padding: 0 0.25rem; }
   body * + * {
     margin-top: 1.5rem; }
-  body * + *:not(p) {
-    margin: 3rem 0; }
 
 blockquote {
   border-left: 0.5rem solid #406098;
@@ -282,6 +280,8 @@ a:focus {
 
 .navigation {
   border-bottom: 3px dashed #545454; }
+  .navigation .navigation-menu {
+    margin-bottom: 3rem; }
   .navigation ul {
     display: block; }
     .navigation ul li {
