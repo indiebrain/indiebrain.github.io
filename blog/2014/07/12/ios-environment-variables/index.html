@@ -42,13 +42,13 @@ I find that there are usually at least two distinct environments in which any iO
 </p>
 
 <div class="org-src-container">
-<pre class="src src-objc">#ifdef DEBUG
-const NSString* myAppAPIBaseUrl = @"http://development.myapp.com"; // development services
-#else
-const NSString* myAppAPIBaseUrl = @"http://www.myapp.com"; // production services
-#endif
+<pre class="src src-objc">  #ifdef DEBUG
+  const NSString* myAppAPIBaseUrl = @"http://development.myapp.com"; // development services
+  #else
+  const NSString* myAppAPIBaseUrl = @"http://www.myapp.com"; // production services
+  #endif
 
-[[MyAppAPIClient alloc] initWithBaseUrl:myAppAPIBaseUrl];
+  [[MyAppAPIClient alloc] initWithBaseUrl:myAppAPIBaseUrl];
 </pre>
 </div>
 
@@ -61,8 +61,8 @@ What if the application code and configuration could live independent of each ot
 </p>
 
 <div class="org-src-container">
-<pre class="src src-objc">NSString* myAppAPIBaseUrl = [[Environment sharedInstance] fetch:@"MyAppAPIBaseUrl"];
-[MyAppAPIClient alloc] initWithBaseUrl:myAppAPIBaseUrl];
+<pre class="src src-objc">  NSString* myAppAPIBaseUrl = [[Environment sharedInstance] fetch:@"MyAppAPIBaseUrl"];
+  [MyAppAPIClient alloc] initWithBaseUrl:myAppAPIBaseUrl];
 </pre>
 </div>
 
@@ -74,15 +74,15 @@ It is the responsibility of the <code>[[Environment sharedInstance] fetch:@"MyAp
 As it turns out, implementing this behavior is not at all complicated:
 </p>
 
-<div id="outline-container-orgf5db392" class="outline-2">
-<h2 id="orgf5db392">Capture the build configuration used to build the Application bundle</h2>
-<div class="outline-text-2" id="text-orgf5db392">
+<div id="outline-container-orga4edaca" class="outline-2">
+<h2 id="orga4edaca">Capture the build configuration used to build the Application bundle</h2>
+<div class="outline-text-2" id="text-orga4edaca">
 <ul class="org-ul">
 <li>Add a new String value to the <code>&lt;application_name&gt;-Info.plist</code> to capture the name of the Build Configuration (environment name) used to create the application bundle at build time:</li>
 </ul>
 
 
-<div id="orga68b1bb" class="figure">
+<div id="orga192e61" class="figure">
 <p><img src="/assets/blog/2014/07/12/ios-environment-variables/application-info.plist.png" alt="application-info.plist.png" />
 </p>
 <p><span class="figure-number">Figure 1: </span>application-info.plist</p>
@@ -90,9 +90,9 @@ As it turns out, implementing this behavior is not at all complicated:
 </div>
 </div>
 
-<div id="outline-container-org128f6f1" class="outline-2">
-<h2 id="org128f6f1">Configure the Environments</h2>
-<div class="outline-text-2" id="text-org128f6f1">
+<div id="outline-container-org07eda57" class="outline-2">
+<h2 id="org07eda57">Configure the Environments</h2>
+<div class="outline-text-2" id="text-org07eda57">
 <ul class="org-ul">
 <li>Add an <code>Environments.plist</code> to the application. This serves as the centralized listing of environment specific configuration values for each environment the application supports.</li>
 
@@ -102,7 +102,7 @@ As it turns out, implementing this behavior is not at all complicated:
 </ul>
 
 
-<div id="org52bd7d9" class="figure">
+<div id="orga21576d" class="figure">
 <p><img src="/assets/blog/2014/07/12/ios-environment-variables/environments.plist.png" alt="environments.plist.png" />
 </p>
 <p><span class="figure-number">Figure 2: </span>environments.plist</p>
@@ -110,93 +110,93 @@ As it turns out, implementing this behavior is not at all complicated:
 </div>
 </div>
 
-<div id="outline-container-org12a6df2" class="outline-2">
-<h2 id="org12a6df2">Define the <code>Environment</code> object:</h2>
-<div class="outline-text-2" id="text-org12a6df2">
+<div id="outline-container-org23b42c8" class="outline-2">
+<h2 id="org23b42c8">Define the <code>Environment</code> object:</h2>
+<div class="outline-text-2" id="text-org23b42c8">
 <div class="org-src-container">
-<pre class="src src-objc">// Environment.h
-@interface Environment : NSObject
-+ (Environment*) sharedInstance;
-- (id) fetch:(NSString*)key;
-@end
+<pre class="src src-objc">  // Environment.h
+  @interface Environment : NSObject
+  + (Environment*) sharedInstance;
+  - (id) fetch:(NSString*)key;
+  @end
 </pre>
 </div>
 
 <div class="org-src-container">
-<pre class="src src-objc">// Environment.m
-#import "Environment.h"
+<pre class="src src-objc">  // Environment.m
+  #import "Environment.h"
 
-static Environment *sharedInstance = nil;
+  static Environment *sharedInstance = nil;
 
-@interface Environment()
-@property (strong, nonatomic) NSDictionary* environment;
-@end
-
-
-@implementation Environment
-
-+ (Environment*) sharedInstance {
-
-    static Environment *_sharedInstance = nil;
-    static dispatch_once_t oncePredicate;
-
-    dispatch_once(&amp;oncePredicate, ^{
-        _sharedInstance = [[Environment alloc] init];
-    });
-
-    return _sharedInstance;
-}
+  @interface Environment()
+  @property (strong, nonatomic) NSDictionary* environment;
+  @end
 
 
-- (id)init
-{
-    self = [super init];
-    if (self) {
-        NSBundle* bundle = [NSBundle mainBundle];
+  @implementation Environment
 
-        // Read in the 'Environment' name used to build the application (Debug or Release)
-        NSString* configuration = [bundle objectForInfoDictionaryKey:@"Configuration"];
+  + (Environment*) sharedInstance {
 
-        // Load the Environment.plist
-        NSString* environmentsPListPath = [bundle pathForResource:@"Environments" ofType:@"plist"];
-        NSDictionary* environments = [[NSDictionary alloc] initWithContentsOfFile:environmentsPListPath];
+      static Environment *_sharedInstance = nil;
+      static dispatch_once_t oncePredicate;
 
-        // Read the values for the 'Environment' name into the 'environment property'
-        NSDictionary* environment = [environments objectForKey:configuration];
-        self.environment = environment;
-    }
+      dispatch_once(&amp;oncePredicate, ^{
+          _sharedInstance = [[Environment alloc] init];
+      });
 
-    return self;
-}
+      return _sharedInstance;
+  }
 
-- (id)fetch:(NSString*)key {
 
-    /**
-     * If the key is present in the environment, then return its value;
-     * otherwise return nil.
-     */
+  - (id)init
+  {
+      self = [super init];
+      if (self) {
+          NSBundle* bundle = [NSBundle mainBundle];
 
-    return [self.environment objectForKey:key];
-}
-@end
+          // Read in the 'Environment' name used to build the application (Debug or Release)
+          NSString* configuration = [bundle objectForInfoDictionaryKey:@"Configuration"];
+
+          // Load the Environment.plist
+          NSString* environmentsPListPath = [bundle pathForResource:@"Environments" ofType:@"plist"];
+          NSDictionary* environments = [[NSDictionary alloc] initWithContentsOfFile:environmentsPListPath];
+
+          // Read the values for the 'Environment' name into the 'environment property'
+          NSDictionary* environment = [environments objectForKey:configuration];
+          self.environment = environment;
+      }
+
+      return self;
+  }
+
+  - (id)fetch:(NSString*)key {
+
+      /**
+       * If the key is present in the environment, then return its value;
+       * otherwise return nil.
+       */
+
+      return [self.environment objectForKey:key];
+  }
+  @end
 </pre>
 </div>
 </div>
 </div>
 
-<div id="outline-container-org3edb537" class="outline-2">
-<h2 id="org3edb537">Example</h2>
-<div class="outline-text-2" id="text-org3edb537">
+<div id="outline-container-org34587f3" class="outline-2">
+<h2 id="org34587f3">Example</h2>
+<div class="outline-text-2" id="text-org34587f3">
 <p>
 With the above code in place we can run the application to make sure everything's wired up correctly. In my example, I've added the following logger statement to the application's launch lifecycle;
 </p>
 
 <div class="org-src-container">
-<pre class="src src-objc">@implementation MAIOSAppDelegate
-- (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
-NSLog(@"Using %@ as the API Base URL", [[Environment sharedInstance] fetch:@"MyAppAPIBaseUrl"]);
-...
-@end
+<pre class="src src-objc">  @implementation MAIOSAppDelegate
+  - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
+  NSLog(@"Using %@ as the API Base URL", [[Environment sharedInstance] fetch:@"MyAppAPIBaseUrl"]);
+  ...
+  @end
 </pre>
 </div>
 
@@ -205,7 +205,7 @@ When the application is built in the Development mode, with the Debug build conf
 </p>
 
 <div class="org-src-container">
-<pre class="src src-objc">MyAppIOS[12289:60b] Using http://development.myapp.com as the API Base URL
+<pre class="src src-objc">  MyAppIOS[12289:60b] Using http://development.myapp.com as the API Base URL
 </pre>
 </div>
 
@@ -215,7 +215,7 @@ And when using the Production mode, with the Release build configuration, the lo
 </p>
 
 <div class="org-src-container">
-<pre class="src src-objc">MyAppIOS[12351:60b] Using http://www.myapp.com as the API Base URL
+<pre class="src src-objc">  MyAppIOS[12351:60b] Using http://www.myapp.com as the API Base URL
 </pre>
 </div>
 
