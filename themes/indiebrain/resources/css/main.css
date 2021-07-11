@@ -118,9 +118,11 @@ body {
 
 ul,
 ol {
-  list-style-type: none;
   margin: 0;
   padding: 0; }
+
+ul {
+  list-style-type: circle; }
 
 dl {
   margin: 0; }
@@ -138,7 +140,7 @@ figure {
 img,
 picture {
   margin: 0;
-  max-width: 100%; }
+  width: 100%; }
 
 table {
   border-collapse: collapse;
