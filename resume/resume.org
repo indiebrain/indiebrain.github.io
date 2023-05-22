@@ -18,48 +18,43 @@ Always remember, our purpose is not to "write code", but rather add
 value.
 #+END_QUOTE
 
-* Skills Summary
-
-- Web Application Development (Ruby/Rails and Standard Web
-  Technologies - HTTP, JavaScript, CSS)
-- API Development (Ruby/Rails)
-- Development tooling, Continuous Integration, Deployment Automation,
-  and Workload Orchestration (Bash, Jenkins, Docker, Kubernetes)
-- Team Growth and Leadership (agility, Lean Manufacturing
-  Principles, and Extreme Ownership)
-- Mentor and Educator
-
 * Experience
+
+** Shopify
+
+/September 2021 - May 2023/
+
+*Senior Software Developer*
+
+- Led integration of Shopify Fulfillment Network Returns and Deliverr. [[https://news.shopify.com/shopify-completes-acquisition-of-deliverr-to-expand-fast-and-easy-fulfillment-for-merchants-across-multiple-channels][Link]]
+- Led load testing, disaster drills, and risk mitigation for Shopify Fulfillment Network Returns processing during 2022's "Black Friday / Cyber Monday".
+- Implemented Product-level Taxonomy and categorization capabilities to enhance Warehouse Operational efficiency.
+- Implemented progressive feature gating, progressive rollout, and management capabilities.
+- Performed on-call and maintenance shifts to ensure smooth operation of software and warehouse operations for customers.
+- Mentored interns and early career developers, supporting their professional growth.
+- Delivered talks on Ruby "gotchas" found in the code base.
 
 ** exercism.io
 
 *Volunteer Mentor*
 
-/August 2019 - Present/
+/August 2019 - September 2021/
 
-- Provide exercise evaluations and guidance to students along the Ruby
-  and Emacs-Lisp tracks
+- Supported and mentored students in Ruby and Emacs-Lisp tracks by providing exercise evaluation and mentoring.
 
 ** Power Home Remodeling Group
 
 *Senior Software Developer / Substitute Instructor / Mentor*
 
-/May 2018 - Present/
+/May 2018 - September 2021/
 
-- Run planning and commitment ceremonies for the "Release Engineering"
-  team
-- Develop software delivery pipeline tooling using Jenkins CI, Docker,
-  Shopify/shipit-engine, Shopify/krane, and Kubernetes
-- Coordinate and contribute enhancements to Shopify/shipit-engine - some
-  of note: "Review Stacks ([[https://github.com/Shopify/shipit-engine/pull/1102][#1102]])", "Custom task execution strategies
-  ([[https://github.com/Shopify/shipit-engine/pull/1107][#1107]])", and "Fix: corrupt git caches cause tasks to 'exit status
-  128'" ([[https://github.com/Shopify/shipit-engine/pull/1169][#1169]])
-- Develop tooling to ease on-boarding, and improve Quality of Life for
-  development teams
-- Maintain and evolve 10+ year old "Component based Rails Application"
-  (https://cbra.info)
-- Integrate "Business Intelligence" visualization using JavaScript (ES6)
-- Support telephony applications using Asterisk / SIP
+- Developed software delivery pipeline tooling using Jenkins CI, Docker, Shopify/shipit-engine, Shopify/krane, and Kubernetes.
+- Contributed upstream enhancements to Shopify/shipit-engine, including "Review Stacks" ([[https://github.com/Shopify/shipit-engine/pull/1102][https://github.com/Shopify/shipit-engine/pull/1102]]), "Custom task execution strategies" ([[https://github.com/Shopify/shipit-engine/pull/1107][https://github.com/Shopify/shipit-engine/pull/1107]]), and "Fix: corrupt git caches cause tasks to 'exit status 128'" ([[https://github.com/Shopify/shipit-engine/pull/1169][https://github.com/Shopify/shipit-engine/pull/1169]]).
+- Managed planning and commitment ceremonies for the "Release Engineering" team.
+- Developed tooling to streamline onboarding and enhance the quality of life for development teams.
+- Maintained and evolved a 10+ year old "Component based Rails Application" (https://cbra.info).
+- Integrated "Business Intelligence" visualization using JavaScript (ES6).
+- Supported telephony applications using Asterisk (PBX) / SIP.
 
 ** Bauer Xcel Media
 
@@ -67,13 +62,11 @@ value.
 
 /February 2016 - May 2018/
 
-- Developed home-grown, multi-tenant, publishing and sweepstakes Rails
-  applications
-- Developed team's operational support competence and distribute knowledge
-  by creating the "On-call / incident response playbook"
-- Introduced process monitoring metrics and reduced Cycle time by 34.4%
-- Developed automated "Review Application" workflow, cutting monthly
-  development team hosting costs by 50%
+- Developed home-grown, multi-tenant, publishing, and sweepstakes Rails applications.
+- Optimized content presentation for maximum SEO relevance.
+- Developed the team's operational support competence and distributed knowledge by creating the "On-call / incident response playbook."
+- Introduced process monitoring metrics, resulting in a 34.4% reduction in cycle time.
+- Developed an automated "Review Application" workflow, leading to a 50% decrease in monthly development team hosting costs.
 
 ** Sizmek (formerly PointRoll)
 
@@ -81,12 +74,9 @@ value.
 
 /January 2015 - June 2016/
 
-- Developed targeted video advertising platform using VAST XML delivery
-  standards.
-- Mentored team through transition to an agility based software process
-- Supported business through acquisition to eventual shuttering of
-  projects while "keeping the lights on" for clients such as Apple,
-  Jaguar, and BMW.
+- Developed targeted video advertising platform using VAST XML delivery standards.
+- Mentored team through transition to an agility-based software process.
+- Supported business through acquisition to eventual project shuttering while maintaining services for clients such as Apple, Jaguar, and BMW.
 
 ** Hoopla
 
@@ -94,14 +84,11 @@ value.
 
 /July 2012 - January 2015/
 
-- Developed Hoopla platform - Rails application for sales team
-  motivation
-- Maintained Salesforce integration - Apex based communication bridge
-  between Salesforce Orgs and Hoopla metrics and events APIs.
-- Developed "Hoopla TV" - a web based sales SportsCenter-esque UI over
-  the Hoopla platform to display sales metrics and events
-- Lead Mobile API development team and later absorbed the responsibility
-  of native mobile application development
+- Developed Hoopla platform, a Rails application for sales team motivation.
+- Maintained Salesforce integration, an Apex-based communication bridge between Salesforce Orgs and Hoopla metrics and events APIs.
+- Developed "Hoopla TV," a web-based sales SportsCenter-esque UI over the Hoopla platform to display sales metrics and events.
+- Provided exceptional support to large-account customers, including LinkedIn, Zillow, Angie's List, and Ring Central.
+- Led Mobile API development team and later assumed responsibility for native mobile application development.
 
 ** Artisan (formerly AppRenaissance)
 
@@ -109,10 +96,8 @@ value.
 
 /July 2011 - July 2012/
 
-- Develop and deploy native iOS applications to the App store for
-  clients; projects included Chinoki, Trustlines, and Interact
-- Built consulting business from 2 developers to product team of 10 in
-  less than a year
+- Developed and deployed native iOS applications to the App Store for clients, including Chinoki, Trustlines, and Interact.
+- Built consulting business from 2 developers to a product team of 10 in less than a year.
 
 ** Infor
 
@@ -120,10 +105,8 @@ value.
 
 /May 2009 - July 2011/
 
-- Developed "Orders and Requisitions" and "Accounts Payable" components
-  of the Enterprise Resource Planning system
-- Founded the "Brown-Bag" club to promote cross-team relationship
-  building, and knowledge sharing
+- Developed "Orders and Requisitions" and "Accounts Payable" components of the Enterprise Resource Planning system.
+- Founded the "Brown-Bag" club to promote cross-team relationship building and knowledge sharing.
 
 ** Oracle (formerly AdminServer)
 
@@ -131,12 +114,17 @@ value.
 
 /February 2006 - June 2009/
 
-- Developed data-driven Life and Annuity insurance policy administration
-  system
-- Participate in research and development, and technology evaluation for
-  future platform enhancements
-- Lead development team to incorporate R&D findings into product
-  evolution
+- Developed data-driven Life and Annuity insurance policy administration system.
+- Led research and development for next-gen offerings.
+- Led development team to incorporate R&D findings into product evolution.
+
+* Skills Summary
+
+- Web Application Development: Ruby/Rails, HTTP, JavaScript, CSS
+- API Development: Ruby/Rails
+- Development Tooling: Bash, Jenkins, Docker, Kubernetes
+- Team Growth and Leadership: Agility, Lean Manufacturing Principles, Extreme Ownership
+- Mentorship and Education
 
 * Open Source Contributions
 
@@ -144,25 +132,19 @@ value.
 
 https://github.com/Shopify/shipit-engine
 
-Shipit is a deployment tool that makes shipping code better for
-everyone. It's especially great for large teams of developers and
-designers who work together to build and deploy GitHub repos.
+Shipit is a deployment tool that makes shipping code better for everyone. It's especially great for large teams of developers and designers who work together to build and deploy GitHub repos.
 
 ** percona-xtradb-cluster-operator
 
 https://github.com/indiebrain/percona-xtradb-cluster-operator
 
-A Kubernetes operator for Percona XtraDB Cluster based on the Operator
-SDK.
+A Kubernetes operator for Percona XtraDB Cluster based on the Operator SDK.
 
 ** rubyforgood/mutual-aid
 
 https://github.com/rubyforgood/mutual-aid
 
-Mutual Aid is when people get together to build community by volunarily
-sharing resources with each other. Mutual Aid groups are more concerned
-about local resiliency than global campaigns, and prefer solidarity
-before charity.
+Mutual Aid is when people get together to build community by volunarily sharing resources with each other. Mutual Aid groups are more concerned about local resiliency than global campaigns, and prefer solidarity before charity.
 
 * Side Projects
 
@@ -176,9 +158,7 @@ An [[https://github.com/asdf-vm/asdf][asdf]] version manager plugin to manage [[
 
 https://github.com/indiebrain/futurist
 
-An implementation of the future construct, inspired by Celluloid's block
-based futures, which uses process forking as a means of backgrounding
-work.
+An implementation of the future construct, inspired by Celluloid's block based futures, which uses process forking as a means of backgrounding work.
 
 ** backbone-elasticsearch
 
@@ -190,8 +170,7 @@ Adapters and Utilities to interface Backbone.js with ElasticSearch
 
 https://github.com/indiebrain/omniauth-doximity_oauth2
 
-An OmniAuth (https://github.com/intridea/omniauth) OAuth2 strategy for
-Doximity (http://www.doximity.com/)
+An OmniAuth (https://github.com/intridea/omniauth) OAuth2 strategy for Doximity (http://www.doximity.com/)
 
 * Talks
 
@@ -199,18 +178,7 @@ Doximity (http://www.doximity.com/)
 
 https://github.com/indiebrain/talks/blob/master/git_internals/git_internals.org
 
-Does git's user interface seem cryptic? Are you often confused about
-when you should use 'checkout' vs 'reset'? Does 'rebase' feel scary?
-This talk explains the inner workings of git and sheds a bit of light on
-how the internal structure of git as a data store influences its user
-interface.
-
-* Elsewhere
-
-- https://aaronkuehler.com
-- https://www.github.com/indiebrain
-- https://twitter.com/indiebrain
-- https://www.linkedin.com/in/aaronkuehler/
+A talk on the inner workings of git and its influence on the user interface.
 
 * Education
 
@@ -230,12 +198,10 @@ interface.
 
 - [[https://raw.githubusercontent.com/indiebrain/indiebrain.github.io/source/resume/small-file-affects-on-hadoop-distributed-file-sytem.pdf][Whitepaper PDF]]
 
-The Hadoop Distributed File System is a high throughput distributed File
-system designed to accommodate large data sets; average file sizes in
-the gigabyte-terabyte range. However when a data set is composed of
-large amounts of small files, say in the kilobyte range, the storage
-system's semantics introduce hight amounts of overhead in terms of file
-system block storage and read latency. This paper explains the
-architectural attributes which cause these problems and examines
-techniques to mitigate their impact when working with data sets
-comprised of large numbers of small files.
+An discussion of the impact of small files on Hadoop Distributed File System, proposing mitigation techniques.
+
+* Elsewhere
+
+- https://aaronkuehler.com
+- https://www.github.com/indiebrain
+- https://www.linkedin.com/in/aaronkuehler/
