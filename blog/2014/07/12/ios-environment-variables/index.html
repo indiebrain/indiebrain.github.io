@@ -74,15 +74,15 @@ It is the responsibility of the <code>[[Environment sharedInstance] fetch:@"MyAp
 As it turns out, implementing this behavior is not at all complicated:
 </p>
 
-<div id="outline-container-orgd31ec05" class="outline-2">
-<h2 id="orgd31ec05">Capture the build configuration used to build the Application bundle</h2>
-<div class="outline-text-2" id="text-orgd31ec05">
+<div id="outline-container-org8579cc9" class="outline-2">
+<h2 id="org8579cc9">Capture the build configuration used to build the Application bundle</h2>
+<div class="outline-text-2" id="text-org8579cc9">
 <ul class="org-ul">
 <li>Add a new String value to the <code>&lt;application_name&gt;-Info.plist</code> to capture the name of the Build Configuration (environment name) used to create the application bundle at build time:</li>
 </ul>
 
 
-<div id="org51e7871" class="figure">
+<div id="orgcfa33a7" class="figure">
 <p><img src="/assets/blog/2014/07/12/ios-environment-variables/application-info.plist.png" alt="application-info.plist.png" />
 </p>
 <p><span class="figure-number">Figure 1: </span>application-info.plist</p>
@@ -90,9 +90,9 @@ As it turns out, implementing this behavior is not at all complicated:
 </div>
 </div>
 
-<div id="outline-container-orgd1fdda5" class="outline-2">
-<h2 id="orgd1fdda5">Configure the Environments</h2>
-<div class="outline-text-2" id="text-orgd1fdda5">
+<div id="outline-container-orga43757d" class="outline-2">
+<h2 id="orga43757d">Configure the Environments</h2>
+<div class="outline-text-2" id="text-orga43757d">
 <ul class="org-ul">
 <li>Add an <code>Environments.plist</code> to the application. This serves as the centralized listing of environment specific configuration values for each environment the application supports.</li>
 
@@ -102,7 +102,7 @@ As it turns out, implementing this behavior is not at all complicated:
 </ul>
 
 
-<div id="org70912c1" class="figure">
+<div id="org19be43a" class="figure">
 <p><img src="/assets/blog/2014/07/12/ios-environment-variables/environments.plist.png" alt="environments.plist.png" />
 </p>
 <p><span class="figure-number">Figure 2: </span>environments.plist</p>
@@ -110,9 +110,9 @@ As it turns out, implementing this behavior is not at all complicated:
 </div>
 </div>
 
-<div id="outline-container-orgba30fa0" class="outline-2">
-<h2 id="orgba30fa0">Define the <code>Environment</code> object:</h2>
-<div class="outline-text-2" id="text-orgba30fa0">
+<div id="outline-container-org6fb520d" class="outline-2">
+<h2 id="org6fb520d">Define the <code>Environment</code> object:</h2>
+<div class="outline-text-2" id="text-org6fb520d">
 <div class="org-src-container">
 <pre class="src src-objc">  // Environment.h
   @interface Environment : NSObject
@@ -184,9 +184,9 @@ As it turns out, implementing this behavior is not at all complicated:
 </div>
 </div>
 
-<div id="outline-container-org4f764a4" class="outline-2">
-<h2 id="org4f764a4">Example</h2>
-<div class="outline-text-2" id="text-org4f764a4">
+<div id="outline-container-org1883a39" class="outline-2">
+<h2 id="org1883a39">Example</h2>
+<div class="outline-text-2" id="text-org1883a39">
 <p>
 With the above code in place we can run the application to make sure everything's wired up correctly. In my example, I've added the following logger statement to the application's launch lifecycle;
 </p>
