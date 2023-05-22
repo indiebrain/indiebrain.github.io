@@ -7,24 +7,28 @@
 Always remember, our purpose is not to "write code", but rather add value.
 #+END_QUOTE
 
-Hi, I'm Aaron!
+Hi, I'm Aaron.
 
-I'm a human being - I have varying interests. I'm a father, musician,
-home brewer, soap maker, photographer, electronics tinkerer... a general
-lover of understanding and making.
+I'm a Software Developer with almost 20 years of professional
+experience delivering value, and impacting users and teammates alike.
 
-Professionally, I develop software and technical teams. I began studying
-Computational Science and Computer Programming in 1999. I passionately
-continue to advance my understanding of these topics to improve my
-professional practice. I am an ardent user of automated testing. I use
-tests to guide and define the interfaces and interactions of my software
-from the outside-in. I believe that developing software is
-at-least-as-much about interacting and effectively communicating with
-humans as with machines. As such, I value enhancing understanding of
-human behavior, communication and relationships, and leadership skills.
-In my experience, these 'soft' skills tend to contribute more in the
-calculus of the success of individuals and teams than technical ability
-alone. I enjoy helping teams grow to understand and value these skills.
+Professionally, my expertise lies in software development and building
+technical teams. I embarked on my journey in Computer Science and
+Computer Programming in 1999. Since then, I have dedicated myself to
+continually enhancing my knowledge in these areas to excel in my
+professional endeavors.
+
+Software development is so much more than instructing a machine how to
+solve a problem. Effective human collaboration is as important as
+elegant technical design in order to build truly impactful solutions.
+Therefore, I prioritize understanding human behavior, fostering honest
+communication and relationships, and developing leadership skills and
+honing purely technical skills equally.
+
+Personally, I possess a diverse range of interests; including being a
+father, musician, home brewer, soap maker, woodworker, pre-industrial
+hand tool refurbisher, photographer, and electronics tinkerer. I have
+a passion for learning and creating.
 
 * Open Source Contributions
 
@@ -120,4 +124,3 @@ A Doximity OAuth2 Strategy for OmniAuth.
 
   - https://www.linkedin.com/in/aaronkuehler
   - https://www.github.com/indiebrain
-  - https://www.twitter.com/indiebrain
