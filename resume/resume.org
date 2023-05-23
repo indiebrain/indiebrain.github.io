@@ -11,20 +11,23 @@
 #+LATEX_HEADER: \usepackage{helvet}
 #+LATEX_HEADER: \renewcommand{\familydefault}{phv}
 #+LATEX_HEADER: \usepackage{parskip}
-#+LATEX_HEADER: \usepackage[margin=0.75in]{geometry}
+#+LATEX_HEADER: \usepackage[left=1.25cm,right=1.25cm,top=1.5cm,bottom=1.5cm,columnsep=1.2cm]{geometry}
+#+LATEX_HEADER: \usepackage{enumitem}
+#+LATEX_HEADER: \setlist[itemize]{label=$\circ$}
 
-#+BEGIN_QUOTE
-Always remember, our purpose is not to "write code", but rather add
-value.
-#+END_QUOTE
+* Proficiency highlights
 
-* Experience
+- Web Application / API Development: Ruby, Rails, HTTP, React, JavaScript, CSS, REST, GraphQL
+- Development Tooling: Bash, Ruby
+- Containerization and orchestration: podman, Docker, Kubernetes
+- Team Growth and Leadership: Agility, Lean Manufacturing Principles, Extreme Ownership
+- Mentorship and Education
+
+* Recent Experience
 
 ** Shopify
 
-/September 2021 - May 2023/
-
-*Senior Software Developer*
+*Senior Software Developer* /September 2021 - May 2023/
 
 - Led integration of Shopify Fulfillment Network Returns and Deliverr. [[https://news.shopify.com/shopify-completes-acquisition-of-deliverr-to-expand-fast-and-easy-fulfillment-for-merchants-across-multiple-channels][Link]]
 - Led load testing, disaster drills, and risk mitigation for Shopify Fulfillment Network Returns processing during 2022's "Black Friday / Cyber Monday".
@@ -36,17 +39,13 @@ value.
 
 ** exercism.io
 
-*Volunteer Mentor*
-
-/August 2019 - September 2021/
+*Volunteer Mentor* /August 2019 - September 2021/
 
 - Supported and mentored students in Ruby and Emacs-Lisp tracks by providing exercise evaluation and mentoring.
 
 ** Power Home Remodeling Group
 
-*Senior Software Developer / Substitute Instructor / Mentor*
-
-/May 2018 - September 2021/
+*Senior Software Developer / Substitute Instructor / Mentor* /May 2018 - September 2021/
 
 - Developed software delivery pipeline tooling using Jenkins CI, Docker, Shopify/shipit-engine, Shopify/krane, and Kubernetes.
 - Contributed upstream enhancements to Shopify/shipit-engine, including "Review Stacks" ([[https://github.com/Shopify/shipit-engine/pull/1102][https://github.com/Shopify/shipit-engine/pull/1102]]), "Custom task execution strategies" ([[https://github.com/Shopify/shipit-engine/pull/1107][https://github.com/Shopify/shipit-engine/pull/1107]]), and "Fix: corrupt git caches cause tasks to 'exit status 128'" ([[https://github.com/Shopify/shipit-engine/pull/1169][https://github.com/Shopify/shipit-engine/pull/1169]]).
@@ -58,9 +57,7 @@ value.
 
 ** Bauer Xcel Media
 
-*Technical Team Lead / Senior Software Developer*
-
-/February 2016 - May 2018/
+*Technical Team Lead / Senior Software Developer* /February 2016 - May 2018/
 
 - Developed home-grown, multi-tenant, publishing, and sweepstakes Rails applications.
 - Optimized content presentation for maximum SEO relevance.
@@ -68,21 +65,17 @@ value.
 - Introduced process monitoring metrics, resulting in a 34.4% reduction in cycle time.
 - Developed an automated "Review Application" workflow, leading to a 50% decrease in monthly development team hosting costs.
 
-** Sizmek (formerly PointRoll)
+** Sizmek (formerly PointRoll) :noexport:
 
-*Software Developer*
-
-/January 2015 - June 2016/
+*Software Developer* /January 2015 - June 2016/
 
 - Developed targeted video advertising platform using VAST XML delivery standards.
 - Mentored team through transition to an agility-based software process.
 - Supported business through acquisition to eventual project shuttering while maintaining services for clients such as Apple, Jaguar, and BMW.
 
-** Hoopla
+** Hoopla :noexport:
 
-*Software Developer*
-
-/July 2012 - January 2015/
+*Software Developer* /July 2012 - January 2015/
 
 - Developed Hoopla platform, a Rails application for sales team motivation.
 - Maintained Salesforce integration, an Apex-based communication bridge between Salesforce Orgs and Hoopla metrics and events APIs.
@@ -90,41 +83,27 @@ value.
 - Provided exceptional support to large-account customers, including LinkedIn, Zillow, Angie's List, and Ring Central.
 - Led Mobile API development team and later assumed responsibility for native mobile application development.
 
-** Artisan (formerly AppRenaissance)
+** Artisan (formerly AppRenaissance) :noexport:
 
-*Senior Software Developer*
-
-/July 2011 - July 2012/
+*Senior Software Developer* /July 2011 - July 2012/
 
 - Developed and deployed native iOS applications to the App Store for clients, including Chinoki, Trustlines, and Interact.
 - Built consulting business from 2 developers to a product team of 10 in less than a year.
 
-** Infor
+** Infor :noexport:
 
-*Software Engineer*
-
-/May 2009 - July 2011/
+*Software Engineer* /May 2009 - July 2011/
 
 - Developed "Orders and Requisitions" and "Accounts Payable" components of the Enterprise Resource Planning system.
 - Founded the "Brown-Bag" club to promote cross-team relationship building and knowledge sharing.
 
-** Oracle (formerly AdminServer)
+** Oracle (formerly AdminServer) :noexport:
 
-*Application Engineer*
-
-/February 2006 - June 2009/
+*Application Engineer* /February 2006 - June 2009/
 
 - Developed data-driven Life and Annuity insurance policy administration system.
 - Led research and development for next-gen offerings.
 - Led development team to incorporate R&D findings into product evolution.
-
-* Skills Summary
-
-- Web Application Development: Ruby/Rails, HTTP, JavaScript, CSS
-- API Development: Ruby/Rails
-- Development Tooling: Bash, Jenkins, Docker, Kubernetes
-- Team Growth and Leadership: Agility, Lean Manufacturing Principles, Extreme Ownership
-- Mentorship and Education
 
 * Open Source Contributions
 
@@ -170,7 +149,7 @@ Adapters and Utilities to interface Backbone.js with ElasticSearch
 
 https://github.com/indiebrain/omniauth-doximity_oauth2
 
-An OmniAuth (https://github.com/intridea/omniauth) OAuth2 strategy for Doximity (http://www.doximity.com/)
+An [[https://github.com/intridea/omniauth][OmniAuth]] OAuth2 strategy for [[http://www.doximity.com/][Doximity]]
 
 * Talks
 
