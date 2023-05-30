@@ -38,9 +38,9 @@
 <div class="post">
 <h1>DIY Baby Monitor</h1>
 
-<div id="outline-container-org4df39b8" class="outline-2">
-<h2 id="org4df39b8">Motivation</h2>
-<div class="outline-text-2" id="text-org4df39b8">
+<div id="outline-container-org2f4de14" class="outline-2">
+<h2 id="org2f4de14">Motivation</h2>
+<div class="outline-text-2" id="text-org2f4de14">
 <p>
 "Daddy, you have to stop talking to me through the camera at night" is the phrase which immediately preceded the hurried unplugging and dismantling of the Foscam FI8910W in the children's room. For you see, I had never used the two-way audio functionality of the device. It's a hard pill to swallow, you're supposed to be their protector but you've potentially invited the faceless stranger into their bedroom. Such was my experience. We, like many parents looking to avoid an outrageously priced video baby monitor, purchased the Foscam IP night-vision camera to remotely keep an eye our child at night, and at nap time. We locked the thing down, allowing LAN connections to the video/audio stream. It's hard to say for sure if an outside party actually gained access to the Foscam device, but the question alone is enough to make any parent yank the device from the wall and put it in a sound and light proof hole in the ground. After all, <a href="https://krebsonsecurity.com/2014/01/bug-exposes-ip-cameras-baby-monitors/">security issues with IP cameras and WI-FI baby monitors</a> are documented. So what's a parent to do?
 </p>
@@ -51,9 +51,9 @@ This is a project log detailing how I built a less-creepy baby monitor for about
 </div>
 </div>
 
-<div id="outline-container-org23c98ad" class="outline-2">
-<h2 id="org23c98ad">Parts list</h2>
-<div class="outline-text-2" id="text-org23c98ad">
+<div id="outline-container-org0eb23e4" class="outline-2">
+<h2 id="org0eb23e4">Parts list</h2>
+<div class="outline-text-2" id="text-org0eb23e4">
 <ul class="org-ul">
 <li><a href="https://www.amazon.com/gp/product/B01C6Q2GSY/ref%3Doh_aui_search_detailpage?ie%3DUTF8&amp;psc%3D1">Raspberry Pi 3 Model B</a></li>
 <li><a href="https://www.adafruit.com/product/3100">Pi Noir Infrared Camera Module</a></li>
@@ -62,9 +62,9 @@ This is a project log detailing how I built a less-creepy baby monitor for about
 </div>
 </div>
 
-<div id="outline-container-org3e39eae" class="outline-2">
-<h2 id="org3e39eae">The Build</h2>
-<div class="outline-text-2" id="text-org3e39eae">
+<div id="outline-container-orgee5538c" class="outline-2">
+<h2 id="orgee5538c">The Build</h2>
+<div class="outline-text-2" id="text-orgee5538c">
 <p>
 FWIW, here's the kernel version I'm working with:
 </p>
@@ -76,18 +76,18 @@ Linux raspberrypi 4.9.41-v7+ #1023 SMP Tue Aug 8 16:00:15 BST 2017 armv7l GNU/Li
 </div>
 </div>
 
-<div id="outline-container-org21b94f6" class="outline-3">
-<h3 id="org21b94f6">Connect the Pi Noir</h3>
-<div class="outline-text-3" id="text-org21b94f6">
+<div id="outline-container-orgd787984" class="outline-3">
+<h3 id="orgd787984">Connect the Pi Noir</h3>
+<div class="outline-text-3" id="text-orgd787984">
 <p>
 <a href="https://www.youtube.com/embed/GImeVqHQzsE?rel=0">James Adams of the Raspberry Pi Foundation has a great walkthrough of how to get up and running with the camera modules</a>.
 </p>
 </div>
 </div>
 
-<div id="outline-container-org6501bdf" class="outline-3">
-<h3 id="org6501bdf">Enable the Camera</h3>
-<div class="outline-text-3" id="text-org6501bdf">
+<div id="outline-container-org494db34" class="outline-3">
+<h3 id="org494db34">Enable the Camera</h3>
+<div class="outline-text-3" id="text-org494db34">
 <p>
 Enable the pi camera port by loading the kernel modules. There are two potential ways to do this.
 </p>
@@ -102,7 +102,7 @@ Second, one can manually load the camera kernel modules with <code>modprobe</cod
 </p>
 
 <div class="org-src-container">
-<pre class="src src-sh" id="org5563b2a">sudo modprobe bcm2835-v4l2
+<pre class="src src-sh" id="org0239c7e">sudo modprobe bcm2835-v4l2
 </pre>
 </div>
 
@@ -111,16 +111,16 @@ or, probably more helpfully, load the module at system boot by adding the follow
 </p>
 
 <div class="org-src-container">
-<pre class="src src-sh" id="org6ee9026">...
+<pre class="src src-sh" id="org12b515b">...
 bcm2835-v4l2
 </pre>
 </div>
 </div>
 </div>
 
-<div id="outline-container-org0a72e73" class="outline-3">
-<h3 id="org0a72e73">Setup the Infrared Illuminator (LED Array)</h3>
-<div class="outline-text-3" id="text-org0a72e73">
+<div id="outline-container-org2b7129b" class="outline-3">
+<h3 id="org2b7129b">Setup the Infrared Illuminator (LED Array)</h3>
+<div class="outline-text-3" id="text-org2b7129b">
 <p>
 This is the simplest step of the setup, we simply plug in our Infrared
 LED array and position it in the room so that the viewing area of the
@@ -137,9 +137,9 @@ array when the room is sufficiently light by another source.
 </div>
 </div>
 
-<div id="outline-container-orgc5dafb3" class="outline-3">
-<h3 id="orgc5dafb3">Install the <code>motion</code> package</h3>
-<div class="outline-text-3" id="text-orgc5dafb3">
+<div id="outline-container-org5ff4544" class="outline-3">
+<h3 id="org5ff4544">Install the <code>motion</code> package</h3>
+<div class="outline-text-3" id="text-org5ff4544">
 <div class="org-src-container">
 <pre class="src src-sh">sudo apt update
 sudo apt install motion
@@ -148,9 +148,9 @@ sudo apt install motion
 </div>
 </div>
 
-<div id="outline-container-orgef9052a" class="outline-3">
-<h3 id="orgef9052a">Configure motion</h3>
-<div class="outline-text-3" id="text-orgef9052a">
+<div id="outline-container-orgcfb2d04" class="outline-3">
+<h3 id="orgcfb2d04">Configure motion</h3>
+<div class="outline-text-3" id="text-orgcfb2d04">
 <p>
 We want motion to run as a background daemon on startup; installing motion with apt should setup the service for us, but it's worth checking the configuration to ensure that motion thinks it's going to start in daemon mode.
 </p>
@@ -228,9 +228,9 @@ Disable the capture and storage of still images and video from the camera.
 </div>
 </div>
 
-<div id="outline-container-orgefbc150" class="outline-2">
-<h2 id="orgefbc150">Conclusion</h2>
-<div class="outline-text-2" id="text-orgefbc150">
+<div id="outline-container-org4feedd8" class="outline-2">
+<h2 id="org4feedd8">Conclusion</h2>
+<div class="outline-text-2" id="text-org4feedd8">
 <p>
 Now that everything's setup and configured you can access the video stream at <code>http://&lt;your-raspberry-pi-host&gt;:8081</code> via any device on the local network. At about the same monetary and time commitment, this project provides more granular control, transparent security and privacy controls, and a clearer path to software/firmware updates than any Foscam solution - and 100% less baked in 3rd party eavesdropping.
 </p>
