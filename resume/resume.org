@@ -6,14 +6,21 @@
 #+DESCRIPTION: Professional information of Aaron Kuehler
 #+OPTIONS: texht:t
 #+LATEX_CLASS: article
-#+LATEX_CLASS_OPTIONS: [12pt letterpaper notitlepage]
+#+LATEX_CLASS_OPTIONS: [10pt letterpaper notitlepage]
 #+LATEX_HEADER: \pagenumbering{gobble}
 #+LATEX_HEADER: \usepackage{helvet}
 #+LATEX_HEADER: \renewcommand{\familydefault}{phv}
 #+LATEX_HEADER: \usepackage{parskip}
 #+LATEX_HEADER: \usepackage[left=1.25cm,right=1.25cm,top=1.5cm,bottom=1.5cm,columnsep=1.2cm]{geometry}
 #+LATEX_HEADER: \usepackage{enumitem}
-#+LATEX_HEADER: \setlist[itemize]{label=$\circ$}
+#+LATEX_HEADER: \setlist[itemize]{label=$\circ$,itemsep=-5pt}
+
+Over 15 years of experience developing software, mentoring, and
+delivering value thorugh a wide range of software solutions including
+monolithic web applications, distributed systems, and deployment
+pipeline and developer tooling. I thrive in collaborative environments
+where sharing and learning from our unique experience is valued, and
+where impact is celebrated.
 
 * Proficiency highlights
 
@@ -29,19 +36,19 @@
 
 *Senior Software Developer* /September 2021 - May 2023/
 
-- Led integration of Shopify Fulfillment Network Returns and Deliverr. [[https://news.shopify.com/shopify-completes-acquisition-of-deliverr-to-expand-fast-and-easy-fulfillment-for-merchants-across-multiple-channels][Link]]
+- Led integration of Shopify Fulfillment Network Returns and Deliverr.
 - Led load testing, disaster drills, and risk mitigation for Shopify Fulfillment Network Returns processing during 2022's "Black Friday / Cyber Monday".
 - Implemented Product-level Taxonomy and categorization capabilities to enhance Warehouse Operational efficiency.
 - Implemented progressive feature gating, progressive rollout, and management capabilities.
 - Performed on-call and maintenance shifts to ensure smooth operation of software and warehouse operations for customers.
-- Mentored interns and early career developers, supporting their professional growth.
+- Mentored interns and early career developers; supporting their professional growth.
 - Delivered talks on Ruby "gotchas" found in the code base.
 
 ** exercism.io
 
 *Volunteer Mentor* /August 2019 - September 2021/
 
-- Supported and mentored students in Ruby and Emacs-Lisp tracks by providing exercise evaluation and mentoring.
+- Supported students in Ruby and Emacs-Lisp tracks by providing exercise evaluation and mentoring.
 
 ** Power Home Remodeling Group
 
@@ -105,7 +112,7 @@
 - Led research and development for next-gen offerings.
 - Led development team to incorporate R&D findings into product evolution.
 
-* Open Source Contributions
+* Sample Open Source Contributions
 
 ** Shopify/shipit-engine
 
@@ -125,7 +132,7 @@ https://github.com/rubyforgood/mutual-aid
 
 Mutual Aid is when people get together to build community by volunarily sharing resources with each other. Mutual Aid groups are more concerned about local resiliency than global campaigns, and prefer solidarity before charity.
 
-* Side Projects
+* Sample Side Projects
 
 ** asdf-guile
 
@@ -133,23 +140,17 @@ https://github.com/indiebrain/asdf-guile
 
 An [[https://github.com/asdf-vm/asdf][asdf]] version manager plugin to manage [[https://www.gnu.org/software/guile/][GNU Guile]] installations
 
+** rescue-alive
+
+https://github.com/indiebrain/resque-alive
+
+A Kubernetes Liveness probe for Resque
+
 ** futurist
 
 https://github.com/indiebrain/futurist
 
 An implementation of the future construct, inspired by Celluloid's block based futures, which uses process forking as a means of backgrounding work.
-
-** backbone-elasticsearch
-
-https://github.com/indiebrain/backbone-elasticsearch
-
-Adapters and Utilities to interface Backbone.js with ElasticSearch
-
-** OmniAuth Doximity OAuth2
-
-https://github.com/indiebrain/omniauth-doximity_oauth2
-
-An [[https://github.com/intridea/omniauth][OmniAuth]] OAuth2 strategy for [[http://www.doximity.com/][Doximity]]
 
 * Talks
 

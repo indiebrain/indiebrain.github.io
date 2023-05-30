@@ -9,26 +9,17 @@ Always remember, our purpose is not to "write code", but rather add value.
 
 Hi, I'm Aaron.
 
-I'm a Software Developer with almost 20 years of professional
-experience delivering value, and impacting users and teammates alike.
+I have over 15 years of experience developing software, mentoring, and
+delivering value. I've built a wide range of software solutions
+including monolithic web applications, distributed systems, deployment
+pipeline and developer tooling, and more. I thrive in collaborative
+environments where sharing and learning from our unique experience is
+valued, and where impact is celebrated.
 
-Professionally, my expertise lies in software development and building
-technical teams. I embarked on my journey in Computer Science and
-Computer Programming in 1999. Since then, I have dedicated myself to
-continually enhancing my knowledge in these areas to excel in my
-professional endeavors.
-
-Software development is so much more than instructing a machine how to
-solve a problem. Effective human collaboration is as important as
-elegant technical design in order to build truly impactful solutions.
-Therefore, I prioritize understanding human behavior, fostering honest
-communication and relationships, and developing leadership skills and
-honing purely technical skills equally.
-
-Personally, I possess a diverse range of interests; including being a
-father, musician, home brewer, soap maker, woodworker, pre-industrial
-hand tool refurbisher, photographer, and electronics tinkerer. I have
-a passion for learning and creating.
+Personally, I possess a diverse range of hobbies/interests; including
+being a musician, home brewer, soap maker, woodwright and antique hand
+tool refurbisher, photographer, and electronics tinkerer. Learning,
+sharing knowledge, and building invigorate me.
 
 * Open Source Contributions
 
