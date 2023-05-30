@@ -21,7 +21,7 @@ being a musician, home brewer, soap maker, woodwright and antique hand
 tool refurbisher, photographer, and electronics tinkerer. Learning,
 sharing knowledge, and building invigorate me.
 
-* Open Source Contributions
+* Sample Open Source Contributions
 
 ** Shopify/shipit-engine
 
@@ -83,7 +83,7 @@ Githug is designed to give you a practical way of learning git. It has a
 series of levels, each requiring you to use git commands to arrive at a
 correct answer.
 
-* Side Projects
+* Sample Side Projects
 
 ** asdf-guile
 
@@ -99,19 +99,13 @@ An implementation of the future construct, inspired by Celluloid's block
 based futures, which uses process forking as a means of backgrounding
 work.
 
-** backbone-elasticsearch
+** rescue-alive
 
-https://github.com/indiebrain/backbone-elasticsearch
+https://github.com/indiebrain/resque-alive
 
-Adapters and Utilities to interface Backbone.js with ElasticSearch
-
-** OmniAuth Doximity OAuth2
-
-https://github.com/indiebrain/omniauth-doximity_oauth2
-
-A Doximity OAuth2 Strategy for OmniAuth.
+A Kubernetes Liveness probe for Resque
 
 * Elsewhere
 
-  - https://www.linkedin.com/in/aaronkuehler
-  - https://www.github.com/indiebrain
+- https://www.github.com/indiebrain
+- https://www.linkedin.com/in/aaronkuehler/
