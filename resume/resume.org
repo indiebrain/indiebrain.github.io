@@ -40,8 +40,8 @@ celebrated.
 
 Shipped the $2.5 billion USD acquisition / integration of Deliverr Inc
 ahead of schedule. Ensured alignment of our geographically diverse
-team. Defined and implemented APIs and implemented the Shopify
-integration to ensure seamless experience for SFN merchants.
+team. Defined APIs and implemented the Shopify integration to ensure
+seamless experience for SFN merchants.
 
 Increased Returns system throughput by 500% ahead of the SFN Returns
 2022 Black Friday / Cyber Monday season. Ran capacity and resilience
