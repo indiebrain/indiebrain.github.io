@@ -4,24 +4,12 @@
 #+OPTIONS: num:nil toc:nil
 
 #+BEGIN_QUOTE
-Always remember, our purpose is not to "write code", but rather add value.
+Our purpose is not to "write code", but rather add value.
 #+END_QUOTE
 
-Hi, I'm Aaron.
+Over 15 years of experience shipping software and growing development teams. I thrive in collaborative environments where impact is celebrated.
 
-I have over 15 years of experience developing software, mentoring, and
-delivering value. I've built a wide range of software solutions
-including monolithic web applications, distributed systems, deployment
-pipeline and developer tooling, and more. I thrive in collaborative
-environments where sharing and learning from our unique experience is
-valued, and where impact is celebrated.
-
-Personally, I possess a diverse range of hobbies/interests; including
-being a musician, home brewer, soap maker, woodwright and antique hand
-tool refurbisher, photographer, and electronics tinkerer. Learning,
-sharing knowledge, and building invigorate me.
-
-* Sample Open Source Contributions
+* Example Open Source Contributions
 
 ** Shopify/shipit-engine
 
@@ -46,43 +34,6 @@ sharing resources with each other. Mutual Aid groups are more concerned
 about local resiliency than global campaigns, and prefer solidarity
 before charity.
 
-** k9s
-
-https://github.com/derailed/k9s
-
-K9s provides a terminal UI to interact with your Kubernetes clusters.
-The aim of this project is to make it easier to navigate, observe and
-manage your applications in the wild. K9s continually watches Kubernetes
-for changes and offers subsequent commands to interact with your
-observed resources.
-
-** Shopify/krane
-
-https://github.com/Shopify/krane
-
-krane is a command line tool that helps you ship changes to a Kubernetes
-namespace and understand the result.
-
-** heroku-cli-buildpack
-
-https://github.com/Thermondo/heroku-cli-buildpack
-
-Installs the Heroku toolbelt on a heroku dyno.
-
-** Keyword Parameter Matchers
-
-https://github.com/terryfinn/keyword_parameter_matchers
-
-RSpec matchers for method keyword parameters.
-
-** githug
-
-https://github.com/Gazler/githug
-
-Githug is designed to give you a practical way of learning git. It has a
-series of levels, each requiring you to use git commands to arrive at a
-correct answer.
-
 * Sample Side Projects
 
 ** asdf-guile
@@ -90,14 +41,6 @@ correct answer.
 https://github.com/indiebrain/asdf-guile
 
 An [[https://github.com/asdf-vm/asdf][asdf]] version manager plugin to manage [[https://www.gnu.org/software/guile/][GNU Guile]] installations
-
-** futurist
-
-https://github.com/indiebrain/futurist
-
-An implementation of the future construct, inspired by Celluloid's block
-based futures, which uses process forking as a means of backgrounding
-work.
 
 ** rescue-alive
 
