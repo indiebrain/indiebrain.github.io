@@ -38,18 +38,18 @@
 <div class="post">
 <h1>Installing Coreboot</h1>
 
-<div id="outline-container-org37b1a13" class="outline-2">
-<h2 id="org37b1a13">Motivation</h2>
-<div class="outline-text-2" id="text-org37b1a13">
+<div id="outline-container-org6a108eb" class="outline-2">
+<h2 id="org6a108eb">Motivation</h2>
+<div class="outline-text-2" id="text-org6a108eb">
 <p>
 When not at work, I primarily use a Lenovo Thinkpad x220 with Debian GNU/Linux. Recently, the factory installed wireless card failed. I purchased a replacement wireless card from <a href="https://thinkpenguin.com/">Think Penguin</a> and quickly found that the factory BIOS prevents the use of non-whitelisted hardware. I took this as a challenge to see if I could work around the freedom limiting factory BIOS.
 </p>
 </div>
 </div>
 
-<div id="outline-container-orga721060" class="outline-2">
-<h2 id="orga721060">Summary</h2>
-<div class="outline-text-2" id="text-orga721060">
+<div id="outline-container-orge4922a0" class="outline-2">
+<h2 id="orge4922a0">Summary</h2>
+<div class="outline-text-2" id="text-orge4922a0">
 <p>
 These project notes breakdown into two discrete tasks:
 </p>
@@ -69,17 +69,17 @@ The initial "burn" of the coreboot image required the use an "external" or direc
 </div>
 </div>
 
-<div id="outline-container-orgf770653" class="outline-2">
-<h2 id="orgf770653">Setting up the Raspberry Pi 2 Model B</h2>
-<div class="outline-text-2" id="text-orgf770653">
+<div id="outline-container-orgd0bfe53" class="outline-2">
+<h2 id="orgd0bfe53">Setting up the Raspberry Pi 2 Model B</h2>
+<div class="outline-text-2" id="text-orgd0bfe53">
 <p>
 The Raspberry Pi is the external device I used to read/write firmware directly to/from the x220's mainboard. I used the <code>flashrom</code> utility to communicate with the x220's BIOS SOIC chip. This section details how to install <code>flashrom</code>, enable the SPI - Serial Peripheral Interface - kernel modules to enable communication across the Raspberry Pi's GPIO, and how to wire up the SOIC hardware clip to the x220's mainboard.
 </p>
 </div>
 
-<div id="outline-container-org6f807ee" class="outline-3">
-<h3 id="org6f807ee">Install flashrom</h3>
-<div class="outline-text-3" id="text-org6f807ee">
+<div id="outline-container-org1516ccd" class="outline-3">
+<h3 id="org1516ccd">Install flashrom</h3>
+<div class="outline-text-3" id="text-org1516ccd">
 <div class="org-src-container">
 <pre class="src src-sh">      sudo apt-get install build-essential pciutils usbutils libpci-dev libusb-dev libftdi1 libftdi-dev zlib1g-dev subversion
       mkdir -p ~/Documents/BIOS/tools
@@ -92,9 +92,9 @@ The Raspberry Pi is the external device I used to read/write firmware directly t
 </div>
 </div>
 
-<div id="outline-container-org62152a2" class="outline-3">
-<h3 id="org62152a2">Load the SPI Kernel modules</h3>
-<div class="outline-text-3" id="text-org62152a2">
+<div id="outline-container-org1de6251" class="outline-3">
+<h3 id="org1de6251">Load the SPI Kernel modules</h3>
+<div class="outline-text-3" id="text-org1de6251">
 <div class="org-src-container">
 <pre class="src src-sh">      sudo echo -e "spi_bcm22835 \nspidev" &gt;&gt; /etc/modules
       sudo modprobe spi_bcm22835
@@ -104,9 +104,9 @@ The Raspberry Pi is the external device I used to read/write firmware directly t
 </div>
 </div>
 
-<div id="outline-container-orgbd417a0" class="outline-3">
-<h3 id="orgbd417a0">Connect GPIO to BIOS SOIC (Pomonoa 5250 Clip)</h3>
-<div class="outline-text-3" id="text-orgbd417a0">
+<div id="outline-container-org148cc83" class="outline-3">
+<h3 id="org148cc83">Connect GPIO to BIOS SOIC (Pomonoa 5250 Clip)</h3>
+<div class="outline-text-3" id="text-org148cc83">
 <p>
  !!!!!!!!!!!!
 <span class="underline">WARNING: Remove the X220 Battery and Power supply; failure to do so will cause damage to the BIOS SOIC</span>
@@ -117,10 +117,10 @@ I use the <a href="https://www.amazon.com/s/ref%3Dnb_sb_noss/137-3605813-2668468
 </p>
 </div>
 
-<div id="outline-container-orge79f6bb" class="outline-4">
-<h4 id="orge79f6bb">BIOS SOIC / Pomonoa Pin layout</h4>
-<div class="outline-text-4" id="text-orge79f6bb">
-<pre class="example" id="org2db1816">
+<div id="outline-container-orgfae20b9" class="outline-4">
+<h4 id="orgfae20b9">BIOS SOIC / Pomonoa Pin layout</h4>
+<div class="outline-text-4" id="text-orgfae20b9">
+<pre class="example" id="orgcb740c7">
     * Closest to Screen *
     | 5 | 4 |
     | 6 | 3 |
@@ -131,9 +131,9 @@ I use the <a href="https://www.amazon.com/s/ref%3Dnb_sb_noss/137-3605813-2668468
 </div>
 </div>
 
-<div id="outline-container-org2eda01b" class="outline-4">
-<h4 id="org2eda01b">BIOS SOIC =&gt; GPIO Wiring information</h4>
-<div class="outline-text-4" id="text-org2eda01b">
+<div id="outline-container-orgcfe22ee" class="outline-4">
+<h4 id="orgcfe22ee">BIOS SOIC =&gt; GPIO Wiring information</h4>
+<div class="outline-text-4" id="text-orgcfe22ee">
 <table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
 
 
@@ -206,9 +206,9 @@ I use the <a href="https://www.amazon.com/s/ref%3Dnb_sb_noss/137-3605813-2668468
 </div>
 </div>
 
-<div id="outline-container-org7fd34c4" class="outline-2">
-<h2 id="org7fd34c4">Read Factory Firmware</h2>
-<div class="outline-text-2" id="text-org7fd34c4">
+<div id="outline-container-org0f4ddc2" class="outline-2">
+<h2 id="org0f4ddc2">Read Factory Firmware</h2>
+<div class="outline-text-2" id="text-org0f4ddc2">
 <p>
 On the Raspberry Pi, prepare a directory to which we can read the Factory BIOS in case something goes wrong with the coreboot installation.
 </p>
@@ -245,22 +245,22 @@ Copy the <code>lenovo_x220_factory_bios.bin</code> to the x220 via sftp, USB med
 </div>
 </div>
 
-<div id="outline-container-orgca5e7c9" class="outline-2">
-<h2 id="orgca5e7c9">Optional - Neutralize the Intel Management Engine (ME)</h2>
-<div class="outline-text-2" id="text-orgca5e7c9">
+<div id="outline-container-org83ca524" class="outline-2">
+<h2 id="org83ca524">Optional - Neutralize the Intel Management Engine (ME)</h2>
+<div class="outline-text-2" id="text-org83ca524">
 </div>
-<div id="outline-container-org48468fd" class="outline-3">
-<h3 id="org48468fd">What is the Intel Management Engine (ME)?</h3>
-<div class="outline-text-3" id="text-org48468fd">
+<div id="outline-container-org078e68a" class="outline-3">
+<h3 id="org078e68a">What is the Intel Management Engine (ME)?</h3>
+<div class="outline-text-3" id="text-org078e68a">
 <p>
 <a href="http://me.bios.io/images/c/ca/Rootkit_in_your_laptop.pdf">The gory details are best explained by the experts here</a>, but suffice to say that it <i>can</i> act as a way for third parties to remotely execute code on your machine - for good or ill. The ME is installed, in one form or another, on all newer Intel chipsets and <i>can</i> be mostly neutralized by <a href="https://github.com/corna/me_cleaner">the me_cleaner tool</a>.
 </p>
 </div>
 </div>
 
-<div id="outline-container-org30047d9" class="outline-3">
-<h3 id="org30047d9">Clean the ME from the factory bios</h3>
-<div class="outline-text-3" id="text-org30047d9">
+<div id="outline-container-org5f6257d" class="outline-3">
+<h3 id="org5f6257d">Clean the ME from the factory bios</h3>
+<div class="outline-text-3" id="text-org5f6257d">
 <p>
 NOTE: me_cleaner mutates the BIOS file you supply as an argument. We'll want to do this on a copy of our factory BIOS binary so we still have an original version of the factory BIOS somewhere if we need to restore it for some reason in the future.
 </p>
@@ -281,13 +281,13 @@ On the x220, clone the me_cleaner tool and run it against the factory BIOS binar
 </div>
 </div>
 
-<div id="outline-container-org25bea72" class="outline-2">
-<h2 id="org25bea72">Prepare Coreboot</h2>
-<div class="outline-text-2" id="text-org25bea72">
+<div id="outline-container-orgb6e2393" class="outline-2">
+<h2 id="orgb6e2393">Prepare Coreboot</h2>
+<div class="outline-text-2" id="text-orgb6e2393">
 </div>
-<div id="outline-container-orgb142428" class="outline-3">
-<h3 id="orgb142428">Install coreboot prerequisites on the x220</h3>
-<div class="outline-text-3" id="text-orgb142428">
+<div id="outline-container-org03634e1" class="outline-3">
+<h3 id="org03634e1">Install coreboot prerequisites on the x220</h3>
+<div class="outline-text-3" id="text-org03634e1">
 <div class="org-src-container">
 <pre class="src src-sh">    sudo apt update
     sudo apt install gcc ncurses-dev
@@ -296,9 +296,9 @@ On the x220, clone the me_cleaner tool and run it against the factory BIOS binar
 </div>
 </div>
 
-<div id="outline-container-orgbc858e1" class="outline-3">
-<h3 id="orgbc858e1">Get the coreboot source</h3>
-<div class="outline-text-3" id="text-orgbc858e1">
+<div id="outline-container-org43a21c8" class="outline-3">
+<h3 id="org43a21c8">Get the coreboot source</h3>
+<div class="outline-text-3" id="text-org43a21c8">
 <div class="org-src-container">
 <pre class="src src-sh">    mkdir -p ~/Documents/BIOS/tools
     cd ~/Documents/BIOS/tools
@@ -310,9 +310,9 @@ On the x220, clone the me_cleaner tool and run it against the factory BIOS binar
 </div>
 </div>
 
-<div id="outline-container-org7b4bb7f" class="outline-3">
-<h3 id="org7b4bb7f">Build the <code>ifdtool</code>.</h3>
-<div class="outline-text-3" id="text-org7b4bb7f">
+<div id="outline-container-org77d609a" class="outline-3">
+<h3 id="org77d609a">Build the <code>ifdtool</code>.</h3>
+<div class="outline-text-3" id="text-org77d609a">
 <p>
 We'll use this to extract the proprietary blobs from the factory BIOS
 </p>
@@ -325,9 +325,9 @@ We'll use this to extract the proprietary blobs from the factory BIOS
 </div>
 </div>
 
-<div id="outline-container-org708da16" class="outline-3">
-<h3 id="org708da16">Extract the blobs from the factory BIOS binary</h3>
-<div class="outline-text-3" id="text-org708da16">
+<div id="outline-container-orgd1b52ee" class="outline-3">
+<h3 id="orgd1b52ee">Extract the blobs from the factory BIOS binary</h3>
+<div class="outline-text-3" id="text-orgd1b52ee">
 <div class="org-src-container">
 <pre class="src src-sh">    ~/Documents/BIOS/tools/coreboot/util/ifdtool/ifdtool -x ~/Documents/BIOS/workspace/lenovo_x220_factory_bios.bin
 </pre>
@@ -355,9 +355,9 @@ NOTE: If you did not perform the Intel Management Engine neutralization step you
 </div>
 </div>
 
-<div id="outline-container-org5605548" class="outline-3">
-<h3 id="org5605548">Make the coreboot 3rd party binary blobs directory for the Lenovo x220</h3>
-<div class="outline-text-3" id="text-org5605548">
+<div id="outline-container-org4adda6b" class="outline-3">
+<h3 id="org4adda6b">Make the coreboot 3rd party binary blobs directory for the Lenovo x220</h3>
+<div class="outline-text-3" id="text-org4adda6b">
 <div class="org-src-container">
 <pre class="src src-sh">    mkdir -p ~/Documents/BIOS/tools/coreboot/3rdparty/blobs/mainboard/lenovo/x220
 </pre>
@@ -365,9 +365,9 @@ NOTE: If you did not perform the Intel Management Engine neutralization step you
 </div>
 </div>
 
-<div id="outline-container-org902c60d" class="outline-3">
-<h3 id="org902c60d">Copy the necessary blobs to the coreboot 3rd party directory for the Lenovo x220</h3>
-<div class="outline-text-3" id="text-org902c60d">
+<div id="outline-container-org902826b" class="outline-3">
+<h3 id="org902826b">Copy the necessary blobs to the coreboot 3rd party directory for the Lenovo x220</h3>
+<div class="outline-text-3" id="text-org902826b">
 <div class="org-src-container">
 <pre class="src src-sh">    cp ~/Documents/BIOS/workspace/flashregion_0_flashdescriptor.bin ~/Documents/BIOS/tools/coreboot/3rdparty/blobs/mainboard/lenovo/x220/descriptor.bin
     cp ~/Documents/BIOS/workspace/flashregion_2_intel_me.bin ~/Documents/BIOS/tools/coreboot/3rdparty/blobs/mainboard/lenovo/x220/me.bin
@@ -378,13 +378,13 @@ NOTE: If you did not perform the Intel Management Engine neutralization step you
 </div>
 </div>
 
-<div id="outline-container-org1174e87" class="outline-2">
-<h2 id="org1174e87">Configure Coreboot</h2>
-<div class="outline-text-2" id="text-org1174e87">
+<div id="outline-container-orge974e49" class="outline-2">
+<h2 id="orge974e49">Configure Coreboot</h2>
+<div class="outline-text-2" id="text-orge974e49">
 </div>
-<div id="outline-container-org8061e1f" class="outline-3">
-<h3 id="org8061e1f">Use the coreboot menu tool to configure the BIOS image</h3>
-<div class="outline-text-3" id="text-org8061e1f">
+<div id="outline-container-orgc168120" class="outline-3">
+<h3 id="orgc168120">Use the coreboot menu tool to configure the BIOS image</h3>
+<div class="outline-text-3" id="text-orgc168120">
 <div class="org-src-container">
 <pre class="src src-sh">    cd ~/Documents/BIOS/tools/coreboot
     make menuconfig
@@ -434,9 +434,9 @@ Note: this menu changes a bit from coreboot version to coreboot version, some of
 </div>
 </div>
 
-<div id="outline-container-org2d75f6f" class="outline-3">
-<h3 id="org2d75f6f">Install the coreboot build chain (this takes a little while)</h3>
-<div class="outline-text-3" id="text-org2d75f6f">
+<div id="outline-container-org513e5c1" class="outline-3">
+<h3 id="org513e5c1">Install the coreboot build chain (this takes a little while)</h3>
+<div class="outline-text-3" id="text-org513e5c1">
 <div class="org-src-container">
 <pre class="src src-sh">    make crossgcc-i386
 </pre>
@@ -453,9 +453,9 @@ If something goes wrong, search for the relevant error logs
 </div>
 </div>
 
-<div id="outline-container-orga161028" class="outline-3">
-<h3 id="orga161028">Build Coreboot image</h3>
-<div class="outline-text-3" id="text-orga161028">
+<div id="outline-container-org9a481ea" class="outline-3">
+<h3 id="org9a481ea">Build Coreboot image</h3>
+<div class="outline-text-3" id="text-org9a481ea">
 <div class="org-src-container">
 <pre class="src src-sh">    make
 </pre>
@@ -478,9 +478,9 @@ Compute the md5sum of the <code>lenovo_x220_coreboot_seabios_&lt;date-stamp&gt;.
 </div>
 </div>
 
-<div id="outline-container-org12cdf8f" class="outline-2">
-<h2 id="org12cdf8f">Burn the Coreboot ROM</h2>
-<div class="outline-text-2" id="text-org12cdf8f">
+<div id="outline-container-org73268d5" class="outline-2">
+<h2 id="org73268d5">Burn the Coreboot ROM</h2>
+<div class="outline-text-2" id="text-org73268d5">
 <p>
 Back on the Raspberry Pi, connect the SOIC clip back onto the X220's chip and use flashrom to write the coreboot BIOS image to the X220's SOIC chip.
 </p>
@@ -496,9 +496,9 @@ NOTE: Remember to remove the battery and disconnect the power supply from the x2
 </div>
 </div>
 
-<div id="outline-container-org07d3473" class="outline-2">
-<h2 id="org07d3473">Verifying that the ME is neutralized</h2>
-<div class="outline-text-2" id="text-org07d3473">
+<div id="outline-container-orgf75a0fa" class="outline-2">
+<h2 id="orgf75a0fa">Verifying that the ME is neutralized</h2>
+<div class="outline-text-2" id="text-orgf75a0fa">
 <p>
 Coreboot supplies a tool to show the status of various partitions of the ME.
 </p>
@@ -525,9 +525,9 @@ The relevant bits are:
 </p>
 </div>
 
-<div id="outline-container-org2f321a6" class="outline-3">
-<h3 id="org2f321a6">Could not map MEI PCI device memory</h3>
-<div class="outline-text-3" id="text-org2f321a6">
+<div id="outline-container-org1b2fa41" class="outline-3">
+<h3 id="org1b2fa41">Could not map MEI PCI device memory</h3>
+<div class="outline-text-3" id="text-org1b2fa41">
 <p>
 When I first ran this tool I received the following error output:
 </p>
@@ -543,24 +543,24 @@ To solve this:
 </p>
 </div>
 
-<div id="outline-container-org0220023" class="outline-4">
-<h4 id="org0220023">Edit =/etc/default/grub</h4>
-<div class="outline-text-4" id="text-org0220023">
+<div id="outline-container-org34d9e2c" class="outline-4">
+<h4 id="org34d9e2c">Edit =/etc/default/grub</h4>
+<div class="outline-text-4" id="text-org34d9e2c">
 <p>
 Add the <code>iomem=relaxed</code> option
 </p>
 
 <div class="org-src-container">
-<pre class="src src-sh" id="org82306bc">  ...
+<pre class="src src-sh" id="org038cf81">  ...
   GRUB_CMDLINE_LINUX_DEFAULT="iomem=relaxed ..."
 </pre>
 </div>
 </div>
 </div>
 
-<div id="outline-container-orgd8e81c4" class="outline-4">
-<h4 id="orgd8e81c4">Update the boot images</h4>
-<div class="outline-text-4" id="text-orgd8e81c4">
+<div id="outline-container-org5064463" class="outline-4">
+<h4 id="org5064463">Update the boot images</h4>
+<div class="outline-text-4" id="text-org5064463">
 <div class="org-src-container">
 <pre class="src src-sh">  sudo update-grub
 </pre>
@@ -570,9 +570,9 @@ Add the <code>iomem=relaxed</code> option
 </div>
 </div>
 
-<div id="outline-container-org87d5eda" class="outline-2">
-<h2 id="org87d5eda">Resources</h2>
-<div class="outline-text-2" id="text-org87d5eda">
+<div id="outline-container-org7aaca4a" class="outline-2">
+<h2 id="org7aaca4a">Resources</h2>
+<div class="outline-text-2" id="text-org7aaca4a">
 <ul class="org-ul">
 <li><a href="http://www.coreboot.org/pipermail/coreboot/2015-February/079208.html">http://www.coreboot.org/pipermail/coreboot/2015-February/079208.html</a></li>
 <li><a href="http://www.coreboot.org/Build_HOWTO#Building_a_payload">http://www.coreboot.org/Build_HOWTO#Building_a_payload</a></li>
