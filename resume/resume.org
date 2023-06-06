@@ -6,131 +6,165 @@
 #+DESCRIPTION: Professional information of Aaron Kuehler
 #+OPTIONS: texht:t
 #+LATEX_CLASS: article
-#+LATEX_CLASS_OPTIONS: [10pt letterpaper notitlepage]
+#+LATEX_CLASS_OPTIONS: [12pt letterpaper notitlepage]
 #+LATEX_HEADER: \pagenumbering{gobble}
 #+LATEX_HEADER: \usepackage{helvet}
 #+LATEX_HEADER: \renewcommand{\familydefault}{phv}
 #+LATEX_HEADER: \usepackage{parskip}
-#+LATEX_HEADER: \usepackage[left=1.25cm,right=1.25cm,top=1.5cm,bottom=1.5cm,columnsep=1.2cm]{geometry}
-#+LATEX_HEADER: \usepackage{enumitem}
-#+LATEX_HEADER: \setlist[itemize]{label=$\circ$,itemsep=-5pt}
+#+LATEX_HEADER: \usepackage[margin=0.75in]{geometry}
 
-Over 15 years of experience developing software, mentoring, and
-delivering value thorugh a wide range of software solutions including
-monolithic web applications, distributed systems, and deployment
-pipeline and developer tooling. I thrive in collaborative environments
-where sharing and learning from our unique experience is valued, and
-where impact is celebrated.
+#+BEGIN_QUOTE
+Over 15 years of experience shipping software and growing development
+teams. I thrive in collaborative environments where impact is
+celebrated.
+#+END_QUOTE
 
 * Proficiency highlights
 
-- Web Application / API Development: Ruby, Rails, HTTP, React, JavaScript, CSS, REST, GraphQL
-- Development Tooling: Bash, Ruby
-- Containerization and orchestration: podman, Docker, Kubernetes
-- Team Growth and Leadership: Agility, Lean Manufacturing Principles, Extreme Ownership
-- Mentorship and Education
+- Web Application Development (Ruby/Rails and Standard Web
+  Technologies - HTTP, JavaScript, CSS)
+- API Development (Ruby/Rails)
+- Development tooling, Continuous Integration, Deployment Automation,
+  and Workload Orchestration (Bash, Jenkins, Docker, Kubernetes)
+- Team Growth and Leadership (agility, Lean Manufacturing Principles,
+  and Extreme Ownership)
+- Mentor and Educator
 
-* Recent Experience
+* Recent Accomplishments
 
 ** Shopify
 
-*Senior Software Developer* /September 2021 - May 2023/
+*Senior Software Developer*
 
-- Led integration of Shopify Fulfillment Network Returns and Deliverr.
-- Led load testing, disaster drills, and risk mitigation for Shopify Fulfillment Network Returns processing during 2022's "Black Friday / Cyber Monday".
-- Implemented Product-level Taxonomy and categorization capabilities to enhance Warehouse Operational efficiency.
-- Implemented progressive feature gating, progressive rollout, and management capabilities.
-- Performed on-call and maintenance shifts to ensure smooth operation of software and warehouse operations for customers.
-- Mentored interns and early career developers; supporting their professional growth.
-- Delivered talks on Ruby "gotchas" found in the code base.
+/September 2021 - May 2023/
 
-** exercism.io
+Shipped the $2.5 billion USD acquisition / integration of Deliverr Inc
+ahead of schedule. Ensured alignment of our geographically diverse
+team. Defined and implemented APIs and implemented the Shopify
+integration to ensure seamless experience for SFN merchants.
 
-*Volunteer Mentor* /August 2019 - September 2021/
+Increased Returns system throughput by 500% ahead of the SFN Returns
+2022 Black Friday / Cyber Monday season. Ran capacity and resilience
+testing to identify choke-points. Led disaster recovery drills and
+defined on-call and incident response policies.
 
-- Supported students in Ruby and Emacs-Lisp tracks by providing exercise evaluation and mentoring.
+Discovered silent failure modes in warehouse management software and
+added observably instrumentation. Discovered impediments in warehouse
+processes and implemented optimizations with AI-based inventory
+categorizations.
+
+Identified bottlenecks in feature gating system. Scaled feature flag
+management capabilities from 10 to 2 million merchants. Added
+percentage-based feature rollouts, feature lifecycle automation,
+enhanced human-consumable feature metadata.
+
+Grew 2 interns into autonomous Individual Contributors in weeks
+through pairing, synchronous 1:1 support, and defining right-sized
+work items.
 
 ** Power Home Remodeling Group
 
-*Senior Software Developer / Substitute Instructor / Mentor* /May 2018 - September 2021/
+*Senior Software Developer / Substitute Instructor / Mentor*
 
-- Developed software delivery pipeline tooling using Jenkins CI, Docker, Shopify/shipit-engine, Shopify/krane, and Kubernetes.
-- Contributed upstream enhancements to Shopify/shipit-engine, including "Review Stacks" ([[https://github.com/Shopify/shipit-engine/pull/1102][https://github.com/Shopify/shipit-engine/pull/1102]]), "Custom task execution strategies" ([[https://github.com/Shopify/shipit-engine/pull/1107][https://github.com/Shopify/shipit-engine/pull/1107]]), and "Fix: corrupt git caches cause tasks to 'exit status 128'" ([[https://github.com/Shopify/shipit-engine/pull/1169][https://github.com/Shopify/shipit-engine/pull/1169]]).
-- Managed planning and commitment ceremonies for the "Release Engineering" team.
-- Developed tooling to streamline onboarding and enhance the quality of life for development teams.
-- Maintained and evolved a 10+ year old "Component based Rails Application" (https://cbra.info).
-- Integrated "Business Intelligence" visualization using JavaScript (ES6).
-- Supported telephony applications using Asterisk (PBX) / SIP.
+/May 2018 - September 2021/
+
+Slashed deployment times by 82%. Transformed deployment topology to
+self-hosted Kubernetes-based container orchestration. Made significant
+contributions to [[https://github.com/Shopify/shipit-engine/pulls?q=author%3Aindiebrain][Shopify/shipit-engine]] to support Review Stacks.
+
+Improved call center reliability by 300% by identifying constrained
+resources, decoupling and distributing the telephony system by call
+type.
+
+Expanded development organization capacity by 20% by growing "Power
+Code Academy" student developers into Individual Contributors.
+Functioned as a substitute instructor and post-graduation mentor.
 
 ** Bauer Xcel Media
 
-*Technical Team Lead / Senior Software Developer* /February 2016 - May 2018/
+*Technical Team Lead / Senior Software Developer*
 
-- Developed home-grown, multi-tenant, publishing, and sweepstakes Rails applications.
-- Optimized content presentation for maximum SEO relevance.
-- Developed the team's operational support competence and distributed knowledge by creating the "On-call / incident response playbook."
-- Introduced process monitoring metrics, resulting in a 34.4% reduction in cycle time.
-- Developed an automated "Review Application" workflow, leading to a 50% decrease in monthly development team hosting costs.
+/February 2016 - May 2018/
 
-** Sizmek (formerly PointRoll) :noexport:
+Boosted revenue by 200% by optimizing impression value and advertising
+rank. Deferred ad load requests until ad slots were just about to
+scroll into reader's view.
 
-*Software Developer* /January 2015 - June 2016/
+Cut development organization spend by 50%. Implemented automated
+review instances to share WIP with stakeholders.
 
-- Developed targeted video advertising platform using VAST XML delivery standards.
-- Mentored team through transition to an agility-based software process.
-- Supported business through acquisition to eventual project shuttering while maintaining services for clients such as Apple, Jaguar, and BMW.
+Reduced work-item cycle-time by 34.37% by encouraging adoption of
+pairing and building a [[https://aaronkuehler.com/blog/2019/05/09/building-a-healthy-code-review-culture/][healthy code review culture]].
 
-** Hoopla :noexport:
+Increased site traffic by 300% by optimizing metadata for search
+engine and social media ranking.
 
-*Software Developer* /July 2012 - January 2015/
+** exercism.io
 
-- Developed Hoopla platform, a Rails application for sales team motivation.
-- Maintained Salesforce integration, an Apex-based communication bridge between Salesforce Orgs and Hoopla metrics and events APIs.
-- Developed "Hoopla TV," a web-based sales SportsCenter-esque UI over the Hoopla platform to display sales metrics and events.
-- Provided exceptional support to large-account customers, including LinkedIn, Zillow, Angie's List, and Ring Central.
-- Led Mobile API development team and later assumed responsibility for native mobile application development.
+*Volunteer Mentor*
 
-** Artisan (formerly AppRenaissance) :noexport:
+/August 2019 - September 2021/
 
-*Senior Software Developer* /July 2011 - July 2012/
 
-- Developed and deployed native iOS applications to the App Store for clients, including Chinoki, Trustlines, and Interact.
-- Built consulting business from 2 developers to a product team of 10 in less than a year.
+Mentored over 60 students along the Ruby and Emacs-Lisp language
+tracks.
 
-** Infor :noexport:
+* Extended work history :noexport:
+** Sizmek (formerly PointRoll)
 
-*Software Engineer* /May 2009 - July 2011/
+*Software Developer*
 
-- Developed "Orders and Requisitions" and "Accounts Payable" components of the Enterprise Resource Planning system.
-- Founded the "Brown-Bag" club to promote cross-team relationship building and knowledge sharing.
+/January 2015 - June 2016/
 
-** Oracle (formerly AdminServer) :noexport:
+** Hoopla
 
-*Application Engineer* /February 2006 - June 2009/
+*Software Developer*
 
-- Developed data-driven Life and Annuity insurance policy administration system.
-- Led research and development for next-gen offerings.
-- Led development team to incorporate R&D findings into product evolution.
+/July 2012 - January 2015/
 
-* Sample Open Source Contributions
+** Artisan (formerly AppRenaissance)
+
+*Senior Software Developer*
+
+/July 2011 - July 2012/
+
+** Infor
+
+*Software Engineer*
+
+/May 2009 - July 2011/
+
+** Oracle (formerly AdminServer)
+
+*Application Engineer*
+
+/February 2006 - June 2009/
+
+* Example Open Source Contributions
 
 ** Shopify/shipit-engine
 
 https://github.com/Shopify/shipit-engine
 
-Shipit is a deployment tool that makes shipping code better for everyone. It's especially great for large teams of developers and designers who work together to build and deploy GitHub repos.
+Shipit is a deployment tool that makes shipping code better for
+everyone. It's especially great for large teams of developers and
+designers who work together to build and deploy GitHub repos.
 
 ** percona-xtradb-cluster-operator
 
 https://github.com/indiebrain/percona-xtradb-cluster-operator
 
-A Kubernetes operator for Percona XtraDB Cluster based on the Operator SDK.
+A Kubernetes operator for Percona XtraDB Cluster based on the Operator
+SDK.
 
 ** rubyforgood/mutual-aid
 
 https://github.com/rubyforgood/mutual-aid
 
-Mutual Aid is when people get together to build community by volunarily sharing resources with each other. Mutual Aid groups are more concerned about local resiliency than global campaigns, and prefer solidarity before charity.
+Mutual Aid is when people get together to build community by voluntarily
+sharing resources with each other. Mutual Aid groups are more concerned
+about local resiliency than global campaigns, and prefer solidarity
+before charity.
 
 * Sample Side Projects
 
@@ -146,11 +180,26 @@ https://github.com/indiebrain/resque-alive
 
 A Kubernetes Liveness probe for Resque
 
-** futurist
+** futurist :noexport:
 
 https://github.com/indiebrain/futurist
 
-An implementation of the future construct, inspired by Celluloid's block based futures, which uses process forking as a means of backgrounding work.
+An implementation of the future construct, inspired by Celluloid's block
+based futures, which uses process forking as a means of backgrounding
+work.
+
+** backbone-elasticsearch :noexport:
+
+https://github.com/indiebrain/backbone-elasticsearch
+
+Adapters and Utilities to interface Backbone.js with ElasticSearch
+
+** OmniAuth Doximity OAuth2 :noexport:
+
+https://github.com/indiebrain/omniauth-doximity_oauth2
+
+An OmniAuth (https://github.com/intridea/omniauth) OAuth2 strategy for
+Doximity (http://www.doximity.com/)
 
 * Talks
 
@@ -158,7 +207,15 @@ An implementation of the future construct, inspired by Celluloid's block based f
 
 https://github.com/indiebrain/talks/blob/master/git_internals/git_internals.org
 
-A talk on the inner workings of git and its influence on the user interface.
+Explains the inner workings of git and sheds a bit of light on
+how the internal structure of git as a data store influences its user
+interface.
+
+* Elsewhere
+
+- https://aaronkuehler.com
+- https://www.github.com/indiebrain
+- https://www.linkedin.com/in/aaronkuehler/
 
 * Education
 
@@ -172,16 +229,18 @@ A talk on the inner workings of git and its influence on the user interface.
 - Award for Academic Excellence (2006)
 - Dean's list (2005 and 2006)
 
-* Research
+*** Research
 
-** Small File Affects on Hadoop Distributed File System
+**** Small File Affects on Hadoop Distributed File System
 
 - [[https://raw.githubusercontent.com/indiebrain/indiebrain.github.io/source/resume/small-file-affects-on-hadoop-distributed-file-sytem.pdf][Whitepaper PDF]]
 
-An discussion of the impact of small files on Hadoop Distributed File System, proposing mitigation techniques.
-
-* Elsewhere
-
-- https://aaronkuehler.com
-- https://www.github.com/indiebrain
-- https://www.linkedin.com/in/aaronkuehler/
+The Hadoop Distributed File System is a high throughput distributed File
+system designed to accommodate large data sets; average file sizes in
+the gigabyte-terabyte range. However when a data set is composed of
+large amounts of small files, say in the kilobyte range, the storage
+system's semantics introduce height amounts of overhead in terms of file
+system block storage and read latency. This paper explains the
+architectural attributes which cause these problems and examines
+techniques to mitigate their impact when working with data sets
+comprised of large numbers of small files.
