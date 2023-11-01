@@ -38,52 +38,48 @@
 <div class="post">
 <h1>Building a Healthy Code Review Culture</h1>
 
-<div id="outline-container-orgdd892db" class="outline-2">
-<h2 id="orgdd892db">Motivation</h2>
-<div class="outline-text-2" id="text-orgdd892db">
+<div id="outline-container-orgb5b8237" class="outline-2">
+<h2 id="orgb5b8237">Motivation</h2>
+<div class="outline-text-2" id="text-orgb5b8237">
 <p>
-I thrive on critical feedback. Be it from automated tests as I drive the interfaces and interactions of code I'm writing or perspective, advice, and coaching from coworkers. Code Review is an opportunity for members of development teams to exercise their "meat-machine compute cycles" to provide critical feedback during the evolution of projects. In a few instances I've come to work on teams which incorporate conversation about code into their practice, but struggle to extract what I see as the "real value" (outlined below) of Code Review. The following is a set of musings I use to help frame how teams might better understand the "why" of, and more effectively use the practice of Code Review. This is not a prescription, but rather a set of guardrails and considerations teams <i>might</i> employ to encourage a constructive, elevating atmosphere of honest discussion about the work we do.
+I thrive on critical feedback. Be it from automated tests as I drive the interfaces and interactions of code I'm writing or perspective, advice, and coaching from coworkers. Code Review is an opportunity for team members provide critical feedback during the evolution of projects. In some contexts, I've worked on teams which struggle to extract the true value of Code Review. The following are opinions I use to help teams realize more productive uses of Code Review. This is not a prescription, but rather a set of meditations to encourage a constructive, elevating atmosphere of honest discussion about the work we do.
 </p>
 
 <p>
-These are by no means original ideas, but rather an amalgam and distillation of many cited sources I've found useful in evolving my understanding and employment of the practice.
-</p>
-</div>
-</div>
-
-<div id="outline-container-org2e7a2e0" class="outline-2">
-<h2 id="org2e7a2e0">Why do we do Code Reviews?</h2>
-<div class="outline-text-2" id="text-org2e7a2e0">
-<p>
-Code Review is the discipline of discussing code with peers. It is a popular belief that the focus of Code Reviews should be to uncover defects. It is true that certain classes of defects can be uncovered during the Code Review process, but <a href="https://www.microsoft.com/en-us/research/wp-content/uploads/2016/02/ICSE202013-codereview.pdf">Microsoft's "Expectations, Outcomes, and Challenges Of Modern Code Review" research</a> shows that we overestimate our ability to discover these errors in Code Review. The research concludes that Code Reviews are more likely to improve a team's ability to find alternate solutions, increase collective ownership of code, promote team awareness and cohesion, and facilitate knowledge and experience sharing.
-</p>
-
-<p>
-In short, the practice of Code Review makes us better members of our team through increased engagement, collaboration, and communication.
+I claim no special ownership of these ideas. This is merely a distillation of the concepts I've found useful in evolving my understanding of the practice of Code Review.
 </p>
 </div>
 </div>
 
-<div id="outline-container-orgc9dbcdd" class="outline-2">
-<h2 id="orgc9dbcdd">How do we do Code Reviews?</h2>
-<div class="outline-text-2" id="text-orgc9dbcdd">
+<div id="outline-container-orgaff9fce" class="outline-2">
+<h2 id="orgaff9fce">Why do Code Reviews?</h2>
+<div class="outline-text-2" id="text-orgaff9fce">
 <p>
-We practice asynchronous, informal Code Reviews; we prefer to conduct Code Reviews as soon, or as close to as soon, as a changeset is ready to be reviewed. We <i>do not</i> conduct regularly scheduled, hours-long, all-developers meetings to review a queue of changesets. Code Reviews are generally conducted by a small group of active participants; usually the author and a single reviewer.
-</p>
-
-<p>
-Why do we do this? In a word, efficiency. In practice, we find, the author and reviewer are well able to identify and discuss issues in a changeset. Smaller review groups tend to remain focused on maintaining the quality of the discussion while driving a changeset to production-readiness. However, there are times when additional points-of-view might add to the conversation and we should be free to seek the input of our peers. This is a useful mechanism to resolve a long-running discussion if the author and reviewer are not able to reach agreement -- we find this to be the exception, not the rule.
+Code Review is the discipline of discussing code with peers. It is a popular belief that the focus of Code Reviews should be to uncover defects. While true that certain classes of defects can be uncovered during the Code Review process, <a href="https://www.microsoft.com/en-us/research/wp-content/uploads/2016/02/ICSE202013-codereview.pdf">Microsoft's "Expectations, Outcomes, and Challenges Of Modern Code Review" research</a> shows that we overestimate our ability to discover errors in Code Review. If Code Review is not an effective tool for finding defects, then what value is extracted from the effort put into a Code Review? Microsoft's research concludes that Code Reviews are a likely conduit for context sharing; making teams more likely to be aware of how a system is changing, find alternate solutions, and share knowledge and experience in improving the design of the design of the software. At its best, the practice of Code Review makes us more engaged teammates.
 </p>
 </div>
 </div>
 
-<div id="outline-container-org5bdc26c" class="outline-2">
-<h2 id="org5bdc26c">General tips for discussing code</h2>
-<div class="outline-text-2" id="text-org5bdc26c">
+<div id="outline-container-org9d3cc13" class="outline-2">
+<h2 id="org9d3cc13">How to do Code Reviews?</h2>
+<div class="outline-text-2" id="text-org9d3cc13">
+<p>
+There are many ways for teams to organize and execute code review. Some organizations have a more formal and scheduled Code Review process; think weekly meetings and a collection of "senior" - or in the best case "context-ed" - staff gathered to review potential change.
+</p>
+
+<p>
+Another, less resource intensive way, is to have teams self-organize, asynchronously to perform Code Review. Usually, once the work is functional, the author request an asynchronous, informal review of the changes by one or more teammates. Each reviewer has responsibility to understand the context of the change, offer constructive criticism, and work with the author to progress the work to an acceptable state. Why a less formal process? Efficiency. Usually an author and reviewer pair is adequate to resolve problematic design issues. The focus and quality of discussion tends to degrade as the audience size grows. However, there <i>are</i> times when seeking more points of view are warranted and we should be free to seek the input of our peers if we have reason to believe it would be worth the cost of their attention. Including another point of view can help resolve long-running discussions if the author and reviewer cannot reach an agreement on their own - this is usually the "exception", not the rule.
+</p>
+</div>
+</div>
+
+<div id="outline-container-orgfc7d265" class="outline-2">
+<h2 id="orgfc7d265">Tips for discussing code</h2>
+<div class="outline-text-2" id="text-orgfc7d265">
 <ul class="org-ul">
-<li>Assume that everyone has the best intentions. Use the most charitable reading of any received message.</li>
-<li>When faced with a conflicting set of ideas <a href="https://lifehacker.com/utilize-the-steel-man-tactic-to-argue-more-effectivel-1632402742">Steel Man/Person</a> the other's arguments: understand the strongest possible version of the argument and see if there's still room between your arguments for a more in depth discussion.</li>
-<li>Accept that many programming decisions are opinions. Discuss tradeoffs, which you prefer and why, and reach a resolution quickly.</li>
+<li>Assume that everyone has good intentions. Use the most charitable reading of any received message.</li>
+<li>When faced with a conflicting set of ideas <a href="https://lifehacker.com/utilize-the-steel-man-tactic-to-argue-more-effectivel-1632402742">Steel Man/Person</a> the other's arguments: understand the strongest possible version of the argument and see if there's still room between your arguments for valuable discussion.</li>
+<li>Accept that many programming decisions are opinions. Discuss trade-offs, which you prefer and why, and reach a resolution quickly. It is OK to disagree and commit to a path forward.</li>
 <li>Ask questions; don't make demands. ("What do you think about naming this `:user_id`?")</li>
 <li>Ask for clarification. ("I didn't understand. Can you clarify?")</li>
 <li>Avoid selective ownership of code. ("mine", "not mine", "yours")</li>
@@ -99,64 +95,9 @@ Why do we do this? In a word, efficiency. In practice, we find, the author and r
 </div>
 </div>
 
-<div id="outline-container-orga0bb6ce" class="outline-2">
-<h2 id="orga0bb6ce">Commit and Pull request messages</h2>
-<div class="outline-text-2" id="text-orga0bb6ce">
-<blockquote>
-<p>
-Pull Requests are temporally relevant, but commits are forever
-</p>
-</blockquote>
-
-<p>
-We use the following form when creating commits and/or pull request to record our motivation and intent for creating a changeset; heavily influenced by <a href="https://chris.beams.io/posts/git-commit/">Chris Beams' article "How to Write a Git Commit Message"</a>. We do this to raise awareness to our teammates about what in the system is changing and why. Additionally, we create these artifacts to capture as much of this context as we can for archaeological purposes; we want to be kind and helpful to our teammates and future-selves. Below is a template we use to capture and convey relevant information.
-</p>
-
-<div class="org-src-container">
-<pre class="src src-markdown">     Summary
-     ---------------
-
-     This should clearly and concisely convey the changeset's reason for
-     being. Use a paragraph or two to explain the business need, technical
-     issue, etc. that the changeset intends to fix. This gives the reviewer
-     a quick way to gain the requisite context needed to understand the
-     change.
-
-     This section could be used to provide any additional context the
-     author feels might be relevant to the reviewer to better understand
-     the changes. Examples might include links to articles which inspired
-     design decisions, notes on alternate solutions, or approaches that
-     didn't work out and why. This allows the author to bridge context gaps
-     and anticipate the obvious questions a reviewer might ask.
-
-     In addition, this provides a section for the author to call attention
-     to a particular section of the changeset they'd like to be thoroughly
-     criticized.
-
-     References
-     ----------
-
-     Lead with a hypertext link to the discussion from where this changeset
-     originated; could be a JIRA ticket, Pivotal Story, Github Issues
-     ticket, etc. The goal is to provide a connection to the originating
-     idea for the changeset, discussion, and any relevant context
-     therein. This is important for archaeological reasons as we aim to
-     provide insight into the state-of-mind of the organization, business
-     considerations, alternate approaches which were considered, etc when
-     the problem or feature was first identified.
-
-     Include hypertext links to topical articles, influencing white-papers
-     and academic discussions, contributing computational concepts, etc. to
-     help the reviewer understand the frame of reference from which the
-     changeset is wrought.
-</pre>
-</div>
-</div>
-</div>
-
-<div id="outline-container-org0f27148" class="outline-2">
-<h2 id="org0f27148">Receiving critical feedback</h2>
-<div class="outline-text-2" id="text-org0f27148">
+<div id="outline-container-orge56a37a" class="outline-2">
+<h2 id="orge56a37a">On receiving critical feedback</h2>
+<div class="outline-text-2" id="text-orge56a37a">
 <ul class="org-ul">
 <li>Be grateful for the reviewer's suggestions. ("Good call. I'll make that change.")</li>
 <li>Don't take it personally. The review is of the code, not you.</li>
@@ -172,27 +113,26 @@ We use the following form when creating commits and/or pull request to record ou
 </div>
 </div>
 
-<div id="outline-container-orgdb84a52" class="outline-2">
-<h2 id="orgdb84a52">Providing critical feedback</h2>
-<div class="outline-text-2" id="text-orgdb84a52">
+<div id="outline-container-orgadce953" class="outline-2">
+<h2 id="orgadce953">On providing critical feedback</h2>
+<div class="outline-text-2" id="text-orgadce953">
 <p>
-Code Review is complete when parties agree that the changeset is "good enough to ship". Perfect solutions never ship; all decisions are tradeoffs. We are professionals. We use our best judgment to determine if a changeset is publishable as swiftly as possible.
+Remember that Code Review is complete when parties agree that the change is "Good Enough." Perfect solutions never ship, and all decisions are trade-offs. We are professionals. We use our best judgment to determine if a change is publishable as swiftly as possible.
 </p>
 
 <p>
-The following is an in-exhaustive list of topics a reviewer could consider during a review. These will probably require much of their reviewing effort:
+Everyone brings their own experience and perspective to their reviews. The following is an in-exhaustive list of areas a reviewer can consider during a review.
 </p>
 
 <ul class="org-ul">
-<li><b>Readability</b>: Do you believe that any team member could understand how the changeset accomplishes the goal in a reasonable amount of time? Is there perhaps a more clear way of expressing all or parts of the solution? Are example, object, and method names intention revealing and expressive?</li>
+<li><b>Readability</b>: Do you believe that any team member could understand how the change accomplishes the goal in a reasonable amount of time? Is there perhaps a more clear way of expressing all or parts of the solution? Are example, object, and method names intention revealing and expressive?</li>
 <li><b>Maintainability</b>: Are the appropriate concepts and abstractions present? Are the appropriate uses of method and object composition being applied to increase flexibility?</li>
-<li><b>Testability</b>: Are the components of the changeset sufficiently covered by automated tests? Are the tests exercising the pieces which are likely to break? Do the tests document the behavior of the system? Are the tests immediately understandable to a reader with limited understanding of the changeset?</li>
+<li><b>Testability</b>: Are the components of the change sufficiently covered by automated tests? Are the tests exercising the pieces which are likely to break? Do the tests document the behavior of the system? Are the tests immediately understandable to a reader with limited understanding of the change?</li>
 <li><b>Supportability</b>: Is the solution robust in the face of likely failure? When the change-set breaks in production, how does it break? How does do we know when it's broken or under-performing? How do we measure the impact of the change to the business?</li>
 </ul>
 
-
 <p>
-Some notes on code style and style guide violations. Call out style guide violations as you see them, but don't spend too much time seeking them out. Rely on the automated style checkers to catch these types of issues; your human brain is more apt to deal with nuanced aspects of review. In the event conflict over style is raised which is not addressed by the style guide create an issue in the guide repository to deal with the issue, follow the style guide as closely as possible or defer judgment to the author of the changeset, and move on with the Code Review.
+Some notes on code style and style guide violations. Call out style guide violations as you see them, but don't spend too much time seeking them out. Rely on the automated style checkers to catch these types of issues; your human brain is more apt to deal with nuanced aspects of review. In the event conflict over style is raised which is not addressed by the style guide create an issue in the guide repository to deal with the issue, follow the style guide as closely as possible or defer judgment to the author of the change, and move on with the Code Review.
 </p>
 
 <p>
@@ -202,16 +142,75 @@ A few additional things to keep in mind. Understand why the change is necessary 
 <ul class="org-ul">
 <li>Communicate which ideas you feel strongly about and those you don't.</li>
 <li>Identify ways to simplify the code while still solving the problem.</li>
-<li>If discussions turn too philosophical or academic, move the discussion out-of-band. In the meantime, let the author make the final decision on alternative implementations.</li>
+<li>If discussions turn too philosophical or academic, move the discussion out-of-band. Meanwhile, let the author make the final decision on alternative implementations.</li>
 <li>Offer alternative implementations, but assume the author already considered them. ("What do you think about using a custom validation here?")</li>
 <li>Seek to understand the author's perspective.</li>
 </ul>
 </div>
 </div>
 
-<div id="outline-container-orge91c313" class="outline-2">
-<h2 id="orge91c313">Additional Resources</h2>
-<div class="outline-text-2" id="text-orge91c313">
+<div id="outline-container-orge34fae0" class="outline-2">
+<h2 id="orge34fae0">On commit messages and pull request descriptions</h2>
+<div class="outline-text-2" id="text-orge34fae0">
+<blockquote>
+<p>
+Pull Requests are temporally relevant, but commits are forever
+</p>
+</blockquote>
+
+<p>
+The clear expression of intent and context sets the stage for a great Code Review. History, commit messages, and pull request descriptions are context-delivery vehicles.
+</p>
+
+<p>
+Absent an adequate team template  heavily influenced by <a href="https://chris.beams.io/posts/git-commit/">Chris Beams' article "How to Write a Git Commit Message"</a>. We do this to raise awareness to our teammates about what in the system is changing and why. Additionally, we create these artifacts to capture as much of this context as we can for archaeological purposes; we want to be kind and helpful to our teammates and future-selves. Below is a template we use to capture and convey relevant information.
+</p>
+
+<div class="org-src-container">
+<pre class="src src-markdown">Summary
+---------------
+
+This should clearly and concisely convey the change's reason for
+being. Use a paragraph or two to explain the business need, technical
+issue, etc. that the change intends to fix. This gives the reviewer
+a quick way to gain the requisite context needed to understand the
+change.
+
+This section could be used to provide any additional context the
+author feels might be relevant to the reviewer to better understand
+the changes. Examples might include links to articles which inspired
+design decisions, notes on alternate solutions, or approaches that
+didn't work out and why. This allows the author to bridge context gaps
+and anticipate the obvious questions a reviewer might ask.
+
+In addition, this provides a section for the author to call attention
+to a particular section of the change they'd like to be thoroughly
+criticized.
+
+References
+----------
+
+Lead with a hypertext link to the discussion from where this change
+originated; could be a JIRA ticket, Pivotal Story, Github Issues
+ticket, etc. The goal is to provide a connection to the originating
+idea for the change, discussion, and any relevant context
+therein. This is important for archaeological reasons as we aim to
+provide insight into the state-of-mind of the organization, business
+considerations, alternate approaches which were considered, etc when
+the problem or feature was first identified.
+
+Include hypertext links to topical articles, influencing white-papers
+and academic discussions, contributing computational concepts, etc. to
+help the reviewer understand the frame of reference from which the
+change is wrought.
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org46390b7" class="outline-2">
+<h2 id="org46390b7">Additional Resources</h2>
+<div class="outline-text-2" id="text-org46390b7">
 <ul class="org-ul">
 <li><a href="https://www.microsoft.com/en-us/research/wp-content/uploads/2016/02/ICSE202013-codereview.pdf">Expectations, outcomes, and challenges of modern code review</a></li>
 <li><a href="https://www.youtube.com/watch?v=PJjmw9TRB7s">Implementing a strong code-review culture by Derek Prior Rails Conf 2015</a></li>
