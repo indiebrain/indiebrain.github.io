@@ -20,16 +20,65 @@ value.
 
 * Skills Summary
 
-- Web Application Development (Ruby/Rails and Standard Web
-  Technologies - HTTP, JavaScript, CSS)
-- API Development (Ruby/Rails)
-- Development tooling, Continuous Integration, Deployment Automation,
-  and Workload Orchestration (Bash, Jenkins, Docker, Kubernetes)
-- Team Growth and Leadership (agility, Lean Manufacturing
-  Principles, and Extreme Ownership)
-- Mentor and Educator
+- Platform & Infrastructure Engineering (Kubernetes, containers, CI/CD,
+  deployment automation, and workload orchestration — Go, Bash, Docker,
+  Jenkins)
+- Distributed data systems at scale (Redis, Elasticsearch, InfluxDB)
+- Web application & API development (Ruby on Rails and standard web
+  technologies — HTTP, JavaScript, CSS)
+- Open source (upstream contributions to HAProxy and
+  Shopify/shipit-engine; maintainer of a Kubernetes Redis operator)
+- Team growth and leadership (Extreme Ownership, agile and Lean
+  principles, mentor and educator)
 
 * Experience
+
+** Power Home Remodeling Group
+
+*Lead Software Engineer / Senior Software Engineer*
+
+/July 2023 - Present/
+
+I returned to Power in July 2023 to join the internal platform team —
+the group responsible for the CI/CD, container platform, and shared data
+infrastructure that every engineer in the org ships against. In August
+2025 I was promoted to lead the team.
+
+Much of my work has been about shrinking operational surface area. I
+drove a two-year platform roadmap toward a simplified recommended
+application stack, a versioned deployment-template library that replaces
+copy-paste manifests, and cluster-scoped operators — collapsing per-app
+maintenance into a single consistent model, with fewer bespoke systems to
+babysit and a lighter on-call rotation. I am currently leading the
+company's most consequential platform migration: the cutover of the
+flagship application and its satellites from a legacy container platform
+to its successor, coordinating Redis, Elasticsearch, and InfluxDB data
+migrations, DNS, and change-control across multiple teams without
+customer-visible downtime.
+
+As a senior engineer on the team I cut average Redis call latency by
+roughly 73% (7.9 ms to 2.1 ms) on the flagship Rails application by
+leading a Redis fleet upgrade from v3 to v6 — migrating 100% of
+production clusters with zero customer-facing disruption and eliminating
+commercial Redis Enterprise licensing costs by replacing it with an
+internally-maintained open-source operator, which I maintain and to which
+I added multi-site replication. I authored and merged an init-state
+server-configuration feature into upstream HAProxy
+(https://github.com/haproxy/haproxy/commit/50322dff81f3c05e67bf311ff9ef0c77c833df97),
+closing a years-open issue and fixing a Redis-failover bug that had caused
+production incidents. I also shipped application-layer DDoS protection
+across the company's most-trafficked public properties, and made deploys
+and CI faster for the whole engineering org — cutting flagship deploy
+time from roughly 14 to 10 minutes and worst-case CI time by 30%.
+
+Leadership here has meant building resilience into the team as much as the
+systems: I have deliberately distributed ownership of critical platform
+components so the team is no longer single-threaded through any one
+person, and I own annual reviews, hiring, and strategy for the group. I
+mentor in the company's internal coding academy, led the internal
+Refactoring book club, and founded two recurring practices still running
+today — "Maintenance Monday" and "Tech Talk Thursday," an open-mic talk
+series across the technology department.
 
 ** Shopify
 
@@ -102,10 +151,15 @@ team. We supported the application domain teams with customized
 tooling, delivery pipeline, and operational support of applications
 running on our Kubernetes cluster. As part of this role, I made
 non-trivial contributions to the Open Source software the Power teams
-use. The largest contributions include adding "Review Stacks" and
-"Custom task execution strategies" to the Shopify/shipit-engine
-project. In past roles, I served on teams in charge of our Business
-Intelligence and Telephony systems.
+use. Most notably, I was the primary author of the "Review Stacks"
+feature in Shopify/shipit-engine (PR #1102 —
+https://github.com/Shopify/shipit-engine/pull/1102), which brings up
+ephemeral, full-stack preview environments per pull request, along with
+"Custom task execution strategies." In earlier roles at Power I served on
+the teams responsible for our Business Intelligence and Telephony
+systems; on the latter I took our in-house telephony system, Talkbox,
+from roughly five daily outages down to one by identifying constrained
+resources and distributing the system by call type.
 
 I also volunteer as a substitute instructor, teaching assistant, and
 mentor as part of Power's internal Software Development bootcamp.
@@ -124,7 +178,7 @@ efficiency. They inspire change in individual and team behavior to
 achieve this goal.
 
 During my time as team lead we reduced average Story cycle time by
-34.37%. We used pair programming as a means to build trust and rapport
+roughly 34%. We used pair programming as a means to build trust and rapport
 between teammates - removing waste in unnecessary review processes and
 improving morale. We trimmed waste and refocused the team to reduce
 WIP and plan more appropriately to the constraints of our pipeline. We

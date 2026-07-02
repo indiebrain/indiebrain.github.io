@@ -7,9 +7,18 @@
 Our purpose is not to "write code", but rather add value.
 #+END_QUOTE
 
-Over 15 years of experience shipping software and growing development teams. I thrive in collaborative environments where impact is celebrated.
+Platform and infrastructure engineer with 15+ years shipping software and growing teams. I build the CI/CD, container, and data platforms other teams ship against — Kubernetes, Ruby on Rails, Go, Redis at scale.
 
 * Example Open Source Contributions
+
+** HAProxy
+
+https://github.com/haproxy/haproxy
+
+The reliable, high-performance TCP/HTTP load balancer. I authored and
+merged an init-state server-configuration feature, closing a years-open
+issue and fixing a Redis-failover bug that had caused production
+incidents.
 
 ** Shopify/shipit-engine
 
@@ -17,7 +26,8 @@ https://github.com/Shopify/shipit-engine
 
 Shipit is a deployment tool that makes shipping code better for
 everyone. It's especially great for large teams of developers and
-designers who work together to build and deploy GitHub repos.
+designers who work together to build and deploy GitHub repos. I was the
+primary author of its "Review Stacks" feature.
 
 ** percona-xtradb-cluster-operator
 
@@ -29,7 +39,7 @@ SDK.
 
 https://github.com/rubyforgood/mutual-aid
 
-Mutual Aid is when people get together to build community by volunarily
+Mutual Aid is when people get together to build community by voluntarily
 sharing resources with each other. Mutual Aid groups are more concerned
 about local resiliency than global campaigns, and prefer solidarity
 before charity.

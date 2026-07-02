@@ -14,23 +14,99 @@
 #+LATEX_HEADER: \usepackage[margin=0.75in]{geometry}
 
 #+BEGIN_QUOTE
-Over 15 years of experience shipping software and growing development
-teams. I thrive in collaborative environments where impact is
-celebrated.
+Platform and infrastructure engineer with 15+ years shipping software
+and growing teams. I build the CI/CD, container, and data platforms
+other teams ship against — Kubernetes, Ruby on Rails, Go, Redis at
+scale. I'm accountable for outcomes and build autonomous teams where no
+one is a single point of failure.
 #+END_QUOTE
 
 * Proficiency highlights
 
-- Web Application Development (Ruby/Rails and Standard Web
-  Technologies - HTTP, JavaScript, CSS)
-- API Development (Ruby/Rails)
-- Development tooling, Continuous Integration, Deployment Automation,
-  and Workload Orchestration (Bash, Jenkins, Docker, Kubernetes)
-- Team Growth and Leadership (agility, Lean Manufacturing Principles,
-  and Extreme Ownership)
-- Mentor and Educator
+- Platform & Infrastructure Engineering (Kubernetes, containers, CI/CD,
+  deployment automation, and workload orchestration — Go, Bash, Docker,
+  Jenkins)
+- Distributed data systems at scale (Redis, Elasticsearch, InfluxDB)
+- Web application & API development (Ruby on Rails and standard web
+  technologies — HTTP, JavaScript, CSS)
+- Open source (upstream contributions to HAProxy and
+  Shopify/shipit-engine; maintainer of a Kubernetes Redis operator)
+- Team growth and leadership (Extreme Ownership, agile and Lean
+  principles, mentor and educator)
 
 * Recent Accomplishments
+
+** Power Home Remodeling
+
+*Lead Software Engineer*
+
+/August 2025 - Present/
+
+Promoted to lead the internal platform team that powers the company's
+CI/CD, container platform, and shared data infrastructure — the systems
+every engineer in the org ships against.
+
+Setting a 2-year direction that shrinks operational surface area: drove
+the platform roadmap toward a simplified recommended application stack, a
+versioned deployment-template library replacing copy-paste manifests, and
+cluster-scoped operators, collapsing per-app maintenance into a single
+consistent model. The result: fewer bespoke systems to babysit and a
+lighter on-call rotation.
+
+De-risking the company's most consequential platform migration: leading
+the cutover of 5+ applications (the flagship and its satellites) from the
+legacy container platform to its successor — coordinating data migrations
+across Redis (multiple GB), Elasticsearch (dozens of GB of indexed
+documents), and a widely-shared InfluxDB instance, plus DNS and
+change-control across multiple teams, without customer-visible downtime.
+
+Building bus-factor resilience: distributed ownership of critical
+platform components (cluster-scoped operators, deployment templating,
+data-center decommissions) so senior teammates now lead cross-team
+initiatives the team once single-threaded through one person — 6
+components that had a single owner now have two or more.
+
+Shaping who joins the team and how they grow: own annual reviews, hiring
+loops, and team strategy for a 7-person senior platform team operating at
+the company's highest-stakes layer.
+
+*Senior Software Engineer*
+
+/July 2023 - August 2025/
+
+Returned to Power Home Remodeling to join the platform team chartered to
+let application teams run reliably at scale.
+
+Cut average Redis call latency by ~73% (7.9 ms to 2.1 ms) on the flagship
+Rails app by leading a Redis fleet upgrade from v3 to v6 — zero
+customer-facing disruption, 100% of production clusters migrated, and
+eliminated the commercial Redis Enterprise licensing spend by replacing
+it with an internally-maintained open-source operator.
+
+Got code into upstream HAProxy: authored and merged the init-state
+server-configuration feature ([[https://github.com/haproxy/haproxy/commit/50322dff81f3c05e67bf311ff9ef0c77c833df97][commit 50322df]], September 2024), closing
+a years-open issue and fixing a Redis-failover bug that had caused
+production incidents. The fix benefits every HAProxy user.
+
+Shipped application-layer DDoS protection across the company's
+most-trafficked public properties, proactively closing a longstanding
+security gap.
+
+Made deploys and CI faster for the entire engineering org: cut average
+production deploy time for the flagship app from ~14 to ~10 minutes and
+worst-case CI time by 30% — compounding daily across every engineer who
+ships.
+
+Took over and modernized a critical open-source dependency: maintainer of
+an open-source Kubernetes Redis operator (Go), added multi-site
+replication, and made cross-data-center disaster-recovery exercises
+routine rather than a fire drill.
+
+Multiplied the team's reach through mentorship and knowledge-sharing
+rituals: engineering mentor in the company's internal coding academy; led
+the internal Refactoring book club; founded two recurring practices still
+running today — "Maintenance Monday" (team-level) and "Tech Talk
+Thursday" (open mic across the technology department).
 
 ** Shopify
 
@@ -38,10 +114,10 @@ celebrated.
 
 /September 2021 - May 2023/
 
-Shipped the $2.5 billion USD acquisition / integration of Deliverr Inc
-ahead of schedule. Ensured alignment of our geographically diverse
-team. Defined APIs and implemented the Shopify integration to ensure
-seamless experience for SFN merchants.
+Shipped the $2.5 billion Deliverr acquisition integration ahead of
+schedule — defined the APIs and built the Shopify-side integration that
+gave Shopify Fulfillment Network (SFN) merchants a seamless experience,
+coordinating delivery across a geographically distributed team.
 
 Increased Returns system throughput by 500% ahead of the SFN Returns
 2022 Black Friday / Cyber Monday season. Ran capacity and resilience
@@ -49,9 +125,11 @@ testing to identify choke-points. Led disaster recovery drills and
 defined on-call and incident response policies.
 
 Discovered silent failure modes in warehouse management software and
-added observably instrumentation. Discovered impediments in warehouse
-processes and implemented optimizations with AI-based inventory
-categorizations.
+added observability instrumentation.
+
+Used machine learning to build a product taxonomy that both improved how
+related products are surfaced to shoppers and optimized warehouse
+placement for faster picking and packing.
 
 Identified bottlenecks in feature gating system. Scaled feature flag
 management capabilities from 10 to 2 million merchants. Added
@@ -68,13 +146,19 @@ work items.
 
 /May 2018 - September 2021/
 
-Slashed deployment times by 82%. Transformed deployment topology to
-self-hosted Kubernetes-based container orchestration. Made significant
-contributions to [[https://github.com/Shopify/shipit-engine/pulls?q=author%3Aindiebrain][Shopify/shipit-engine]] to support Review Stacks.
+Slashed deployment times by 82% by transforming the deployment topology
+to self-hosted, Kubernetes-based container orchestration.
 
-Improved call center reliability by 300% by identifying constrained
-resources, decoupling and distributing the telephony system by call
-type.
+Led the Review Stacks feature in Shopify's open-source deploy tool,
+[[https://github.com/Shopify/shipit-engine/pull/1102][shipit-engine (PR #1102)]]: ephemeral, full-stack preview environments
+spun up per pull request. ~8,400 lines across 106 files; primary author
+of the change and its architectural groundwork, delivered with a small
+team and reviewed by Shopify maintainers.
+
+Took Talkbox — our in-house telephony system — from ~5 daily outages to
+one: it was taking the call center offline multiple times a day until I
+identified the constrained resources and decoupled/distributed the system
+by call type, keeping it online through the workday.
 
 Expanded development organization capacity by 20% by growing "Power
 Code Academy" student developers into Individual Contributors.
@@ -86,18 +170,19 @@ Functioned as a substitute instructor and post-graduation mentor.
 
 /February 2016 - May 2018/
 
-Boosted revenue by 200% by optimizing impression value and advertising
-rank. Deferred ad load requests until ad slots were just about to
-scroll into reader's view.
+Boosted ad revenue by ~200% by optimizing impression value and
+advertising rank. Deferred ad load requests until ad slots were just
+about to scroll into reader's view.
 
-Cut development organization spend by 50%. Implemented automated
-review instances to share WIP with stakeholders.
+Cut non-production infrastructure spend by ~50% by moving stakeholder
+preview and review environments from always-on to on-demand — spun up
+per change and torn down after use, instead of running continuously.
 
-Reduced work-item cycle-time by 34.37% by encouraging adoption of
-pairing and building a [[https://aaronkuehler.com/blog/2019/05/09/building-a-healthy-code-review-culture/][healthy code review culture]].
+Reduced work-item cycle-time by ~34% by encouraging adoption of pairing
+and building a [[https://aaronkuehler.com/blog/2019/05/09/building-a-healthy-code-review-culture/][healthy code review culture]].
 
-Increased site traffic by 300% by optimizing metadata for search
-engine and social media ranking.
+Increased site traffic by ~300% by optimizing metadata for search engine
+and social media ranking.
 
 ** exercism.io
 
