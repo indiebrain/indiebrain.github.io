@@ -1,0 +1,22 @@
+name: ci-probe
+# Temporary diagnostic for the "Repository access blocked" error.
+# probe-run-only uses no external actions; probe-checkout uses only the
+# GitHub-owned actions/checkout. Comparing their outcomes isolates
+# whether the block is account-wide or specific to downloading actions.
+on:
+  push:
+    branches: [source]
+    paths: ['.github/workflows/ci-probe.yml']
+  workflow_dispatch:
+
+jobs:
+  probe-run-only:
+    runs-on: ubuntu-latest
+    steps:
+      - run: echo "run-only job (no external actions) reached execution"
+
+  probe-checkout:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - run: echo "actions/checkout (GitHub-owned) downloaded and ran"
