@@ -8,7 +8,6 @@ title = "Aaron Kuehler"
 publishDir = "public"
 # Keep the trailing-slash, directory-style URLs the old site served.
 uglyURLs = false
-enableRobotsTXT = true
 
 # Reproduce the org-page permalink scheme exactly:
 #   /blog/YYYY/MM/DD/<slug>/
@@ -22,10 +21,6 @@ enableRobotsTXT = true
 [outputFormats]
   [outputFormats.RSS]
     baseName = "rss"
-
-[outputs]
-  home = ["HTML", "RSS"]
-  section = ["HTML", "RSS"]
 
 [services]
   [services.rss]
