@@ -18,6 +18,11 @@
   (package-install 'ox-hugo))
 (require 'ox-hugo)
 
+;; Copy referenced images into static/images/ (public URL /images/...)
+;; rather than the default static/ox-hugo/, so the build tool never
+;; leaks into public URLs.
+(setq org-hugo-default-static-subdirectory-for-externals "images")
+
 (defun ib/export-file (path)
   "Export a single Org file at PATH to Markdown via ox-hugo."
   (message "ox-hugo: exporting %s" (file-relative-name path default-directory))

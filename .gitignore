@@ -10,5 +10,5 @@ themes/indiebrain/resources/css/.sass-cache/*
 /.hugo_build.lock
 # Project-local Emacs packages bootstrapped by build/export.el.
 /.elpa/
-/static/ox-hugo/
+/static/images/
 /static/resume/
