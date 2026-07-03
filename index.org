@@ -37,10 +37,11 @@ preview environments spun up per pull request.
 
 ** percona-xtradb-cluster-operator
 
-https://github.com/indiebrain/percona-xtradb-cluster-operator
+https://github.com/percona/percona-xtradb-cluster-operator
 
-A Kubernetes operator for Percona XtraDB Cluster based on the Operator
-SDK.
+Percona's Kubernetes operator for XtraDB Cluster. I contributed a fix
+merged upstream (PR #521) that resolved a crash when the operator pod
+started without a HAProxy PodDisruptionBudget.
 ** rubyforgood/mutual-aid
 
 https://github.com/rubyforgood/mutual-aid
