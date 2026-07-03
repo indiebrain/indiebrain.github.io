@@ -1,0 +1,9 @@
+# The image holds only the toolchain; site sources are mounted at run time.
+.git
+public
+content
+resources
+.elpa
+static/resume
+static/images
+*.pdf

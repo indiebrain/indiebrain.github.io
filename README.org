@@ -19,34 +19,42 @@ This supersedes the previous org-page toolchain; see
 | ~build/export.el~       | Batch Org to Markdown export         |
 | ~hugo.toml~, ~layouts/~ | Hugo configuration and templates     |
 | ~static/~               | Files copied verbatim (for example, CNAME) |
+| ~Dockerfile~            | Build toolchain (Emacs, ox-hugo, TeX Live, Hugo) |
 
 * Build and preview locally
 
-Requires Emacs and Hugo (extended). From the repository root:
+The toolchain (Emacs + ox-hugo, TeX Live, Hugo) is packaged as a Docker
+image so local builds match CI exactly. With only Docker installed:
 
 #+begin_src sh
-emacs --batch -Q -l build/export.el   # Org -> content/*.md (via ox-hugo)
-hugo server                           # serve at http://localhost:1313
+make image          # build the toolchain image once
+make docker-build   # build the site into public/ inside the container
+make shell          # or drop into a shell in the container
 #+end_src
 
-The first export installs ox-hugo from MELPA into a project-local
-~.elpa/~ directory, so it never touches your global Emacs configuration.
-To build the final site into ~public/~ instead of serving it, run ~hugo
---gc --minify~.
+If you have Emacs, Hugo (extended), and LaTeX installed directly, the
+host targets work too:
+
+#+begin_src sh
+make build          # build into public/
+make serve          # export + serve at http://localhost:1313
+#+end_src
+
+The first host export installs ox-hugo from MELPA into a project-local
+~.elpa/~; the container has it pre-installed.
 
 * Publishing
 
-Run ~make deploy~ from the repository root. It does a clean build and
-pushes the generated site to the ~master~ branch, which GitHub Pages
-serves. Org stays the source of truth on ~source~; ~master~ holds only
-the generated output.
+Pushing to ~source~ triggers the GitHub Actions workflow
+(~.github/workflows/deploy.yml~), which builds the site inside the
+toolchain image and deploys it to GitHub Pages. The image itself is
+built and pushed to GHCR by ~build-image.yml~ whenever the ~Dockerfile~
+changes. Both workflows use only GitHub-owned actions plus the toolchain
+container, so they avoid the account's block on third-party actions.
 
-An automated GitHub Actions workflow
-(~.github/workflows/deploy.yml~) that builds and deploys on push to
-~source~ is also included, but is not currently the active path: it
-needs GitHub Actions enabled for the account and the Pages source
-switched to "GitHub Actions". Until then, ~make deploy~ is the way to
-publish.
+~make deploy~ remains available as a manual fallback: it clean-builds and
+pushes the generated site to the ~master~ branch. Org stays the source of
+truth on ~source~.
 
 * Writing a post
 

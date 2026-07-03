@@ -8,7 +8,11 @@
 ;; global Emacs configuration and runs identically in CI.
 
 (require 'package)
-(setq package-user-dir (expand-file-name ".elpa" default-directory))
+;; Use the image's pre-installed packages when SITE_ELPA is set (the
+;; container bakes ox-hugo there); otherwise bootstrap into a
+;; project-local .elpa for bare local runs.
+(setq package-user-dir (or (getenv "SITE_ELPA")
+                           (expand-file-name ".elpa" default-directory)))
 (setq package-archives
       '(("gnu"   . "https://elpa.gnu.org/packages/")
         ("melpa" . "https://melpa.org/packages/")))

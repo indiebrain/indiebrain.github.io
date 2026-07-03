@@ -1,8 +1,9 @@
 name: Build and deploy site
 
-# Org is the source of truth on the `source` branch. This workflow
-# exports Org -> Markdown with ox-hugo, builds the site with Hugo, and
-# publishes it to GitHub Pages. No generated output is committed.
+# Org is the source of truth on `source`. This builds the site inside the
+# prebuilt toolchain image (ghcr.io/.../site-builder) and deploys to
+# GitHub Pages. Only GitHub-owned actions are used around the container,
+# so it is unaffected by the account's block on third-party actions.
 on:
   push:
     branches: [source]
@@ -10,10 +11,10 @@ on:
 
 permissions:
   contents: read
+  packages: read
   pages: write
   id-token: write
 
-# Allow one concurrent deployment; newer pushes cancel in-progress runs.
 concurrency:
   group: pages
   cancel-in-progress: true
@@ -21,46 +22,19 @@ concurrency:
 jobs:
   build:
     runs-on: ubuntu-latest
+    container:
+      image: ghcr.io/${{ github.repository }}/site-builder:latest
+      credentials:
+        username: ${{ github.actor }}
+        password: ${{ secrets.GITHUB_TOKEN }}
     steps:
       - uses: actions/checkout@v4
-
-      - name: Install Emacs
-        uses: purcell/setup-emacs@master
-        with:
-          version: "29.4"
-
-      - name: Cache project-local Emacs packages
-        uses: actions/cache@v4
-        with:
-          path: .elpa
-          key: elpa-${{ hashFiles('build/export.el') }}
 
       - name: Export Org to Markdown (ox-hugo)
         run: emacs --batch -Q -l build/export.el
 
-      # Only the handful of packages the resume needs, cached across runs
-      # (only the first run downloads; later runs restore in seconds).
-      - name: Set up TeX Live (minimal, cached)
-        uses: teatimeguest/setup-texlive-action@v3
-        with:
-          packages: |
-            scheme-basic
-            hyperref
-            helvetic
-            psnfss
-            parskip
-            geometry
-            ec
-            url
-
       - name: Build resume PDF
         run: emacs --batch -Q -l build/resume.el
-
-      - name: Install Hugo
-        uses: peaceiris/actions-hugo@v3
-        with:
-          hugo-version: "0.163.3"
-          extended: true
 
       - name: Build site
         run: hugo --gc --minify
