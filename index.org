@@ -30,8 +30,10 @@ https://github.com/Shopify/shipit-engine
 
 Shipit is a deployment tool that makes shipping code better for
 everyone. It's especially great for large teams of developers and
-designers who work together to build and deploy GitHub repos. I was the
-primary author of its "Review Stacks" feature.
+designers who work together to build and deploy GitHub repos. I'm a
+sustained contributor with 22 merged pull requests, including primary
+authorship of its "Review Stacks" feature — ephemeral, full-stack
+preview environments spun up per pull request.
 
 ** percona-xtradb-cluster-operator
 
@@ -46,7 +48,8 @@ https://github.com/rubyforgood/mutual-aid
 Mutual Aid is when people get together to build community by voluntarily
 sharing resources with each other. Mutual Aid groups are more concerned
 about local resiliency than global campaigns, and prefer solidarity
-before charity.
+before charity. I contributed 10 merged pull requests, largely hardening
+the Docker-based development environment for new volunteers.
 
 * Sample Side Projects
 
@@ -56,7 +59,7 @@ https://github.com/indiebrain/asdf-guile
 
 An [[https://github.com/asdf-vm/asdf][asdf]] version manager plugin to manage [[https://www.gnu.org/software/guile/][GNU Guile]] installations
 
-** rescue-alive
+** resque-alive
 
 https://github.com/indiebrain/resque-alive
 
