@@ -11,3 +11,4 @@ themes/indiebrain/resources/css/.sass-cache/*
 # Project-local Emacs packages bootstrapped by build/export.el.
 /.elpa/
 /static/ox-hugo/
+/static/resume/
