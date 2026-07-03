@@ -5,23 +5,36 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>{{ if .IsHome }}{{ .Site.Title }}{{ else }}{{ .Title }} &middot; {{ .Site.Title }}{{ end }}</title>
     {{ with .Description }}<meta name="description" content="{{ . }}">{{ end }}
+    {{/* Apply a saved theme choice before paint to avoid a flash. */}}
+    <script>
+      (function () {
+        try {
+          var t = localStorage.getItem("theme");
+          if (t) document.documentElement.setAttribute("data-theme", t);
+        } catch (e) {}
+      })();
+    </script>
     <link rel="stylesheet" href="{{ "/css/style.css" | relURL }}">
     {{ range .AlternativeOutputFormats -}}
       <link rel="{{ .Rel }}" type="{{ .MediaType.Type }}" href="{{ .Permalink }}" title="{{ $.Site.Title }}">
     {{ end -}}
   </head>
   <body>
+    <a class="skip-link" href="#main">Skip to content</a>
     <header class="site-header">
       <div class="container">
         <a class="site-title" href="{{ "/" | relURL }}">{{ .Site.Title }}</a>
-        <nav class="site-nav">
+        <nav class="site-nav" aria-label="Primary">
           <a href="{{ "/" | relURL }}">About</a>
           <a href="{{ "/blog/" | relURL }}">Blog</a>
           <a href="{{ "/resume/resume.pdf" | relURL }}">Résumé</a>
+          <button class="theme-toggle" type="button" aria-label="Switch between light and dark theme">
+            <span aria-hidden="true">◐</span>
+          </button>
         </nav>
       </div>
     </header>
-    <main>
+    <main id="main">
       <div class="container">{{ block "main" . }}{{ end }}</div>
     </main>
     <footer class="site-footer">
@@ -30,5 +43,21 @@
         {{ with site.Home.OutputFormats.Get "rss" }} &middot; <a href="{{ .RelPermalink }}">RSS</a>{{ end }}
       </div>
     </footer>
+    <script>
+      (function () {
+        var btn = document.querySelector(".theme-toggle");
+        if (!btn) return;
+        btn.addEventListener("click", function () {
+          var cur = document.documentElement.getAttribute("data-theme");
+          if (!cur) {
+            cur = window.matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light";
+          }
+          var next = cur === "dark" ? "light" : "dark";
+          document.documentElement.setAttribute("data-theme", next);
+          try { localStorage.setItem("theme", next); } catch (e) {}
+          btn.setAttribute("aria-pressed", next === "dark");
+        });
+      })();
+    </script>
   </body>
 </html>
