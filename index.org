@@ -4,6 +4,7 @@
 #+HUGO_BASE_DIR: .
 #+HUGO_SECTION: /
 #+EXPORT_FILE_NAME: _index
+#+HUGO_ALIASES: /about/
 #+OPTIONS: num:nil toc:nil
 
 #+BEGIN_QUOTE

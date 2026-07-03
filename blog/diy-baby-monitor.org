@@ -4,9 +4,9 @@
 #+SETUPFILE: ../org/ox-hugo-setup.org
 #+EXPORT_FILE_NAME: diy-baby-monitor
 #+HUGO_SLUG: diy-baby-monitor
+#+HUGO_TAGS: hardware "raspberry pi"
 #+HUGO_ALIASES: /blog/2017/10/04/diy-baby-monitor/
 #+URI:         /blog/%y/%m/%d/diy-baby-monitor
-#+KEYWORDS:    raspberry pi, baby monitor, diy
 #+TAGS:        hardware, raspberry pi
 #+LANGUAGE:    en
 #+OPTIONS:     H:3 num:nil toc:nil \n:nil ::t |:t ^:nil -:nil f:t *:t <:t

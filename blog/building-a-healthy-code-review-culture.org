@@ -4,9 +4,9 @@
 #+SETUPFILE: ../org/ox-hugo-setup.org
 #+EXPORT_FILE_NAME: building-a-healthy-code-review-culture
 #+HUGO_SLUG: building-a-healthy-code-review-culture
+#+HUGO_TAGS: software "team building"
 #+HUGO_ALIASES: /blog/2015/05/14/building-a-healthy-code-review-culture/ /blog/2016/07/26/building-a-healthy-code-review-culture/
 #+URI:         /blog/%y/%m/%d/building-a-healthy-code-review-culture
-#+KEYWORDS:    software development, team building
 #+TAGS:        software, team building
 #+LANGUAGE:    en
 #+OPTIONS:     H:3 num:nil toc:nil \n:nil ::t |:t ^:nil -:nil f:t *:t <:t

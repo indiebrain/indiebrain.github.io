@@ -4,9 +4,9 @@
 #+SETUPFILE: ../org/ox-hugo-setup.org
 #+EXPORT_FILE_NAME: design-effective-interviews
 #+HUGO_SLUG: design-effective-interviews
+#+HUGO_TAGS: hiring "team building"
 #+HUGO_ALIASES: /blog/2019/05/09/design-effective-interviews/
 #+URI:         /blog/%y/%m/%d/design-effective-interviews
-#+KEYWORDS:    hiring, interviewing, team building
 #+TAGS:        hiring, team building
 #+LANGUAGE:    en
 #+OPTIONS:     H:3 num:nil toc:nil \n:nil ::t |:t ^:nil -:nil f:t *:t <:t
