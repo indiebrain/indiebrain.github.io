@@ -3,7 +3,7 @@
 #
 # Build:  docker build -t site-builder .
 # Use:    docker run --rm -v "$PWD":/site -w /site site-builder make build
-FROM ubuntu:24.04
+FROM ubuntu:26.04
 
 # TARGETARCH is provided by BuildKit (amd64 / arm64); matches Hugo's naming.
 ARG TARGETARCH
