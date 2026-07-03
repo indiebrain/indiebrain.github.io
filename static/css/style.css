@@ -15,6 +15,14 @@
   --link: #3068ae;
   --border: #dcdee1;
   --focus: #1b40a6;
+  --syn-comment: #636975;
+  --syn-keyword: #983cc6;
+  --syn-string: #34762c;
+  --syn-number: #bb3f0f;
+  --syn-func: #3068ae;
+  --syn-type: #2c727a;
+  --syn-meta: #905e30;
+  --syn-error: #be383d;
 }
 
 @media (prefers-color-scheme: dark) {
@@ -27,6 +35,14 @@
     --link: #81a1c1;
     --border: #434c5e;
     --focus: #88c0d0;
+    --syn-comment: #a8b1bf;
+    --syn-keyword: #c5a8c0;
+    --syn-string: #a3be8c;
+    --syn-number: #d9a48b;
+    --syn-func: #99b3cd;
+    --syn-type: #88c0d0;
+    --syn-meta: #ebcb8b;
+    --syn-error: #e19ea4;
   }
 }
 
@@ -39,6 +55,14 @@
   --link: #81a1c1;
   --border: #434c5e;
   --focus: #88c0d0;
+  --syn-comment: #a8b1bf;
+  --syn-keyword: #c5a8c0;
+  --syn-string: #a3be8c;
+  --syn-number: #d9a48b;
+  --syn-func: #99b3cd;
+  --syn-type: #88c0d0;
+  --syn-meta: #ebcb8b;
+  --syn-error: #e19ea4;
 }
 
 * { box-sizing: border-box; }
@@ -135,3 +159,29 @@ hr { border: none; border-top: 1px solid var(--border); margin: 2rem 0; }
 @media (prefers-reduced-motion: reduce) {
   * { animation-duration: .01ms !important; transition-duration: .01ms !important; }
 }
+
+/*
+ * Syntax highlighting (Chroma, class-based). Token colors are theme
+ * variables tuned to meet WCAG AA (>= 4.5:1) on the code surface.
+ */
+.highlight { margin: 0 0 1.1rem; }
+.highlight pre.chroma { margin: 0; }
+.chroma { color: var(--fg); }
+.chroma .c, .chroma .ch, .chroma .cm, .chroma .c1, .chroma .cs { color: var(--syn-comment); font-style: italic; }
+.chroma .cp, .chroma .cpf { color: var(--syn-meta); }
+.chroma .k, .chroma .kc, .chroma .kd, .chroma .kn, .chroma .kp, .chroma .kr { color: var(--syn-keyword); }
+.chroma .kt, .chroma .nc, .chroma .nn { color: var(--syn-type); }
+.chroma .s, .chroma .sb, .chroma .sc, .chroma .sd, .chroma .s2, .chroma .se,
+.chroma .sh, .chroma .si, .chroma .sx, .chroma .sr, .chroma .s1, .chroma .ss,
+.chroma .dl { color: var(--syn-string); }
+.chroma .m, .chroma .mb, .chroma .mf, .chroma .mh, .chroma .mi, .chroma .mo, .chroma .il { color: var(--syn-number); }
+.chroma .nf, .chroma .fm, .chroma .na, .chroma .nb, .chroma .bp { color: var(--syn-func); }
+.chroma .no { color: var(--syn-number); }
+.chroma .nt { color: var(--syn-keyword); }
+.chroma .nv, .chroma .vc, .chroma .vg, .chroma .vi,
+.chroma .o, .chroma .ow, .chroma .p { color: var(--fg); }
+.chroma .err, .chroma .gd { color: var(--syn-error); }
+.chroma .gi { color: var(--syn-string); }
+.chroma .gu { color: var(--syn-meta); }
+.chroma .ge { font-style: italic; }
+.chroma .gs { font-weight: 600; }
