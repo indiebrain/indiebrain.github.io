@@ -46,11 +46,11 @@ The first host export installs ox-hugo from MELPA into a project-local
 * Publishing
 
 Pushing to ~source~ triggers the GitHub Actions workflow
-(~.github/workflows/deploy.yml~), which builds the site inside the
-toolchain image and deploys it to GitHub Pages. The image itself is
-built and pushed to GHCR by ~build-image.yml~ whenever the ~Dockerfile~
-changes. Both workflows use only GitHub-owned actions plus the toolchain
-container, so they avoid the account's block on third-party actions.
+(~.github/workflows/deploy.yml~). Its jobs run in order (~needs:~):
+(re)build the toolchain image on GHCR when the ~Dockerfile~ or
+~export.el~ changes, build the site inside that image, then deploy to
+GitHub Pages. It uses only GitHub-owned actions plus the toolchain
+container, so it avoids the account's block on third-party actions.
 
 ~make deploy~ remains available as a manual fallback: it clean-builds and
 pushes the generated site to the ~master~ branch. Org stays the source of
