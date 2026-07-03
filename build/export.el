@@ -23,14 +23,25 @@
 ;; leaks into public URLs.
 (setq org-hugo-default-static-subdirectory-for-externals "images")
 
+(defvar ib/export-failures nil)
+
 (defun ib/export-file (path)
-  "Export a single Org file at PATH to Markdown via ox-hugo."
+  "Export a single Org file at PATH to Markdown via ox-hugo.
+A failure is logged but does not abort the whole run; the batch exits
+non-zero at the end if any file failed."
   (message "ox-hugo: exporting %s" (file-relative-name path default-directory))
-  (with-current-buffer (find-file-noselect path)
-    (org-hugo-export-to-md)))
+  (condition-case err
+      (with-current-buffer (find-file-noselect path)
+        (org-hugo-export-to-md))
+    (error
+     (push (file-relative-name path default-directory) ib/export-failures)
+     (message "ox-hugo: FAILED %s: %S" (file-relative-name path default-directory) err))))
 
 ;; Homepage / about page.
 (ib/export-file (expand-file-name "index.org" default-directory))
+
+;; Resume (HTML version; the PDF is built separately by resume.el).
+(ib/export-file (expand-file-name "resume/resume.org" default-directory))
 
 ;; Blog posts.
 (dolist (f (sort (directory-files
@@ -38,4 +49,9 @@
                  #'string<))
   (ib/export-file f))
 
+(when ib/export-failures
+  (message "ox-hugo: %d file(s) failed: %s"
+           (length ib/export-failures)
+           (string-join ib/export-failures ", "))
+  (kill-emacs 1))
 (message "ox-hugo: export complete")

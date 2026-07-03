@@ -1,0 +1,12 @@
+{{ define "title" }}Résumé &middot; {{ .Site.Title }}{{ end }}
+{{ define "main" }}
+<article class="resume">
+  <div class="resume-header">
+    <h1>Résumé</h1>
+    <a class="resume-download" href="{{ "/resume/resume.pdf" | relURL }}">
+      Download PDF <span class="resume-download-note">(print version)</span>
+    </a>
+  </div>
+  {{ .Content }}
+</article>
+{{ end }}

@@ -139,6 +139,13 @@ article .tags li {
 .post-list li { display: flex; gap: .75rem; align-items: baseline; padding: .35rem 0; }
 .post-list time { flex: 0 0 auto; font-variant-numeric: tabular-nums; }
 
+.resume-header {
+  display: flex; align-items: baseline; justify-content: space-between;
+  flex-wrap: wrap; gap: .5rem 1rem;
+}
+.resume-download { white-space: nowrap; }
+.resume-download-note { color: var(--muted); font-size: .85em; }
+
 .tag-list { list-style: none; padding: 0; }
 .tag-list li { padding: .25rem 0; }
 .tag-count { color: var(--muted); font-variant-numeric: tabular-nums; }

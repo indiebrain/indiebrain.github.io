@@ -17,6 +17,17 @@
       '(("T1" "fontenc" t)
         ("" "hyperref" nil)))
 
+;; The #+AUTHOR/#+DATE keywords exist only so ox-hugo can render the HTML
+;; version; keep them out of the PDF's title block (name only).
+(setq org-export-with-author nil
+      org-export-with-date nil)
+
+;; Org's auto hyperref block writes pdflang={English} (an invalid language
+;; tag) from #+LANGUAGE, overriding ours. Disable it so the explicit
+;; \hypersetup{pdflang=en} in the resume header wins (valid /Lang for
+;; accessibility).
+(setq org-latex-hyperref-template nil)
+
 (let* ((root default-directory)
        (src (expand-file-name "resume/resume.org" root))
        (out-dir (expand-file-name "static/resume" root))

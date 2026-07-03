@@ -1,6 +1,6 @@
 #+TITLE:       Aaron Kuehler
-#+AUTHOR:
-#+DATE:
+#+AUTHOR:      Aaron Kuehler
+#+DATE:        <2026-07-03 Fri>
 #+LANGUAGE:    en
 #+OPTIONS:     H:3 num:nil toc:nil \n:nil ::t |:t ^:nil -:nil f:t *:t <:t
 #+DESCRIPTION: Professional information of Aaron Kuehler
@@ -12,6 +12,13 @@
 #+LATEX_HEADER: \renewcommand{\familydefault}{phv}
 #+LATEX_HEADER: \usepackage{parskip}
 #+LATEX_HEADER: \usepackage[margin=0.75in]{geometry}
+#+LATEX_HEADER: \hypersetup{pdfauthor={Aaron Kuehler}, pdftitle={Aaron Kuehler — Résumé}, pdflang=en, pdfencoding=auto}
+
+# ox-hugo: also render this resume as an accessible HTML page at /resume/.
+#+HUGO_BASE_DIR: ..
+#+HUGO_SECTION: /
+#+EXPORT_FILE_NAME: resume
+#+HUGO_TYPE: resume
 
 #+BEGIN_QUOTE
 Platform and infrastructure engineer with 15+ years shipping software
