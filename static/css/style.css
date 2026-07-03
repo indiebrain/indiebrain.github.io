@@ -137,6 +137,12 @@ article .tags li {
 .post-list li { display: flex; gap: .75rem; align-items: baseline; padding: .35rem 0; }
 .post-list time { flex: 0 0 auto; font-variant-numeric: tabular-nums; }
 
+.tag-list { list-style: none; padding: 0; }
+.tag-list li { padding: .25rem 0; }
+.tag-count { color: var(--muted); font-variant-numeric: tabular-nums; }
+.tag-count::before { content: "("; }
+.tag-count::after { content: ")"; }
+
 p, ul, ol, blockquote, pre, table { margin: 0 0 1.1rem; }
 img { max-width: 100%; height: auto; }
 blockquote {
