@@ -1,0 +1,17 @@
+version: 2
+updates:
+  # Keep the workflow's GitHub-owned actions current (checkout, the Pages
+  # actions, etc.). Grouped into a single PR to reduce noise.
+  - package-ecosystem: github-actions
+    directory: /
+    schedule:
+      interval: weekly
+    groups:
+      github-actions:
+        patterns: ["*"]
+
+  # Track the Dockerfile base image (ubuntu) for security patches.
+  - package-ecosystem: docker
+    directory: /
+    schedule:
+      interval: weekly
