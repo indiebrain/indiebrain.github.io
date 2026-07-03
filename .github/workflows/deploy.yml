@@ -47,11 +47,11 @@ jobs:
             scheme-basic
             hyperref
             helvetic
+            psnfss
             parskip
             geometry
             ec
             url
-            urw-base35
 
       - name: Build resume PDF
         run: emacs --batch -Q -l build/resume.el
