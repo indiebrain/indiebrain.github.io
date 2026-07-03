@@ -28,7 +28,8 @@ serve:
 clean:
 	rm -rf content public static/resume static/images
 
-# Clean-build and publish to the master branch (served by GitHub Pages).
+# Break-glass fallback: clean-build and publish to the gh-pages branch
+# (normal deploys run automatically from master via GitHub Actions).
 deploy:
 	$(MAKE) clean
 	$(MAKE) build
@@ -45,7 +46,7 @@ image:
 docker-build: image
 	$(DOCKER_RUN) make build
 
-# Build in the container, then publish to master from the host.
+# Break-glass fallback: build in the container, then publish to gh-pages.
 docker-deploy: docker-build
 	./build/deploy.sh
 

@@ -45,19 +45,19 @@ The first host export installs ox-hugo from MELPA into a project-local
 
 * Publishing
 
-Pushing to ~source~ triggers the GitHub Actions workflow
+Pushing to ~master~ triggers the GitHub Actions workflow
 (~.github/workflows/deploy.yml~). Its jobs run in order (~needs:~):
 (re)build the toolchain image on GHCR when the ~Dockerfile~ or
 ~export.el~ changes, build the site inside that image, then deploy to
 GitHub Pages. It uses only GitHub-owned actions plus the toolchain
 container, so it avoids the account's block on third-party actions.
 
-In short: ~git push origin source~ publishes the site.
+In short: ~git push origin master~ publishes the site.
 
-~make deploy~ (clean-build and push the output to ~master~) is a
+~make deploy~ (clean-build and force-push the output to ~gh-pages~) is a
 break-glass fallback for publishing without Actions — using it requires
-switching the Pages source back to "Deploy from a branch" (~master~). Org
-stays the source of truth on ~source~.
+switching the Pages source to "Deploy from a branch" (~gh-pages~). ~master~
+is the source of truth.
 
 * Writing a post
 

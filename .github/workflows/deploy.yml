@@ -7,7 +7,7 @@ name: Build and deploy site
 # so this avoids the account's block on third-party actions.
 on:
   push:
-    branches: [source]
+    branches: [master]
   workflow_dispatch:
 
 permissions:

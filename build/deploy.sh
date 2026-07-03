@@ -1,33 +1,31 @@
 #!/usr/bin/env bash
 #
-# Publish the built site (public/) to the `master` branch, which GitHub
-# Pages serves. Run via `make deploy` (which does a clean build first).
+# Break-glass publish: force-push the built site (public/) to the
+# gh-pages branch, for serving via Pages "Deploy from a branch" if GitHub
+# Actions is ever unavailable. Normal deploys happen automatically from
+# `master` via Actions — this is only a fallback.
 #
-# It checks out master into a throwaway worktree, replaces its contents
-# with public/, commits, and pushes — so master holds only the current
-# generated site and the source branch stays the source of truth.
+# Run via `make deploy` (which clean-builds first). Set DEPLOY_BRANCH to
+# override the target branch.
 set -euo pipefail
 
 cd "$(git rev-parse --show-toplevel)"
 [ -d public ] || { echo "deploy: public/ not found — build first"; exit 1; }
 
-src_ref="$(git rev-parse --short HEAD)"
-parent="$(mktemp -d)"
-worktree="$parent/master"
-cleanup() { git worktree remove --force "$worktree" 2>/dev/null || true; rm -rf "$parent"; }
+branch="${DEPLOY_BRANCH:-gh-pages}"
+url="$(git remote get-url origin)"
+ref="$(git rev-parse --short HEAD)"
+
+tmp="$(mktemp -d)"
+cleanup() { rm -rf "$tmp"; }
 trap cleanup EXIT
 
-git fetch -q origin master
-git worktree add -q --detach "$worktree" origin/master
-
-# Replace published content with the fresh build (keep the worktree's .git).
-rsync -a --delete --exclude '.git' public/ "$worktree/"
-
-git -C "$worktree" add -A
-if git -C "$worktree" diff --cached --quiet; then
-  echo "deploy: no changes to publish."
-  exit 0
-fi
-git -C "$worktree" commit -q -m "Deploy site (source $src_ref)"
-git -C "$worktree" push -q origin HEAD:master
-echo "deploy: published $(git -C "$worktree" rev-parse --short HEAD) to master"
+# Fresh single-commit repo of just the built site, force-pushed to the
+# publish branch (its history is disposable generated output).
+cp -R public/. "$tmp/"
+cd "$tmp"
+git init -q -b "$branch"
+git add -A
+git -c user.email=deploy@localhost -c user.name=deploy commit -q -m "Publish site ($ref)"
+git push -q -f "$url" "$branch"
+echo "deploy: force-pushed build to $branch"
