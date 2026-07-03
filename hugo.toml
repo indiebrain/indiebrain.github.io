@@ -1,0 +1,43 @@
+baseURL = "https://aaronkuehler.com/"
+title = "Aaron Kuehler"
+
+[languages]
+  [languages.en]
+    locale = "en-US"
+# Generated HTML is written here and published from this directory.
+publishDir = "public"
+# Keep the trailing-slash, directory-style URLs the old site served.
+uglyURLs = false
+enableRobotsTXT = true
+
+# Reproduce the org-page permalink scheme exactly:
+#   /blog/YYYY/MM/DD/<slug>/
+# The date comes from each post's `date` front matter (from Org #+DATE),
+# the slug from `slug` (from Org #+HUGO_SLUG). See org/ox-hugo-setup.org.
+[permalinks]
+  blog = "/blog/:year/:month/:day/:slug/"
+
+# The old feed lived at /rss.xml. Renaming the RSS baseName from the Hugo
+# default ("index") preserves that path for subscribers in the wild.
+[outputFormats]
+  [outputFormats.RSS]
+    baseName = "rss"
+
+[outputs]
+  home = ["HTML", "RSS"]
+  section = ["HTML", "RSS"]
+
+[services]
+  [services.rss]
+    limit = -1
+
+# ox-hugo emits Markdown that can contain raw HTML from Org export; allow it.
+[markup]
+  [markup.goldmark]
+    [markup.goldmark.renderer]
+      unsafe = true
+  [markup.highlight]
+    noClasses = false
+
+[taxonomies]
+  tag = "tags"

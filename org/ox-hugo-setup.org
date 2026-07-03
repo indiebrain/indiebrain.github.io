@@ -1,0 +1,9 @@
+# Shared ox-hugo export configuration, included by each post via
+# `#+SETUPFILE: ../org/ox-hugo-setup.org`.
+#
+# HUGO_BASE_DIR is resolved relative to the including file. Every blog
+# post lives in blog/, so ".." points at the repository root where
+# hugo.toml lives.
+#+HUGO_BASE_DIR: ..
+#+HUGO_SECTION: blog
+#+OPTIONS: H:3 num:nil toc:nil

@@ -1,0 +1,63 @@
+name: Build and deploy site
+
+# Org is the source of truth on the `source` branch. This workflow
+# exports Org -> Markdown with ox-hugo, builds the site with Hugo, and
+# publishes it to GitHub Pages. No generated output is committed.
+on:
+  push:
+    branches: [source]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+# Allow one concurrent deployment; newer pushes cancel in-progress runs.
+concurrency:
+  group: pages
+  cancel-in-progress: true
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Install Emacs
+        uses: purcell/setup-emacs@master
+        with:
+          version: "29.4"
+
+      - name: Cache project-local Emacs packages
+        uses: actions/cache@v4
+        with:
+          path: .elpa
+          key: elpa-${{ hashFiles('build/export.el') }}
+
+      - name: Export Org to Markdown (ox-hugo)
+        run: emacs --batch -Q -l build/export.el
+
+      - name: Install Hugo
+        uses: peaceiris/actions-hugo@v3
+        with:
+          hugo-version: "0.163.3"
+          extended: true
+
+      - name: Build site
+        run: hugo --gc --minify
+
+      - uses: actions/configure-pages@v5
+      - uses: actions/upload-pages-artifact@v3
+        with:
+          path: public
+
+  deploy:
+    needs: build
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - id: deployment
+        uses: actions/deploy-pages@v4

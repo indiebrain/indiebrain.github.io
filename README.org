@@ -1,0 +1,61 @@
+#+TITLE: aaronkuehler.com
+
+Personal site and blog. Content is authored in Org mode, exported to
+Markdown with [[https://ox-hugo.scripter.co/][ox-hugo]], built into a static site with [[https://gohugo.io/][Hugo]], and
+published to GitHub Pages. Org is the source of truth — the generated
+~content/~ and ~public/~ directories are git-ignored and never committed.
+
+This supersedes the previous org-page toolchain; see
+[[file:docs/adr/ADR-001-adopt-ox-hugo-and-hugo.md][ADR-001]] for the decision and the remaining migration work.
+
+* Layout
+
+| Path                    | Purpose                              |
+|-------------------------+--------------------------------------|
+| ~index.org~             | Home / about page                    |
+| ~blog/*.org~            | Blog posts (one file per post)       |
+| ~resume/~               | Résumé sources                       |
+| ~org/ox-hugo-setup.org~ | Shared ox-hugo export settings       |
+| ~build/export.el~       | Batch Org to Markdown export         |
+| ~hugo.toml~, ~layouts/~ | Hugo configuration and templates     |
+| ~static/~               | Files copied verbatim (for example, CNAME) |
+
+* Build and preview locally
+
+Requires Emacs and Hugo (extended). From the repository root:
+
+#+begin_src sh
+emacs --batch -Q -l build/export.el   # Org -> content/*.md (via ox-hugo)
+hugo server                           # serve at http://localhost:1313
+#+end_src
+
+The first export installs ox-hugo from MELPA into a project-local
+~.elpa/~ directory, so it never touches your global Emacs configuration.
+To build the final site into ~public/~ instead of serving it, run ~hugo
+--gc --minify~.
+
+* Publishing
+
+Push to the ~source~ branch. The GitHub Actions workflow in
+~.github/workflows/deploy.yml~ runs the export, builds the site, and
+deploys it to GitHub Pages. This requires the repository's Pages source
+to be set to "GitHub Actions".
+
+* Writing a post
+
+Add ~blog/<name>.org~ with a header modeled on an existing post:
+
+#+begin_example
+#+TITLE:       Post Title
+#+DATE:        <2026-07-03 Fri>
+#+DESCRIPTION: One-sentence summary.
+#+SETUPFILE: ../org/ox-hugo-setup.org
+#+EXPORT_FILE_NAME: post-slug
+#+HUGO_SLUG: post-slug
+#+end_example
+
+The published URL is ~/blog/YYYY/MM/DD/<slug>/~, taken from ~#+DATE~ and
+~#+HUGO_SLUG~. If a post ever changes date or slug, add the old paths to
+~#+HUGO_ALIASES~ (space-separated) so the previous URLs redirect instead
+of breaking — this is how the historical URLs from the old site are kept
+alive.

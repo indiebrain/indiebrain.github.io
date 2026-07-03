@@ -1,6 +1,9 @@
 #+TITLE:       Raspberry Pi Temperature Sensor
 #+AUTHOR:      Aaron Kuehler
 #+DATE:        <2014-12-01 Mon>
+#+SETUPFILE: ../org/ox-hugo-setup.org
+#+EXPORT_FILE_NAME: raspberry-pi-temperature-sensor
+#+HUGO_SLUG: raspberry-pi-temperature-sensor
 #+URI:         /blog/%y/%m/%d/raspberry-pi-temperature-sensor
 #+KEYWORDS:    raspberry pi, thermometer, temperature sensor, hardware, diy, MCP9808
 #+TAGS:        hardware, raspberry pi

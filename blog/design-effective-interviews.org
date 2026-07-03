@@ -1,6 +1,10 @@
 #+TITLE:       Design Effective Interviews
 #+AUTHOR:      Aaron Kuehler
 #+DATE:        <2015-05-14 Thu>
+#+SETUPFILE: ../org/ox-hugo-setup.org
+#+EXPORT_FILE_NAME: design-effective-interviews
+#+HUGO_SLUG: design-effective-interviews
+#+HUGO_ALIASES: /blog/2019/05/09/design-effective-interviews/
 #+URI:         /blog/%y/%m/%d/design-effective-interviews
 #+KEYWORDS:    hiring, interviewing, team building
 #+TAGS:        hiring, team building

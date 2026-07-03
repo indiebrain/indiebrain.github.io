@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="{{ site.Language.Lang }}">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>{{ if .IsHome }}{{ .Site.Title }}{{ else }}{{ .Title }} &middot; {{ .Site.Title }}{{ end }}</title>
+    {{ with .Description }}<meta name="description" content="{{ . }}">{{ end }}
+    {{ range .AlternativeOutputFormats -}}
+      <link rel="{{ .Rel }}" type="{{ .MediaType.Type }}" href="{{ .Permalink }}" title="{{ $.Site.Title }}">
+    {{ end -}}
+  </head>
+  <body>
+    <header>
+      <a href="{{ "/" | relURL }}">{{ .Site.Title }}</a> &middot;
+      <a href="{{ "/blog/" | relURL }}">Blog</a>
+    </header>
+    <main>{{ block "main" . }}{{ end }}</main>
+    <footer>&copy; {{ now.Year }} {{ .Site.Title }}</footer>
+  </body>
+</html>

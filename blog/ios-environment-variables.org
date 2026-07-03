@@ -1,6 +1,9 @@
 #+TITLE:       iOS Environment Variables
 #+AUTHOR:      Aaron Kuehler
 #+DATE:        <2014-07-12 Sat>
+#+SETUPFILE: ../org/ox-hugo-setup.org
+#+EXPORT_FILE_NAME: ios-environment-variables
+#+HUGO_SLUG: ios-environment-variables
 #+URI:         /blog/%y/%m/%d/ios-environment-variables
 #+KEYWORDS:    ios, xcode, software, tools
 #+TAGS:        ios, software

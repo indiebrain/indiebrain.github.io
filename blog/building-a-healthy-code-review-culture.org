@@ -1,6 +1,10 @@
 #+TITLE:       Building a Healthy Code Review Culture
 #+AUTHOR:      Aaron Kuehler
 #+DATE:        <2019-05-09 Thu>
+#+SETUPFILE: ../org/ox-hugo-setup.org
+#+EXPORT_FILE_NAME: building-a-healthy-code-review-culture
+#+HUGO_SLUG: building-a-healthy-code-review-culture
+#+HUGO_ALIASES: /blog/2015/05/14/building-a-healthy-code-review-culture/ /blog/2016/07/26/building-a-healthy-code-review-culture/
 #+URI:         /blog/%y/%m/%d/building-a-healthy-code-review-culture
 #+KEYWORDS:    software development, team building
 #+TAGS:        software, team building

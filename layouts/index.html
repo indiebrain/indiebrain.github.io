@@ -1,0 +1,16 @@
+{{ define "main" }}
+<section class="about">
+  {{ .Content }}
+</section>
+<section class="recent">
+  <h2>Recent Posts</h2>
+  <ul class="post-list">
+    {{ range (where site.RegularPages "Section" "blog").ByDate.Reverse }}
+    <li>
+      <time datetime="{{ .Date.Format "2006-01-02" }}">{{ .Date.Format "2006-01-02" }}</time>
+      &mdash; <a href="{{ .RelPermalink }}">{{ .Title }}</a>
+    </li>
+    {{ end }}
+  </ul>
+</section>
+{{ end }}

@@ -1,6 +1,9 @@
 #+TITLE:       Literate Dotfiles
 #+AUTHOR:      Aaron Kuehler
 #+DATE:        <2017-10-04 Wed>
+#+SETUPFILE: ../org/ox-hugo-setup.org
+#+EXPORT_FILE_NAME: literate-dotfiles
+#+HUGO_SLUG: literate-dotfiles
 #+URI:         /blog/%y/%m/%d/literate-dotfiles
 #+KEYWORDS:    literate programming, dotfiles, configuration, emacs, org-mode, org-babel
 #+TAGS:        software, devops

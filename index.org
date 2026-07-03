@@ -1,6 +1,9 @@
 #+TITLE: About
 #+DESCRIPTION: 80% Scientist, 20% Artist. Theorist and practitioner.
 #+AUTHOR: Aaron Kuehler
+#+HUGO_BASE_DIR: .
+#+HUGO_SECTION: /
+#+EXPORT_FILE_NAME: _index
 #+OPTIONS: num:nil toc:nil
 
 #+BEGIN_QUOTE
