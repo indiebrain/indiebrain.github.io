@@ -62,6 +62,12 @@ cluster-scoped operators, collapsing per-app maintenance into a single
 consistent model. The result: fewer bespoke systems to babysit and a
 lighter on-call rotation.
 
+Maintain the paved road itself: the company's bespoke continuous-delivery
+pipeline — built on Shopify's shipit-engine — and the golden-path
+reference application new services start from. Drive architectural
+direction through written RFCs, so decisions are debated in the open and
+outlast any single owner.
+
 De-risking the company's most consequential platform migration: leading
 the cutover of 5+ applications (the flagship and its satellites) from the
 legacy container platform to its successor — coordinating data migrations
@@ -158,13 +164,16 @@ work items.
 Slashed deployment times by 82% by transforming the deployment topology
 to self-hosted, Kubernetes-based container orchestration.
 
-Became a sustained contributor to Shopify's open-source deploy tool,
-[[https://github.com/Shopify/shipit-engine][shipit-engine]] — 22 merged pull requests over multiple years, trusted
-with maintenance-grade internals (task timing on a monotonic clock,
-git-cache-corruption recovery, GitHub push-event handling). Primary
-author of its Review Stacks feature ([[https://github.com/Shopify/shipit-engine/pull/1102][PR #1102]]): ephemeral, full-stack
-preview environments spun up per pull request — ~8,400 lines across 106
-files, delivered with a small team and reviewed by Shopify maintainers.
+Became a sustained upstream contributor to Shopify's open-source deploy
+tool, [[https://github.com/Shopify/shipit-engine][shipit-engine]] — 22 merged pull requests from 2019 to 2021, as an
+outside contributor, spanning domain modeling (elevating the repository
+to a first-class concept, renaming PullRequest to MergeRequest,
+extracting webhook handlers) and maintenance-grade internals (task timing
+on a monotonic clock, git-cache-corruption recovery, GitHub push-event
+handling). Primary author of its Review Stacks feature ([[https://github.com/Shopify/shipit-engine/pull/1102][PR #1102]]):
+ephemeral, full-stack preview environments spun up per pull request —
+~8,400 lines across 106 files, delivered with a small team and reviewed
+by Shopify maintainers.
 
 Took Talkbox — our in-house telephony system — from ~5 daily outages to
 one: it was taking the call center offline multiple times a day until I
