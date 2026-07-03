@@ -36,8 +36,10 @@ one is a single point of failure.
 - Distributed data systems at scale (Redis, Elasticsearch, InfluxDB)
 - Web application & API development (Ruby on Rails and standard web
   technologies — HTTP, JavaScript, CSS)
-- Open source (upstream contributions to HAProxy and
-  Shopify/shipit-engine; maintainer of a Kubernetes Redis operator)
+- Open source (22 merged pull requests into Shopify/shipit-engine and an
+  upstream HAProxy feature; maintainer of a Kubernetes Redis operator;
+  upstream bug reports and fixes across the ecosystem — RuboCop, k9s, and
+  the Percona operator)
 - Team growth and leadership (Extreme Ownership, agile and Lean
   principles, mentor and educator)
 
@@ -156,11 +158,13 @@ work items.
 Slashed deployment times by 82% by transforming the deployment topology
 to self-hosted, Kubernetes-based container orchestration.
 
-Led the Review Stacks feature in Shopify's open-source deploy tool,
-[[https://github.com/Shopify/shipit-engine/pull/1102][shipit-engine (PR #1102)]]: ephemeral, full-stack preview environments
-spun up per pull request. ~8,400 lines across 106 files; primary author
-of the change and its architectural groundwork, delivered with a small
-team and reviewed by Shopify maintainers.
+Became a sustained contributor to Shopify's open-source deploy tool,
+[[https://github.com/Shopify/shipit-engine][shipit-engine]] — 22 merged pull requests over multiple years, trusted
+with maintenance-grade internals (task timing on a monotonic clock,
+git-cache-corruption recovery, GitHub push-event handling). Primary
+author of its Review Stacks feature ([[https://github.com/Shopify/shipit-engine/pull/1102][PR #1102]]): ephemeral, full-stack
+preview environments spun up per pull request — ~8,400 lines across 106
+files, delivered with a small team and reviewed by Shopify maintainers.
 
 Took Talkbox — our in-house telephony system — from ~5 daily outages to
 one: it was taking the call center offline multiple times a day until I
@@ -240,7 +244,9 @@ https://github.com/Shopify/shipit-engine
 
 Shipit is a deployment tool that makes shipping code better for
 everyone. It's especially great for large teams of developers and
-designers who work together to build and deploy GitHub repos.
+designers who work together to build and deploy GitHub repos. I have 22
+merged pull requests here, including primary authorship of the Review
+Stacks feature.
 
 ** percona-xtradb-cluster-operator
 
@@ -256,7 +262,8 @@ https://github.com/rubyforgood/mutual-aid
 Mutual Aid is when people get together to build community by voluntarily
 sharing resources with each other. Mutual Aid groups are more concerned
 about local resiliency than global campaigns, and prefer solidarity
-before charity.
+before charity. I contributed 10 merged pull requests, largely hardening
+the Docker-based development environment for new volunteers.
 
 * Sample Side Projects
 
@@ -266,7 +273,7 @@ https://github.com/indiebrain/asdf-guile
 
 An [[https://github.com/asdf-vm/asdf][asdf]] version manager plugin to manage [[https://www.gnu.org/software/guile/][GNU Guile]] installations
 
-** rescue-alive
+** resque-alive
 
 https://github.com/indiebrain/resque-alive
 
@@ -303,6 +310,22 @@ Explains the inner workings of git and sheds a bit of light on
 how the internal structure of git as a data store influences its user
 interface.
 
+** Git Workflow
+
+https://github.com/indiebrain/talks/blob/master/git_workflow/git_workflow.org
+
+Treats version-control history as project metadata: a workflow built for
+reason-ability (what, exactly, is in production?), communication, and a
+semantic commit history that records the intent code alone can't.
+
+** Release It!
+
+https://github.com/indiebrain/talks/blob/master/release_it/release_it.org
+
+A brief, and messy, history of releasing software — from ENIAC and the
+1968 "software crisis" to how modern practices arrived at continuous,
+lower-risk delivery.
+
 * Elsewhere
 
 - https://aaronkuehler.com
@@ -331,7 +354,7 @@ The Hadoop Distributed File System is a high throughput distributed File
 system designed to accommodate large data sets; average file sizes in
 the gigabyte-terabyte range. However when a data set is composed of
 large amounts of small files, say in the kilobyte range, the storage
-system's semantics introduce height amounts of overhead in terms of file
+system's semantics introduce high amounts of overhead in terms of file
 system block storage and read latency. This paper explains the
 architectural attributes which cause these problems and examines
 techniques to mitigate their impact when working with data sets
