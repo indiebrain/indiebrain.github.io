@@ -36,10 +36,17 @@ To build the final site into ~public/~ instead of serving it, run ~hugo
 
 * Publishing
 
-Push to the ~source~ branch. The GitHub Actions workflow in
-~.github/workflows/deploy.yml~ runs the export, builds the site, and
-deploys it to GitHub Pages. This requires the repository's Pages source
-to be set to "GitHub Actions".
+Run ~make deploy~ from the repository root. It does a clean build and
+pushes the generated site to the ~master~ branch, which GitHub Pages
+serves. Org stays the source of truth on ~source~; ~master~ holds only
+the generated output.
+
+An automated GitHub Actions workflow
+(~.github/workflows/deploy.yml~) that builds and deploys on push to
+~source~ is also included, but is not currently the active path: it
+needs GitHub Actions enabled for the account and the Pages source
+switched to "GitHub Actions". Until then, ~make deploy~ is the way to
+publish.
 
 * Writing a post
 

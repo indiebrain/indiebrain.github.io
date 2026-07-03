@@ -1,11 +1,17 @@
 # Build the site locally. Requires Emacs, Hugo (extended), and a LaTeX
 # toolchain (for the resume PDF).
 
-.PHONY: build serve clean
+.PHONY: build serve clean deploy
 
 # Full production build into public/.
 build: content static/resume/resume.pdf
 	hugo --gc --minify
+
+# Clean-build and publish to the master branch (served by GitHub Pages).
+deploy:
+	$(MAKE) clean
+	$(MAKE) build
+	./build/deploy.sh
 
 # Export Org -> Markdown (also refreshed by `serve`).
 content:
