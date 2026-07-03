@@ -5,16 +5,30 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>{{ if .IsHome }}{{ .Site.Title }}{{ else }}{{ .Title }} &middot; {{ .Site.Title }}{{ end }}</title>
     {{ with .Description }}<meta name="description" content="{{ . }}">{{ end }}
+    <link rel="stylesheet" href="{{ "/css/style.css" | relURL }}">
     {{ range .AlternativeOutputFormats -}}
       <link rel="{{ .Rel }}" type="{{ .MediaType.Type }}" href="{{ .Permalink }}" title="{{ $.Site.Title }}">
     {{ end -}}
   </head>
   <body>
-    <header>
-      <a href="{{ "/" | relURL }}">{{ .Site.Title }}</a> &middot;
-      <a href="{{ "/blog/" | relURL }}">Blog</a>
+    <header class="site-header">
+      <div class="container">
+        <a class="site-title" href="{{ "/" | relURL }}">{{ .Site.Title }}</a>
+        <nav class="site-nav">
+          <a href="{{ "/" | relURL }}">About</a>
+          <a href="{{ "/blog/" | relURL }}">Blog</a>
+          <a href="{{ "/resume/resume.pdf" | relURL }}">Résumé</a>
+        </nav>
+      </div>
     </header>
-    <main>{{ block "main" . }}{{ end }}</main>
-    <footer>&copy; {{ now.Year }} {{ .Site.Title }}</footer>
+    <main>
+      <div class="container">{{ block "main" . }}{{ end }}</div>
+    </main>
+    <footer class="site-footer">
+      <div class="container">
+        &copy; {{ now.Year }} {{ .Site.Title }}
+        {{ with site.Home.OutputFormats.Get "rss" }} &middot; <a href="{{ .RelPermalink }}">RSS</a>{{ end }}
+      </div>
+    </footer>
   </body>
 </html>
