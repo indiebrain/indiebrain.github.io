@@ -2,7 +2,8 @@
 #+AUTHOR:      Aaron Kuehler
 #+DATE:        <2017-10-04 Wed>
 #+SETUPFILE: ../org/ox-hugo-setup.org
-#+EXPORT_FILE_NAME: literate-dotfiles
+#+EXPORT_FILE_NAME: index
+#+HUGO_BUNDLE: literate-dotfiles
 #+HUGO_SLUG: literate-dotfiles
 #+HUGO_TAGS: software devops
 #+URI:         /blog/%y/%m/%d/literate-dotfiles

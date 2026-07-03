@@ -2,7 +2,8 @@
 #+AUTHOR:      Aaron Kuehler
 #+DATE:        <2017-11-19 Sun>
 #+SETUPFILE: ../org/ox-hugo-setup.org
-#+EXPORT_FILE_NAME: diy-baby-monitor
+#+EXPORT_FILE_NAME: index
+#+HUGO_BUNDLE: diy-baby-monitor
 #+HUGO_SLUG: diy-baby-monitor
 #+HUGO_TAGS: hardware "raspberry pi"
 #+HUGO_ALIASES: /blog/2017/10/04/diy-baby-monitor/

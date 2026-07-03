@@ -2,7 +2,8 @@
 #+AUTHOR:      Aaron Kuehler
 #+DATE:        <2015-09-20 Sun>
 #+SETUPFILE: ../org/ox-hugo-setup.org
-#+EXPORT_FILE_NAME: installing-coreboot---lenovo-thinkpad-x220
+#+EXPORT_FILE_NAME: index
+#+HUGO_BUNDLE: coreboot-lenovo-thinkpad-x220
 #+HUGO_SLUG: installing-coreboot---lenovo-thinkpad-x220
 #+HUGO_TAGS: coreboot hardware "raspberry pi"
 #+HUGO_ALIASES: /blog/2015/09/20/installing-coreboot---lenovo-thinkpax-x220/

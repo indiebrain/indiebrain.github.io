@@ -2,7 +2,8 @@
 #+AUTHOR:      Aaron Kuehler
 #+DATE:        <2014-07-12 Sat>
 #+SETUPFILE: ../org/ox-hugo-setup.org
-#+EXPORT_FILE_NAME: ios-environment-variables
+#+EXPORT_FILE_NAME: index
+#+HUGO_BUNDLE: ios-environment-variables
 #+HUGO_SLUG: ios-environment-variables
 #+HUGO_TAGS: ios software
 #+URI:         /blog/%y/%m/%d/ios-environment-variables
@@ -42,7 +43,7 @@ As it turns out, implementing this behavior is not at all complicated:
 
 #+CAPTION: application-info.plist
 #+NAME:   application-info.plist
-[[../assets/blog/2014/07/12/ios-environment-variables/application-info.plist.png]]
+[[../assets/blog/ios-environment-variables/application-info.plist.png]]
 
 * Configure the Environments
 
@@ -54,7 +55,7 @@ As it turns out, implementing this behavior is not at all complicated:
 
 #+CAPTION: environments.plist
 #+NAME:   environments.plist
-[[../assets/blog/2014/07/12/ios-environment-variables/environments.plist.png]]
+[[../assets/blog/ios-environment-variables/environments.plist.png]]
 
 * Define the =Environment= object:
 #+BEGIN_SRC objc

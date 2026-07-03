@@ -43,14 +43,16 @@ to be set to "GitHub Actions".
 
 * Writing a post
 
-Add ~blog/<name>.org~ with a header modeled on an existing post:
+Each post is a Hugo leaf bundle. Add ~blog/<name>.org~ with a header
+modeled on an existing post:
 
 #+begin_example
 #+TITLE:       Post Title
 #+DATE:        <2026-07-03 Fri>
 #+DESCRIPTION: One-sentence summary.
 #+SETUPFILE: ../org/ox-hugo-setup.org
-#+EXPORT_FILE_NAME: post-slug
+#+EXPORT_FILE_NAME: index
+#+HUGO_BUNDLE: <name>
 #+HUGO_SLUG: post-slug
 #+end_example
 
@@ -59,3 +61,15 @@ The published URL is ~/blog/YYYY/MM/DD/<slug>/~, taken from ~#+DATE~ and
 ~#+HUGO_ALIASES~ (space-separated) so the previous URLs redirect instead
 of breaking — this is how the historical URLs from the old site are kept
 alive.
+
+** Post images
+
+Put a post's images in ~assets/blog/<name>/~ and reference them from the
+Org file with a relative link:
+
+: [[../assets/blog/<name>/diagram.png]]
+
+At build time ox-hugo copies them into the post's bundle, so each image
+is served under its own post's URL
+(~/blog/YYYY/MM/DD/<slug>/diagram.png~) — namespaced per post, so two
+posts can share an image filename without colliding.

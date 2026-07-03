@@ -2,7 +2,8 @@
 #+AUTHOR:      Aaron Kuehler
 #+DATE:        <2015-05-14 Thu>
 #+SETUPFILE: ../org/ox-hugo-setup.org
-#+EXPORT_FILE_NAME: design-effective-interviews
+#+EXPORT_FILE_NAME: index
+#+HUGO_BUNDLE: design-effective-interviews
 #+HUGO_SLUG: design-effective-interviews
 #+HUGO_TAGS: hiring "team building"
 #+HUGO_ALIASES: /blog/2019/05/09/design-effective-interviews/
