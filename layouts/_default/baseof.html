@@ -5,12 +5,16 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>{{ if .IsHome }}{{ .Site.Title }}{{ else }}{{ .Title }} &middot; {{ .Site.Title }}{{ end }}</title>
     {{ with .Description }}<meta name="description" content="{{ . }}">{{ end }}
-    {{/* Apply a saved theme choice before paint to avoid a flash. */}}
+    <meta name="color-scheme" content="light dark">
+    {{/* Apply an explicit theme choice before paint to avoid a flash.
+         Only "light"/"dark" override; absent means auto (follow the OS). */}}
     <script>
       (function () {
         try {
           var t = localStorage.getItem("theme");
-          if (t) document.documentElement.setAttribute("data-theme", t);
+          if (t === "light" || t === "dark") {
+            document.documentElement.setAttribute("data-theme", t);
+          }
         } catch (e) {}
       })();
     </script>
@@ -28,8 +32,8 @@
           <a href="{{ "/" | relURL }}">About</a>
           <a href="{{ "/blog/" | relURL }}">Blog</a>
           <a href="{{ "/resume/resume.pdf" | relURL }}">Résumé</a>
-          <button class="theme-toggle" type="button" aria-label="Switch between light and dark theme">
-            <span aria-hidden="true">◐</span>
+          <button class="theme-toggle" type="button" id="theme-toggle">
+            <span class="theme-toggle-icon" aria-hidden="true">◐</span>
           </button>
         </nav>
       </div>
@@ -45,18 +49,35 @@
     </footer>
     <script>
       (function () {
-        var btn = document.querySelector(".theme-toggle");
+        var btn = document.getElementById("theme-toggle");
         if (!btn) return;
+        var icon = btn.querySelector(".theme-toggle-icon");
+        // Cycle light -> dark -> auto. "auto" removes the override so the
+        // OS setting (prefers-color-scheme) drives the theme again.
+        var order = ["auto", "light", "dark"];
+        var glyph = { auto: "◐", light: "☀", dark: "☾" };
+        function state() {
+          try { return localStorage.getItem("theme") || "auto"; } catch (e) { return "auto"; }
+        }
+        function apply(s) {
+          if (s === "auto") document.documentElement.removeAttribute("data-theme");
+          else document.documentElement.setAttribute("data-theme", s);
+        }
+        function render(s) {
+          if (icon) icon.textContent = glyph[s];
+          var next = order[(order.indexOf(s) + 1) % order.length];
+          btn.setAttribute("aria-label", "Color theme: " + s + ". Activate to switch to " + next + ".");
+        }
         btn.addEventListener("click", function () {
-          var cur = document.documentElement.getAttribute("data-theme");
-          if (!cur) {
-            cur = window.matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light";
-          }
-          var next = cur === "dark" ? "light" : "dark";
-          document.documentElement.setAttribute("data-theme", next);
-          try { localStorage.setItem("theme", next); } catch (e) {}
-          btn.setAttribute("aria-pressed", next === "dark");
+          var next = order[(order.indexOf(state()) + 1) % order.length];
+          try {
+            if (next === "auto") localStorage.removeItem("theme");
+            else localStorage.setItem("theme", next);
+          } catch (e) {}
+          apply(next);
+          render(next);
         });
+        render(state());
       })();
     </script>
   </body>
