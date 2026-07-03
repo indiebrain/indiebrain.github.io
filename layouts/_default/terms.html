@@ -3,7 +3,7 @@
 <ul class="tag-list">
   {{ range .Data.Terms.Alphabetical }}
   <li>
-    <a href="{{ .Page.RelPermalink }}">{{ .Page.Title }}</a>
+    <a href="{{ .Page.RelPermalink }}">{{ partial "tag-name.html" .Page.Title }}</a>
     <span class="tag-count">{{ .Count }}</span>
   </li>
   {{ end }}

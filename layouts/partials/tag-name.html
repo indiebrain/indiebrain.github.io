@@ -1,0 +1,4 @@
+{{- /* Display name for a tag. Input: a tag value or term title.
+       Looks up data/tags.yaml by slug; falls back to humanized input. */ -}}
+{{- $slug := . | urlize -}}
+{{- index hugo.Data.tags $slug | default (humanize .) -}}

@@ -3,7 +3,7 @@
   <h1>{{ .Title }}</h1>
   <time datetime="{{ .Date.Format "2006-01-02" }}">{{ .Date.Format "January 2, 2006" }}</time>
   {{ with .Params.tags }}
-  <ul class="tags">{{ range . }}<li>{{ . }}</li>{{ end }}</ul>
+  <ul class="tags">{{ range . }}<li>{{ partial "tag-name.html" . }}</li>{{ end }}</ul>
   {{ end }}
   {{ .Content }}
 </article>

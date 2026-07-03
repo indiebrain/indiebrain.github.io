@@ -1,0 +1,10 @@
+# Display names for tags, keyed by slug. Anything not listed falls back
+# to Hugo's humanized term. Lets "ios" render as "iOS", etc.
+coreboot: Coreboot
+devops: DevOps
+hardware: Hardware
+hiring: Hiring
+ios: iOS
+raspberry-pi: Raspberry Pi
+software: Software
+team-building: Team Building
