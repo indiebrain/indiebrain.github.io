@@ -65,12 +65,14 @@ I chose InfluxDB because of its time centric query language and storage model. I
 With InfluxDB installed, I setup a database for storing my temperature readings and a database user to manage it. I used my InfluxDB instance's web console to do this; by default it runs on port =8083= of the InfluxDB host.
 
 1. Create the new database; I named mine =mcp9808_test=
+  #+CAPTION: Creating the mcp9808_test database in the InfluxDB web console
   #+NAME: Influx Create Database
   [[../assets/blog/2014/12/01/raspberry-pi-temperature-sensor/influxdb_create_database.png]]
 2. Create the database admin user; I named mine =mcp9808=
    - Click on the database name in the Databases list view
    - Create a New Database User
-     #+NAME: Influx Create Database
+     #+CAPTION: Creating the mcp9808 database user in the InfluxDB web console
+     #+NAME: Influx Create Database User
      [[../assets/blog/2014/12/01/raspberry-pi-temperature-sensor/influxdb_database_users.png]]
 
 * Raspberry Pi Configuration
