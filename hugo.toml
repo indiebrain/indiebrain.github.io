@@ -4,6 +4,20 @@ title = "Aaron Kuehler"
 [languages]
   [languages.en]
     locale = "en-US"
+
+# Site-wide values consumed by the SEO and social-sharing meta tags in
+# layouts/partials/head-meta.html and the JSON-LD in head-schema.html.
+[params]
+  author = "Aaron Kuehler"
+  # Fallback description for pages that don't set their own front matter
+  # description (for example the blog list and tag pages).
+  description = "Platform and infrastructure engineer building the CI/CD, container, and data platforms other teams ship against."
+  # 1200x630 card shown when a page is shared and sets no image of its own.
+  ogImage = "/og-default.png"
+  # Canonical profile URLs, emitted as schema.org sameAs for entity linking.
+  [params.social]
+    github = "https://www.github.com/indiebrain"
+    linkedin = "https://www.linkedin.com/in/aaronkuehler/"
 # Generated HTML is written here and published from this directory.
 publishDir = "public"
 # Keep the trailing-slash, directory-style URLs the old site served.

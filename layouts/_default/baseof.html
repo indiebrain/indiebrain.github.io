@@ -4,7 +4,8 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>{{ block "title" . }}{{ if .IsHome }}{{ .Site.Title }}{{ else }}{{ .Title }} &middot; {{ .Site.Title }}{{ end }}{{ end }}</title>
-    {{ with .Description }}<meta name="description" content="{{ . }}">{{ end }}
+    {{ partial "head-meta.html" . }}
+    {{ partial "head-schema.html" . }}
     <meta name="color-scheme" content="light dark">
     {{/* Apply an explicit theme choice before paint to avoid a flash.
          Only "light"/"dark" override; absent means auto (follow the OS). */}}
