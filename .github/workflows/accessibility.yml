@@ -32,7 +32,7 @@ jobs:
       - name: Build site
         # The resume PDF is skipped: it is not needed to audit the HTML.
         run: hugo --gc --minify
-      - uses: actions/upload-artifact@v4
+      - uses: actions/upload-artifact@v7
         with:
           name: site-public
           path: public
@@ -44,11 +44,11 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v7
-      - uses: actions/download-artifact@v4
+      - uses: actions/download-artifact@v8
         with:
           name: site-public
           path: public
-      - uses: actions/setup-node@v4
+      - uses: actions/setup-node@v6
         with:
           node-version: 22
       - name: Install pa11y-ci and Chromium
