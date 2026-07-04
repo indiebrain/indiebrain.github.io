@@ -16,11 +16,13 @@ A few weeks ago, I purchased a Raspberry Pi. After reading [[http://www.amazon.c
 
 #+CAPTION: Raspberry Pi with MCP9808 temperature sensor
 #+NAME: Raspberry Pi Temperature Sensor
+#+ATTR_HTML: :alt A Raspberry Pi wired by a ribbon cable to a small sensor breakout board on a desk, beside a keyboard and mouse.
 [[../assets/blog/raspberry-pi-temperature-sensor/raspberrypi_mcp9808.png]]
 
 
 #+CAPTION: Grafana Dashboard with temperature data
 #+NAME: Grafana Dashboard
+#+ATTR_HTML: :alt A Grafana dashboard titled MCP9808 Temperature Readings, graphing room temperature over about a day between roughly 71 and 73.5 degrees Fahrenheit.
 [[../assets/blog/raspberry-pi-temperature-sensor/grafana_dashboard_preview.png]]
 
 
@@ -38,12 +40,14 @@ The MCP9808 Breakout Board ships from Adafruit mostly assembled. This particular
 
 #+CAPTION: MCP9808 Sensor
 #+NAME: MCP9808 Sensor
+#+ATTR_HTML: :alt The MCP9808 sensor, a small blue Adafruit breakout board, held next to a house key for scale.
 [[../assets/blog/raspberry-pi-temperature-sensor/mcp9808.png]]
 
 I used a [[http://www.canakit.com/raspberry-pi-cobbler-gpio-breakout.html][Raspberry PI "Cobbler" GPIO Breakout from CanaKit]] and a breadboard to connect the Raspberry Pi to the MCP9808; this approach is a bit easier to manage, correct wiring mistakes, and less permanent than soldering the sensor to the Raspberry Pi. To read temperatures from the MCP9808, only the power pin, ground, and the I²C SDA and SCL pins are required:
 
 #+CAPTION: MCP9808 Wiring Diagram
 #+NAME: MCP9808  Wiring Diagram
+#+ATTR_HTML: :alt Wiring from the Raspberry Pi B+ 40-pin GPIO header to the MCP9808 breakout board: pin 1 (3.3V) to VDD, pin 3 (SDA) to SDA, pin 5 (SCL) to SCL, and pin 6 (GND) to GND. The table below lists the same connections.
 [[../assets/blog/raspberry-pi-temperature-sensor/mcp9808_wiring_diagram.png]]
 
 | GPIO Pin # | GPIO Pin Name | MCP9808 Pin Name |
@@ -68,12 +72,14 @@ With InfluxDB installed, I setup a database for storing my temperature readings 
 1. Create the new database; I named mine =mcp9808_test=
   #+CAPTION: Creating the mcp9808_test database in the InfluxDB web console
   #+NAME: Influx Create Database
+  #+ATTR_HTML: :alt The InfluxDB web console Databases page, listing the grafana and mcp9808_test databases above a Create a Database form.
   [[../assets/blog/raspberry-pi-temperature-sensor/influxdb_create_database.png]]
 2. Create the database admin user; I named mine =mcp9808=
    - Click on the database name in the Databases list view
    - Create a New Database User
      #+CAPTION: Creating the mcp9808 database user in the InfluxDB web console
      #+NAME: Influx Create Database User
+     #+ATTR_HTML: :alt The InfluxDB console for the mcp9808_test database, showing an admin user named mcp9808 above a Create a New Database User form.
      [[../assets/blog/raspberry-pi-temperature-sensor/influxdb_database_users.png]]
 
 * Raspberry Pi Configuration
@@ -229,6 +235,7 @@ Adafruit provides a [[https://github.com/adafruit/Adafruit_Python_MCP9808][Pytho
 
   #+CAPTION: Influx Query - Select temperature readings for the 24 hours
   #+NAME: Influx Query
+  #+ATTR_HTML: :alt The InfluxDB query console running a SELECT of the minimum degrees_f from Temperature Readings over the last day grouped by the hour, with the resulting line graph and a table of timestamped minimum temperatures below.
   [[../assets/blog/raspberry-pi-temperature-sensor/influxdb_query.png]]
 
   This is really good for point analysis of things like high, low, and average temperatures for a given time interval, but it's an entirely manual process. What I really want is to see this data over a rolling time window; indefinitely. This is where Grafana comes into play.
@@ -294,10 +301,12 @@ Adafruit provides a [[https://github.com/adafruit/Adafruit_Python_MCP9808][Pytho
   2. Define the metric query and graph attributes
     #+CAPTION: Grafana Metric Query
     #+NAME: Grafana Metric Query
+    #+ATTR_HTML: :alt The Grafana graph editor Metrics tab, defining a query that selects max(degrees_f) from the Temperature Readings series grouped every minute, above the resulting temperature graph.
     [[../assets/blog/raspberry-pi-temperature-sensor/grafana_metric_query.png]]
   3. Return to the dashboard and select a time period against which the query should be run and an auto refresh interval
     #+CAPTION: Grafana Dashboard
     #+NAME: Grafana Dashboard
+    #+ATTR_HTML: :alt The Grafana dashboard with the auto-refresh menu open and Every 1m selected, showing the temperature graph on a rolling one-day window.
     [[../assets/blog/raspberry-pi-temperature-sensor/grafana_dashboard.png]]
 
   And voila! An view of the Temperature readings for the last day that updates every minute.

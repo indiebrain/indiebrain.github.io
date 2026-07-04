@@ -43,6 +43,7 @@ As it turns out, implementing this behavior is not at all complicated:
 
 #+CAPTION: application-info.plist
 #+NAME:   application-info.plist
+#+ATTR_HTML: :alt The Xcode Information Property List editor for MyAppIOS-Info.plist, showing keys and values such as the Bundle identifier built from com.aaronkuehler and the product name.
 [[../assets/blog/ios-environment-variables/application-info.plist.png]]
 
 * Configure the Environments
@@ -55,6 +56,7 @@ As it turns out, implementing this behavior is not at all complicated:
 
 #+CAPTION: environments.plist
 #+NAME:   environments.plist
+#+ATTR_HTML: :alt The Xcode property list editor showing a custom Environments.plist: a Root dictionary containing Release and Debug dictionaries, each defining a MyAppAPIBaseUrl string, with a production URL for Release and a development URL for Debug.
 [[../assets/blog/ios-environment-variables/environments.plist.png]]
 
 * Define the =Environment= object:
