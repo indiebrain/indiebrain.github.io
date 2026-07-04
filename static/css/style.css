@@ -181,6 +181,23 @@ p, ul, ol, blockquote, pre, table { margin: 0 0 1.1rem; }
 /* WCAG 1.4.8: paragraph spacing >= 1.5x the line spacing (1.65 line-height
    -> >= 2.475rem). Body copy only, so lists keep their tighter rhythm. */
 p { margin-bottom: 2.5rem; }
+
+/* Plain-language summary (WCAG 3.1.5). Full-strength text on the surface
+   fill stays >= 7:1. */
+.plainsummary {
+  margin: 0 0 2.5rem; padding: 1rem 1.25rem;
+  background: var(--surface); border-left: 3px solid var(--border);
+  border-radius: .25rem;
+}
+.plainsummary > :last-child { margin-bottom: 0; }
+
+/* Abbreviations (3.1.4) and defined jargon (3.1.3): a dotted underline
+   signals a definition is available; not conveyed by color alone. */
+abbr[title], dfn[title] {
+  text-decoration: underline dotted; text-underline-offset: 3px;
+  cursor: help;
+}
+dfn[title] { font-style: italic; }
 img { max-width: 100%; height: auto; }
 blockquote {
   margin-left: 0; padding-left: 1rem; border-left: 3px solid var(--border);
