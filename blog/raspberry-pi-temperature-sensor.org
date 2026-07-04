@@ -25,7 +25,7 @@ A few weeks ago, I purchased a Raspberry Pi. After reading [[http://www.amazon.c
 
 
 #+CAPTION: Grafana Dashboard with temperature data
-#+NAME: Grafana Dashboard
+#+NAME: Grafana Dashboard Preview
 #+ATTR_HTML: :alt A Grafana dashboard titled MCP9808 Temperature Readings, graphing room temperature over about a day between roughly 71 and 73.5 degrees Fahrenheit.
 [[../assets/blog/raspberry-pi-temperature-sensor/grafana_dashboard_preview.png]]
 
