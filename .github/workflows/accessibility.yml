@@ -1,0 +1,73 @@
+name: Accessibility (WCAG AAA)
+
+# Audits the built site against WCAG 2.2 Level AAA on every pull request.
+# The site can only be built with the Emacs/ox-hugo/Hugo toolchain baked
+# into the GHCR container image, but pa11y needs Node and Chromium, which
+# are not in that image. So the site is built inside the container and the
+# generated `public/` is handed to a host job that runs the audit. Only
+# GitHub-owned actions run outside the container; pa11y itself runs through
+# npx in a plain step, so no third-party action is required.
+
+on:
+  pull_request:
+    branches: [master]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  packages: read
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    container:
+      image: ghcr.io/${{ github.repository }}/site-builder:latest
+      credentials:
+        username: ${{ github.actor }}
+        password: ${{ secrets.GITHUB_TOKEN }}
+    steps:
+      - uses: actions/checkout@v7
+      - name: Export Org to Markdown (ox-hugo)
+        run: emacs --batch -Q -l build/export.el
+      - name: Build site
+        # The resume PDF is skipped: it is not needed to audit the HTML.
+        run: hugo --gc --minify
+      - uses: actions/upload-artifact@v4
+        with:
+          name: site-public
+          path: public
+
+  audit:
+    needs: build
+    # Runs on the host, not the container: the runner already has the
+    # system libraries Chromium needs.
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v7
+      - uses: actions/download-artifact@v4
+        with:
+          name: site-public
+          path: public
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+      - name: Install pa11y-ci and Chromium
+        run: |
+          npm install --no-save pa11y-ci
+          npx puppeteer browsers install chrome
+      - name: Serve the built site
+        run: |
+          python3 -m http.server 8099 --directory public &
+          for i in $(seq 1 30); do
+            curl -sf http://localhost:8099/index.html >/dev/null && break
+            sleep 1
+          done
+      - name: Audit every page at WCAG2AAA
+        # Drives off Hugo's sitemap, so new posts are audited automatically
+        # and alias-redirect stubs (absent from the sitemap) are skipped.
+        # The production baseURL in the sitemap is rewritten to localhost.
+        run: |
+          npx pa11y-ci --config .pa11yci.json \
+            --sitemap http://localhost:8099/sitemap.xml \
+            --sitemap-find https://aaronkuehler.com \
+            --sitemap-replace http://localhost:8099
