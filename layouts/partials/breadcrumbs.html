@@ -1,0 +1,23 @@
+{{- /* Breadcrumb trail for WCAG 2.4.8 (Location). Uses .Ancestors, which
+       runs from the page's parent section up to the home page, so reversing
+       it yields Home -> Section -> ... order. The current page is marked with
+       aria-current and is not a link.
+
+       Only rendered when the page sits below a section (more than just the
+       home page as an ancestor); top-level pages get no trail.
+
+       The Home and Section links duplicate the always-present 44px header
+       navigation, so they qualify for the Target Size (2.5.5) "equivalent
+       control" exception and need not be enlarged here. */ -}}
+{{- if gt (len .Ancestors) 1 -}}
+<nav class="breadcrumbs" aria-label="Breadcrumb">
+  <ol>
+    {{- range .Ancestors.Reverse }}
+    {{- /* Label a section by its name (blog -> Blog) so the trail matches the
+           header navigation, rather than Hugo's default section title. */ -}}
+    <li><a href="{{ .RelPermalink }}">{{ if .IsHome }}Home{{ else }}{{ .Section | humanize }}{{ end }}</a></li>
+    {{- end }}
+    <li><span aria-current="page">{{ .Title }}</span></li>
+  </ol>
+</nav>
+{{- end -}}
