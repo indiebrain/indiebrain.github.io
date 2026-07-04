@@ -1,5 +1,5 @@
 #+TITLE: About
-#+DESCRIPTION: 80% Scientist, 20% Artist. Theorist and practitioner.
+#+DESCRIPTION: Platform and infrastructure engineer with 15+ years building the CI/CD, container, and data platforms other teams ship against.
 #+AUTHOR: Aaron Kuehler
 #+HUGO_BASE_DIR: .
 #+HUGO_SECTION: /
