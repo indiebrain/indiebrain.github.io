@@ -108,13 +108,20 @@ possible range of readers and assistive technologies.
   by JavaScript; a static `aria-label="Color theme"` was added so it has
   a name even before or without scripting (4.1.2).
 
-- **Verification.** Browser-based checkers (axe, pa11y, Lighthouse)
-  require a headless-Chromium environment that was not available, so
-  verification used a contrast script over the built CSS plus a static
-  HTML audit (lang, title, single h1, heading order, image alt, skip
-  link, landmarks, tabindex) across all 20 content pages, both clean. A
-  manual keyboard and screen-reader pass in a real browser is still
-  recommended as a final human check.
+- **Verification.** Three layers were used. First, a contrast script over
+  the built CSS confirmed every text and background pair is at least 7:1
+  in both themes. Second, a static HTML audit (lang, title, single h1,
+  heading order, image alt, skip link, landmarks, tabindex) across all 20
+  content pages was clean. Third, pa11y (HTML_CodeSniffer driving a real
+  headless Chromium) was run at the WCAG2AAA standard against every
+  content page; it initially reported two duplicate-id failures (F77)
+  where ox-hugo generated the same anchor id for two identically named
+  figures and two identically named code blocks. Both were fixed by
+  giving the duplicates distinct names, after which the pa11y sweep
+  reported zero errors across all 20 pages. A manual keyboard and
+  screen-reader pass in a real browser is still recommended as a final
+  human check; pa11y's remaining warnings and notices are advisory
+  manual-review items, not failures.
 
 ## Date
 
