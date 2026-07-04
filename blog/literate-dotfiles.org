@@ -90,3 +90,11 @@ UPDATES:
   configuration into my .files repository - IE they're all one
   repository. This change updates the hyperlinks to make sure the reader
   lands in the correct location.
+
+- <2026-07-04 Sat> I no longer use the literate approach described here.
+  Since this writing I've refactored both my =.files= and Emacs
+  configuration into hand-written, modular Emacs Lisp files rather than
+  tangling them from a literate org document. The "Emacs configuration"
+  link above is pinned to a commit from the original literate version, so
+  it still reflects the approach this article describes; the =.files=
+  repository itself now reflects the newer modular layout.
