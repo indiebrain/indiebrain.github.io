@@ -51,7 +51,7 @@ First, one can use the =sudo raspi-config= tool.
 
 Second, one can manually load the camera kernel modules with =modprobe=:
 
-#+NAME: /etc/modules
+#+NAME: Manually load the camera module
 #+BEGIN_SRC sh
 sudo modprobe bcm2835-v4l2
 #+END_SRC
