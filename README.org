@@ -19,12 +19,15 @@ This supersedes the previous org-page toolchain; see
 | ~build/export.el~       | Batch Org to Markdown export         |
 | ~hugo.toml~, ~layouts/~ | Hugo configuration and templates     |
 | ~static/~               | Files copied verbatim (for example, CNAME) |
-| ~Dockerfile~            | Build toolchain (Emacs, ox-hugo, TeX Live, Hugo) |
+| ~Dockerfile~            | Build + audit toolchain (Emacs, ox-hugo, TeX Live, Hugo, Chrome + pa11y) |
 
 * Build and preview locally
 
-The toolchain (Emacs + ox-hugo, TeX Live, Hugo) is packaged as a Docker
-image so local builds match CI exactly. With only Docker installed:
+The toolchain (Emacs + ox-hugo, TeX Live, Hugo, plus a headless Chrome
+and pa11y for the accessibility audit) is packaged as a Docker image so
+local builds match CI exactly. The image is amd64 -- Chrome has no Linux
+arm64 build -- so on Apple Silicon it runs under emulation. With only
+Docker installed:
 
 #+begin_src sh
 make image          # build the toolchain image once
@@ -36,12 +39,16 @@ If you have Emacs, Hugo (extended), and LaTeX installed directly, the
 host targets work too:
 
 #+begin_src sh
-make build          # build into public/
+make build          # build into public/, then audit it (WCAG AAA)
+make a11y           # audit an already-built public/ on its own
 make serve          # export + serve at http://localhost:1313
 #+end_src
 
 The first host export installs ox-hugo from MELPA into a project-local
-~.elpa/~; the container has it pre-installed.
+~.elpa/~; the container has it pre-installed. ~make build~ ends with the
+accessibility audit (pa11y at WCAG2AAA over the sitemap), which gates
+~make deploy~; on the host that step also needs Node, pa11y-ci, and a
+Chrome or Chromium, all of which the container already provides.
 
 * Publishing
 
@@ -51,6 +58,10 @@ Pushing to ~master~ triggers the GitHub Actions workflow
 ~export.el~ changes, build the site inside that image, then deploy to
 GitHub Pages. It uses only GitHub-owned actions plus the toolchain
 container, so it avoids the account's block on third-party actions.
+
+Pull requests additionally run ~.github/workflows/accessibility.yml~,
+which builds the site and audits every page with pa11y at WCAG2AAA, so
+accessibility regressions surface before merge.
 
 In short: ~git push origin master~ publishes the site.
 

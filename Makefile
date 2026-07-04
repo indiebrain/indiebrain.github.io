@@ -1,14 +1,25 @@
 IMAGE ?= site-builder:local
-DOCKER_RUN = docker run --rm -u $(shell id -u):$(shell id -g) -e HOME=/tmp \
+# The image is amd64 (headless Chrome has no Linux arm64 build); pin the
+# platform so it runs consistently, natively in CI and emulated locally.
+DOCKER_RUN = docker run --rm --platform linux/amd64 -u $(shell id -u):$(shell id -g) -e HOME=/tmp \
 	-v "$(PWD)":/site -w /site $(IMAGE)
 
-.PHONY: build serve clean deploy image docker-build docker-deploy shell
+.PHONY: build a11y serve clean deploy image docker-build docker-deploy shell
 
 # --- Host toolchain (requires Emacs, Hugo extended, and LaTeX) ---
 
-# Full production build into public/.
+# Full production build into public/, then audit it for accessibility.
 build: content static/resume/resume.pdf
 	hugo --gc --minify
+	$(MAKE) a11y
+
+# Audit the built site against WCAG 2.2 Level AAA with pa11y. Runs as part
+# of `build` (and therefore `deploy`); also runnable on its own once
+# public/ exists. Needs the container's browser + pa11y, so invoke through
+# `make docker-build` / `make docker-deploy` (or install the tools on the
+# host).
+a11y:
+	./build/a11y.sh
 
 # Export Org -> Markdown (ox-hugo).
 content:
@@ -40,7 +51,7 @@ deploy:
 
 # Build the toolchain image locally.
 image:
-	docker build -t $(IMAGE) .
+	docker build --platform linux/amd64 -t $(IMAGE) .
 
 # Build the site inside the container.
 docker-build: image
@@ -52,5 +63,5 @@ docker-deploy: docker-build
 
 # Interactive shell in the toolchain container.
 shell: image
-	docker run --rm -it -u $(shell id -u):$(shell id -g) -e HOME=/tmp \
+	docker run --rm -it --platform linux/amd64 -u $(shell id -u):$(shell id -g) -e HOME=/tmp \
 		-v "$(PWD)":/site -w /site $(IMAGE) bash
