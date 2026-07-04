@@ -12,7 +12,11 @@
 #+OPTIONS:     H:3 num:nil toc:nil \n:nil ::t |:t ^:nil -:nil f:t *:t <:t
 #+DESCRIPTION: Use a Raspberry Pi 2 Model B to build a not-creepy, networked home temperature sensor
 
-A few weeks ago, I purchased a Raspberry Pi. After reading [[http://www.amazon.com/Raspberry-User-Guide-Eben-Upton/dp/1118921666/ref=sr_1_1?ie=UTF8&qid=1417487615&sr=8-1&keywords=raspberry+pi+beginners+guide][Eben Upton's Book - Raspberry Pi User Guide]], particularly the two chapters on which he focuses attention on the GPIO, I had an idea for my first project. The post covers the first iteration of a home temperature monitoring project I put together using a Raspberry Pi, a [[https://www.adafruit.com/products/1782][MCP9808 Temperature sensor]], an old Mac Mini (early 2008), [[http://influxdb.com][the InfluxDB time series database]], [[http://grafana.org][Grafana time series visualization applcation]], a bit of [[https://www.python.org][the Python programming language]], and [[http://smarden.org/runit/][the runit init system]].
+#+begin_plainsummary
+In short: I wired a small temperature sensor to a Raspberry Pi, wrote a short Python program to read the temperature once a minute, saved the readings in a time-series database (InfluxDB), and drew a live graph of them with Grafana.
+#+end_plainsummary
+
+A few weeks ago, I purchased a Raspberry Pi. After reading [[http://www.amazon.com/Raspberry-User-Guide-Eben-Upton/dp/1118921666/ref=sr_1_1?ie=UTF8&qid=1417487615&sr=8-1&keywords=raspberry+pi+beginners+guide][Eben Upton's Book - Raspberry Pi User Guide]], particularly the two chapters on which he focuses attention on the {{{abbr(GPIO,General-Purpose Input/Output)}}} pins, I had an idea for my first project. The post covers the first iteration of a home temperature monitoring project I put together using a Raspberry Pi, a [[https://www.adafruit.com/products/1782][MCP9808 Temperature sensor]], an old Mac Mini (early 2008), [[http://influxdb.com][the InfluxDB time series database]], [[http://grafana.org][Grafana time series visualization applcation]], a bit of [[https://www.python.org][the Python programming language]], and [[http://smarden.org/runit/][the runit init system]].
 
 #+CAPTION: Raspberry Pi with MCP9808 temperature sensor
 #+NAME: Raspberry Pi Temperature Sensor
@@ -30,7 +34,7 @@ A few weeks ago, I purchased a Raspberry Pi. After reading [[http://www.amazon.c
 
 For this project I chose to use the MCP9808 Breakout Board from [[http://www.adafruit.com][Adafruit - an excellent online resource for electronics components, circuits, and ideas]]. I chose this unit for a few reasons:
 
-  1. It's controlled over I²C -- Raspberry Pi's GPIO supports the require I²C bus over pins 3 (Serial Data Line, SDA) and 5 (Serial Clock Line, SCL)
+  1. It's controlled over {{{abbr(I²C,Inter-Integrated Circuit)}}} -- Raspberry Pi's GPIO supports the require I²C bus over pins 3 (Serial Data Line, SDA) and 5 (Serial Clock Line, SCL)
   2. It runs in the 2.7V to 5.5V power and logic range -- the Raspberry Pi provides power lines at 3.3V and 5V
   3. It was pretty cheap (< $5 USD) -- My soldering skills are not the best.
 
@@ -314,3 +318,12 @@ Adafruit provides a [[https://github.com/adafruit/Adafruit_Python_MCP9808][Pytho
 * Conclusion
 
   It's kind of hacky, but for about $50 USD and an afternoon of research, installation, configuration, and coding I have a very crude implementation of a digital thermometer and a way to collate historical temperature data about one particular area of my house. Future iterations of this project will most likely include cleanup and organization of the =poll.py= script, infrastructure and security enhancements (I'd really like to build a web application inbetween the =poll.py= script and the datastore to add notifications of temperature events, etc), and the addition of a few more sensors throughout the house.
+
+* Glossary
+
+- breakout board :: a small circuit board that exposes a chip's pins so they are easy to wire up.
+- breadboard :: a reusable board for building circuits by plugging in parts, with no soldering.
+- "Cobbler" GPIO breakout :: an adapter that routes the Raspberry Pi's pins out to a breadboard for wiring.
+- time-series database :: a database built to store readings indexed by the time they occurred.
+- init system :: the first program the operating system starts; it launches and supervises long-running services.
+- kernel modules :: loadable pieces of code that add features, such as hardware support, to the operating system core.

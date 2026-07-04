@@ -13,9 +13,13 @@
 #+OPTIONS:     H:3 num:nil toc:nil \n:nil ::t |:t ^:nil -:nil f:t *:t <:t
 #+DESCRIPTION: Project log detailing the build of a Baby Monitor with a Raspberry Pi
 
+#+begin_plainsummary
+In short: I worried that a store-bought internet baby camera could be watched by strangers, so I built my own using a Raspberry Pi and a camera that can see in the dark. It cost about the same as a cheap camera, but I decide who is allowed to watch and it runs on my own home network.
+#+end_plainsummary
+
 * Motivation
 
-"Daddy, you have to stop talking to me through the camera at night" is the phrase which immediately preceded the hurried unplugging and dismantling of the Foscam FI8910W in the children's room. For you see, I had never used the two-way audio functionality of the device. It's a hard pill to swallow, you're supposed to be their protector but you've potentially invited the faceless stranger into their bedroom. Such was my experience. We, like many parents looking to avoid an outrageously priced video baby monitor, purchased the Foscam IP night-vision camera to remotely keep an eye our child at night, and at nap time. We locked the thing down, allowing LAN connections to the video/audio stream. It's hard to say for sure if an outside party actually gained access to the Foscam device, but the question alone is enough to make any parent yank the device from the wall and put it in a sound and light proof hole in the ground. After all, [[https://krebsonsecurity.com/2014/01/bug-exposes-ip-cameras-baby-monitors/][security issues with IP cameras and WI-FI baby monitors]] are documented. So what's a parent to do?
+"Daddy, you have to stop talking to me through the camera at night" is the phrase which immediately preceded the hurried unplugging and dismantling of the Foscam FI8910W in the children's room. For you see, I had never used the two-way audio functionality of the device. It's a hard pill to swallow, you're supposed to be their protector but you've potentially invited the faceless stranger into their bedroom. Such was my experience. We, like many parents looking to avoid an outrageously priced video baby monitor, purchased the Foscam {{{abbr(IP,Internet Protocol)}}} night-vision camera to remotely keep an eye our child at night, and at nap time. We locked the thing down, allowing {{{abbr(LAN,Local Area Network)}}} connections to the video/audio stream. It's hard to say for sure if an outside party actually gained access to the Foscam device, but the question alone is enough to make any parent yank the device from the wall and put it in a sound and light proof hole in the ground. After all, [[https://krebsonsecurity.com/2014/01/bug-exposes-ip-cameras-baby-monitors/][security issues with IP cameras and WI-FI baby monitors]] are documented. So what's a parent to do?
 
 This is a project log detailing how I built a less-creepy baby monitor for about the cost of a cheap IP camera.
 
@@ -27,7 +31,7 @@ This is a project log detailing how I built a less-creepy baby monitor for about
 
 * The Build
 
-FWIW, here's the kernel version I'm working with:
+{{{abbr(FWIW,for what it's worth)}}}, here's the kernel version I'm working with:
 
 #+BEGIN_SRC sh
 pi@raspberrypi:~ $ uname -a
@@ -64,7 +68,7 @@ bcm2835-v4l2
 
 This is the simplest step of the setup, we simply plug in our Infrared
 LED array and position it in the room so that the viewing area of the
-Pi Noir is saturated with IR light - that's it, no fuss no mess. This
+Pi Noir is saturated with {{{abbr(IR,infrared)}}} light - that's it, no fuss no mess. This
 enables the Pi Noir to continue to report useful images even in the
 dark.
 
@@ -140,3 +144,12 @@ Disable the capture and storage of still images and video from the camera.
 * Conclusion
 
 Now that everything's setup and configured you can access the video stream at =http://<your-raspberry-pi-host>:8081= via any device on the local network. At about the same monetary and time commitment, this project provides more granular control, transparent security and privacy controls, and a clearer path to software/firmware updates than any Foscam solution - and 100% less baked in 3rd party eavesdropping.
+
+* Glossary
+
+- infrared illuminator :: a device that floods a room with invisible infrared light so a night-vision camera can see in the dark.
+- ambient light sensor :: a component that measures how bright the surrounding light is.
+- kernel modules :: loadable pieces of code that add features, such as camera support, to the operating system core.
+- daemon :: a program that runs quietly in the background, here to capture and serve the video stream.
+- frame rate :: how many images a video shows each second; a higher rate looks smoother.
+- firmware :: software stored permanently inside a hardware device.
