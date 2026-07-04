@@ -118,19 +118,36 @@ restarts ([[https://github.com/percona/percona-xtradb-cluster-operator/issues/25
 I reported a "product limit exceeded" failure when updating a service's
 escalation-policy reference ([[https://github.com/PagerDuty/terraform-provider-pagerduty/issues/1025][issue #1025]]).
 
-* Sample Side Projects
-
-** asdf-guile
-
-https://github.com/indiebrain/asdf-guile
-
-An [[https://github.com/asdf-vm/asdf][asdf]] version manager plugin to manage [[https://www.gnu.org/software/guile/][GNU Guile]] installations
+* Side Projects
 
 ** resque-alive
 
 https://github.com/indiebrain/resque-alive
 
-A Kubernetes Liveness probe for Resque
+A Kubernetes liveness probe for Resque, written in Ruby, so a stuck or
+dead worker is restarted automatically rather than silently draining the
+job queue.
+
+** asdf-guile
+
+https://github.com/indiebrain/asdf-guile
+
+An [[https://github.com/asdf-vm/asdf][asdf]] version-manager plugin (Shell) for installing and switching
+between [[https://www.gnu.org/software/guile/][GNU Guile]] versions.
+
+** .files
+
+https://github.com/indiebrain/.files
+
+My personal dotfiles: a modular Emacs Lisp configuration and shell setup,
+organized with GNU Stow and still actively tended.
+
+** futurist
+
+https://github.com/indiebrain/futurist
+
+A Ruby take on futures and promises, inspired by Celluloid's block-based
+futures, that transparently backgrounds work by forking processes.
 
 * Elsewhere
 
