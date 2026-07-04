@@ -1,0 +1,36 @@
+{{/* JSON-LD structured data.
+
+     The home page describes the site owner as a Person (feeding Google's
+     entity/knowledge graph via sameAs profile links). Regular pages are
+     described as a BlogPosting authored by that same Person. Other pages
+     (blog list, tag terms) get no schema — there is nothing useful to say. */}}
+{{- $author := .Site.Params.author -}}
+{{- $sameAs := slice -}}
+{{- with .Site.Params.social.github }}{{ $sameAs = $sameAs | append . }}{{ end -}}
+{{- with .Site.Params.social.linkedin }}{{ $sameAs = $sameAs | append . }}{{ end -}}
+
+{{- if .IsHome -}}
+<script type="application/ld+json">
+{{- dict
+  "@context" "https://schema.org"
+  "@type" "Person"
+  "name" $author
+  "url" .Site.BaseURL
+  "description" .Site.Params.description
+  "sameAs" $sameAs
+  | jsonify (dict "indent" "  ") | safeJS -}}
+</script>
+{{- else if .IsPage -}}
+<script type="application/ld+json">
+{{- dict
+  "@context" "https://schema.org"
+  "@type" "BlogPosting"
+  "headline" .Title
+  "description" (or .Description .Site.Params.description)
+  "url" .Permalink
+  "datePublished" (.Date.Format "2006-01-02T15:04:05Z07:00")
+  "dateModified" (cond .Lastmod.IsZero (.Date.Format "2006-01-02T15:04:05Z07:00") (.Lastmod.Format "2006-01-02T15:04:05Z07:00"))
+  "author" (dict "@type" "Person" "name" $author "url" .Site.BaseURL "sameAs" $sameAs)
+  | jsonify (dict "indent" "  ") | safeJS -}}
+</script>
+{{- end -}}
