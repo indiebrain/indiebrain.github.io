@@ -149,6 +149,31 @@ https://github.com/indiebrain/futurist
 A Ruby take on futures and promises, inspired by Celluloid's block-based
 futures, that transparently backgrounds work by forking processes.
 
+* Talks
+
+** Git Internals
+
+https://github.com/indiebrain/talks/blob/master/git_internals/git_internals.org
+
+Explains the inner workings of git, and sheds some light on how the
+internal structure of git as a data store shapes its user interface.
+
+** Git Workflow
+
+https://github.com/indiebrain/talks/blob/master/git_workflow/git_workflow.org
+
+Treats version-control history as project metadata: a workflow built for
+reason-ability (what, exactly, is in production?), communication, and a
+semantic commit history that records the intent code alone can't.
+
+** Release It!
+
+https://github.com/indiebrain/talks/blob/master/release_it/release_it.org
+
+A brief, messy history of releasing software — from ENIAC and the 1968
+"software crisis" to how modern practices arrived at continuous,
+lower-risk delivery.
+
 * Elsewhere
 
 - https://www.github.com/indiebrain
