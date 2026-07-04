@@ -13,36 +13,68 @@ Our purpose is not to "write code", but rather add value.
 
 Platform and infrastructure engineer with 15+ years shipping software and growing teams. I build the CI/CD, container, and data platforms other teams ship against — Kubernetes, Ruby on Rails, Go, Redis at scale.
 
-* Example Open Source Contributions
+* Open Source Contributions
 
-** HAProxy
+A selection of my open source work, grouped by the kind of
+contribution — the projects I help maintain, the changes I've authored
+and merged upstream, work I have in review, and bugs I've reported and
+diagnosed.
+
+** Maintainer
+
+*** powerhome/redis-operator
+
+https://github.com/powerhome/redis-operator
+
+A Go Kubernetes operator that manages highly-available Redis with
+Sentinel-based automatic failover. I'm the de-facto maintainer: roughly
+40 merged pull requests and the release owner from v1.8.0 through the
+current v4.4.1. I added HAProxy-based client routing, master/replica
+failover healing that disconnects clients from demoted nodes, and
+ongoing Kubernetes-version support. Adopting and maintaining this
+operator let my team replace commercial Redis Enterprise licensing with
+an internally-run, open-source alternative.
+
+** Authored and Merged Upstream
+
+*** HAProxy
 
 https://github.com/haproxy/haproxy
 
 The reliable, high-performance TCP/HTTP load balancer. I authored and
-merged an init-state server-configuration feature, closing a years-open
-issue and fixing a Redis-failover bug that had caused production
-incidents.
+merged an init-state server-configuration feature ([[https://github.com/haproxy/haproxy/commit/50322dff81f3c05e67bf311ff9ef0c77c833df97][commit 50322df]]),
+closing a years-open issue and fixing a Redis-failover bug that had
+caused production incidents. The fix benefits every HAProxy user.
 
-** Shopify/shipit-engine
+*** Shopify/shipit-engine
 
 https://github.com/Shopify/shipit-engine
 
-Shipit is a deployment tool that makes shipping code better for
-everyone. It's especially great for large teams of developers and
-designers who work together to build and deploy GitHub repos. I'm a
-sustained contributor with 22 merged pull requests, including primary
-authorship of its "Review Stacks" feature — ephemeral, full-stack
-preview environments spun up per pull request.
+Shipit is a deployment tool that makes shipping code better for large
+teams who build and deploy GitHub repositories together. As an outside
+contributor from 2019 to 2021 I merged 22 pull requests, spanning domain
+modeling (elevating the repository to a first-class concept, renaming
+=PullRequest= to =MergeRequest=) and maintenance-grade internals (task
+timing on a monotonic clock, git-cache-corruption recovery). I was the
+primary author of its "Review Stacks" feature ([[https://github.com/Shopify/shipit-engine/pull/1102][PR #1102]]): ephemeral,
+full-stack preview environments spun up per pull request.
 
-** percona-xtradb-cluster-operator
+*** derailed/k9s
+
+https://github.com/derailed/k9s
+
+A popular terminal UI for managing Kubernetes clusters. I contributed
+the Gruvbox light and dark skins ([[https://github.com/derailed/k9s/pull/1088][PR #1088]]).
+
+*** percona-xtradb-cluster-operator
 
 https://github.com/percona/percona-xtradb-cluster-operator
 
 Percona's Kubernetes operator for XtraDB Cluster. I contributed a fix
-merged upstream (PR #521) that resolved a crash when the operator pod
+merged upstream ([[https://github.com/percona/percona-xtradb-cluster-operator/pull/521][PR #521]]) that resolved a crash when the operator pod
 started without a HAProxy PodDisruptionBudget.
-** rubyforgood/mutual-aid
+
+*** rubyforgood/mutual-aid
 
 https://github.com/rubyforgood/mutual-aid
 
@@ -51,6 +83,40 @@ sharing resources with each other. Mutual Aid groups are more concerned
 about local resiliency than global campaigns, and prefer solidarity
 before charity. I contributed 10 merged pull requests, largely hardening
 the Docker-based development environment for new volunteers.
+
+** In Review
+
+*** basecamp/kamal
+
+https://github.com/basecamp/kamal
+
+Basecamp's tool for deploying web applications anywhere. I've proposed a
+SOPS secrets adapter so Kamal can pull deploy-time secrets from a
+SOPS-encrypted file ([[https://github.com/basecamp/kamal/pull/1906][PR #1906]]), along with the accompanying
+documentation ([[https://github.com/basecamp/kamal-site/pull/201][kamal-site PR #201]]). Both are open and under review.
+
+** Reported and Diagnosed
+
+*** rubocop/rubocop
+
+https://github.com/rubocop/rubocop
+
+I reported a correctness bug where a =Style/InvertibleUnlessCondition=
+autocorrection could silently break application logic ([[https://github.com/rubocop/rubocop/issues/11800][issue #11800]]).
+
+*** percona-xtradb-cluster-operator
+:PROPERTIES:
+:CUSTOM_ID: percona-xtradb-cluster-operator-issue-2523
+:END:
+
+I reported that the example configuration ships a =sourceRetryCount= that
+diverges from MySQL's default and breaks replication on routine source
+restarts ([[https://github.com/percona/percona-xtradb-cluster-operator/issues/2523][issue #2523]]).
+
+*** PagerDuty/terraform-provider-pagerduty
+
+I reported a "product limit exceeded" failure when updating a service's
+escalation-policy reference ([[https://github.com/PagerDuty/terraform-provider-pagerduty/issues/1025][issue #1025]]).
 
 * Sample Side Projects
 
