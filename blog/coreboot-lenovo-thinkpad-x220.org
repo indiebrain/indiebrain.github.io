@@ -13,9 +13,13 @@
 #+OPTIONS:     H:3 num:nil toc:nil \n:nil ::t |:t ^:nil -:nil f:t *:t <:t
 #+DESCRIPTION: Replacing the factory BIOS of a Lenovo Thinkpad x220 and neutralizing the Intel Management Engine (ME)
 
+#+begin_plainsummary
+In short: I replaced the locked factory start-up software (the BIOS) on my Lenovo ThinkPad X220 laptop with free, open software called Coreboot. I used a Raspberry Pi wired directly to the laptop's memory chip to write the new software onto it, and I also switched off a hidden Intel feature that could let outsiders control the machine.
+#+end_plainsummary
+
 * Motivation
 
-When not at work, I primarily use a Lenovo Thinkpad x220 with Debian GNU/Linux. Recently, the factory installed wireless card failed. I purchased a replacement wireless card from [[https://thinkpenguin.com/][Think Penguin]] and quickly found that the factory BIOS prevents the use of non-whitelisted hardware. I took this as a challenge to see if I could work around the freedom limiting factory BIOS.
+When not at work, I primarily use a Lenovo Thinkpad x220 with Debian GNU/Linux. Recently, the factory installed wireless card failed. I purchased a replacement wireless card from [[https://thinkpenguin.com/][Think Penguin]] and quickly found that the factory {{{abbr(BIOS,Basic Input/Output System)}}} prevents the use of non-whitelisted hardware. I took this as a challenge to see if I could work around the freedom limiting factory BIOS.
 
 * Summary
 
@@ -26,7 +30,7 @@ These project notes breakdown into two discrete tasks:
 
 Constructing the new BIOS image is fairly straight forward and pretty well documented by the coreboot community. I share my process to potentially save others (future versions of myself included) a bit of searching/patchwork from mailing lists, forum posts, etc.
 
-The initial "burn" of the coreboot image required the use an "external" or direct-hardware flashing mechanism to overwrite the factory BIOS. Essentially, I need another device capable of physically connecting to, and writing bytes to the SOIC - Small Outline Integrated Circuit - chip which houses the BIOS on the mainboard of the x220. To achieve this I used a Raspberry Pi 2 Model B and its GPIO board to act as the "burning" device.
+The initial "burn" of the coreboot image required the use an "external" or direct-hardware flashing mechanism to overwrite the factory BIOS. Essentially, I need another device capable of physically connecting to, and writing bytes to the SOIC - Small Outline Integrated Circuit - chip which houses the BIOS on the mainboard of the x220. To achieve this I used a Raspberry Pi 2 Model B and its {{{abbr(GPIO,General-Purpose Input/Output)}}} board to act as the "burning" device.
 
 * Setting up the Raspberry Pi 2 Model B
 
@@ -104,13 +108,13 @@ Make note of the capacity of the BIOS chip, we'll need this later when configuri
 
 If the md5sums of both the images are the same, rock on. If not, STOP - a corrupt factory BIOS image will likely brick your laptop if you base your coreboot image on it, and you won't have a way to restore the factory BIOS. Try re-reading the factory BIOS and make sure you end up with two consecutive reads that have the same md5 checksum.
 
-Copy the =lenovo_x220_factory_bios.bin= to the x220 via sftp, USB media, etc. Verify the md5sum after copying.
+Copy the =lenovo_x220_factory_bios.bin= to the x220 via sftp, {{{abbr(USB,Universal Serial Bus)}}} media, etc. Verify the md5sum after copying.
 
 * Optional - Neutralize the Intel Management Engine (ME)
 
 ** What is the Intel Management Engine (ME)?
 
-[[http://me.bios.io/images/c/ca/Rootkit_in_your_laptop.pdf][The gory details are best explained by the experts here]], but suffice to say that it /can/ act as a way for third parties to remotely execute code on your machine - for good or ill. The ME is installed, in one form or another, on all newer Intel chipsets and /can/ be mostly neutralized by [[https://github.com/corna/me_cleaner][the me_cleaner tool]].
+The gory details are best explained by the experts in [[http://me.bios.io/images/c/ca/Rootkit_in_your_laptop.pdf]["Rootkit in your Laptop" (PDF)]], but suffice to say that it /can/ act as a way for third parties to remotely execute code on your machine - for good or ill. The ME is installed, in one form or another, on all newer Intel chipsets and /can/ be mostly neutralized by [[https://github.com/corna/me_cleaner][the me_cleaner tool]].
 
 ** Clean the ME from the factory bios
 
@@ -272,7 +276,7 @@ The relevant bits are:
   ME: Progress Phase          : BUP Phase
 #+END_SRC
 
-[[https://github.com/corna/me_cleaner/wiki/How-does-it-work?#ive-applied-me_cleaner-and-my-pc-still-works-well-how-can-i-check-the-status-of-intel-me][A description of the me_cleaner output is available here.]].
+The me_cleaner wiki explains [[https://github.com/corna/me_cleaner/wiki/How-does-it-work?#ive-applied-me_cleaner-and-my-pc-still-works-well-how-can-i-check-the-status-of-intel-me][how to check the status of Intel ME after running me_cleaner]].
 
 ** Could not map MEI PCI device memory
 
@@ -309,3 +313,15 @@ Add the =iomem=relaxed= option
   - https://github.com/bibanon/Coreboot-ThinkPads/wiki/Compiling-GRUB2-for-Coreboot
   - http://www.coreboot.org/Talk:GRUB2
   - https://github.com/corna/me_cleaner
+
+* Glossary
+
+- flashing :: writing new firmware onto a chip's memory, replacing what was there.
+- firmware :: low-level software stored permanently on a hardware chip that runs before the operating system.
+- mainboard :: the computer's main circuit board, also called the motherboard.
+- brick :: to leave a device permanently unusable, as lifeless as a brick.
+- whitelisted hardware :: parts on the manufacturer's list of approved components; the factory firmware rejects the rest.
+- rootkit :: hidden software that gives someone stealthy, privileged control of a computer.
+- proprietary blobs :: closed-source binary code shipped without its source, so it cannot be inspected.
+- payload :: the program the firmware loads and runs at start-up (here, SeaBIOS).
+- Intel Management Engine (ME) :: a hidden controller in Intel chipsets that runs independently of the main operating system.

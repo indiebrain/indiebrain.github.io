@@ -7,3 +7,16 @@
 #+HUGO_BASE_DIR: ..
 #+HUGO_SECTION: blog
 #+OPTIONS: H:3 num:nil toc:nil
+
+# Accessibility helpers (WCAG AAA):
+#
+# {{{abbr(GPIO, General-Purpose Input/Output)}}} marks up an abbreviation
+# with its expansion (3.1.4 Abbreviations). Use it on the first occurrence
+# of an abbreviation in a post.
+#+MACRO: abbr @@html:<abbr title="$2">$1</abbr>@@
+#
+# {{{dfn(tangling, extracting source code from prose)}}} marks the defining
+# instance of a jargon term and carries a short definition (3.1.3 Unusual
+# Words). Prefer a visible inline definition in the prose where it reads
+# naturally; use this for terms defined in passing.
+#+MACRO: dfn @@html:<dfn title="$2">$1</dfn>@@

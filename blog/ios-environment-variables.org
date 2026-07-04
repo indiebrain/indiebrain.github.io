@@ -12,7 +12,11 @@
 #+OPTIONS:     H:3 num:nil toc:nil \n:nil ::t |:t ^:nil -:nil f:t *:t <:t
 #+DESCRIPTION: An approach to extracting 'environment' specific configuration from iOS application code
 
-I find that there are usually at least two distinct environments in which any iOS project is built: generally one set of configuration for development and another for production. Each mode usually requires its own set of configuration: resource URLs for data fetching and manipulation, 3rd  party service authentication keys, and the like. Usually I see these types of configurations defined through conditional macros inline with application code, like so:
+#+begin_plainsummary
+In short: I show a cleaner way to handle the settings an iOS app needs -- such as which web address it should talk to -- by moving them out of the code and into a separate file that lists the right values for each build. At startup the app checks how it was built and loads the matching settings, so I can change configuration without touching or breaking the app's code.
+#+end_plainsummary
+
+I find that there are usually at least two distinct environments in which any {{{abbr(iOS,iPhone Operating System)}}} project is built: generally one set of configuration for development and another for production. Each mode usually requires its own set of configuration: resource {{{abbr(URLs,Uniform Resource Locators)}}} for data fetching and manipulation, 3rd  party service authentication keys, and the like. Usually I see these types of configurations defined through conditional macros inline with application code, like so:
 
 #+BEGIN_SRC objc
   #ifdef DEBUG
@@ -43,6 +47,7 @@ As it turns out, implementing this behavior is not at all complicated:
 
 #+CAPTION: application-info.plist
 #+NAME:   application-info.plist
+#+ATTR_HTML: :alt The Xcode Information Property List editor for MyAppIOS-Info.plist, showing keys and values such as the Bundle identifier built from com.aaronkuehler and the product name.
 [[../assets/blog/ios-environment-variables/application-info.plist.png]]
 
 * Configure the Environments
@@ -55,6 +60,7 @@ As it turns out, implementing this behavior is not at all complicated:
 
 #+CAPTION: environments.plist
 #+NAME:   environments.plist
+#+ATTR_HTML: :alt The Xcode property list editor showing a custom Environments.plist: a Root dictionary containing Release and Debug dictionaries, each defining a MyAppAPIBaseUrl string, with a production URL for Release and a development URL for Debug.
 [[../assets/blog/ios-environment-variables/environments.plist.png]]
 
 * Define the =Environment= object:
@@ -151,3 +157,12 @@ And when using the Production mode, with the Release build configuration, the lo
 #+END_SRC
 
 [[http://www.github.com/indiebrain/ios-environment-variables-example][Example Application Source Code]]
+
+* Glossary
+
+- environment :: a distinct setup an app runs in, such as development (for testing) versus production (for real users).
+- build configuration :: a named set of build settings, such as Debug or Release, that Xcode uses to compile the app.
+- application bundle :: the packaged folder holding the finished app and the resource files it ships with.
+- preprocessor macro :: a named flag the compiler swaps in before building, used here to pick values by build type.
+- property list (plist) :: an Apple file format that stores settings as a list of keys and values.
+- regressions :: new bugs that break behaviour which used to work.

@@ -12,6 +12,10 @@
 #+OPTIONS:     H:3 num:nil toc:nil \n:nil ::t |:t ^:nil -:nil f:t *:t <:t
 #+DESCRIPTION:  An attempt to bring order and maintainability to user environment configuration
 
+#+begin_plainsummary
+In short: I keep my personal computer setup files, called dotfiles, in one document that mixes plain-English notes with the actual code. A tool named Babel then pulls the code out to build the real files on my machine. I have used this for a few months and find my setup much easier to read, understand, and change with confidence.
+#+end_plainsummary
+
 * Motivation
 
 #+BEGIN_QUOTE
@@ -53,7 +57,7 @@ the normal Emacs and org-mode document editing features: org's easy to
 use document syntax, section/hader folding, search, etc. But what about
 our non-emacs friends? Popular git forges like Github and Gitlab have us
 covered. In addition to markdown, org-mode tends to be supported as a
-source format for documentation and static HTML generation on popular
+source format for documentation and static {{{abbr(HTML,HyperText Markup Language)}}} generation on popular
 code hosting platforms. As a result, the woven/human-readable version of
 the dotfiles render rather well.
 
@@ -87,7 +91,7 @@ UPDATES:
 
 - <2021-07-11 Sun> Update links to Emacs configuration. Since the
   original posting of this article, I've consolidated my .emacs.d
-  configuration into my .files repository - IE they're all one
+  configuration into my .files repository - {{{abbr(IE,that is)}}} they're all one
   repository. This change updates the hyperlinks to make sure the reader
   lands in the correct location.
 
@@ -98,3 +102,13 @@ UPDATES:
   link above is pinned to a commit from the original literate version, so
   it still reflects the approach this article describes; the =.files=
   repository itself now reflects the newer modular layout.
+
+* Glossary
+
+- literate programming :: writing code and a human-readable explanation of it together in a single document.
+- *nix :: Unix and Unix-like operating systems (for example Linux and macOS).
+- org-mode :: an Emacs document format for notes and writing that can also hold and run embedded code.
+- Babel :: the Emacs org-mode feature that runs embedded code blocks and extracts them into real files.
+- tangling :: extracting the code blocks from a literate document into standalone source files.
+- woven :: the readable, formatted document produced from a literate source, as opposed to the extracted code.
+- git forge :: a website that hosts version-controlled code repositories, such as GitHub or GitLab.

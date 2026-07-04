@@ -13,6 +13,10 @@
 #+OPTIONS:     H:3 num:nil toc:nil \n:nil ::t |:t ^:nil -:nil f:t *:t <:t
 #+DESCRIPTION: An approach to building a healthy Code Review Culture on software teams
 
+#+begin_plainsummary
+In short: I share how I think teams should run code review -- not mainly to hunt for bugs, but to share knowledge and become better, more engaged teammates. I offer practical advice for giving and receiving feedback kindly, and for writing clear commit messages and change descriptions that explain why a change was made.
+#+end_plainsummary
+
 * Motivation
 
 I thrive on critical feedback. Be it from automated tests as I drive the interfaces and interactions of code I'm writing or perspective, advice, and coaching from coworkers. Code Review is an opportunity for team members provide critical feedback during the evolution of projects. In some contexts, I've worked on teams which struggle to extract the true value of Code Review. The following are opinions I use to help teams realize more productive uses of Code Review. This is not a prescription, but rather a set of meditations to encourage a constructive, elevating atmosphere of honest discussion about the work we do.
@@ -42,7 +46,7 @@ Another, less resource intensive way, is to have teams self-organize, asynchrono
 - Be humble. ("I'm not sure. Let's look it up.")
 - Don't use hyperbole. ("always", "never", "endlessly", "nothing")
 - Don't use sarcasm.
-- Keep it real. If emoji, animated GIFs, or humor aren't you, don't force them. If they are, deploy them with aplomb.
+- Keep it real. If emoji, animated {{{abbr(GIFs,Graphics Interchange Format images)}}}, or humor aren't you, don't force them. If they are, deploy them with aplomb.
 - Talk synchronously (e.g. chat, screen sharing, in person) if there are too many "I didn't understand" or "Alternative solution:" comments. Post a follow-up comment summarizing the discussion.
 - Most importantly, don't forget to give praise and thanks.
 
@@ -130,6 +134,16 @@ and academic discussions, contributing computational concepts, etc. to
 help the reviewer understand the frame of reference from which the
 change is wrought.
    #+END_SRC
+
+* Glossary
+
+- Steel Man (or Steel Person) :: restating someone's argument in its strongest possible form before responding to it.
+- selective ownership :: treating pieces of code as personally owned ("mine" versus "yours") rather than shared by the team.
+- Continuous Integration :: a system that automatically builds and tests the code on every change.
+- green :: shorthand for a test suite in which every automated test is passing.
+- out-of-band :: handled outside the normal channel -- here, in a separate conversation rather than in the review.
+- pull request :: a request to review a set of proposed changes and merge them into the main code.
+- diff :: the line-by-line difference showing exactly what a change added, removed, or altered.
 
 * Additional Resources
 

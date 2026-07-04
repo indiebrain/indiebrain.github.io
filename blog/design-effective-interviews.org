@@ -13,6 +13,10 @@
 #+OPTIONS:     H:3 num:nil toc:nil \n:nil ::t |:t ^:nil -:nil f:t *:t <:t
 #+DESCRIPTION: Effective hiring strategies to build successful teams
 
+#+begin_plainsummary
+In short: I interview candidates by weighing both their technical skills and their people skills. Instead of directly asking the three things I most want to know -- can they do the job, will they improve the team, and will they be happy here -- I ask for concrete examples from their past and look for patterns. I try to keep candidates comfortable, stay honest about my organization's strengths and weaknesses, and treat each interview as practice to get better.
+#+end_plainsummary
+
 Conducting an interview is difficult. How well can you expect to know someone after a few hours of interaction? This is why it's important to optimize the time spent speaking with a candidate. I've conducted interviews for a variety of roles: Software Developers, Customer Support Representatives, Development Managers. I've had the opporunity to speak with dozens of candidates. I've made my fair share of mistakes -- asked the wrong questions, pressed a topic too hard, or lacked significant information or preparation to conducting the interview. Each interview provides an opporunity for me to hone my skills and better understand the responsibility -- to company and candidate -- of an interviewer.
 
 This article is an exploration of the essence of practicing meaningful interviewing.
@@ -84,3 +88,11 @@ Be compassionate and merciful. Interviews are a contrived, high stress environme
 As an interviewer, you will encounter people who come from all kinds of backgrounds. Know your biases and be aware how they might affect your judgement. Collect as many objective data points to answer the above 3 questions and make the most educated decision about a candidate you can given the information you were able to obtain during your interview.
 
 Remember the 6Ps: *Proper Planning and Practice Prevent Poor Performance*. Recognize that you are human. No matter how much you practice, occasionally, you will mess up. Never miss an opportunity to run an interview; after each, reflect on and adapt your technique.
+
+* Glossary
+
+- TL;DR :: short for "too long; didn't read" -- a brief summary for readers who want the gist without the full article.
+- Gateway Pattern :: a software design that hides access to an external system behind a single, simple interface.
+- interview smell :: a warning sign that something about an interview's approach is likely to distort its outcome.
+- Distributed Systems :: software that runs across many networked computers that work together as one.
+- zeitgeist :: the shared mood, values, and culture of a group or organization at a given time.
