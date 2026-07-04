@@ -1,68 +1,73 @@
 /*
- * Minimal theme, Onenord palette (github.com/rmehri01/onenord.nvim).
- * Light is the default; dark follows the OS setting and can be forced
- * with the header toggle (data-theme). All text/background pairs meet
- * WCAG 2.1 AA contrast (>= 4.5:1 body text, >= 3:1 UI/focus).
+ * Minimal theme, Modus palette (protesilaos/modus-themes): modus-operandi
+ * (light) and modus-vivendi (dark). Light is the default; dark follows the
+ * OS setting and can be forced with the header toggle (data-theme).
+ *
+ * Every text/background pair meets WCAG AAA contrast (>= 7:1). Modus tunes
+ * its whole palette to bg-main (pure white / pure black), so code blocks
+ * stay on --bg and are delineated by a border rather than a fill. A subtle
+ * --surface fill is used only where the text is full-strength foreground
+ * (inline code, tag chips), which keeps >= 7:1 on the dim surface too.
  */
 
 :root {
-  --max-width: 42rem;
-  --bg: #f7f8fa;
-  --surface: #eaebed;
-  --fg: #2e3440;
-  --fg-strong: #2e3440;
-  --muted: #646a76;
-  --link: #3068ae;
-  --border: #dcdee1;
-  --focus: #1b40a6;
-  --syn-comment: #636975;
-  --syn-keyword: #983cc6;
-  --syn-string: #34762c;
-  --syn-number: #bb3f0f;
-  --syn-func: #3068ae;
-  --syn-type: #2c727a;
-  --syn-meta: #905e30;
-  --syn-error: #be383d;
+  --max-width: 40rem;
+  --bg: #ffffff;
+  --surface: #f2f2f2;
+  --fg: #000000;
+  --fg-strong: #000000;
+  --muted: #595959;
+  --link: #0031a9;
+  --border: #9f9f9f;
+  --focus: #0031a9;
+  --syn-comment: #595959;
+  --syn-keyword: #531ab6;
+  --syn-string: #00663f;
+  --syn-number: #972500;
+  --syn-func: #0031a9;
+  --syn-type: #005f5f;
+  --syn-meta: #6f5500;
+  --syn-error: #a60000;
 }
 
 @media (prefers-color-scheme: dark) {
   :root:not([data-theme="light"]) {
-    --bg: #2e3440;
-    --surface: #3b4252;
-    --fg: #c8d0e0;
-    --fg-strong: #e5e9f0;
-    --muted: #98a2b3;
-    --link: #81a1c1;
-    --border: #434c5e;
-    --focus: #88c0d0;
-    --syn-comment: #a8b1bf;
-    --syn-keyword: #c5a8c0;
-    --syn-string: #a3be8c;
-    --syn-number: #d9a48b;
-    --syn-func: #99b3cd;
-    --syn-type: #88c0d0;
-    --syn-meta: #ebcb8b;
-    --syn-error: #e19ea4;
+    --bg: #000000;
+    --surface: #1e1e1e;
+    --fg: #ffffff;
+    --fg-strong: #ffffff;
+    --muted: #989898;
+    --link: #79a8ff;
+    --border: #646464;
+    --focus: #79a8ff;
+    --syn-comment: #989898;
+    --syn-keyword: #b6a0ff;
+    --syn-string: #00c06f;
+    --syn-number: #ff6b55;
+    --syn-func: #2fafff;
+    --syn-type: #6ae4b9;
+    --syn-meta: #d0bc00;
+    --syn-error: #ff5f59;
   }
 }
 
 :root[data-theme="dark"] {
-  --bg: #2e3440;
-  --surface: #3b4252;
-  --fg: #c8d0e0;
-  --fg-strong: #e5e9f0;
-  --muted: #98a2b3;
-  --link: #81a1c1;
-  --border: #434c5e;
-  --focus: #88c0d0;
-  --syn-comment: #a8b1bf;
-  --syn-keyword: #c5a8c0;
-  --syn-string: #a3be8c;
-  --syn-number: #d9a48b;
-  --syn-func: #99b3cd;
-  --syn-type: #88c0d0;
-  --syn-meta: #ebcb8b;
-  --syn-error: #e19ea4;
+  --bg: #000000;
+  --surface: #1e1e1e;
+  --fg: #ffffff;
+  --fg-strong: #ffffff;
+  --muted: #989898;
+  --link: #79a8ff;
+  --border: #646464;
+  --focus: #79a8ff;
+  --syn-comment: #989898;
+  --syn-keyword: #b6a0ff;
+  --syn-string: #00c06f;
+  --syn-number: #ff6b55;
+  --syn-func: #2fafff;
+  --syn-type: #6ae4b9;
+  --syn-meta: #d0bc00;
+  --syn-error: #ff5f59;
 }
 
 * { box-sizing: border-box; }
@@ -101,13 +106,20 @@ main a { text-decoration: underline; text-underline-offset: 2px; }
   display: flex; align-items: center; justify-content: space-between;
   flex-wrap: wrap; gap: .5rem 1rem; padding-top: 1.25rem; padding-bottom: 1.25rem;
 }
-.site-title { font-weight: 700; font-size: 1.1rem; color: var(--fg-strong); }
+/* Navigation targets meet WCAG 2.5.5 Target Size (Enhanced): >= 44x44px. */
+.site-title {
+  display: inline-flex; align-items: center; min-height: 44px;
+  font-weight: 700; font-size: 1.1rem; color: var(--fg-strong);
+}
 .site-nav { display: flex; align-items: center; gap: 1rem; }
-.site-nav a { color: var(--muted); }
+.site-nav a {
+  display: inline-flex; align-items: center; min-height: 44px;
+  color: var(--muted);
+}
 
 .theme-toggle {
   display: inline-flex; align-items: center; justify-content: center;
-  width: 2.25rem; height: 2.25rem; padding: 0;
+  width: 2.75rem; height: 2.75rem; padding: 0;
   background: transparent; color: var(--muted);
   border: 1px solid var(--border); border-radius: .3rem;
   font-size: 1rem; line-height: 1; cursor: pointer;
@@ -136,8 +148,10 @@ article .tags li {
 }
 
 .post-list { list-style: none; padding: 0; }
-.post-list li { display: flex; gap: .75rem; align-items: baseline; padding: .35rem 0; }
+.post-list li { display: flex; gap: .75rem; align-items: center; min-height: 44px; }
 .post-list time { flex: 0 0 auto; font-variant-numeric: tabular-nums; }
+/* Post links fill the 44px row so the tap target meets 2.5.5. */
+.post-list li a { display: inline-flex; align-items: center; min-height: 44px; }
 
 .resume-header {
   display: flex; align-items: baseline; justify-content: space-between;
@@ -153,6 +167,9 @@ article .tags li {
 .tag-count::after { content: ")"; }
 
 p, ul, ol, blockquote, pre, table { margin: 0 0 1.1rem; }
+/* WCAG 1.4.8: paragraph spacing >= 1.5x the line spacing (1.65 line-height
+   -> >= 2.475rem). Body copy only, so lists keep their tighter rhythm. */
+p { margin-bottom: 2.5rem; }
 img { max-width: 100%; height: auto; }
 blockquote {
   margin-left: 0; padding-left: 1rem; border-left: 3px solid var(--border);
@@ -162,8 +179,11 @@ code {
   font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
   font-size: .875em; background: var(--surface); padding: .1em .35em; border-radius: .25rem;
 }
+/* Code blocks stay on --bg (bg-main) so every syntax token keeps >= 7:1;
+   a border, not a fill, separates them from the page. */
 pre {
-  background: var(--surface); padding: 1rem; border-radius: .4rem;
+  background: var(--bg); padding: 1rem; border-radius: .4rem;
+  border: 1px solid var(--border);
   overflow-x: auto; font-size: .85rem; line-height: 1.5;
 }
 pre code { background: none; padding: 0; }
@@ -176,8 +196,10 @@ hr { border: none; border-top: 1px solid var(--border); margin: 2rem 0; }
 }
 
 /*
- * Syntax highlighting (Chroma, class-based). Token colors are theme
- * variables tuned to meet WCAG AA (>= 4.5:1) on the code surface.
+ * Syntax highlighting (Chroma, class-based). Token colors are Modus palette
+ * variables; each meets WCAG AAA (>= 7:1) against the code block background
+ * (--bg / bg-main). See the palette note above on why code blocks are not
+ * tinted -- Modus only guarantees 7:1 against bg-main, not a dim surface.
  */
 .highlight { margin: 0 0 1.1rem; }
 .highlight pre.chroma { margin: 0; }
