@@ -97,9 +97,9 @@ customer-facing disruption, 100% of production clusters migrated, and
 eliminated the commercial Redis Enterprise licensing spend by replacing
 it with an internally-maintained open-source operator.
 
-Got code into upstream HAProxy: authored and merged the init-state
-server-configuration feature ([[https://github.com/haproxy/haproxy/commit/50322dff81f3c05e67bf311ff9ef0c77c833df97][commit 50322df]], September 2024), closing
-a years-open issue and fixing a Redis-failover bug responsible for past
+Authored and merged an init-state server-configuration feature into
+upstream HAProxy ([[https://github.com/haproxy/haproxy/commit/50322dff81f3c05e67bf311ff9ef0c77c833df97][commit 50322df]], September 2024), closing a
+years-open issue and fixing a Redis-failover bug responsible for past
 production incidents.
 
 Shipped application-layer DDoS protection across the company's
