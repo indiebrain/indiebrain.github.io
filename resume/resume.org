@@ -283,6 +283,15 @@ about local resiliency than global campaigns, and prefer solidarity
 before charity. I contributed 10 merged pull requests, largely hardening
 the Docker-based development environment for new volunteers.
 
+** basecamp/kamal
+
+https://github.com/basecamp/kamal
+
+Basecamp's tool for deploying web applications anywhere. I've proposed a
+SOPS secrets adapter so Kamal can pull deploy-time secrets from a
+SOPS-encrypted file (PR #1906), with accompanying documentation
+(kamal-site PR #201). Both are open and under review.
+
 * Sample Side Projects
 
 ** asdf-guile
