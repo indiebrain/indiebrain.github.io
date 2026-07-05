@@ -22,10 +22,10 @@
 
 #+BEGIN_QUOTE
 Platform and infrastructure engineer with 15+ years shipping software
-and growing teams. I build the CI/CD, container, and data platforms
-other teams ship against — Kubernetes, Ruby on Rails, Go, Redis at
-scale. I'm accountable for outcomes and build autonomous teams where no
-one is a single point of failure.
+and growing teams. I build the delivery pipelines, application platforms,
+and multi-site data stores other teams ship against, along with the web
+applications that run on them. I'm accountable for outcomes and build
+autonomous teams where no one is a single point of failure.
 #+END_QUOTE
 
 * Proficiency highlights
@@ -100,8 +100,8 @@ it with an internally-maintained open-source operator.
 
 Got code into upstream HAProxy: authored and merged the init-state
 server-configuration feature ([[https://github.com/haproxy/haproxy/commit/50322dff81f3c05e67bf311ff9ef0c77c833df97][commit 50322df]], September 2024), closing
-a years-open issue and fixing a Redis-failover bug that had caused
-production incidents. The fix benefits every HAProxy user.
+a years-open issue and fixing a Redis-failover bug responsible for past
+production incidents.
 
 Shipped application-layer DDoS protection across the company's
 most-trafficked public properties, proactively closing a longstanding
