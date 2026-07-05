@@ -38,8 +38,9 @@ autonomous teams where no one is a single point of failure.
   technologies — HTTP, JavaScript, CSS)
 - Open source (22 merged pull requests into Shopify/shipit-engine and an
   upstream HAProxy feature; maintainer of a Kubernetes Redis operator;
-  upstream bug reports and fixes across the ecosystem — RuboCop, k9s, and
-  the Percona operator)
+  accessibility-focused theme skins for k9s; upstream bug reports and
+  fixes across the ecosystem — RuboCop, the Percona operator, and
+  PagerDuty's Terraform provider)
 - Team growth and leadership (Extreme Ownership, agile and Lean
   principles, mentor and educator)
 
@@ -253,6 +254,16 @@ everyone. It's especially great for large teams of developers and
 designers who work together to build and deploy GitHub repos. I have 22
 merged pull requests here, including primary authorship of the Review
 Stacks feature.
+
+** derailed/k9s
+
+https://github.com/derailed/k9s
+
+A popular terminal UI for managing Kubernetes clusters. I contributed the
+Gruvbox light and dark skins (PR #1088) and a set of eight
+accessibility-focused Modus theme skins (PR #4104) meeting the highest
+WCAG contrast standard, with variants tuned for red–green and blue–yellow
+color-vision deficiency.
 
 ** percona-xtradb-cluster-operator
 
