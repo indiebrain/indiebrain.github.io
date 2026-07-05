@@ -11,7 +11,7 @@ title = "Aaron Kuehler"
   author = "Aaron Kuehler"
   # Fallback description for pages that don't set their own front matter
   # description (for example the blog list and tag pages).
-  description = "Platform and infrastructure engineer building the CI/CD, container, and data platforms other teams ship against."
+  description = "Platform and infrastructure engineer building the delivery pipelines, application platforms, and multi-site data stores other teams ship against."
   # 1200x630 card shown when a page is shared and sets no image of its own.
   ogImage = "/og-default.png"
   # Canonical profile URLs, emitted as schema.org sameAs for entity linking.

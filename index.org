@@ -1,5 +1,5 @@
 #+TITLE: About
-#+DESCRIPTION: Platform and infrastructure engineer with 15+ years building the CI/CD, container, and data platforms other teams ship against.
+#+DESCRIPTION: Platform and infrastructure engineer with 15+ years building the delivery pipelines, application platforms, and multi-site data stores other teams ship against — and coaching teams to operate and recover them.
 #+AUTHOR: Aaron Kuehler
 #+HUGO_BASE_DIR: .
 #+HUGO_SECTION: /
@@ -11,7 +11,7 @@
 Our purpose is not to "write code", but rather add value.
 #+END_QUOTE
 
-Platform and infrastructure engineer with 15+ years shipping software and growing teams. I build the CI/CD, container, and data platforms other teams ship against — Kubernetes, Ruby on Rails, Go, Redis at scale.
+Platform and infrastructure engineer with 15+ years shipping software and growing teams. I build the delivery pipelines, application platforms, and multi-site data stores other teams ship against, along with the web applications that run on them. Just as much, I help teams learn to operate and recover what they run — instrumentation, incident response, and disaster recovery.
 
 * Open Source Contributions
 
@@ -27,37 +27,38 @@ diagnosed.
 https://github.com/powerhome/redis-operator
 
 A Go Kubernetes operator that manages highly-available Redis with
-Sentinel-based automatic failover. I'm the de-facto maintainer: roughly
-40 merged pull requests and the release owner from v1.8.0 through the
-current v4.4.1. I added HAProxy-based client routing, master/replica
+Sentinel-based automatic failover. I help maintain it, as release owner
+from v1.8.0 through the current v4.4.1. That work brought HAProxy-based
+client routing, master/replica
 failover healing that disconnects clients from demoted nodes, and
-ongoing Kubernetes-version support. Adopting and maintaining this
-operator let my team replace commercial Redis Enterprise licensing with
-an internally-run, open-source alternative.
+ongoing Kubernetes-version support. For my team, adopting it meant
+retiring commercial Redis Enterprise licensing in favor of an
+internally-run, open-source alternative.
 
-** Authored and Merged Upstream
+** Merged Upstream
 
 *** HAProxy
 
 https://github.com/haproxy/haproxy
 
-The reliable, high-performance TCP/HTTP load balancer. I authored and
-merged an init-state server-configuration feature ([[https://github.com/haproxy/haproxy/commit/50322dff81f3c05e67bf311ff9ef0c77c833df97][commit 50322df]]),
-closing a years-open issue and fixing a Redis-failover bug that had
-caused production incidents. The fix benefits every HAProxy user.
+The reliable, high-performance TCP/HTTP load balancer. I contributed an
+init-state server-configuration feature ([[https://github.com/haproxy/haproxy/commit/50322dff81f3c05e67bf311ff9ef0c77c833df97][commit 50322df]]) that closed a
+years-open issue and fixed a Redis-failover bug responsible for past
+production incidents.
 
 *** Shopify/shipit-engine
 
 https://github.com/Shopify/shipit-engine
 
 Shipit is a deployment tool that makes shipping code better for large
-teams who build and deploy GitHub repositories together. As an outside
-contributor from 2019 to 2021 I merged 22 pull requests, spanning domain
-modeling (elevating the repository to a first-class concept, renaming
-=PullRequest= to =MergeRequest=) and maintenance-grade internals (task
-timing on a monotonic clock, git-cache-corruption recovery). I was the
-primary author of its "Review Stacks" feature ([[https://github.com/Shopify/shipit-engine/pull/1102][PR #1102]]): ephemeral,
-full-stack preview environments spun up per pull request.
+teams who build and deploy GitHub repositories together. Contributing as
+an outsider from 2019 to 2021, I reshaped part of its domain model —
+renaming =PullRequest= to =MergeRequest= to make merge requests a
+first-class concept — which cleared the way for Review Stacks
+([[https://github.com/Shopify/shipit-engine/pull/1102][PR #1102]]), the feature I authored: ephemeral, full-stack preview
+environments spun up per pull request. Alongside that I hardened
+operational internals: task timing on a monotonic clock, and recovery
+from git-cache corruption.
 
 *** derailed/k9s
 
@@ -81,8 +82,8 @@ https://github.com/rubyforgood/mutual-aid
 Mutual Aid is when people get together to build community by voluntarily
 sharing resources with each other. Mutual Aid groups are more concerned
 about local resiliency than global campaigns, and prefer solidarity
-before charity. I contributed 10 merged pull requests, largely hardening
-the Docker-based development environment for new volunteers.
+before charity. I contributed a series of changes hardening the
+Docker-based development environment for new volunteers.
 
 ** In Review
 
