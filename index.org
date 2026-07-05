@@ -65,7 +65,10 @@ from git-cache corruption.
 https://github.com/derailed/k9s
 
 A popular terminal UI for managing Kubernetes clusters. I contributed
-the Gruvbox light and dark skins ([[https://github.com/derailed/k9s/pull/1088][PR #1088]]).
+the Gruvbox light and dark skins ([[https://github.com/derailed/k9s/pull/1088][PR #1088]]), and a set of eight
+accessibility-focused Modus theme skins ([[https://github.com/derailed/k9s/pull/4104][PR #4104]]) that meet the
+highest WCAG contrast standard, with variants tuned for red–green and
+blue–yellow color-vision deficiency.
 
 *** percona-xtradb-cluster-operator
 
