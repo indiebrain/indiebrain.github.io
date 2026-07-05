@@ -55,18 +55,18 @@ Promoted to lead the internal platform team that powers the company's
 CI/CD, container platform, and shared data infrastructure — the systems
 every engineer in the org ships against.
 
-Setting a 2-year direction that shrinks operational surface area: drove
+Setting a 2-year direction that shrinks operational surface area: driving
 the platform roadmap toward a simplified recommended application stack, a
 versioned deployment-template library replacing copy-paste manifests, and
 cluster-scoped operators, collapsing per-app maintenance into a single
 consistent model. The result: fewer bespoke systems to babysit and a
 lighter on-call rotation.
 
-Maintain the paved road itself: the company's bespoke continuous-delivery
-pipeline — built on Shopify's shipit-engine — and the golden-path
-reference application new services start from. Drive architectural
-direction through written RFCs, so decisions are debated in the open and
-outlast any single owner.
+Maintaining the paved road itself: the company's bespoke
+continuous-delivery pipeline — built on Shopify's shipit-engine — and the
+golden-path reference implementation; driving
+architectural direction through written RFCs, so decisions are debated in
+the open and outlast any single owner.
 
 De-risking the company's most consequential platform migration: leading
 the cutover of 5+ applications (the flagship and its satellites) from the
@@ -75,15 +75,14 @@ across Redis (multiple GB), Elasticsearch (dozens of GB of indexed
 documents), and a widely-shared InfluxDB instance, plus DNS and
 change-control across multiple teams, without customer-visible downtime.
 
-Building bus-factor resilience: distributed ownership of critical
+Building bus-factor resilience: distributing ownership of critical
 platform components (cluster-scoped operators, deployment templating,
 data-center decommissions) so senior teammates now lead cross-team
 initiatives the team once single-threaded through one person — 6
 components that had a single owner now have two or more.
 
-Shaping who joins the team and how they grow: own annual reviews, hiring
-loops, and team strategy for a 7-person senior platform team operating at
-the company's highest-stakes layer.
+Shaping who joins the team and how they grow: owning annual reviews,
+hiring loops, and team strategy for a 7-person senior platform team.
 
 *Senior Software Engineer*
 
@@ -117,7 +116,7 @@ an open-source Kubernetes Redis operator (Go), added multi-site
 replication, and made cross-data-center disaster-recovery exercises
 routine rather than a fire drill.
 
-Multiplied the team's reach through mentorship and knowledge-sharing
+Grew the team's depth through mentorship and knowledge-sharing
 rituals: engineering mentor in the company's internal coding academy; led
 the internal Refactoring book club; founded two recurring practices still
 running today — "Maintenance Monday" (team-level) and "Tech Talk
@@ -171,18 +170,16 @@ to a first-class concept, renaming PullRequest to MergeRequest,
 extracting webhook handlers) and maintenance-grade internals (task timing
 on a monotonic clock, git-cache-corruption recovery, GitHub push-event
 handling). Primary author of its Review Stacks feature ([[https://github.com/Shopify/shipit-engine/pull/1102][PR #1102]]):
-ephemeral, full-stack preview environments spun up per pull request —
-~8,400 lines across 106 files, delivered with a small team and reviewed
-by Shopify maintainers.
+ephemeral, full-stack preview environments spun up per pull request,
+delivered with a small team and reviewed by Shopify maintainers.
 
 Took Talkbox — our in-house telephony system — from ~5 daily outages to
-one: it was taking the call center offline multiple times a day until I
-identified the constrained resources and decoupled/distributed the system
-by call type, keeping it online through the workday.
+one by identifying the constrained resources and distributing the system
+by call type, keeping the call center online through the workday.
 
 Expanded development organization capacity by 20% by growing "Power
-Code Academy" student developers into Individual Contributors.
-Functioned as a substitute instructor and post-graduation mentor.
+Code Academy" student developers into Individual Contributors — serving
+as a substitute instructor and post-graduation mentor.
 
 ** Bauer Xcel Media
 
