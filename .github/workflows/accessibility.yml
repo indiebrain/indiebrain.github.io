@@ -48,7 +48,7 @@ jobs:
         with:
           name: site-public
           path: public
-      - uses: actions/setup-node@v6
+      - uses: actions/setup-node@v7
         with:
           node-version: 22
       - name: Install pa11y-ci and Chromium
